@@ -1,6 +1,40 @@
-# TCL Firmware Installation Guides
-
 This page details the standard methods for updating and recovering TCL television hardware.
+
+---
+
+## :material-identifier: Identify Your Firmware & Platform
+
+Before downloading any firmware, you **must** know your TV's Platform and Version. Installing firmware for the wrong platform can result in a non-functional TV.
+
+### 1. Where to look
+On your TV, navigate to:
+**Settings** > **System** > **About** > **Product Information**.
+
+### 2. Traditional Naming Convention
+Most TCL firmwares follow a long-string format. Take this example:
+`V8-T615T03-LF1V474.000418`
+
+*   **Platform:** the second part (`T615T03`). This identifies your hardware.
+*   **Version:** the 3 digits following the "V" (`V474`).
+
+### 3. New 2025 Platform Naming
+Starting in 2025, TCL has simplified the Platform part of the firmware name displayed in the TV menu. Use the table below to cross-reference new IDs with their traditional platform names:
+
+| New ID (TV Menu) | Traditional Platform | Chassis / SoC |
+| :--- | :--- | :--- |
+| **0003T05** | T221T05 | R51M |
+| **0003T09** | T221T09 | R51M |
+| **0008T01** | R75PT01 | RT51 |
+| **0012T01** | T653T01 | T653 |
+| **0012T02** | T653T02 | T653 |
+| **0012T03** | T653T03 | T653 |
+| **0013T02** | T800T02 | T800 (Pentonic 700) |
+| **0015T01** | — | Pentonic 800 (Upcoming) |
+
+> [!TIP]
+> If your ID is not listed, search for the **full firmware string** in the [TCL Telegram Group](https://t.me/tclupdates_discussion) or use the [Firmware Bot](https://t.me/FirmwareTCLbot) for verification.
+
+---
 
 ## :material-usb: Flashing Methods Overview
 
@@ -55,18 +89,6 @@ There are two primary ways to update or recover a TCL TV. Choosing the right one
 6.  While holding, plug the TV back in.
 7.  Release once the "Software Update" screen appears.
 
----
-
-## :material-chip: Common Chipsets
-
-TCL uses different chipsets. You **must** download firmware specifically for your platform.
-
-*   **RT51 / R851:** Common on older 4K models.
-*   **T615:** Used in many newer mid-range 4K models.
-*   **Pentonic (700/1000):** High-end 144Hz models (e.g., C845, C755).
-
-!!! tip "Identify Your Chipset"
-    Use **[@FirmwareTCLbot](https://t.me/FirmwareTCLbot)** to find your exact chipset by searching for your Model or ID.
 
 ---
 

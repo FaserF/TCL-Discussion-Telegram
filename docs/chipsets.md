@@ -8,28 +8,23 @@ TCL platforms are generally grouped by the year of the model release. Use this t
 
 ### 2024 - 2026 (Modern Era)
 
-| Platform Family | Specific IDs | Featured Models | Notes |
+| Platform Family | Specific IDs | Featured Models | Notes / 2025 ID |
 | :--- | :--- | :--- | :--- |
-| **Pentonic 800** | T800T02 | X955 Max, C965 | Hyper-Premium (2025/26) |
-| **T655 / T653** | T655T01, T653T01, T653T02, T653T03 | C655, C655 PRO, C765, P755, T8B | 2024/25 Performance Class |
-| **T615** | T615T01, T615T02, T615T03 | C645 (Late), P745 | 2024 Entry-Mid range |
-| **T221** | T221T01..T07, T221T09 | S55H, S5200 (Late) | 2025 Entry/Monitor Class |
-
-### 2022 - 2023 (Google TV Era)
-
-| Platform Family | Specific IDs | Featured Models | OS Version |
-| :--- | :--- | :--- | :--- |
-| **Pentonic 700** | MT9653 | X955, C955, C855, C805, C755 | Google TV 11/12 |
-| **R51M / R851** | R51MT01..T08, R851T02, R851T03, R851T10 | C645, C635, P745, P735 | Google TV 11 |
-| **MT9615** | MT9615 | C845, C835, C735, C825, C728 | Google TV 11 |
+| **Pentonic 800** | — | — | **0015T01** (Upcoming) |
+| **T800 / Pentonic 700** | T800T02, MT9653 | X955 Max, C965, C855 | **0013T02** |
+| **T655 / T653** | T655T01, T653T01..T03 | C655, C655 PRO, C765, P755 | **0012T01..T03** |
+| **T615** | T615T01..T03 | C645 (Late), P745 | 2024 Entry-Mid range |
+| **T221** | T221T01..T07, T221T09 | S55H, S5200 (Late) | **0003T05..T09** |
 
 ### Legacy & Specialist
 
-| Platform ID | Chipset (SoC) | Featured Models | Status |
+| Platform ID | Traditional Name | Featured Models | 2025 ID (if any) |
 | :--- | :--- | :--- | :--- |
-| **R41K** | R41KT01 | S6500 Series | Legacy Android TV |
-| **R75P** | R75PT01 (0008T01) | Specialist Display | Hardware Revision |
-| **RT51 / AT51** | R51AT01 | P725, C725 | Transition Era |
+| **R75P** | R75PT01 | Specialist Display | **0008T01** |
+| **RT51 / AT51** | R51AT01 | P725, C725 | — |
+| **R51M / R851** | R51MT01..T10 | C645, C635, P745 | — |
+| **MT9615** | MT9615 | C845, C835, C735 | — |
+| **R41K** | R41KT01 | S6500 Series | — |
 
 ---
 
@@ -72,13 +67,9 @@ Firmware files follow a strict naming convention:
 ### Method 1: The "Contact Us" Menu
 
 1.  Navigate to **Settings** > **System** > **About** > **Contact Us**.
-2.  Look for the **Project ID** or **Firmware Version**.
-3.  The string will start with something like `V8-R51...` or `V8-T61...`.
+## :material-settings-helper: Finding your Platform ID
 
-### Method 2: System Version String
+For detailed instructions on how to locate your Project ID, Platform Name, and Version (including 2025 formats), please refer to our **[Firmware Identification Guide](guides.md#identify-your-firmware-platform)**.
 
-1.  Navigate to **Settings** > **System** > **About** > **Software Version**.
-2.  The full string contains the platform name.
-
-!!! tip "Identify Chipset"
-    If your Project ID doesn't appear in the timeline above, please visit the **[@FirmwareTCLbot](https://t.me/FirmwareTCLbot)**. Send your Model Number to the bot for an instant identification.
+!!! tip "Full ID Search"
+    If your specific ID is not listed in the tables above, use the **[@FirmwareTCLbot](https://t.me/FirmwareTCLbot)**. You can search by Model Number or Platform String for instant results.
