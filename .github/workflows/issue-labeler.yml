@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Label Bug Report
         if: contains(github.event.issue.title, '[BUG]') || contains(github.event.issue.body, 'technical_bug.yml')
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           script: |
             github.rest.issues.addLabels({
@@ -24,7 +24,7 @@ jobs:
 
       - name: Label Content Correction
         if: contains(github.event.issue.title, '[CONTENT]')
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           script: |
             github.rest.issues.addLabels({
@@ -36,7 +36,7 @@ jobs:
 
       - name: Label UI/UX Feedback
         if: contains(github.event.issue.title, '[DESIGN]')
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           script: |
             github.rest.issues.addLabels({
