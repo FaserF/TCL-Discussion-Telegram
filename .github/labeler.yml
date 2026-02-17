@@ -1,0 +1,23 @@
+# Label configurations for PRs based on changed files
+
+frontend:
+  - 'src/**/*'
+  - 'index.html'
+  - 'vite.config.js'
+
+documentation:
+  - '**/*.md'
+  - 'public/**/*.svg'
+
+workflow:
+  - '.github/workflows/**/*'
+
+automation:
+  - '.github/labeler.yml'
+  - '.github/workflows/labeler.yml'
+  - '.github/workflows/issue-labeler.yml'
+
+css:
+  - 'src/**/*.css'
+  - 'tailwind.config.js'
+  - 'postcss.config.js'

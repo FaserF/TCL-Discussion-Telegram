@@ -1,0 +1,107 @@
+site_name: TCL Discussion - Documentation
+site_url: https://FaserF.github.io/TCL-Discussion-Telegram/
+site_description: The official firmware documentation and technical guide for the TCL Discussion Telegram Community.
+site_author: TCL Discussion Community
+repo_url: https://github.com/FaserF/TCL-Discussion-Telegram
+repo_name: FaserF/TCL-Discussion-Telegram
+edit_uri: edit/main/docs/
+
+
+theme:
+  name: material
+  language: en
+  font:
+    text: Plus Jakarta Sans
+    code: JetBrains Mono
+  logo: assets/logo.png
+  favicon: assets/favicon.png
+  icon:
+    repo: fontawesome/brands/github
+  palette:
+    # Palette toggle for light mode (System or Manual)
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: rose
+      accent: rose
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    # Palette toggle for dark mode (System or Manual)
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: rose
+      accent: rose
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
+    - navigation.path
+    - navigation.indexes
+    - navigation.top
+    - navigation.tracking
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.footer
+    - search.suggest
+    - search.highlight
+    - search.share
+    - toc.follow
+    - content.action.edit
+    - content.code.copy
+    - content.tooltips
+    - content.tabs.link
+
+extra:
+  social:
+    - icon: fontawesome/brands/telegram
+      link: https://t.me/tclupdates
+      name: News Channel
+    - icon: fontawesome/brands/telegram
+      link: https://t.me/tclupdates_discussion
+      name: Community Group
+    - icon: fontawesome/brands/github
+      link: https://github.com/FaserF/TCL-Discussion-Telegram
+      name: GitHub Repository
+
+extra_css:
+  - stylesheets/extra.css
+
+extra_javascript:
+  - javascripts/telegram-widgets.js
+  - javascripts/banner.js
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.magiclink
+  - pymdownx.tilde
+  - pymdownx.keys
+  - attr_list
+  - md_in_html
+  - pymdownx.blocks.admonition
+  - pymdownx.blocks.details
+
+nav:
+  - Home: index.md
+  - Technical Guides:
+      - TCL Firmware Installation Guides: guides.md
+      - Chipset Intelligence: chipsets.md
+      - Rooting & Custom ROMs: rooting.md
+      - OTA Extraction Guide: contribution-ota.md
+  - Community & Safety:
+      - Community Safety: safety.md
+      - Safety FAQ: faq.md
+      - Content Rights & Credits: distribution.md
+      - Administration: administration.md
+      - Contribution & Help: contributing.md
+  - External Links: links.md

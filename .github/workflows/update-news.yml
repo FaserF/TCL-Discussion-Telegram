@@ -1,0 +1,70 @@
+name: Update News Banner
+
+on:
+  workflow_dispatch:
+    inputs:
+      active:
+        description: 'Show Banner?'
+        required: true
+        type: boolean
+        default: true
+      text:
+        description: 'Banner Text (Leave empty for LIVE latest Telegram post)'
+        required: false
+        default: ''
+      link:
+        description: 'Link URL (optional)'
+        required: false
+        default: ''
+
+jobs:
+  update-news:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          pip install requests beautifulsoup4
+
+      - name: Fetch Live Data (if needed)
+        id: news-data
+        run: |
+          ACTIVE="${{ inputs.active }}"
+          TEXT="${{ inputs.text }}"
+          LINK="${{ inputs.link }}"
+          DATE=$(date +'%Y-%m-%d')
+
+          if [ "$ACTIVE" = "true" ] && [ -z "$TEXT" ]; then
+            echo "Fetching live telegram data..."
+            python scripts/fetch_telegram.py > live_news.json
+            LIVE_TEXT=$(jq -r '.text' live_news.json)
+            LIVE_LINK=$(jq -r '.link' live_news.json)
+            TEXT="$LIVE_TEXT"
+            LINK="$LIVE_LINK"
+          fi
+
+          # Create final JSON
+          # Use jq for safe JSON creation
+          jq -n \
+            --arg active "$ACTIVE" \
+            --arg date "$DATE" \
+            --arg text "$TEXT" \
+            --arg link "$LINK" \
+            '{active: ($active == "true"), date: $date, text: $text, link: $link}' \
+            > docs/assets/news.json
+
+      - name: Commit and Push
+        run: |
+          git config --global user.name 'GitHub Actions'
+          git config --global user.email 'actions@github.com'
+          git add docs/assets/news.json
+          git commit -m "news: update banner [skip ci]" || echo "No changes to commit"
+          git push

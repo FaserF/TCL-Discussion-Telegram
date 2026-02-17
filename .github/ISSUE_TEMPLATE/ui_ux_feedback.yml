@@ -1,0 +1,27 @@
+name: "🎨 Design / UI / UX Feedback"
+description: "Report a visual bug, layout issue, or suggest a UI improvement."
+title: "[DESIGN]: "
+labels: ["ui/ux", "enhancement"]
+body:
+  - type: textarea
+    id: feedback
+    attributes:
+      label: "Design Feedback"
+      description: "What looks wrong or could be better?"
+      placeholder: "e.g., 'The navbar overlaps on iPhone SE'"
+    validations:
+      required: true
+  - type: dropdown
+    id: theme
+    attributes:
+      label: "Theme Mode"
+      options:
+        - "Dark Mode (Slate)"
+        - "Light Mode"
+        - "Both"
+  - type: input
+    id: device
+    attributes:
+      label: "Device / Browser"
+      description: "What are you using to view the site?"
+      placeholder: "e.g., Chrome on Android, Safari on Mac"

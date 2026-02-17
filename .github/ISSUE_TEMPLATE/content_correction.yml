@@ -1,0 +1,21 @@
+name: "📄 Text & Content Correction"
+description: "Report a typo, spelling mistake, or incorrect documentation text."
+title: "[CONTENT]: "
+labels: ["content", "documentation"]
+body:
+  - type: textarea
+    id: correction
+    attributes:
+      label: "What needs correction?"
+      description: "Please describe the typo or incorrect info."
+      placeholder: "e.g., 'In the Flashing Guide, Step 3 says FAT31 but should be FAT32'"
+    validations:
+      required: true
+  - type: input
+    id: location
+    attributes:
+      label: "Where did you find this?"
+      description: "Provide the URL or the file path in `docs/`."
+      placeholder: "e.g., docs/guides.md or https://.../guides/"
+    validations:
+      required: true

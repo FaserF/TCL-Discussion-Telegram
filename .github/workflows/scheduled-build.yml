@@ -1,0 +1,16 @@
+name: New Year Rebuild
+
+on:
+  schedule:
+    - cron: '0 0 1 1 *'
+  workflow_dispatch:
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Build
+        run: |
+          echo "Triggering new year build to refresh static assets (e.g. copyright year)..."
+          # This workflow doesn't need to do much if the build is triggered by push/pr,
+          # but a scheduled run ensures the static site hosting pulls the latest dynamic year if baked into static HTML.
