@@ -99,8 +99,10 @@ nav:
       - Chipset Intelligence: chipsets.md
       - Rooting & Custom ROMs: rooting.md
       - Reset All & Shop Guide: reset-shop.md
+      - Android to Google TV (RT51): rt51-gtv-switch.md
       - OTA Extraction Guide: contribution-ota.md
   - Community & Safety:
+      - Community & Volunteer Info: community.md
       - Community Safety: safety.md
       - Safety FAQ: faq.md
       - Content Rights & Credits: distribution.md

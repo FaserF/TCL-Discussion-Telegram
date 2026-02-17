@@ -47,6 +47,39 @@ If a new TV model or chipset is released:
 
 ---
 
+## :material-robot-confused: Rose Bot Administration
+
+The **Rose Bot** (@MissRose_bot) is our primary automation tool for moderation, filters, and welcome messages. This section explains how admins can interact with and configure the bot.
+
+### 1. Connecting to the Bot
+To manage group settings privately or via the web dashboard, you must first connect your account:
+
+1.  **Start the Bot:** Message [@MissRose_bot](https://t.me/MissRose_bot) and press `/start`.
+2.  **Request Connection:** In the **TCL Discussion Group**, type `/connect`.
+3.  **Confirm:** Rose will send you a PM with a button to confirm the connection. Once connected, you can send commands to her PM instead of the group, keeping the chat clean.
+
+### 2. Management via Web Dashboard
+For complex tasks like editing rules or configuring advanced settings, we recommend the web interface:
+
+- **Dashboard Link:** [missrose.org/dashboard](https://missrose.org/dashboard/)
+- **Setup:** After logging in with Telegram, select the TCL Discussion Group from your list.
+
+### 3. Core Admin Commands
+While most things are in the dashboard, you can use these common commands in the group (or PM if connected):
+
+| Command | Purpose | Official Guide |
+| :--- | :--- | :--- |
+| `/rules` | View or edit the group rules. | [Rules Guide](https://missrose.org/guide/rules/) |
+| `/setwelcome` | Update the randomized welcome msg. | [Notes/Welcome](https://missrose.org/guide/notes/) |
+| `/filter` | Add a new keyword trigger. | [Filters Guide](https://missrose.org/guide/filters/) |
+| `/config` | Access the general bot configuration. | [General Setup](https://missrose.org/guide/getting-started/) |
+| `/adminlist` | See all authorized group admins. | — |
+
+> [!IMPORTANT]
+> **Avoid Chat Spam:** Whenever possible, use the **Web Dashboard** or **Private Messages** to Rose for configuration. Only use commands in the main group for testing or immediate moderation actions.
+
+---
+
 ## :material-robot: Telegram Welcome Message (Randomized)
 Copy this entire block. The `%%%` markers allow the bot to pick a random variation each time a new member joins.
 
