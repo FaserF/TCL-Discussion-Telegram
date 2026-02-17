@@ -33,7 +33,17 @@ Common technical questions and troubleshooting steps for TCL Android/Google TVs.
     1.  **Reduce Animations:** Go to Developer Options and set all "Animation scale" settings to `0.5x` or `Off`.
     2.  **Background Process Limit:** In Developer Options, set limit to `At most 2 processes`.
     3.  **Apps Only Mode:** (GTV only) Enable this in Accounts/Settings to remove heavy content recommendations.
-    4.  **Reset Shop:** (Last resort) Use code `6425` in the Service Menu to perform a clean system wipe.
+    4.  **Shop Reset:** (Last resort) Use code `6425` in the Service Menu to perform a clean system wipe. See [What is a Shop Reset?](#what-is-shop-reset) for more details.
+
+??? question "What is a Shop Reset?"
+    <a id="what-is-shop-reset"></a>
+    A **Shop Reset** (also known as a Factory Reset via Service Menu) is a deep system wipe that bypasses standard OS limitations.
+
+    *   **When to use:** If the TV is stuck in "Shop Mode", if you encounter persistent bugs after a firmware update, or if a standard Factory Reset fails.
+      - **How to perform:**
+        1. Open the **Service Menu** (Settings > Picture > Brightness > Contrast > `6425`).
+        2. Follow our detailed [Reset All & Shop Guide](reset-shop.md) for step-by-step instructions and safety tips.
+
 
 ??? question "Where can I find the Play Store?"
     Since Google TV (v11+) prioritizes content, the Play Store icon might be hidden.
@@ -51,3 +61,11 @@ Common technical questions and troubleshooting steps for TCL Android/Google TVs.
     The **Game Bar** is a featureset for 2022+ models (Pentonic/T615) that allows real-time viewing of Refresh Rate (Hz), VRR status, and HDR settings during gaming.
 
     *   **Access:** Long-press the **Settings** (gear) or **Menu** (three lines) button on the remote while an HDMI source is active.
+
+??? question "How do I downgrade my firmware?"
+    <a id="how-to-downgrade"></a>
+    Downgrading is possible but requires a specific process to avoid bricking your TV.
+
+    *   **Requirement:** You **must** use an **IMG/PKG** file for downgrading (except for specific Realtek models).
+    *   **Data Loss:** A downgrade will **wipe all your apps and settings**.
+    *   **Instructions:** Please follow the detailed [IMG/PKG Flashing Guide](guides.md#how-to-flash-img-pkg).

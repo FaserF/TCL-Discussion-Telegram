@@ -73,6 +73,7 @@ extra_css:
 extra_javascript:
   - javascripts/telegram-widgets.js
   - javascripts/banner.js
+  - javascripts/hash-navigation.js
 
 markdown_extensions:
   - admonition
@@ -97,6 +98,7 @@ nav:
       - TCL Firmware Installation Guides: guides.md
       - Chipset Intelligence: chipsets.md
       - Rooting & Custom ROMs: rooting.md
+      - Reset All & Shop Guide: reset-shop.md
       - OTA Extraction Guide: contribution-ota.md
   - Community & Safety:
       - Community Safety: safety.md
