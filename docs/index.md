@@ -55,7 +55,7 @@ Flashing a TV is a low-level operation. Precision is required to avoid bricking 
 ---
 
 ### Credits
-This project is maintained by volunteers from the TCL Telegram community. A huge thank you to the **Admins and Moderators** who dedicate their time to verifying firmware and helping users.
+This project is maintained by volunteers from the TCL Telegram community. Learn more about our [Volunteer Status & Lack of Affiliation](community.md). A huge thank you to the **Admins and Moderators** who dedicate their time to verifying firmware and helping users.
 
 ---
 
@@ -71,6 +71,11 @@ Real-time support and technical discussions with experts.
 
 ---
 **Community Rule:** English only! Searching the group history before asking is highly recommended.
+</div>
+
+<div class="feature-card" markdown="1">
+### :material-swap-horizontal: Specialist Hacks
+Looking for something specific? Learn how to [Switch from Android to Google TV](rt51-gtv-switch.md) on RT51 hardware.
 </div>
 
 <div class="feature-card" markdown="1">
@@ -92,3 +97,4 @@ The fastest way to get notified about new firmware releases.
 
 !!! warning "Non-Official Resource"
     **This is NOT an official TCL website.** All administrators are volunteers. "TCL" is a registered trademark of **TCL Technology**.
+    Read our full [Community Disclaimer](community.md) for details on our volunteer status.
