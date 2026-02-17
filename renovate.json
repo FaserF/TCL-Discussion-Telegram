@@ -11,9 +11,13 @@
                 "pin",
                 "digest"
             ],
-            "automerge": true
+            "automerge": true,
+            "automergeType": "pr",
+            "platformAutomerge": true
         }
     ],
+    "automergeType": "pr",
     "platformAutomerge": true,
-    "dependencyDashboard": true
+    "dependencyDashboard": true,
+    "rebaseWhen": "behind-base-branch"
 }
