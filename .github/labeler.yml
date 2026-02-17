@@ -1,23 +1,34 @@
 # Label configurations for PRs based on changed files
+# Updated for actions/labeler@v5 syntax
 
 frontend:
-  - 'src/**/*'
-  - 'index.html'
-  - 'vite.config.js'
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'src/**/*'
+      - 'index.html'
+      - 'vite.config.js'
 
 documentation:
-  - '**/*.md'
-  - 'public/**/*.svg'
+  - changed-files:
+    - any-glob-to-any-file:
+      - '**/*.md'
+      - 'public/**/*.svg'
 
 workflow:
-  - '.github/workflows/**/*'
+  - changed-files:
+    - any-glob-to-any-file:
+      - '.github/workflows/**/*'
 
 automation:
-  - '.github/labeler.yml'
-  - '.github/workflows/labeler.yml'
-  - '.github/workflows/issue-labeler.yml'
+  - changed-files:
+    - any-glob-to-any-file:
+      - '.github/labeler.yml'
+      - '.github/workflows/labeler.yml'
+      - '.github/workflows/issue-labeler.yml'
 
 css:
-  - 'src/**/*.css'
-  - 'tailwind.config.js'
-  - 'postcss.config.js'
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'src/**/*.css'
+      - 'tailwind.config.js'
+      - 'postcss.config.js'
