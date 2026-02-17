@@ -12,12 +12,11 @@
                 "digest"
             ],
             "automerge": true,
-            "automergeType": "pr",
             "platformAutomerge": true
         }
     ],
-    "automergeType": "pr",
-    "platformAutomerge": true,
     "dependencyDashboard": true,
-    "rebaseWhen": "behind-base-branch"
+    "rebaseWhen": "conflicted",
+    "internalChecksFilter": "strict",
+    "prCreation": "not-pending"
 }
