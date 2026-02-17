@@ -31,8 +31,8 @@ Starting in 2025, TCL has simplified the Platform part of the firmware name disp
 | **0013T02** | T800T02 | T800 (Pentonic 700) |
 | **0015T01** | — | Pentonic 800 (Upcoming) |
 
-> [!TIP]
-> If your ID is not listed, search for the **full firmware string** in the [TCL Telegram Group](https://t.me/tclupdates_discussion) or use the [Firmware Bot](https://t.me/FirmwareTCLbot) for verification.
+!!! tip "Verification"
+    If your ID is not listed, search for the **full firmware string** in the [TCL Telegram Group](https://t.me/tclupdates_discussion) or use the [Firmware Bot](https://t.me/FirmwareTCLbot) for verification.
 
 ---
 

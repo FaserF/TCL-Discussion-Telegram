@@ -1,0 +1,75 @@
+name: Docs & CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+  pull-requests: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  test-and-build:
+    name: Test & Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.x
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Build Site
+        run: mkdocs build --strict --verbose
+
+      - name: Verify Layout Rendering
+        run: python scripts/check_build.py
+
+      - name: Skip Deployment Log
+        if: github.event_name == 'pull_request'
+        run: echo "Tests passed! skipping deployment because this is a Pull Request."
+
+      - name: Upload Pages Artifact
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './site'
+
+  renovate-approve:
+    name: Renovate Auto Approve
+    needs: test-and-build
+    runs-on: ubuntu-latest
+    if: github.actor == 'renovate[bot]' && github.event_name == 'pull_request'
+    steps:
+      - name: Approve PR
+        uses: hmarr/auto-approve-action@v4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: test-and-build
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

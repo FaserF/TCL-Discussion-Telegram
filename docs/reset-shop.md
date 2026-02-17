@@ -2,8 +2,8 @@
 
 This technical guide explains how to performing deep system resets using the TCL Service Menu (Infotech 0084 procedure). These methods are more thorough than a standard Factory Reset and are often used to resolve persistent software bugs or "Shop Mode" issues.
 
-> [!WARNING]
-> **Data Loss:** Both procedures will erase all user data, installed apps, and settings. Ensure any important data or identifiers (like Project ID) are noted before proceeding.
+!!! warning "Data Loss"
+    Both procedures will erase all user data, installed apps, and settings. Ensure any important data or identifiers (like Project ID) are noted before proceeding.
 
 ---
 
@@ -56,5 +56,5 @@ This is a more intensive reset that returns the TV to its "Out-of-the-Box" state
 - **Stuck in Shop Mode?** If a standard "Reset All" does not fix the demo mode, the **Reset Shop** procedure is required.
 - **Missing Project ID?** Resetting does not typically erase the Project ID (Model Mapping), but it is always good practice to [verify it](chipsets.md) after a reset.
 
-> [!TIP]
-> After any major firmware update (e.g., from V500 to V600), we highly recommend performing a **Reset All** to ensure no legacy cache files cause performance issues.
+!!! tip "Post-Update Maintenance"
+    After any major firmware update (e.g., from V500 to V600), we highly recommend performing a **Reset All** to ensure no legacy cache files cause performance issues.
