@@ -5,6 +5,7 @@ on:
     types: [opened, reopened, synchronize, closed]
     paths:
       - 'docs/**'
+      - 'scripts/**'
       - 'mkdocs.yml'
       - 'requirements.txt'
 
