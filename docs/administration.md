@@ -75,8 +75,8 @@ While most things are in the dashboard, you can use these common commands in the
 | `/config` | Access the general bot configuration. | [General Setup](https://missrose.org/guide/getting-started/) |
 | `/adminlist` | See all authorized group admins. | — |
 
-> [!IMPORTANT]
-> **Avoid Chat Spam:** Whenever possible, use the **Web Dashboard** or **Private Messages** to Rose for configuration. Only use commands in the main group for testing or immediate moderation actions.
+!!! important "Avoid Chat Spam"
+    Whenever possible, use the **Web Dashboard** or **Private Messages** to Rose for configuration. Only use commands in the main group for testing or immediate moderation actions.
 
 ---
 
