@@ -22,14 +22,14 @@ Starting in 2025, TCL has simplified the Platform part of the firmware name disp
 
 | New ID (TV Menu) | Traditional Platform | Chassis / SoC |
 | :--- | :--- | :--- |
-| **0003T05** | T221T05 | R51M |
-| **0003T09** | T221T09 | R51M |
-| **0008T01** | R75PT01 | RT51 |
-| **0012T01** | T653T01 | T653 |
-| **0012T02** | T653T02 | T653 |
-| **0012T03** | T653T03 | T653 |
-| **0013T02** | T800T02 | T800 (Pentonic 700) |
-| **0015T01** | — | Pentonic 800 (Upcoming) |
+| **0003T05** | T221T05 | MT21 |
+| **0003T09** | T221T09 | MT21 |
+| **0008T01** | R75PT01 | RT75 |
+| **0012T01** | T653T01 | MT53 |
+| **0012T02** | T653T02 | MT53 |
+| **0012T03** | T653T03 | MT53 |
+| **0013T02** | T800T02 | T800 |
+| **0015T01** | — | MT55 |
 
 !!! tip "Verification"
     If your ID is not listed, search for the **full firmware string** in the [TCL Telegram Group](https://t.me/tclupdates_discussion) or use the [Firmware Bot](https://t.me/FirmwareTCLbot) for verification.
@@ -40,17 +40,17 @@ Starting in 2025, TCL has simplified the Platform part of the firmware name disp
 
 There are two primary ways to update or recover a TCL TV. Choosing the right one depends on your goal (upgrade vs. recovery).
 
-### 1. Local Update (.zip)
+### 1. Local Update
 **Best for:** Standard version upgrades where you want to keep your data.
 
-*   **File Format:** `.zip`
+*   **File Format:** `.zip` or `.bin`
 *   **Data Loss:** None. Apps and settings are preserved.
 *   **Process:** Performed via the **System Update > Local Update** menu.
 
-### 2. IMG / PKG Flash
+### 2. IMG / PKG Flash (Note: for older models)
 **Best for:** Downgrading, unbricking, or performing a clean system reset.
 
-*   **File Format:** `.img`, `.pkg`, or `.bin`.
+*   **File Format:** `.img`, `.pkg`, or `.zip`.
 *   **Data Loss:** **Total.** All user data is wiped.
 *   **Process:** Performed by holding the hardware power button during cold boot.
 
