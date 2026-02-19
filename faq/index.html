@@ -274,7 +274,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../safety/" class="md-tabs__link">
+        <a href="../community/" class="md-tabs__link">
           
   
   
@@ -392,6 +392,10 @@
   
     
     
+      
+        
+      
+        
       
         
       
@@ -539,6 +543,62 @@
   
   
     <li class="md-nav__item">
+      <a href="../reset-shop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reset All & Shop Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rt51-gtv-switch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Android to Google TV (RT51)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../contribution-ota/" class="md-nav__link">
         
   
@@ -577,6 +637,8 @@
   
     
     
+      
+        
       
         
       
@@ -635,6 +697,34 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../community/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Community & Volunteer Info
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -881,7 +971,7 @@
     
     
       <li class="md-path__item">
-        <a href="../safety/" class="md-path__link">
+        <a href="../community/" class="md-path__link">
           
   <span class="md-ellipsis">
     Community & Safety
@@ -915,7 +1005,7 @@
 <p>Common technical questions and troubleshooting steps for TCL Android/Google TVs.</p>
 <details class="question">
 <summary>How do I find my Project ID or Panel ID?</summary>
-<p>The <strong>Project ID</strong> is a 4-digit number specific to your TV's screen size and panel type.</p>
+<p>The <strong>Project ID</strong> is a unique identifier (typically 1 to 6 digits) specific to your TV's screen size and panel type.</p>
 <ol>
 <li>Look at the sticker on the back of the TV.</li>
 <li>Check the <strong>Service Menu</strong> (see <a href="../guides/#advanced-service-menus">Guides</a>).</li>
@@ -943,7 +1033,8 @@
 <ul>
 <li><strong>Higher is newer:</strong> <code>V560</code> is newer than <code>V509</code>.</li>
 <li><strong>Prefixes:</strong> <code>V</code> = Release, <code>R</code> = Test, <code>M</code> = Pre-production.</li>
-<li>Check <strong><a href="https://t.me/FirmwareTCLbot">@FirmwareTCLbot</a></strong> to see the absolute latest official version for your Platform ID.</li>
+<li><strong>Identification:</strong> See our <a href="../guides/#identify-your-firmware-platform">Firmware Identification Guide</a> to learn how to read your version and platform (including new 2025 formats).</li>
+<li>Check <strong><a href="https://t.me/FirmwareTCLbot">@FirmwareTCLbot</a></strong> to see the absolute latest official version for your Platform.</li>
 </ul>
 </details>
 <details class="question">
@@ -953,8 +1044,21 @@
 <li><strong>Reduce Animations:</strong> Go to Developer Options and set all "Animation scale" settings to <code>0.5x</code> or <code>Off</code>.</li>
 <li><strong>Background Process Limit:</strong> In Developer Options, set limit to <code>At most 2 processes</code>.</li>
 <li><strong>Apps Only Mode:</strong> (GTV only) Enable this in Accounts/Settings to remove heavy content recommendations.</li>
-<li><strong>Reset Shop:</strong> (Last resort) Use code <code>6425</code> in the Service Menu to perform a clean system wipe.</li>
+<li><strong>Shop Reset:</strong> (Last resort) Use code <code>6425</code> in the Service Menu to perform a clean system wipe. See <a href="#what-is-shop-reset">What is a Shop Reset?</a> for more details.</li>
 </ol>
+</details>
+<details class="question">
+<summary>What is a Shop Reset?</summary>
+<p><a id="what-is-shop-reset"></a>
+A <strong>Shop Reset</strong> (also known as a Factory Reset via Service Menu) is a deep system wipe that bypasses standard OS limitations.</p>
+<ul>
+<li><strong>When to use:</strong> If the TV is stuck in "Shop Mode", if you encounter persistent bugs after a firmware update, or if a standard Factory Reset fails.</li>
+<li><strong>How to perform:</strong><ol>
+<li>Open the <strong>Service Menu</strong> (Settings &gt; Picture &gt; Brightness &gt; Contrast &gt; <code>6425</code>).</li>
+<li>Follow our detailed <a href="../reset-shop/">Reset All &amp; Shop Guide</a> for step-by-step instructions and safety tips.</li>
+</ol>
+</li>
+</ul>
 </details>
 <details class="question">
 <summary>Where can I find the Play Store?</summary>
@@ -977,6 +1081,16 @@
 <p>The <strong>Game Bar</strong> is a featureset for 2022+ models (Pentonic/T615) that allows real-time viewing of Refresh Rate (Hz), VRR status, and HDR settings during gaming.</p>
 <ul>
 <li><strong>Access:</strong> Long-press the <strong>Settings</strong> (gear) or <strong>Menu</strong> (three lines) button on the remote while an HDMI source is active.</li>
+</ul>
+</details>
+<details class="question">
+<summary>How do I downgrade my firmware?</summary>
+<p><a id="how-to-downgrade"></a>
+Downgrading is possible but requires a specific process to avoid bricking your TV.</p>
+<ul>
+<li><strong>Requirement:</strong> You <strong>must</strong> use an <strong>IMG/PKG</strong> file for downgrading (except for specific Realtek models).</li>
+<li><strong>Data Loss:</strong> A downgrade will <strong>wipe all your apps and settings</strong>.</li>
+<li><strong>Instructions:</strong> Please follow the detailed <a href="../guides/#how-to-flash-img-pkg">IMG/PKG Flashing Guide</a>.</li>
 </ul>
 </details>
 
@@ -1115,6 +1229,8 @@
         <script src="../javascripts/telegram-widgets.js"></script>
       
         <script src="../javascripts/banner.js"></script>
+      
+        <script src="../javascripts/hash-navigation.js"></script>
       
     
   </body>
