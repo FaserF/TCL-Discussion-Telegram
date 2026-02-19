@@ -40,14 +40,14 @@ Starting in 2025, TCL has simplified the Platform part of the firmware name disp
 
 There are two primary ways to update or recover a TCL TV. Choosing the right one depends on your goal (upgrade vs. recovery).
 
-### 1. Local Update
+### 1. OTA (Over-The-Air Update)
 **Best for:** Standard version upgrades where you want to keep your data.
 
 *   **File Format:** `.zip` or `.bin`
 *   **Data Loss:** None. Apps and settings are preserved.
 *   **Process:** Performed via the **System Update > Local Update** menu.
 
-### 2. IMG / PKG Flash (Note: for older models)
+### 2. IMG / PKG Flash (Recommended for newer models)
 **Best for:** Downgrading, unbricking, or performing a clean system reset.
 
 *   **File Format:** `.img`, `.pkg`, or `.zip`.
@@ -67,9 +67,9 @@ There are two primary ways to update or recover a TCL TV. Choosing the right one
 
 *   **Format USB:** Use a Windows PC to format a USB drive (8GB-32GB) to **FAT32**.
 *   **Single File:** Ensure **only one** firmware file is on the root directory of the USB.
-*   **Slot:** For TVs with multiple ports, use the **USB 2.0** slot (usually white/black) for the best compatibility.
+*   **Slot:** For most TVs, use the **USB 2.0** slot (white/black). **Note:** T653 firmware may require a **USB 3.0** (blue) port.
 
-### How to install OTA (.zip)
+### How to install OTA (.zip) / Local Update
 
 1.  Download the correct firmware ZIP file.
 2.  **Do not unzip.** Copy the ZIP file directly to the USB drive.
@@ -96,43 +96,28 @@ There are two primary ways to update or recover a TCL TV. Choosing the right one
 
 Service menus allow access to hardware-level parameters, total runtime, and panel calibration.
 
-| Code | Access Path | Primary Use Case |
-| :--- | :--- | :--- |
-| **6425** | Settings > Picture > Brightness > Contrast | Standard (GTV/ATV). Used for uptime & version. |
-| **1950** | Settings > Picture > Brightness > Contrast | Common on newer Google TV models. |
-| **9735** | Settings > Picture > Advanced (Highlight Contrast) | Alternative code for older Android TV models. |
-| **9705** | Settings > Picture > Brightness > Contrast | Used for factory debug and internal testing. |
+| Code | Description |
+| :--- | :--- |
+| **1950** | General Service Menu (Design Menu) - Standard for GTV/ATV. |
+| **6425** | Running Time & Quick access (Reset All / Reset Shop). |
+| **9735** | Subsection: Factory Menu. |
+| **6428** | Subsection: Factory Menu (Alternative). |
+| **9705** | Subsection: Service Menu. |
+| **6405** | Subsection: Hotel Menu. |
 
 ### How to enter:
 
 1.  Navigate to **Settings** > **Display & Sound** > **Picture**.
 2.  Go to **Advanced Settings** > **Brightness**.
 3.  Highlight **Contrast** (do not click).
-4.  Type the **4-digit code** quickly on the remote.
+4.  Type the **4-digit code** quickly on the remote. **Note:** If your remote lacks number buttons, use the on-screen keyboard or a smartphone remote app.
+
+!!! danger "Service Menu Warning"
+    Do not change anything in the Service Menus unless you know exactly what you are doing. Incorrect settings can cause hardware malfunctions or "soft-brick" your device.
 
 ---
 
-## :material-monitor-edit: Master Class: Project ID & Panel Fixes
 
-If you flash the correct platform but the **wrong model revision**, you might experience an **inverted screen**, scrambled colors, or a black panel (no backlight).
-
-### Fixing an Inverted Screen
-This usually means the software is expecting a different physical panel orientation (LVDS mapping).
-
-1.  Enter the **Service Menu** (using code above).
-2.  Find the **Project ID** or **Panel ID** entry.
-3.  Input the **correct Project ID** for your specific model size (found on the sticker on the back or in the community telegram).
-4.  Alternatively, look for an **LVDS Option** or **Rotate Flag** (rare on newer models).
-
-### Changing Project ID (Screen is Black)
-If the screen is black but the TV is "on" (status light reacts), you can sometimes blind-type a Project ID:
-
-1.  Turn on the TV and wait 30 seconds.
-2.  Type **062598 + Menu + [XXX]** where `XXX` is your 3-digit Project ID.
-3.  The TV should reboot automatically with the new ID applied.
-
-!!! danger "High Risk"
-    Incorrectly changing Project IDs can lead to a "hard brick" if the bootloader becomes incompatible with the panel. Always verify the ID with a moderator before performing this.
 
 ## :material-refresh: Reset & Maintenance
 
@@ -158,5 +143,5 @@ If your TV constantly displays feature banners and resets settings:
 If the TV says "No file found" or fails verification:
 
 1.  **Switch USB Drive:** Try an older USB 2.0 drive.
-2.  **Filesystem Check:** Re-format to FAT32 on a Windows PC.
+2.  **Filesystem Check:** Re-format to FAT32 on any PC (Windows/Linux) or directly on the TV in the storage settings.
 3.  **No Subfolders:** The `.img` or `.pkg` file must be at the very root of the drive.

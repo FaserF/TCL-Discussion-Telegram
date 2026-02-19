@@ -3,7 +3,7 @@
 Common technical questions and troubleshooting steps for TCL Android/Google TVs.
 
 ??? question "How do I find my Project ID or Panel ID?"
-    The **Project ID** is a 4-digit number specific to your TV's screen size and panel type.
+    The **Project ID** is a unique identifier (typically 1 to 6 digits) specific to your TV's screen size and panel type.
 
     1.  Look at the sticker on the back of the TV.
     2.  Check the **Service Menu** (see [Guides](guides.md#advanced-service-menus)).
@@ -25,8 +25,8 @@ Common technical questions and troubleshooting steps for TCL Android/Google TVs.
 
     *   **Higher is newer:** `V560` is newer than `V509`.
     *   **Prefixes:** `V` = Release, `R` = Test, `M` = Pre-production.
-    *   **Identification:** See our [Firmware Identification Guide](guides.md#identify-your-firmware-platform) to learn how to read your version and platform ID (including new 2025 formats).
-    *   Check **[@FirmwareTCLbot](https://t.me/FirmwareTCLbot)** to see the absolute latest official version for your Platform ID.
+    *   **Identification:** See our [Firmware Identification Guide](guides.md#identify-your-firmware-and-platform) to learn how to read your version and platform (including new 2025 formats).
+    *   Check **[@FirmwareTCLbot](https://t.me/FirmwareTCLbot)** to see the absolute latest official version for your Platform.
 
 ??? question "My TV is slow. How do I speed it up?"
     Android TVs can become sluggish over time. Try these steps:

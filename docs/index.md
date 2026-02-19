@@ -10,8 +10,8 @@ The community-driven technical hub for the **TCL Discussion** Telegram group. Fi
 
 <div class="hero-action-group" markdown="1">
 
-[Join News Channel](https://t.me/tclupdates){ .md-button .md-button--primary }
-[Discussion Group](https://t.me/tclupdates_discussion){ .md-button .md-button--secondary }
+[View Firmware Update Channel](https://t.me/tclupdates){ .md-button .md-button--primary }
+[Go to Discussion Group](https://t.me/tclupdates_discussion){ .md-button .md-button--secondary }
 
 </div>
 
@@ -21,7 +21,7 @@ The community-driven technical hub for the **TCL Discussion** Telegram group. Fi
 
 <div class="feature-card" markdown="1">
 ### :material-flash: Quick Start
-New to TCL flashing? Start with our guides to understand the difference between **Local Update** and **IMG Flash**.
+New to TCL flashing? Start with our guides to understand the difference between **OTA** and **IMG Flash**.
 
 [Installation Guides](guides.md){ .md-button .md-button--secondary style="width:100%" }
 </div>
@@ -48,9 +48,9 @@ Flashing a TV is a low-level operation. Precision is required to avoid bricking 
 
 ### Preparation Checklist
 *   **USB Drive:** Formatted to **FAT32** (MBR partition table).
-*   **Port Selection:** Use the **USB 2.0** slot (usually white/black) for best stability.
+*   **Port Selection:** For best stability, use the **USB 2.0** slot (usually white/black). **Note:** T653 firmware may require a **USB 3.0** port.
 *   **Source:** Only use files from verified community links or official TCL support.
-*   **Environment:** Use a **Windows PC** to extract or copy files to avoid hidden system metadata files (macOS/Linux) interfering with the bootloader.
+*   **Environment:** Windows, Linux, or Android can be used to extract or copy files. **Warning for macOS users:** Safari often unzips downloads by default; ensure this is disabled as OTA files must remain zipped.
 
 ---
 
@@ -64,25 +64,22 @@ This project is maintained by volunteers from the TCL Telegram community. Learn 
 <div class="feature-grid" markdown="1">
 
 <div class="feature-card" markdown="1">
-### :material-message-text: Support Group
+### :material-message-text: Discussion Group
 Real-time support and technical discussions with experts.
 
-[Join Group](https://t.me/tclupdates_discussion){ .md-button .md-button--secondary style="width:100%" }
+[Go to Group](https://t.me/tclupdates_discussion){ .md-button .md-button--secondary style="width:100%" }
 
 ---
 **Community Rule:** English only! Searching the group history before asking is highly recommended.
 </div>
 
-<div class="feature-card" markdown="1">
-### :material-swap-horizontal: Specialist Hacks
-Looking for something specific? Learn how to [Switch from Android to Google TV](rt51-gtv-switch.md) on RT51 hardware.
-</div>
+
 
 <div class="feature-card" markdown="1">
-### :material-bullhorn: News Channel
-The fastest way to get notified about new firmware releases.
+### :material-bullhorn: Firmware Update Channel
+The channel for hardware-specific firmware releases.
 
-[Join Channel](https://t.me/tclupdates){ .md-button .md-button--secondary style="width:100%" }
+[View Channel](https://t.me/tclupdates){ .md-button .md-button--secondary style="width:100%" }
 
 <div class="telegram-widget" data-post="tclupdates/210"></div>
 </div>
