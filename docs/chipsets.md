@@ -42,9 +42,8 @@ TCL uses significantly different marketing names in North America compared to Eu
 !!! important "Verify Platform"
     Always verify your **Platform** before flashing. Even if the platform family matches, installing firmware not designed for your specific regional hardware can lead to failures.
 
-> [!NOTE]
-> **What is a "Platform"?**
-> The Platform (e.g., T653, RT51) refers to the underlying System-on-Chip (SoC) and hardware architecture of your TV. It is distinct from the **Project ID**, which identifies specific panel and model configurations.
+!!! note "What is a 'Platform'?"
+    The Platform (e.g., T653, RT51) refers to the underlying System-on-Chip (SoC) and hardware architecture of your TV. It is distinct from the **Project ID**, which identifies specific panel and model configurations.
 
 ---
 

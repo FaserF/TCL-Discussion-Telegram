@@ -96,7 +96,7 @@ nav:
   - Home: index.md
   - Technical Guides:
       - TCL Firmware Installation Guides: guides.md
-      - Chipset Intelligence: chipsets.md
+      - Platforms & Chipsets: chipsets.md
       - Rooting & Custom ROMs: rooting.md
       - Reset All & Shop Guide: reset-shop.md
       - Android to Google TV (RT51): rt51-gtv-switch.md
