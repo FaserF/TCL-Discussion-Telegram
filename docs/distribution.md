@@ -26,6 +26,6 @@ It has come to our attention that several Telegram groups and channels are curre
 
 ---
 
-## :material-account-group: Our Community Experts
+## :material-account-group: Our Community Enthusiasts
 
 This hub exists because of the tireless work of our **Moderators and Admins**. If you find this information useful, please support the original source to ensure we can continue providing free, fast, and safe firmware updates for everyone.

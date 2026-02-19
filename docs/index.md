@@ -65,12 +65,17 @@ This project is maintained by volunteers from the TCL Telegram community. Learn 
 
 <div class="feature-card" markdown="1">
 ### :material-message-text: Discussion Group
-Real-time support and technical discussions with experts.
+Real-time support and technical discussions with volunteer enthusiasts.
 
 [Go to Group](https://t.me/tclupdates_discussion){ .md-button .md-button--secondary style="width:100%" }
 
 ---
-**Community Rule:** English only! Searching the group history before asking is highly recommended.
+**Group Rules:**
+1. English language **ONLY**.
+2. **Search** for download links using the button in the top bar.
+3. Provide your **Chipset + Version** (or full firmware string) when asking for help.
+4. Always check the search history before posting new questions.
+5. No spam, swearing, insults, or advertising.
 </div>
 
 
