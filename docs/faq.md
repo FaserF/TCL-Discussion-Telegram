@@ -25,7 +25,7 @@ Common technical questions and troubleshooting steps for TCL Android/Google TVs.
 
     *   **Higher is newer:** `V560` is newer than `V509`.
     *   **Prefixes:** `V` = Release, `R` = Test, `M` = Pre-production.
-    *   **Identification:** See our [Firmware Identification Guide](guides.md#identify-your-firmware-and-platform) to learn how to read your version and platform (including new 2025 formats).
+    *   **Identification:** See our [Firmware Identification Guide](guides.md#identify-your-firmware-platform) to learn how to read your version and platform (including new 2025 formats).
     *   Check **[@FirmwareTCLbot](https://t.me/FirmwareTCLbot)** to see the absolute latest official version for your Platform.
 
 ??? question "My TV is slow. How do I speed it up?"
