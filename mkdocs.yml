@@ -74,6 +74,7 @@ extra_javascript:
   - javascripts/telegram-widgets.js
   - javascripts/banner.js
   - javascripts/hash-navigation.js
+  - javascripts/auth.js
 
 markdown_extensions:
   - admonition

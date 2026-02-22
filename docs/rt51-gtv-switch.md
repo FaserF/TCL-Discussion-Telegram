@@ -9,7 +9,7 @@ The hardware in R51MT02 and R51MT05 models is compatible enough that the R51MT05
 
 ### :material-alert: Critical Requirements
 
-1.  **IMG Method ONLY:** You **cannot** perform this switch using a `.zip` (OTA) file. Because you are changing the underlying OS structure, a full [IMG Flashing Procedure](guides.md#how-to-flash-img-pkg) is mandatory.
+1.  **IMG Method ONLY:** You **cannot** perform this switch using a `.zip` (Local Update (OTA)) file. Because you are changing the underlying OS structure, a full [IMG Flashing Procedure](guides.md#how-to-flash-img-pkg) is mandatory.
 2.  **Full Data Wipe:** Flashing an IMG file will **erase all your apps, accounts, and settings**. Ensure you have backed up any necessary information.
 3.  **Platform Check:** Verify your current [Platform](guides.md#identify-your-firmware-platform) before proceeding. This guide is specifically for **R51MT02** hardware.
 

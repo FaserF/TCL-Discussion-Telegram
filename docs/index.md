@@ -21,7 +21,7 @@ The community-driven technical hub for the **TCL Discussion** Telegram group. Fi
 
 <div class="feature-card" markdown="1">
 ### :material-flash: Quick Start
-New to TCL flashing? Start with our guides to understand the difference between **OTA** and **IMG Flash**.
+New to TCL flashing? Start with our guides to understand the difference between **Local Update (OTA)** and **IMG Flash**.
 
 [Installation Guides](guides.md){ .md-button .md-button--secondary style="width:100%" }
 </div>

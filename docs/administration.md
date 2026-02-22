@@ -1,5 +1,25 @@
 # Administration Guide
 
+<div id="auth-gate" style="display:none; text-align:center; padding: 60px 20px; background: rgba(255,255,255,0.02); border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); margin: 20px 0;">
+    <div style="font-size: 3rem; margin-bottom: 20px;">🔒</div>
+    <h2 style="margin-bottom: 10px;">Restricted Access</h2>
+    <p style="opacity: 0.8; margin-bottom: 30px;">This page is reserved for community administrators.<br>Please sign in with your official Telegram account.</p>
+
+    <div style="display: flex; justify-content: center; margin-bottom: 20px;">
+        <script async src="https://telegram.org/js/telegram-widget.js?22"
+            data-telegram-login="YOUR_BOT_NAME"
+            data-size="large"
+            data-onauth="onTelegramAuth(user)"
+            data-request-access="write"></script>
+    </div>
+</div>
+
+<div id="admin-content" style="display:none">
+
+> [!CAUTION]
+> **Privacy Warning**
+> This website is hosted on GitHub Pages. While this page is protected by a login gate, the **source code** of this page is public in the [GitHub Repository](https://github.com/FaserF/TCL-Discussion-Telegram/blob/main/docs/administration.md). Do not store sensitive passwords or private keys directly in this file.
+
 This page is for community administrators and moderators. It explains how to manage the dynamic parts of the TCL Firmware Hub, such as the announcement banner.
 
 ## :material-bullhorn: Managing the Announcement Banner
@@ -99,7 +119,7 @@ Ready to supercharge your TCL TV? We've built a **brand new Documentation Hub** 
 ⚠️ **English Only** | 🔍 **Search Before Asking**
 
 [Open Documentation Hub](buttonurl://https://FaserF.github.io/TCL-Discussion-Telegram/)
-[Firmware Updates](buttonurl://https://t.me/tclupdates)
+[Updates Channel](buttonurl://https://t.me/tclupdates)
 [Firmware Bot](buttonurl://@FirmwareTCLbot)
 %%%
 Hey {username}, welcome aboard {chatname}! 👋🏻
@@ -160,7 +180,7 @@ Triggers for flashing, upgrading, and common USB recognition issues.
 /filter ("how to install", "how to upgrade", "issues installing", "no file on usb", "how to flash", "flash firmware", "update via usb", "usb update", "install firmware", "how to update", "usb not found", "file not found")
 Need help installing a firmware update? 🛠
 
-Whether you are using a local update or an IMG file, our **Installation Masterclass** covers all steps and common pitfalls (like "no file found").
+Whether you are using a Local Update (OTA) or an IMG file, our **Installation Masterclass** covers all steps and common pitfalls (like "no file found").
 
 [Installation Guide](buttonurl://https://FaserF.github.io/TCL-Discussion-Telegram/guides/)
 [Troubleshooting FAQ](buttonurl://https://FaserF.github.io/TCL-Discussion-Telegram/faq/)
@@ -204,3 +224,5 @@ We have sections covering Wi-Fi issues (5G), the Gamebar feature, and tips on ho
 ### Internal Links
 - [View news.json](assets/news.json)
 - [Workflow Code](https://github.com/FaserF/TCL-Discussion-Telegram/blob/main/.github/workflows/update-news.yml)
+
+</div>

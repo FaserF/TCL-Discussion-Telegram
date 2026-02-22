@@ -38,6 +38,20 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
+      - name: Generate Admin Hashes
+        run: |
+          mkdir -p docs/assets
+          if [ -z "${{ secrets.ADMIN_AUTH_DATA }}" ]; then
+            echo "[]" > docs/assets/admins.json
+          else
+            echo "${{ secrets.ADMIN_AUTH_DATA }}" | tr ',' '\n' | while read id; do
+              # Trim whitespace and hash
+              clean_id=$(echo "$id" | xargs)
+              echo -n "$clean_id" | sha256sum | awk '{print $1}'
+            done | jq -R . | jq -s . > docs/assets/admins.json
+          fi
+        shell: bash
+
       - name: Build Site
         run: mkdocs build --strict --verbose
 

@@ -1,9 +1,9 @@
-# :material-cloud-upload: Community OTA Extraction Guide
+# :material-cloud-upload: Community Local Update (OTA) Extraction Guide
 
-Help the community by capturing and sharing official OTA download links.
+Help the community by capturing and sharing official Local Update (OTA) download links.
 
 !!! info "Target Group: TCL T653T01 2025 Users"
-    If your TV is offering the **V538** (or more recent) OTA update, you can help everyone by extracting the download link before installing it.
+    If your TV is offering the **V538** (or more recent) Local Update (OTA) update, you can help everyone by extracting the download link before installing it.
 
 ### Prerequisites
 
@@ -39,10 +39,10 @@ Help the community by capturing and sharing official OTA download links.
 #### 5. Save and Share
 1.  On your PC: Click **Stop logcat** in ADB AppControl.
 2.  Locate the saved log file.
-3.  Send the file to **stasiof** on Telegram for extraction of the official OTA link.
+3.  Send the file to **stasiof** on Telegram for extraction of the official Local Update (OTA) link.
 
 ---
 
 ### Important Notes
 *   **Don't have the update yet?** If you are on an older version (like V509) and want to help, you can capture the log while checking for the update.
-*   **Already updated?** You can still help if you downgrade (using PKG) and then capture the OTA update log during the re-update process.
+*   **Already updated?** You can still help if you downgrade (using PKG) and then capture the Local Update (OTA) update log during the re-update process.

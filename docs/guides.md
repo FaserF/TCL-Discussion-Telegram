@@ -40,7 +40,7 @@ Starting in 2025, TCL has simplified the Platform part of the firmware name disp
 
 There are two primary ways to update or recover a TCL TV. Choosing the right one depends on your goal (upgrade vs. recovery).
 
-### 1. OTA (Over-The-Air Update)
+### 1. Local Update (OTA) Update
 **Best for:** Standard version upgrades where you want to keep your data.
 
 *   **File Format:** `.zip` or `.bin`
@@ -57,7 +57,7 @@ There are two primary ways to update or recover a TCL TV. Choosing the right one
 !!! warning "Downgrade Logic"
     Normally, a **downgrade** should only be done using **IMG/PKG** firmware. This process will erase all your apps and data.
 
-    *   **Exception:** If your TV uses **Realtek** hardware with **Android 11 or earlier**, you can also use an **OTA file** for downgrade by following the IMG installation instructions (holding the power button).
+    *   **Exception:** If your TV uses **Realtek** hardware with **Android 11 or earlier**, you can also use an **Local Update (OTA) file** for downgrade by following the IMG installation instructions (holding the power button).
 
 ---
 
@@ -69,7 +69,7 @@ There are two primary ways to update or recover a TCL TV. Choosing the right one
 *   **Single File:** Ensure **only one** firmware file is on the root directory of the USB.
 *   **Slot:** For most TVs, use the **USB 2.0** slot (white/black). **Note:** T653 firmware may require a **USB 3.0** (blue) port.
 
-### How to install OTA (.zip) / Local Update
+### How to install Local Update (OTA) (.zip)
 
 1.  Download the correct firmware ZIP file.
 2.  **Do not unzip.** Copy the ZIP file directly to the USB drive.
@@ -110,7 +110,7 @@ Service menus allow access to hardware-level parameters, total runtime, and pane
 1.  Navigate to **Settings** > **Display & Sound** > **Picture**.
 2.  Go to **Advanced Settings** > **Brightness**.
 3.  Highlight **Contrast** (do not click).
-4.  Type the **4-digit code** quickly on the remote. **Note:** If your remote lacks number buttons, use the on-screen keyboard or a smartphone remote app.
+4.  Type the **4-digit code** quickly on the remote. **Note:** If your remote lacks number buttons, use the **on-screen keyboard** (Gboard) or a **smartphone remote app** (like Google Home or the TCL app) to type the code.
 
 !!! danger "Service Menu Warning"
     Do not change anything in the Service Menus unless you know exactly what you are doing. Incorrect settings can cause hardware malfunctions or "soft-brick" your device.
@@ -127,7 +127,7 @@ If you encounter bugs after an update, or if your TV is stuck in a specific mode
 Navigation: **Settings** > **System** > **About** > **Reset**.
 
 *   **IMG / PKG Flash:** A factory reset is **not required** because the flashing process already performs a full system wipe.
-*   **OTA Update:** Since OTA preserves your apps, we only recommend a manual factory reset if you encounter strange bugs or performance issues after the update.
+*   **Local Update (OTA) Update:** Since Local Update (OTA) preserves your apps, we only recommend a manual factory reset if you encounter strange bugs or performance issues after the update.
 
 ### Shop Mode / Store Mode
 If your TV constantly displays feature banners and resets settings:
