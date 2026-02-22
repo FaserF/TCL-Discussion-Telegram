@@ -7,7 +7,7 @@
 
     <div style="display: flex; justify-content: center; margin-bottom: 20px;">
         <script async src="https://telegram.org/js/telegram-widget.js?22"
-            data-telegram-login="YOUR_BOT_NAME"
+            data-telegram-login="tcl_group_mgmt_bot"
             data-size="large"
             data-onauth="onTelegramAuth(user)"
             data-request-access="write"></script>
