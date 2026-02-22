@@ -68,16 +68,26 @@ jobs:
         with:
           path: './site'
 
-  renovate-approve:
-    name: Renovate Auto Approve
+  automerge:
+    name: Automerge
     needs: test-and-build
+    if: github.event_name == 'pull_request' && (github.actor == 'renovate[bot]' || github.actor == 'dependabot[bot]' || github.actor == 'FaserF')
     runs-on: ubuntu-latest
-    if: github.actor == 'renovate[bot]' && github.event_name == 'pull_request'
+    permissions:
+      pull-requests: write
+      contents: write
     steps:
       - name: Approve PR
+        if: github.actor == 'renovate[bot]' || github.actor == 'dependabot[bot]'
         uses: hmarr/auto-approve-action@v4
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Enable GitHub Automerge
+        run: gh pr merge "${{ github.event.pull_request.number }}" --auto --squash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
 
   deploy:
     name: Deploy to GitHub Pages

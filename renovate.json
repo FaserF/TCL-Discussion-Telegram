@@ -3,6 +3,7 @@
     "extends": [
         "config:base"
     ],
+    "npmrc": "legacy-peer-deps=true",
     "packageRules": [
         {
             "matchUpdateTypes": [
@@ -12,11 +13,16 @@
                 "digest"
             ],
             "automerge": true,
-            "platformAutomerge": true
+            "platformAutomerge": true,
+            "automergeType": "pr",
+            "automergeStrategy": "squash"
         }
     ],
     "dependencyDashboard": true,
     "rebaseWhen": "conflicted",
     "internalChecksFilter": "strict",
-    "prCreation": "not-pending"
+    "prCreation": "not-pending",
+    "labels": [
+        "dependencies"
+    ]
 }

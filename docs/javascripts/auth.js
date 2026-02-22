@@ -18,7 +18,7 @@ window.onTelegramAuth = async function (user) {
         localStorage.setItem('is_admin_authorized', 'true');
         location.reload();
     } else {
-        alert("Access Denied: Your Telegram ID (" + user.id + ") is not in the authorized list. Please ensure you have added this ID to the GitHub Secrets.");
+        alert("Access Denied: Your Telegram ID (" + user.id + ") is not allowed to access this page. Please ensure you have added this exact number to your GitHub Repository Secrets.");
     }
 };
 
