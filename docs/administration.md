@@ -14,11 +14,10 @@
     </div>
 </div>
 
-<div id="admin-content" style="display:none">
+<div id="admin-content" style="display:none" markdown="1">
 
-> [!CAUTION]
-> **Privacy Warning**
-> This website is hosted on GitHub Pages. While this page is protected by a login gate, the **source code** of this page is public in the [GitHub Repository](https://github.com/FaserF/TCL-Discussion-Telegram/blob/main/docs/administration.md). Do not store sensitive passwords or private keys directly in this file.
+!!! caution "Privacy Warning"
+    This website is hosted on GitHub Pages. While this page is protected by a login gate, the **source code** of this page is public in the [GitHub Repository](https://github.com/FaserF/TCL-Discussion-Telegram/blob/main/docs/administration.md). Do not store sensitive passwords or private keys directly in this file.
 
 This page is for community administrators and moderators. It explains how to manage the dynamic parts of the TCL Firmware Hub, such as the announcement banner.
 
