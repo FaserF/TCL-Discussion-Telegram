@@ -59,7 +59,7 @@ extra:
   social:
     - icon: fontawesome/brands/telegram
       link: https://t.me/tclupdates
-      name: News Channel
+      name: Updates Channel
     - icon: fontawesome/brands/telegram
       link: https://t.me/tclupdates_discussion
       name: Community Group
@@ -101,10 +101,10 @@ nav:
       - Reset All & Shop Guide: reset-shop.md
       - Android to Google TV (RT51): rt51-gtv-switch.md
       - OTA Extraction Guide: contribution-ota.md
+      - Safety FAQ: faq.md
   - Community & Safety:
       - Community & Volunteer Info: community.md
       - Community Safety: safety.md
-      - Safety FAQ: faq.md
       - Content Rights & Credits: distribution.md
       - Administration: administration.md
       - Contribution & Help: contributing.md

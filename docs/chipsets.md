@@ -15,14 +15,14 @@ TCL platforms are generally grouped by the year of the model release. Use this t
 
 | Platform Family | Specific IDs | Featured Models | Notes / 2025 ID |
 | :--- | :--- | :--- | :--- |
-| **Pentonic 800** | — | — | **0015T01** (Upcoming) |
-| **T800 / Pentonic 700** | T800T02, MT9653 | X955 Max, C965, C855 | **0013T02** |
-| **T655 / T653** | T655T01, T653T01..T03 | C655, C655 PRO, C765, P755, R75P | **0012T01..T03**, **0008T01** |
-| **T615** | T615T01..T03 | C645 (Late), P745 | 2024 Entry-Mid range |
+| **Pentonic 800** | T655T01 | — | **0015T01** |
+| **Pentonic 700** | T653T01..T03, MT9653 | X955 Max, C965, C855, C655 PRO, C765, P755, QM8/QM7 (2024) | **0012T01..T03**, **0013T02** |
+| **T800** | T800T02 | — | **0013T02** |
+| **T615 / MT9615** | T615T01..T03, MT9615 | C645 (Late), P745, C845, C835, C735 | 2024 Entry-Mid + High-end Legacy |
+| **R75P** | R75PT01 | — | **0008T01** |
 | **T221** | T221T01..T07, T221T09 | S55H, S5200 (Late) | **0003T05..T09** |
 | **RT51 / AT51** | R51AT01 | P725, C725 | Legacy Android |
 | **R51M / R851** | R51MT01..T10 | C645, C635, P745 | Legacy GTV |
-| **MT9615** | MT9615 | C845, C835, C735 | High-end Legacy |
 | **R41K** | R41KT01 | S6500 Series | Entry Legacy |
 
 ---

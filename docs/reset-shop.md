@@ -1,6 +1,6 @@
 # Reset All & Reset Shop Guide
 
-This technical guide explains how to performing deep system resets using the TCL Service Menu (Infotech 0084 procedure). These methods are more thorough than a standard Factory Reset and are often used to resolve persistent software bugs or "Shop Mode" issues.
+This technical guide explains how to performing deep system resets using the TCL Service Menu. These methods are more thorough than a standard Factory Reset and are often used to resolve persistent software bugs or "Shop Mode" issues.
 
 !!! warning "Data Loss"
     Both procedures will erase all user data, installed apps, and settings. Ensure any important data or identifiers (like Project ID) are noted before proceeding.
@@ -21,6 +21,9 @@ Before performing a reset, you must first enter the hidden Service Menu:
     6 4 2 5
     ```
 7.  The **Service Menu** overlay should appear on the left side of your screen.
+
+!!! tip "No Number Buttons?"
+    If your remote lacks number buttons, you can use the **on-screen keyboard** (Gboard) or a **smartphone remote app** (like Google Home or the TCL app) to type the code.
 
 ---
 
