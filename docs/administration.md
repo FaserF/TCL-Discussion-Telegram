@@ -77,14 +77,15 @@ To manage group settings privately or via the web dashboard, you must first conn
 2.  **Request Connection:** In the **TCL Discussion Group**, type `/connect`.
 3.  **Confirm:** Rose will send you a PM with a button to confirm the connection. Once connected, you can send commands to her PM instead of the group, keeping the chat clean.
 
-### 2. Management via Web Dashboard
-For complex tasks like editing rules or configuring advanced settings, we recommend the web interface:
+### 2. Management via Private Message (Recommended)
+While you can use commands in the group, we recommend managing settings via Private Messages to keep the public chat clean:
 
-- **Dashboard Link:** [missrose.org/dashboard](https://missrose.org/dashboard/)
-- **Setup:** After logging in with Telegram, select the TCL Discussion Group from your list.
+1.  Use the `/connect` command as described above.
+2.  Once connected, you can send any configuration command (like `/filter` or `/setwelcome`) directly to Rose's PM.
+3.  The bot will apply those settings to the TCL Discussion Group automatically.
 
 ### 3. Core Admin Commands
-While most things are in the dashboard, you can use these common commands in the group (or PM if connected):
+Here are the most common commands you'll need. You can find the full documentation at [missrose.org](https://missrose.org/guide/).
 
 | Command | Purpose | Official Guide |
 | :--- | :--- | :--- |
@@ -106,7 +107,7 @@ Copy this entire block. The `%%%` markers allow the bot to pick a random variati
 /setwelcome
 Welcome to {chatname}, {username}! 🚀✨
 
-Ready to supercharge your TCL TV? We've built a **brand new Documentation Hub** just for you! It's packed with step-by-step guides, chipset data, and the latest firmware links.
+Before posting read [this pinned message](https://t.me/tclupdates_discussion/273156).
 
 📍 **Your Journey Starts Here:**
 - 🛠 [Installation Guides](https://FaserF.github.io/TCL-Discussion-Telegram/guides)
@@ -123,7 +124,7 @@ Ready to supercharge your TCL TV? We've built a **brand new Documentation Hub** 
 %%%
 Hey {username}, welcome aboard {chatname}! 👋🏻
 
-We're glad to have you here! To help you get started, we've launched the **Official TCL Documentation Hub**. It’s your one-stop shop for firmware updates, installation guides, and platform mapping.
+We're glad to have you here! Before posting read [this pinned message](https://t.me/tclupdates_discussion/273156).
 
 Before you dive in:
 - 📖 [Help & FAQ](https://FaserF.github.io/TCL-Discussion-Telegram/faq/)
@@ -138,7 +139,7 @@ Before you dive in:
 %%%
 Greetings {username}! Welcome to {chatname}. 🎉
 
-Looking for the latest firmware or technical support? Our internal **Documentation Hub** is now live and is the primary source for all TCL information.
+Looking for the latest firmware or technical support? Before posting read [this pinned message](https://t.me/tclupdates_discussion/273156).
 
 🌟 **Quick Links:**
 - [Firmware Installation Masterclass](https://FaserF.github.io/TCL-Discussion-Telegram/guides)
@@ -150,8 +151,6 @@ Remember: This is an English-only community. Please use the search function befo
 [Join Channel](buttonurl://https://t.me/tclupdates)
 [Firmware Bot](buttonurl://@FirmwareTCLbot)
 ```
-
----
 
 ---
 
