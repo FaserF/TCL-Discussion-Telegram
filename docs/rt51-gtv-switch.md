@@ -34,4 +34,4 @@ The hardware in R51MT02 and R51MT05 models is compatible enough that the R51MT05
 ### Related Links
 - [Installation Guides](guides.md)
 - [Chipset Database](chipsets.md)
-- [Safety FAQ](faq.md)
+- [Frequently Asked Questions](faq.md)

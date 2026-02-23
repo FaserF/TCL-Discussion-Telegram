@@ -63,7 +63,7 @@ const Footer = () => {
                         <ul className="space-y-3 text-sm font-bold text-gray-500">
                             <li><a href="/" className="hover:text-tcl-red transition-colors">Home Hub</a></li>
                             <li><a href="/guides" className="hover:text-tcl-red transition-colors">Encyclopedia</a></li>
-                            <li><a href="/faq" className="hover:text-tcl-red transition-colors">Safety FAQ</a></li>
+                            <li><a href="/faq" className="hover:text-tcl-red transition-colors">Frequently Asked Questions</a></li>
                             <li><a href="https://github.com/FaserF/TCL-Discussion-Telegram/issues/new/choose" target="_blank" className="text-red-400 hover:text-red-300 transition-colors flex items-center gap-1 font-black">Report a Problem <ExternalLink size={12} /></a></li>
                         </ul>
                     </div>
