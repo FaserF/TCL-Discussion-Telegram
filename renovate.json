@@ -1,7 +1,7 @@
 {
     "$schema": "https://docs.renovatebot.com/renovate-schema.json",
     "extends": [
-        "config:base"
+        "config:recommended"
     ],
     "npmrc": "legacy-peer-deps=true",
     "packageRules": [
