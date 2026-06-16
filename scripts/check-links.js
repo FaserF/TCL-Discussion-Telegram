@@ -5,9 +5,11 @@ import path from 'path';
 
 const IGNORE_URLS = [
     'http://localhost',
+    'http://127.0.0.1',
     'https://react.dev/error',
     'https://reactrouter.com',
-    'https://github.com/FaserF/AegisBot'
+    'https://github.com/FaserF/AegisBot',
+    'https://missrose.org'
 ];
 
 const EXTENSIONS = ['.jsx', '.js', '.md', '.html'];

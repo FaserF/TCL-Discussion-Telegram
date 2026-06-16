@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { HelpCircle, ChevronRight, MessageSquare, AlertTriangle, LifeBuoy, Ghost, Search, BookOpen, Bug, PenTool, LayoutTemplate } from 'lucide-react';
 
 import TelegramWidget from '../components/TelegramWidget';
+import faqs from '../data/faqs.json';
 
 const REPO_URL = "https://github.com/FaserF/TCL-Discussion-Telegram";
 
@@ -20,29 +21,6 @@ const troubleshooting = [
         code: "TV Stuck on Logo",
         cause: "Soft-brick due to interrupted update or wrong chipset file.",
         fix: "Use the IMG/PKG method. This forces a low-level format and recovers the OS."
-    }
-];
-
-const faqs = [
-    {
-        q: "Why is English the only allowed language?",
-        a: "Our community spans 100+ countries. English is the common bridge that allows our international experts to help you. Using other languages fragments the knowledge base."
-    },
-    {
-        q: "Is @FirmwareTCLbot safe to use?",
-        a: "Absolutely. It's a community tool that pulls data directly from our verified archives. It identifies your TV by Serial Number to prevent downloading the wrong chipset."
-    },
-    {
-        q: "Can I upgrade from Android 9 to Google TV (Android 11)?",
-        a: "Depending on your chipset (like RT51), yes! However, this usually requires an IMG flash rather than a simple OTA update."
-    },
-    {
-        q: "How do I find my Serial Number?",
-        a: "Check the sticker on the back of your TV or go to Settings → About → Status. It usually starts with a letter like 'Z' or 'B'."
-    },
-    {
-        q: "What is the Service Menu code?",
-        a: "The most common code is '6425' (type it while in the Settings menu). CAUTION: Changing parameters here can permanently damage your panel or motherboard. Only use it to check Panel ID or reset Shop Mode."
     }
 ];
 

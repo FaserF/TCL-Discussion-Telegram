@@ -1,0 +1,47 @@
+[
+    {
+        "name": "Pentonic 800 (T655T01)",
+        "models": "X11L, C8L, RM9L, QM8L (2026)",
+        "type": "0015T01"
+    },
+    {
+        "name": "Pentonic 700 (T653T01..T03, MT9653)",
+        "models": "X955 Max, C965, C855, C655 PRO, C765, P755, QM8/QM7 (2024), C7L, C6L, RM7L, QM7L/QM6L (2026)",
+        "type": "0012T01..T03, 0013T02"
+    },
+    {
+        "name": "T800 (T800T02)",
+        "models": "C655 / C655 Pro, P755, T7B, P7K, C6KS",
+        "type": "0013T02"
+    },
+    {
+        "name": "T615 / MT9615 (T615T01..T03, MT9615)",
+        "models": "C645 (Late), P745, C845, C835, C735",
+        "type": "2024 Entry-Mid + High-end Legacy"
+    },
+    {
+        "name": "R75P (R75PT01)",
+        "models": "P755, C655, T7B, V6B / V6C (Entry GTV 2024)",
+        "type": "0008T01"
+    },
+    {
+        "name": "T221 (T221T01..T07, T221T09)",
+        "models": "S55H, S5200 (Late)",
+        "type": "0003T05..T09"
+    },
+    {
+        "name": "RT51 / AT51 (R51AT01)",
+        "models": "P725, C725",
+        "type": "Legacy Android"
+    },
+    {
+        "name": "R51M / R851 (R51MT01..T10)",
+        "models": "C645, C635, P745",
+        "type": "Legacy GTV"
+    },
+    {
+        "name": "R41K (R41KT01)",
+        "models": "S6500 Series",
+        "type": "Entry Legacy"
+    }
+]

@@ -5,16 +5,7 @@ import {
     Cpu, AlertCircle, ChevronDown, ChevronUp,
     Monitor, Smartphone, Terminal, ShieldCheck
 } from 'lucide-react';
-
-const chipsets = [
-    { name: 'MT9615 (T615T03)', models: 'C735, C835, C935, X925', type: 'Premium Google TV (144Hz)' },
-    { name: 'RT51 (R51MT05)', models: 'C725, C825, P725, P8M', type: 'Mainstream Google TV' },
-    { name: 'NT72671 (T615T01)', models: 'P635, P735, C635', type: 'Mid-Range Google TV' },
-    { name: 'MT5889 (V8-T658T01)', models: 'P815, C715, C815', type: 'Legacy Android TV (4K)' },
-    { name: 'RT28xx (R28MT01)', models: 'S615, S5200', type: 'FHD Android TV' },
-    { name: 'MT9602 (T615T02)', models: 'P725 (Region Specific)', type: 'Budget Google TV' },
-    { name: 'MT5891', models: 'Older 4K Models', type: 'Legacy Android 8/9' },
-];
+import chipsets from '../data/chipsets.json';
 
 const FlashingGuide = () => {
     const [activeChipset, setActiveChipset] = useState(null);

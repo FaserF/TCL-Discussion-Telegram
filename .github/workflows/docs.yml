@@ -52,6 +52,27 @@ jobs:
           fi
         shell: bash
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Node dependencies
+        run: npm ci
+
+      - name: Run Data Sync Verification
+        run: |
+          node scripts/sync-data.js
+          git diff --exit-code src/data/
+        shell: bash
+
+      - name: Run Link Integrity Check
+        run: node scripts/check-links.js
+
+      - name: Verify React App Build
+        run: npm run build
+
       - name: Build Site
         run: mkdocs build --strict --verbose
 
