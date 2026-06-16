@@ -29,7 +29,7 @@ Starting in 2025, TCL has simplified the Platform part of the firmware name disp
 | **0012T02** | T653T02 | MT53 |
 | **0012T03** | T653T03 | MT53 |
 | **0013T02** | T800T02 | T800 |
-| **0015T01** | — | MT55 |
+| **0015T01** | T655T01 | MT55 |
 
 !!! tip "Verification"
     If your ID is not listed, search for the **full firmware string** in the [TCL Telegram Group](https://t.me/tclupdates_discussion) or use the [Firmware Bot](https://t.me/FirmwareTCLbot) for verification.

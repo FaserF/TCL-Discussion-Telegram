@@ -15,11 +15,11 @@ TCL platforms are generally grouped by the year of the model release. Use this t
 
 | Platform Family | Specific IDs | Featured Models | Notes / 2025 ID |
 | :--- | :--- | :--- | :--- |
-| **Pentonic 800** | T655T01 | — | **0015T01** |
-| **Pentonic 700** | T653T01..T03, MT9653 | X955 Max, C965, C855, C655 PRO, C765, P755, QM8/QM7 (2024) | **0012T01..T03**, **0013T02** |
-| **T800** | T800T02 | — | **0013T02** |
+| **Pentonic 800** | T655T01 | X11L, C8L, RM9L, QM8L (2026) | **0015T01** |
+| **Pentonic 700** | T653T01..T03, MT9653 | X955 Max, C965, C855, C655 PRO, C765, P755, QM8/QM7 (2024), C7L, C6L, RM7L, QM7L/QM6L (2026) | **0012T01..T03**, **0013T02** |
+| **T800** | T800T02 | C655 / C655 Pro, P755, T7B, P7K, C6KS | **0013T02** |
 | **T615 / MT9615** | T615T01..T03, MT9615 | C645 (Late), P745, C845, C835, C735 | 2024 Entry-Mid + High-end Legacy |
-| **R75P** | R75PT01 | — | **0008T01** |
+| **R75P** | R75PT01 | P755, C655, T7B, V6B / V6C (Entry GTV 2024) | **0008T01** |
 | **T221** | T221T01..T07, T221T09 | S55H, S5200 (Late) | **0003T05..T09** |
 | **RT51 / AT51** | R51AT01 | P725, C725 | Legacy Android |
 | **R51M / R851** | R51MT01..T10 | C645, C635, P745 | Legacy GTV |
@@ -33,6 +33,9 @@ TCL uses significantly different marketing names in North America compared to Eu
 
 | North America (NA) | Global / EU Equivalent | Platform ID (Common) |
 | :--- | :--- | :--- |
+| **QM8L (2026)** | **C8L / X11L** | **Pentonic 800 (T655T01)** |
+| **QM7L (2026)** | **C7L** | **Pentonic 700 (T653 / MT9653)** |
+| **QM6L (2026)** | **C6L** | **Pentonic 700 (T653 / MT9653)** |
 | **QM8 (2024)** | **X955 / C955** | **Pentonic 700 (MT9653)** |
 | **QM7 (2024)** | **C855 / C805** | **Pentonic 700 (MT9653)** |
 | **Q7 (2023)** | **C745 / C755** | **MT9615 / Pentonic 700** |

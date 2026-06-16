@@ -1,5 +1,8 @@
 export const searchData = [
     // Chipsets
+    { id: 'pentonic800', title: 'Pentonic 800 (T655T01)', category: 'Chipset', content: 'Premium 2026 GTV (X11L, C8L, RM9L, QM8L). Platform: V8-T655T01.', link: '/guides' },
+    { id: 'pentonic700', title: 'Pentonic 700 (T653T01)', category: 'Chipset', content: '2024-2026 Mid/High GTV (X955 Max, C855, C765, C7L, C6L, QM7L). Platform: V8-T653T01.', link: '/guides' },
+    { id: 't800', title: 'T800 (T800T02)', category: 'Chipset', content: '2024-2025 Mid GTV (C655, P755, T7B, P7K). Platform: V8-T800T02.', link: '/guides' },
     { id: 'mt9615', title: 'MT9615 (T615T03)', category: 'Chipset', content: 'High-End Google TV, C735, C835, C935. Platform: V8-T615T03.', link: '/guides' },
     { id: 'rt51', title: 'RT51 (R51MT05)', category: 'Chipset', content: 'Google TV, C725, C825, P725. Platform: V8-R51MT05.', link: '/guides' },
     { id: 'nt72671', title: 'NT72671 (T615T01)', category: 'Chipset', content: 'Basic/Mid Google TV, P635, P735. Platform: V8-T615T01.', link: '/guides' },
