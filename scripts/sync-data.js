@@ -15,7 +15,7 @@ const SEARCH_DATA_JS_PATH = path.join(rootDir, 'src', 'data', 'searchData.js');
 
 function parseChipsets() {
     console.log('📖 Parsing chipsets.md...');
-    const content = fs.readFileSync(CHIPSET_MD_PATH, 'utf8');
+    const content = fs.readFileSync(CHIPSET_MD_PATH, 'utf8').replace(/\r/g, '');
     const lines = content.split('\n');
     const chipsets = [];
 
@@ -55,7 +55,7 @@ function parseChipsets() {
 
 function parseFaqs() {
     console.log('📖 Parsing faq.md...');
-    const content = fs.readFileSync(FAQ_MD_PATH, 'utf8');
+    const content = fs.readFileSync(FAQ_MD_PATH, 'utf8').replace(/\r/g, '');
     const lines = content.split('\n');
     const faqs = [];
     let currentFaq = null;

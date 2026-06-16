@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { Download, Bot, MessageCircle, ArrowRight, ShieldAlert, Cpu, Layers, Zap, MessageSquare, Megaphone, Headphones, ExternalLink, Heart } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import TelegramWidget from '../components/TelegramWidget';

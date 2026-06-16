@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'motion/react';
 import { MessageSquare, Menu, X, Monitor, Search as SearchIcon, Command, Sun, Moon } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import Search from './Search';

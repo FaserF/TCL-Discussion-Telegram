@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { Terminal, GitPullRequest, Eye, Zap, MessageSquare, ArrowRight, Heart, Code, Layers } from 'lucide-react';
 
 const Github = ({ size = 20, className = "" }) => (

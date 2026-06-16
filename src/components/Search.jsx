@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'motion/react';
 import { Search as SearchIcon, X, ArrowRight, CornerDownLeft, Command, FileText, Cpu, AlertTriangle, MessageCircle } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { searchData } from '../data/searchData';

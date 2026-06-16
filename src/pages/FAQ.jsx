@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { HelpCircle, ChevronRight, MessageSquare, AlertTriangle, LifeBuoy, Ghost, Search, BookOpen, Bug, PenTool, LayoutTemplate } from 'lucide-react';
 
 import TelegramWidget from '../components/TelegramWidget';
