@@ -1,9 +1,9 @@
 # Reset All & Reset Shop Guide
 
-This technical guide explains how to performing deep system resets using the TCL Service Menu. These methods are more thorough than a standard Factory Reset and are often used to resolve persistent software bugs or "Shop Mode" issues.
+This technical guide explains how to perform deep system resets using the TCL Service Menu. These methods are more thorough than a standard Factory Reset and are often used to resolve persistent software bugs, cache corruption after major Android updates, or "Shop Mode" issues.
 
 !!! warning "Data Loss"
-    Both procedures will erase all user data, installed apps, and settings. Ensure any important data or identifiers (like Project ID) are noted before proceeding.
+    Both reset procedures will erase all user data, installed apps, and settings. Ensure any important personal data is backed up before proceeding. (Your TV's Platform and Project ID are preserved in hardware NVM).
 
 ---
 
@@ -12,52 +12,44 @@ This technical guide explains how to performing deep system resets using the TCL
 Before performing a reset, you must first enter the hidden Service Menu:
 
 1.  Press the **Settings** (gear) button on your remote.
-2.  Select **Picture** and press `OK`.
-3.  Navigate down to **Advanced Settings** and press `OK`.
-4.  Navigate down to **Brightness Settings** and press `OK`.
-5.  Highlight the **Contrast** option (do not change it).
-6.  While **Contrast** is highlighted, type the following code on your remote:
+2.  Select **Display & Sound** (or **Picture**) and press `OK`.
+3.  Navigate to **Advanced Settings** > **Brightness Settings**.
+4.  Highlight the **Contrast** option (do not enter the adjustment slider).
+5.  While **Contrast** is highlighted, type the following code on your remote:
     ```text
     6 4 2 5
     ```
-7.  The **Service Menu** overlay should appear on the left side of your screen.
+6.  The **Service Menu** overlay will appear on the left side of your screen.
 
 !!! tip "No Number Buttons?"
-    If your remote lacks number buttons, you can use the **on-screen keyboard** (Gboard) or a **smartphone remote app** (like Google Home or the TCL app) to type the code.
+    If your remote lacks number buttons, press the **`123`** virtual keyboard button on the remote to display the on-screen keypad, or use a mobile remote app (like Google Home or TCL Home).
 
 ---
 
-## :material-refresh: Reset All vs. Reset Shop
+## :material-refresh: Service Menu 6425 Features
 
-The Service Menu provides two distinct reset options. Depending on your issue, you may need one or both.
+The `6425` Service Menu provides several key diagnostics and maintenance functions:
 
-### 1. Reset All
-This is a standard system-wide data wipe. Use this if your TV is lagging or apps are crashing frequently.
+### 1. TV Running Time
+Displays the lifetime operating hours of the TV panel and motherboard. Useful for verifying whether a display was a store floor model.
 
-- **Effect:** Erases apps and system settings.
-- **Procedure:**
-    - Within the Service Menu, navigate to **Reset All**.
-    - Press the **Right Arrow** on your remote.
-    - Confirm the prompt by selecting **OK**.
-    - The TV will process the reset and may reboot.
+### 2. Reset All
+A comprehensive system-wide data wipe. Recommended if your TV is sluggish or apps crash following a firmware update:
+- **Effect:** Erases user apps, accounts, and system caches.
+- **Procedure:** Highlight **Reset All** > press **Right Arrow** > confirm **OK**. The TV will wipe user data and restart.
 
-### 2. Reset Shop
-This is a more intensive reset that returns the TV to its "Out-of-the-Box" state (First Time Installation).
+### 3. Reset Shop
+A deep factory re-initialization that returns the TV to its out-of-the-box state:
+- **Effect:** Completely reinitializes the system storage partitions. **Mandatory** if your TV is stuck in "Retail / Shop Demo Mode".
+- **Procedure:** Highlight **Reset Shop** > press **Right Arrow** > confirm **OK**. The TV will shut down and reboot directly to the initial setup wizard.
 
-- **Effect:** Completely reinitializes the system storage. **Mandatory** if your TV is stuck in "Retail/Shop Demo Mode".
-- **Procedure:**
-    - Within the Service Menu, navigate to **Reset Shop**.
-    - Press the **Right Arrow** on your remote.
-    - Confirm the prompt by selecting **OK**.
-    - The TV will turn off and then restart at the initial language/region setup screen.
+### 4. Shutdown Config (Power Menu Toggle)
+Enables the full **Shut Down** choice when long-pressing the remote power button on Google TV (Android 14). Toggle this setting from `OFF` to **`ON`**.
 
 ---
 
-## :material-help-circle: Troubleshooting
+## :material-help-circle: Troubleshooting & Related Codes
 
-- **Code doesn't work?** Ensure you are on the **Contrast** menu item and typing fairly quickly. If it fails, exit the settings menu and try again.
-- **Stuck in Shop Mode?** If a standard "Reset All" does not fix the demo mode, the **Reset Shop** procedure is required.
-- **Missing Project ID?** Resetting does not typically erase the Project ID (Model Mapping), but it is always good practice to [verify it](chipsets.md) after a reset.
-
-!!! tip "Post-Update Maintenance"
-    After any major firmware update (e.g., from V500 to V600), we highly recommend performing a **Reset All** to ensure no legacy cache files cause performance issues.
+- **Code doesn't work?** Ensure you are highlighting the **Contrast** menu item and typing without long pauses. If needed, exit to TV home screen and try again.
+- **Red "P" or "M" in screen corner (Factory Mode)?** Enter code **`9735`** on Contrast, then select **9-Sita P mode** and set to **OFF**, and set **Factory Hotkey** to **Disable**.
+- **Post-Update Maintenance:** After updating across major Android versions (e.g., from Android 12 `V5xx` to Android 14 `V6xx`), performing a **Reset All** is highly recommended to eliminate legacy cache conflicts.

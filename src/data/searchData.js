@@ -3,66 +3,87 @@
 
 export const searchData = [
     {
-        "id": "pentonic-800-t655t01",
-        "title": "Pentonic 800 (T655T01)",
+        "id": "pentonic-800-t655t01-0015t01",
+        "title": "Pentonic 800 (T655T01 (`0015T01`))",
         "category": "Chipset",
-        "content": "Featured Models: X11L, C8L, RM9L, QM8L (2026). Notes: 0015T01.",
+        "content": "Featured Models: X11L, C8L, RM9L, QM8L (2026). Notes: MediaTek MT9655 (MT55), Flagship 4K Mini-LED.",
         "link": "/guides"
     },
     {
-        "id": "pentonic-700-t653t01-t03-mt9653",
-        "title": "Pentonic 700 (T653T01..T03, MT9653)",
+        "id": "pentonic-700-t653t01-0012t01",
+        "title": "Pentonic 700 (T653T01 (`0012T01`))",
         "category": "Chipset",
-        "content": "Featured Models: X955 Max, C965, C855, C655 PRO, C765, P755, QM8/QM7 (2024), C7L, C6L, RM7L, QM7L/QM6L (2026). Notes: 0012T01..T03, 0013T02.",
+        "content": "Featured Models: X955, X955 Max (115\"), C955, C855, C805, C765, C755, C745X2, C845X2, C7L, C6L, RM7L, X11K, C9K, C8K, C7K, C6K, P8K, T8C, 98C655, 85C655Pro, 98P745, 98P755. Notes: MediaTek MT9653 / MT9618 (MT53), 4K 144Hz VRR.",
         "link": "/guides"
     },
     {
-        "id": "t800-t800t02",
-        "title": "T800 (T800T02)",
+        "id": "pentonic-700-na-la-t653t02-0012t02",
+        "title": "Pentonic 700 (NA/LA) (T653T02 (`0012T02`))",
         "category": "Chipset",
-        "content": "Featured Models: C655 / C655 Pro, P755, T7B, P7K, C6KS. Notes: 0013T02.",
+        "content": "Featured Models: QM891G, QM851G, QM751G, Q651G, Q750G, S551G, RM7L, QM7L, Q77L, X11K, QM8K, QM7K, Q77K, QM6K, QM67K. Notes: MediaTek Pentonic 700 (G08 / N. America & LATAM).",
         "link": "/guides"
     },
     {
-        "id": "t615-mt9615-t615t01-t03-mt9615",
-        "title": "T615 / MT9615 (T615T01..T03, MT9615)",
+        "id": "pentonic-700-flagship-t653t03-0012t03",
+        "title": "Pentonic 700 (Flagship) (T653T03 (`0012T03`))",
         "category": "Chipset",
-        "content": "Featured Models: C645 (Late), P745, C845, C835, C735. Notes: 2024 Entry-Mid + High-end Legacy.",
+        "content": "Featured Models: QM9K Series. Notes: MediaTek Pentonic 700 (G16).",
         "link": "/guides"
     },
     {
-        "id": "r75p-r75pt01",
-        "title": "R75P (R75PT01)",
+        "id": "g15-platform-0016t01",
+        "title": "G15 Platform (0016T01)",
         "category": "Chipset",
-        "content": "Featured Models: P755, C655, T7B, V6B / V6C (Entry GTV 2024). Notes: 0008T01.",
+        "content": "Featured Models: P8L, P8LS, U75/A/85A, A400/M/U/PRO (AP & LA), P8K, C6K (AP). Notes: 4K Google TV (G15 Platform).",
         "link": "/guides"
     },
     {
-        "id": "t221-t221t01-t07-t221t09",
-        "title": "T221 (T221T01..T07, T221T09)",
+        "id": "t800-t800t02-0013t02",
+        "title": "T800 (T800T02 (`0013T02`))",
         "category": "Chipset",
-        "content": "Featured Models: S55H, S5200 (Late). Notes: 0003T05..T09.",
+        "content": "Featured Models: C655, C655 Pro, P755, T7B, P7K, C6KS, 55P755. Notes: Amlogic AMLT963D4 (G09, 5-Core A55 @ 1.5GHz / 1.9GHz DVFS, Mali-G57 MC1, 2GB DDR4-3200).",
+        "link": "/guides"
+    },
+    {
+        "id": "t615-mt9615-t615t01-t03",
+        "title": "T615 / MT9615 (T615T01..T03)",
+        "category": "Chipset",
+        "content": "Featured Models: C845, C835, C735, C825, C728, C645 (Late), P745, Q7 (2023), R646 (2021). Notes: MediaTek MT9615 (4K 120/144Hz).",
+        "link": "/guides"
+    },
+    {
+        "id": "r75p-rt75-r75pt01-0008t01",
+        "title": "R75P / RT75 (R75PT01 (`0008T01`))",
+        "category": "Chipset",
+        "content": "Featured Models: P8LS, P7L, V6D, T6D, U65A, P6K, P7K, V6C, T6C, C6KS, C6CS, U65/75, MQLED70K, P755, C655, C655 Pro, T7B, V6B, QLED780/810, QM51L, QM5K, Q51K, Q63K, S551G, Q651G. Notes: Realtek RT75 (G10 Platform, Entry-Mid 4K GTV).",
+        "link": "/guides"
+    },
+    {
+        "id": "t221-mt21-t221t01-t09-0003t05-t09",
+        "title": "T221 / MT21 (T221T01..T09 (`0003T05..T09`))",
+        "category": "Chipset",
+        "content": "Featured Models: S350G, S55H, S5200 (Late), 32S5400, S5400A. Notes: MediaTek MT21 (2K / FHD Google TV & Android TV).",
+        "link": "/guides"
+    },
+    {
+        "id": "r51m-r851-r51mt01-t10-r851t02",
+        "title": "R51M / R851 (R51MT01..T10 (`R851T02`))",
+        "category": "Chipset",
+        "content": "Featured Models: C645, C635, P745, C715, C815. Notes: Realtek RTD2851 / R51M (Legacy 4K GTV & ATV).",
         "link": "/guides"
     },
     {
         "id": "rt51-at51-r51at01",
         "title": "RT51 / AT51 (R51AT01)",
         "category": "Chipset",
-        "content": "Featured Models: P725, C725. Notes: Legacy Android.",
-        "link": "/guides"
-    },
-    {
-        "id": "r51m-r851-r51mt01-t10",
-        "title": "R51M / R851 (R51MT01..T10)",
-        "category": "Chipset",
-        "content": "Featured Models: C645, C635, P745. Notes: Legacy GTV.",
+        "content": "Featured Models: P725, C725, P615, P635. Notes: Realtek RT51 (Legacy Android TV).",
         "link": "/guides"
     },
     {
         "id": "r41k-r41kt01",
         "title": "R41K (R41KT01)",
         "category": "Chipset",
-        "content": "Featured Models: S6500 Series. Notes: Entry Legacy.",
+        "content": "Featured Models: S6500 Series, 32S60AI. Notes: Realtek Entry Legacy.",
         "link": "/guides"
     },
     {
@@ -111,70 +132,91 @@ export const searchData = [
         "id": "how-do-i-find-my-project-id-or",
         "title": "How do I find my Project ID or Panel ID?",
         "category": "FAQ",
-        "content": "The Project ID is a unique identifier (typically 1 to 6 digits) specific to your TV's screen size and panel type. 1. Look at the sticker on the back o...",
+        "content": "The Project ID is an internal identifier (typically 1 to 6 digits) that maps the TV motherboard firmware to your specific panel type, tuner region, an...",
         "link": "/faq"
     },
     {
-        "id": "what-is-the-difference-between",
-        "title": "What is the difference between Google TV and Android TV?",
+        "id": "how-do-i-re-enable-the-shutdow",
+        "title": "How do I re-enable the 'Shutdown / Power Off' option on the remote (Google TV / Android 14)?",
         "category": "FAQ",
-        "content": "TCL models from 2021+ mostly use Google TV (a layer on top of Android). Legacy or budget models use Android TV. - You can often switch a GTV to \"Apps ...",
+        "content": "On recent Google TV firmware builds, long-pressing the remote power button may only display \"Restart\". To bring back the full shutdown dialog: 1. Go t...",
+        "link": "/faq"
+    },
+    {
+        "id": "how-do-i-exit-factory-mode-p-m",
+        "title": "How do I exit Factory Mode / P-Mode (Red 'P' or 'M' on screen)?",
+        "category": "FAQ",
+        "content": "If your TV displays a red letter \"P\" or \"M\" in the corner (Factory / Warm-up mode): 1. Go to Settings > Picture > Advanced > Brightness > highlight Co...",
+        "link": "/faq"
+    },
+    {
+        "id": "why-is-my-screen-black-after-f",
+        "title": "Why is my screen black after flashing or changing Project ID?",
+        "category": "FAQ",
+        "content": "A black screen occurs when the installed firmware lacks your specific TV's Project ID in its internal whitelist (e.g. flashing older firmware or China...",
+        "link": "/faq"
+    },
+    {
+        "id": "why-does-my-soundbar-lose-conn",
+        "title": "Why does my soundbar lose connection or have audio delay / echo with eARC?",
+        "category": "FAQ",
+        "content": "HDMI eARC handshake issues can occur across various soundbars (Samsung, Sonos, Klipsch, TCL): 1. Audio Output Mode: In TV Settings > Sound > Advanced ...",
+        "link": "/faq"
+    },
+    {
+        "id": "why-is-my-tv-s-ethernet-speed-",
+        "title": "Why is my TV's Ethernet speed limited to ~100 Mbps?",
+        "category": "FAQ",
+        "content": "All TCL TV motherboards (as with almost all modern smart TVs across all brands) are equipped with a physical 100 Mbps Fast Ethernet LAN port: For spee...",
         "link": "/faq"
     },
     {
         "id": "why-can-t-my-tv-see-my-5ghz-wi",
-        "title": "Why can't my TV see my 5GHz Wi-Fi?",
+        "title": "Why can't my TV see my 5GHz Wi-Fi network?",
         "category": "FAQ",
-        "content": "TCL TVs often have specific requirements for 5GHz networks: 1. Lower Channels: Most models only support \"Lower\" 5GHz channels. Set your router to Chan...",
+        "content": "TCL Wi-Fi controllers prioritize standard non-DFS channels: 1. Lower 5GHz Channels: In your router settings, set the 5GHz Wi-Fi channel manually to Ch...",
+        "link": "/faq"
+    },
+    {
+        "id": "how-do-i-pair-my-bluetooth-rem",
+        "title": "How do I pair my Bluetooth remote control?",
+        "category": "FAQ",
+        "content": "If your voice remote loses Bluetooth connection or you replaced the remote: 1. Bring the remote within 1 meter of the TV. 2. Press and hold the OK + H...",
+        "link": "/faq"
+    },
+    {
+        "id": "how-do-i-enter-service-menu-co",
+        "title": "How do I enter Service Menu codes if my remote has no number buttons?",
+        "category": "FAQ",
+        "content": "1. Press the 123 virtual keyboard button on the TCL remote to open the on-screen numeric keypad. 2. Alternatively, use a mobile remote app such as Goo...",
         "link": "/faq"
     },
     {
         "id": "is-my-firmware-version-outdate",
         "title": "Is my firmware version outdated?",
         "category": "FAQ",
-        "content": "Firmware versions are usually in the format VXXX (e.g., V560). Higher is newer: V560 is newer than V509. Prefixes: V = Release, R = Test, M = Pre-prod...",
+        "content": "Firmware versions follow the VXXX scheme (e.g., V560, V643, V655). Higher number indicates newer build: V655 is newer than V643 and V560. Prefixes: V ...",
         "link": "/faq"
     },
     {
-        "id": "my-tv-is-slow-how-do-i-speed-i",
-        "title": "My TV is slow. How do I speed it up?",
+        "id": "my-tv-is-sluggish-how-do-i-spe",
+        "title": "My TV is sluggish. How do I speed it up?",
         "category": "FAQ",
-        "content": "Android TVs can become sluggish over time. Try these steps: 1. Reduce Animations: Go to Developer Options and set all \"Animation scale\" settings to 0....",
+        "content": "1. Apps Only Mode (GTV): Go to Settings > Accounts & Sign-in > select your profile > enable Apps only mode to disable heavy background home screen rec...",
         "link": "/faq"
     },
     {
-        "id": "what-is-a-shop-reset",
-        "title": "What is a Shop Reset?",
+        "id": "what-is-the-game-bar-game-mast",
+        "title": "What is the Game Bar / Game Master?",
         "category": "FAQ",
-        "content": "<a id=\"what-is-shop-reset\"></a> A Shop Reset (also known as a Factory Reset via Service Menu) is a deep system wipe that bypasses standard OS limitati...",
-        "link": "/faq"
-    },
-    {
-        "id": "where-can-i-find-the-play-stor",
-        "title": "Where can I find the Play Store?",
-        "category": "FAQ",
-        "content": "Since Google TV (v11+) prioritizes content, the Play Store icon might be hidden. Voice Search: Say \"Open Play Store\" to the remote. Settings: Go to Se...",
-        "link": "/faq"
-    },
-    {
-        "id": "what-are-changelogs-patch-note",
-        "title": "What are Changelogs/Patch Notes?",
-        "category": "FAQ",
-        "content": "TCL rarely provides official changelogs for firmware updates. Community members often track changes manually. - Follow the News Channel for major upda...",
-        "link": "/faq"
-    },
-    {
-        "id": "what-is-the-game-bar",
-        "title": "What is the Game Bar?",
-        "category": "FAQ",
-        "content": "The Game Bar is a featureset for 2022+ models (Pentonic/T615) that allows real-time viewing of Refresh Rate (Hz), VRR status, and HDR settings during ...",
+        "content": "The Game Bar (available on Pentonic 700 / T653 / T615 models) provides real-time information and quick settings for Refresh Rate (Hz), VRR status, ALL...",
         "link": "/faq"
     },
     {
         "id": "how-do-i-downgrade-my-firmware",
         "title": "How do I downgrade my firmware?",
         "category": "FAQ",
-        "content": "<a id=\"how-to-downgrade\"></a> Downgrading is possible but requires a specific process to avoid bricking your TV. Requirement: You must use an IMG/PKG ...",
+        "content": "<a id=\"how-to-downgrade\"></a> Downgrading is possible but requires strict adherence to safety rules: Requirement: You must use a full IMG / PKG file. ...",
         "link": "/faq"
     },
     {

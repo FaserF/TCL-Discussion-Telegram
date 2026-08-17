@@ -8,7 +8,7 @@ Help the community by capturing and sharing official Local Update (OTA) download
 ### Prerequisites
 
 *   **PC & TV** connected to the same local network.
-*   **ADB AppControl** installed on your PC ([Download Here](https://adbappcontrol.com/download)).
+*   **ADB AppControl** installed on your PC ([Download Here](https://adbappcontrol.com/)).
 *   **WiFi** enabled on the TV.
 
 ### Step-by-Step Process

@@ -22,7 +22,7 @@ function parseChipsets() {
     let insideTable = false;
 
     for (const line of lines) {
-        if (line.includes('| Platform Family | Specific IDs |')) {
+        if (line.includes('| Platform Family |') || line.includes('| **Platform Family** |')) {
             insideTable = true;
             continue;
         }
@@ -36,8 +36,8 @@ function parseChipsets() {
             const parts = line.split('|').map(p => p.trim());
             if (parts.length >= 5 && parts[1] && !parts[1].startsWith(':') && !parts[1].toLowerCase().includes('platform family') && !parts[1].startsWith('---')) {
                 const family = parts[1].replace(/\*\*/g, '').trim();
-                const ids = parts[2].trim();
-                const models = parts[3].trim();
+                const ids = parts[2].replace(/\*\*/g, '').trim();
+                const models = parts[3].replace(/\*\*/g, '').trim();
                 const notes = parts[4].replace(/\*\*/g, '').trim();
 
                 chipsets.push({

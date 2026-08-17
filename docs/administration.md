@@ -92,8 +92,22 @@ Here are the most common commands you'll need. You can find the full documentati
 | `/rules` | View or edit the group rules. | [Rules Guide](https://missrose.org/guide/rules/) |
 | `/setwelcome` | Update the randomized welcome msg. | [Notes/Welcome](https://missrose.org/guide/notes/) |
 | `/filter` | Add a new keyword trigger. | [Filters Guide](https://missrose.org/guide/filters/) |
+| `/locks` | View or modify locked media/message types. | [Locks Guide](https://missrose.org/guide/locks/) |
+| `/antiflood` | View or adjust flood control limits. | [Antiflood Guide](https://missrose.org/guide/antiflood/) |
 | `/config` | Access the general bot configuration. | [General Setup](https://missrose.org/guide/getting-started/) |
 | `/adminlist` | See all authorized group admins. | — |
+
+### 4. Active Bot Settings & Rules
+
+*   **Group Rules:**
+    1. Group language is English
+    2. Search for a download link by using the „search button“ in the top
+    3. If asking for help provide your TV chipset + version or full firmware
+    4. Prefer to use the search function before posting issues/questions
+    5. No spamming, swear words, insulting or advertising is allowed
+*   **Anti-Flood:** 7 messages limit -> 15-minute temporary mute (`tmute 900`).
+*   **Warns Limit:** 3 warns -> Ban.
+*   **Active Locks:** `anonchannel`, `bot`, `button`, `cashtag`, `command`, `contact`, `externalreply`, `invitelink`, `location`.
 
 !!! important "Avoid Chat Spam"
     Whenever possible, use the **Web Dashboard** or **Private Messages** to Rose for configuration. Only use commands in the main group for testing or immediate moderation actions.

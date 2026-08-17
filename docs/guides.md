@@ -1,4 +1,4 @@
-This page details the standard methods for updating and recovering TCL television hardware.
+This page details the standard methods for updating, recovering, and configuring TCL television hardware.
 
 ---
 
@@ -15,21 +15,21 @@ Most TCL firmwares follow a long-string format. Take this example:
 `V8-T615T03-LF1V474.000418`
 
 *   **Platform:** the second part (`T615T03`). This identifies your hardware.
-*   **Version:** the 3 digits following the "V" (`V474`).
+*   **Version:** the digits following the "V" (`V474`).
 
-### 3. New 2025 Platform Naming
-Starting in 2025, TCL has simplified the Platform part of the firmware name displayed in the TV menu. Use the table below to cross-reference new IDs with their traditional platform names:
+### 3. Modern Platform Naming (2025/2026 Format)
+Starting in recent firmware versions, TCL simplified the Platform part of the firmware name displayed in the TV menu. Use the table below to cross-reference TV menu IDs with their traditional platform names:
 
-| New ID (TV Menu) | Traditional Platform | Chassis / SoC |
+| TV Menu ID | Traditional Platform | Chassis / SoC Family |
 | :--- | :--- | :--- |
-| **0003T05** | T221T05 | MT21 |
-| **0003T09** | T221T09 | MT21 |
-| **0008T01** | R75PT01 | RT75 |
-| **0012T01** | T653T01 | MT53 |
-| **0012T02** | T653T02 | MT53 |
-| **0012T03** | T653T03 | MT53 |
-| **0013T02** | T800T02 | T800 |
-| **0015T01** | T655T01 | MT55 |
+| **0016T01** | 0016T01 | G15 (AP & LATAM models) |
+| **0015T01** | T655T01 | Pentonic 800 (MT55) |
+| **0012T01** | T653T01 | Pentonic 700 (MT53 / EU & Global) |
+| **0012T02** | T653T02 | Pentonic 700 (G08 / NA & LATAM) |
+| **0012T03** | T653T03 | Pentonic 700 (G16 / QM9K) |
+| **0013T02** | T800T02 | T800 / AMLT963D4 (G09) |
+| **0008T01** | R75PT01 | Realtek RT75 (G10) |
+| **0003T05..T09** | T221T05..T09 | MediaTek MT21 (2K / FHD) |
 
 !!! tip "Verification"
     If your ID is not listed, search for the **full firmware string** in the [TCL Telegram Group](https://t.me/tclupdates_discussion) or use the [Firmware Bot](https://t.me/FirmwareTCLbot) for verification.
@@ -38,110 +38,120 @@ Starting in 2025, TCL has simplified the Platform part of the firmware name disp
 
 ## :material-usb: Flashing Methods Overview
 
-There are two primary ways to update or recover a TCL TV. Choosing the right one depends on your goal (upgrade vs. recovery).
+There are two primary ways to update or recover a TCL TV. Choosing the right one depends on your goal (upgrade vs. recovery/downgrade).
 
 ### 1. Local Update (OTA) Update
 **Best for:** Standard version upgrades where you want to keep your data.
 
-*   **File Format:** `.zip` or `.bin`
-*   **Data Loss:** None. Apps and settings are preserved.
+*   **File Format:** `.zip`
+*   **Data Loss:** None. Apps, accounts, and settings are preserved.
 *   **Process:** Performed via the **System Update > Local Update** menu.
 
-### 2. IMG / PKG Flash (Recommended for newer models)
-**Best for:** Downgrading, unbricking, or performing a clean system reset.
+### 2. IMG / PKG Flash
+**Best for:** Downgrading, unbricking, recovering from bootloops, or performing a clean system reset.
 
-*   **File Format:** `.img`, `.pkg`, or `.zip`.
-*   **Data Loss:** **Total.** All user data is wiped.
+*   **File Format:** `.img`, `.pkg`, or unzipped recovery package.
+*   **Data Loss:** **Total.** All user data, apps, and accounts are erased.
 *   **Process:** Performed by holding the hardware power button during cold boot.
 
-!!! warning "Downgrade Logic"
-    Normally, a **downgrade** should only be done using **IMG/PKG** firmware. This process will erase all your apps and data.
-
-    *   **Exception:** If your TV uses **Realtek** hardware with **Android 11 or earlier**, you can also use an **Local Update (OTA) file** for downgrade by following the IMG installation instructions (holding the power button).
+!!! warning "Downgrade Rules"
+    Normally, a **downgrade** should only be done using **IMG/PKG** firmware.
+    
+    *   **Project ID Whitelist:** Never flash an IMG/PKG firmware older than your TV model's release or factory version. Doing so will result in a **black screen** because the older firmware lacks your model's Project ID.
+    *   **Realtek Exception:** On older **Realtek** hardware running **Android 11 or earlier**, forced OTA zip installation via the power button method was possible, but on Android 12 and 14 all downgrades require full IMG/PKG files.
 
 ---
 
 ## :material-cog: Step-By-Step Instructions
 
-### Preparation (Required)
+### Preparation Checklist
 
-*   **Format USB:** Use a Windows PC to format a USB drive (8GB-32GB) to **FAT32**.
-*   **Single File:** Ensure **only one** firmware file is on the root directory of the USB.
-*   **Slot:** For most TVs, use the **USB 2.0** slot (white/black). **Note:** T653 firmware may require a **USB 3.0** (blue) port.
+*   **USB Drive Format:** Format a USB flash drive (8GB–32GB recommended) to **FAT32** with an **MBR** (Master Boot Record) partition table on a Windows or Linux PC. (Avoid macOS formatting or ensure Safari auto-unzip is turned off).
+*   **Single File:** Ensure **only one** firmware file is placed in the root directory of the USB drive.
+*   **Port Selection:** For most TVs, use the **USB 2.0** port (black/white). Certain Pentonic 700 / T653 models may require the **USB 3.0** (blue) port.
+*   **Disable Developer Options:** If Local Update validation fails, turn off Developer Options in Android Settings before trying again.
 
-### How to install Local Update (OTA) (.zip)
+### How to Install Local Update (OTA) (.zip)
 
-1.  Download the correct firmware ZIP file.
-2.  **Do not unzip.** Copy the ZIP file directly to the USB drive.
-3.  Plug the USB into the TV.
-4.  Navigate to **Settings** > **System** > **About** > **System Update** > **Local Update**.
-5.  Wait for the validation to finish and follow on-screen prompts.
+1. Download the correct firmware `.zip` file for your platform.
+2. **Do not unzip.** Copy the `.zip` file directly to the root of the FAT32 USB drive.
+3. Plug the USB drive into the TV.
+4. Navigate to **Settings** > **System** > **About** > **System Update** > **Local Update**.
+5. Wait for the TV to validate the package and follow the on-screen prompts.
 
-### How to Flash IMG / PKG
+### How to Flash IMG / PKG (Recovery / Downgrade)
 
-1.  Download the firmware and extract it.
-2.  Copy the main file (e.g., `Update.pkg`) to the root of your USB drive.
-3.  Plug the USB into the TV.
-4.  Unplug the TV from power.
-5.  **Press and hold the Power Button** on the TV. Location varies:
-    - **Physical button:** Usually directly under the TCL logo or on the back/side.
-    - **Toggle:** Some models use a small joystick; press it straight in.
-6.  While holding, plug the TV back in.
-7.  Release once the "Software Update" screen appears.
-
+1. Download the IMG/PKG firmware package and extract the archive on your PC.
+2. Copy the resulting `.pkg` or `.img` file (e.g., `V8-T653T01-...pkg` or `Update.pkg`) to the root of your FAT32 USB drive.
+3. Plug the USB drive into the TV.
+4. Unplug the TV's power cord from the wall outlet.
+5. **Press and hold the physical Power Button** on the TV:
+    - Located directly under the front TCL logo, or on the rear/side as a button or joystick.
+6. While continuing to hold the power button, plug the TV back into power.
+7. Keep holding the button for 10–15 seconds until the flashing blue "Software Update" screen appears, then release.
+8. Allow the flashing process to reach 100% and restart automatically.
 
 ---
 
-## :material-console: Advanced: Service Menus
+## :material-console: Advanced: Service Menus & Secret Codes
 
-Service menus allow access to hardware-level parameters, total runtime, and panel calibration.
+Service menus allow access to hardware-level parameters, total running time, panel calibration, and system toggle options.
 
-| Code | Description |
-| :--- | :--- |
-| **1950** | General Service Menu (Design Menu) - Standard for GTV/ATV. |
-| **6425** | Running Time & Quick access (Reset All / Reset Shop). |
-| **9735** | Subsection: Factory Menu. |
-| **6428** | Subsection: Factory Menu (Alternative). |
-| **9705** | Subsection: Service Menu. |
-| **6405** | Subsection: Hotel Menu. |
+| Code | Name | Primary Use Cases |
+| :--- | :--- | :--- |
+| **`6425`** | **Quick Access & Maintenance** | Check **Total Running Time**, execute **Reset All** or **Reset Shop**, and toggle **Shutdown Config** (restores long-press Power button shutdown menu). |
+| **`1950`** | **Design / General Service Menu** | View Panel Type, White Balance calibration, PQ parameters, and general hardware configuration. |
+| **`9735`** | **Factory Menu** | Disable **9-Sita P mode** and **Factory Hotkey** if red "P" or "M" factory mode appears on screen. |
+| **`6428`** | **Factory Menu (Alternative)** | Alternative entry to Factory settings. |
+| **`9705`** | **Subsystem Service Menu** | Deep subsystem and hardware revision diagnostics. |
+| **`6405`** | **Hotel Menu** | Hotel / commercial display restrictions mode. |
 
-### How to enter:
+### How to Enter a Service Menu:
 
-1.  Navigate to **Settings** > **Display & Sound** > **Picture**.
-2.  Go to **Advanced Settings** > **Brightness**.
-3.  Highlight **Contrast** (do not click).
-4.  Type the **4-digit code** quickly on the remote. **Note:** If your remote lacks number buttons, use the **on-screen keyboard** (Gboard) or a **smartphone remote app** (like Google Home or the TCL app) to type the code.
+1. Open TV **Settings** (gear icon on remote).
+2. Navigate to **Display & Sound** (or **Picture**) > **Advanced Settings** > **Brightness Settings**.
+3. Highlight **Contrast** (do **not** press OK or enter the adjustment slider).
+4. Type the **4-digit code** (e.g., `6425`, `1950`, or `9735`) quickly on the remote keypad.
+5. If your remote does not have physical numeric buttons, press the **`123`** virtual keypad button on your remote to bring up the on-screen number pad, or use a mobile remote app (Google Home or TCL Home).
 
 !!! danger "Service Menu Warning"
-    Do not change anything in the Service Menus unless you know exactly what you are doing. Incorrect settings can cause hardware malfunctions or "soft-brick" your device.
+    Do not alter unknown values in the Service Menus (especially NVM or White Balance presets) unless you have noted down original values. Incorrect settings can cause color distortion or brick your TV.
 
 ---
 
+## :material-remote: Re-Enabling the "Shutdown" Option (Android 14 / GTV)
 
+On newer Google TV builds (including Android 14), long-pressing the remote power button may only offer a "Restart" option by default. You can re-enable the complete Shutdown option:
 
-## :material-refresh: Reset & Maintenance
-
-If you encounter bugs after an update, or if your TV is stuck in a specific mode, use these procedures.
-
-### Factory Reset
-Navigation: **Settings** > **System** > **About** > **Reset**.
-
-*   **IMG / PKG Flash:** A factory reset is **not required** because the flashing process already performs a full system wipe.
-*   **Local Update (OTA) Update:** Since Local Update (OTA) preserves your apps, we only recommend a manual factory reset if you encounter strange bugs or performance issues after the update.
-
-### Shop Mode / Store Mode
-If your TV constantly displays feature banners and resets settings:
-
-1.  Navigate to **Settings** > **System** > **Environment**.
-2.  Change from **Shop/Store** to **Home**.
-3.  Alternatively, you can force-reset this flag through the **Service Menu**.
+1. Go to **Settings** > **Picture** > **Advanced** > **Brightness** and highlight **Contrast**.
+2. Type **`6425`** on your remote.
+3. In the service menu overlay, look for **Shutdown Config** (or **Shutdown**).
+4. Change the setting from `OFF` to **`ON`**.
+5. Press **Back** or **Home** to exit. Long-pressing the remote power button will now show **Shut down**, **Restart**, and **Cancel**.
 
 ---
 
-## :material-help-circle-outline: Troubleshooting
+## :material-shield-refresh: Blind Project ID Recovery Method
 
-If the TV says "No file found" or fails verification:
+If your screen remains black after a mainboard replacement or accidental Project ID modification, but the TV is powered on and the status LED responds to the remote:
 
-1.  **Switch USB Drive:** Try an older USB 2.0 drive.
-2.  **Filesystem Check:** Re-format to FAT32 on any PC (Windows/Linux) or directly on the TV in the storage settings.
-3.  **No Subfolders:** The `.img` or `.pkg` file must be at the very root of the drive.
+1. Turn the TV **ON**.
+2. On your remote control, sequentially dial:
+   ```text
+   0 6 2 5 9 8
+   ```
+3. Press **`MENU`** (or **`OK`** on some remotes).
+4. Type your TV's original **`Project ID`** (1 to 6 digits, e.g., `10188` or `5456`).
+5. Wait 5–10 seconds; the TV will automatically reinitialize the display panel and reboot with the correct screen configuration.
+
+---
+
+## :material-help-circle-outline: Troubleshooting Flashing & USB
+
+*   **"No file found" or "Validation failed":**
+    1. Ensure the USB is formatted to **FAT32** with **MBR** partition scheme.
+    2. Try another USB flash drive (USB 2.0 drives with 8GB–16GB capacity are the most reliable).
+    3. Ensure the file is at the root of the USB drive (no nested folders).
+    4. **Cold restart trick:** With the USB plugged into the TV, hold the power button on the remote for 5 seconds to select Shutdown (or unplug from the wall for 1 minute), then power the TV back on so the OS mounts the USB storage upon boot.
+*   **Stuck on Logo / Bootloop:**
+    - Perform a forced IMG/PKG flash using the hardware power button cold boot procedure described above. OTA files cannot recover a bootloop.
