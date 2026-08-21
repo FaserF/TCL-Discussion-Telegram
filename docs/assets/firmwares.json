@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-21T20:43:40.210806+00:00",
+  "generated_at": "2026-08-21T20:52:02.084272+00:00",
   "source": "official TCL Smart TV FOTA API (huan.tv) & CDN (cedock.com)",
   "total_platforms": 42,
   "api_fields_documentation": {
@@ -65,7 +65,7 @@
       },
       "fota_api_status": "Checked (Live API - Up to date)",
       "extracted_details": null,
-      "checked_at": "2026-08-21T20:43:40.210806+00:00"
+      "checked_at": "2026-08-21T20:52:02.084272+00:00"
     },
     {
       "platform": "0003T06",
@@ -89,7 +89,7 @@
       },
       "fota_api_status": "Checked (Live API - Up to date)",
       "extracted_details": null,
-      "checked_at": "2026-08-21T20:43:40.210806+00:00"
+      "checked_at": "2026-08-21T20:52:02.084272+00:00"
     },
     {
       "platform": "0008T01",
@@ -97,7 +97,7 @@
       "family_name": "R75P / RT75 (0008T01)",
       "soc_specs": "Realtek RT75 (G10 Platform, Entry-Mid 4K GTV)",
       "featured_models": "P8LS, P7L, V6D, T6D, U65A, P6K, P7K, V6C, T6C, C6KS, C6CS, U65/75, MQLED70K, P755, C655, C655 Pro, T7B, V6B, QLED780/810, QM51L, QM5K, Q51K, Q63K, S551G, Q651G",
-      "latest_firmware": "V8-0008T01-LF1V630",
+      "latest_firmware": "V8-0008T01-LF1V636",
       "build_number": "002205",
       "release_type": "Full OTA (ZIP)",
       "package_size": "1.92 GB",
@@ -111,7 +111,7 @@
         "na": "http://na-update.cedock.com/apps/resource2/V80008T01/V8-0008T01-LF1V630/FOTA-OTA/V8-0008T01-LF1V630.002205.zip",
         "as": "http://as-update.cedock.com/apps/resource2/V80008T01/V8-0008T01-LF1V630/FOTA-OTA/V8-0008T01-LF1V630.002205.zip"
       },
-      "fota_api_status": "Checked (Live API - Up to date)",
+      "fota_api_status": "New OTA Released: V8-0008T01-LF1V636",
       "extracted_details": {
         "android_version": "14",
         "os_flavor": "Google TV (GTV)",
@@ -133,7 +133,7 @@
         "bluetooth_version": "Bluetooth 5.0 / 5.2 (RTL8761AT)",
         "broadcast_tuners": "DVB-T2 / DVB-C / DVB-S2 (EU/Global) & ATSC 1.0/3.0 / ClearQAM (NA)"
       },
-      "checked_at": "2026-08-21T20:43:40.210806+00:00"
+      "checked_at": "2026-08-21T20:52:02.084272+00:00"
     },
     {
       "platform": "0012T01",
@@ -157,7 +157,7 @@
       },
       "fota_api_status": "Checked (Live API - Up to date)",
       "extracted_details": null,
-      "checked_at": "2026-08-21T20:43:40.210806+00:00"
+      "checked_at": "2026-08-21T20:52:02.084272+00:00"
     },
     {
       "platform": "0012T02",
@@ -181,7 +181,7 @@
       },
       "fota_api_status": "Checked (Live API - Up to date)",
       "extracted_details": null,
-      "checked_at": "2026-08-21T20:43:40.210806+00:00"
+      "checked_at": "2026-08-21T20:52:02.084272+00:00"
     },
     {
       "platform": "0012T03",
@@ -205,7 +205,7 @@
       },
       "fota_api_status": "Checked (Live API - Up to date)",
       "extracted_details": null,
-      "checked_at": "2026-08-21T20:43:40.210806+00:00"
+      "checked_at": "2026-08-21T20:52:02.084272+00:00"
     },
     {
       "platform": "0013T02",
@@ -229,7 +229,7 @@
       },
       "fota_api_status": "Checked (Live API - Up to date)",
       "extracted_details": null,
-      "checked_at": "2026-08-21T20:43:40.210806+00:00"
+      "checked_at": "2026-08-21T20:52:02.084272+00:00"
     },
     {
       "platform": "0015T01",
@@ -253,7 +253,7 @@
       },
       "fota_api_status": "Checked (Live API - Up to date)",
       "extracted_details": null,
-      "checked_at": "2026-08-21T20:43:40.210806+00:00"
+      "checked_at": "2026-08-21T20:52:02.084272+00:00"
     },
     {
       "platform": "0016T01",
@@ -277,7 +277,7 @@
       },
       "fota_api_status": "Checked (Live API - Up to date)",
       "extracted_details": null,
-      "checked_at": "2026-08-21T20:43:40.210806+00:00"
+      "checked_at": "2026-08-21T20:52:02.084272+00:00"
     },
     {
       "platform": "R41KT01",
@@ -301,7 +301,7 @@
       },
       "fota_api_status": "Checked (Live API - Up to date)",
       "extracted_details": null,
-      "checked_at": "2026-08-21T20:43:40.210806+00:00"
+      "checked_at": "2026-08-21T20:52:02.084272+00:00"
     },
     {
       "platform": "R51AT01",
@@ -325,7 +325,7 @@
       },
       "fota_api_status": "Checked (Live API - Up to date)",
       "extracted_details": null,
-      "checked_at": "2026-08-21T20:43:40.210806+00:00"
+      "checked_at": "2026-08-21T20:52:02.084272+00:00"
     },
     {
       "platform": "R51MT01",
@@ -349,7 +349,7 @@
       },
       "fota_api_status": "Checked (Live API - Up to date)",
       "extracted_details": null,
-      "checked_at": "2026-08-21T20:43:40.210806+00:00"
+      "checked_at": "2026-08-21T20:52:02.084272+00:00"
     },
     {
       "platform": "R51MT02",
@@ -373,7 +373,7 @@
       },
       "fota_api_status": "Checked (Live API - Up to date)",
       "extracted_details": null,
-      "checked_at": "2026-08-21T20:43:40.210806+00:00"
+      "checked_at": "2026-08-21T20:52:02.084272+00:00"
     },
     {
       "platform": "R51MT03",
@@ -397,7 +397,7 @@
       },
       "fota_api_status": "Checked (Live API - Up to date)",
       "extracted_details": null,
-      "checked_at": "2026-08-21T20:43:40.210806+00:00"
+      "checked_at": "2026-08-21T20:52:02.084272+00:00"
     },
     {
       "platform": "R51MT04",
@@ -421,7 +421,7 @@
       },
       "fota_api_status": "Checked (Live API - Up to date)",
       "extracted_details": null,
-      "checked_at": "2026-08-21T20:43:40.210806+00:00"
+      "checked_at": "2026-08-21T20:52:02.084272+00:00"
     },
     {
       "platform": "R51MT05",
@@ -465,7 +465,7 @@
         "bluetooth_version": "Bluetooth 5.0 (RTL8761A)",
         "broadcast_tuners": "ATSC 1.0 / ClearQAM / NTSC (North America)"
       },
-      "checked_at": "2026-08-21T20:43:40.210806+00:00"
+      "checked_at": "2026-08-21T20:52:02.084272+00:00"
     },
     {
       "platform": "R51MT06",
@@ -489,7 +489,7 @@
       },
       "fota_api_status": "Checked (Live API - Up to date)",
       "extracted_details": null,
-      "checked_at": "2026-08-21T20:43:40.210806+00:00"
+      "checked_at": "2026-08-21T20:52:02.084272+00:00"
     },
     {
       "platform": "R51MT07",
@@ -513,7 +513,7 @@
       },
       "fota_api_status": "Checked (Live API - Up to date)",
       "extracted_details": null,
-      "checked_at": "2026-08-21T20:43:40.210806+00:00"
+      "checked_at": "2026-08-21T20:52:02.084272+00:00"
     },
     {
       "platform": "R51MT08",
@@ -537,7 +537,7 @@
       },
       "fota_api_status": "Checked (Live API - Up to date)",
       "extracted_details": null,
-      "checked_at": "2026-08-21T20:43:40.210806+00:00"
+      "checked_at": "2026-08-21T20:52:02.084272+00:00"
     },
     {
       "platform": "R51MT09",
@@ -561,7 +561,7 @@
       },
       "fota_api_status": "Checked (Live API - Up to date)",
       "extracted_details": null,
-      "checked_at": "2026-08-21T20:43:40.210806+00:00"
+      "checked_at": "2026-08-21T20:52:02.084272+00:00"
     },
     {
       "platform": "R51MT10",
@@ -585,7 +585,7 @@
       },
       "fota_api_status": "Checked (Live API - Up to date)",
       "extracted_details": null,
-      "checked_at": "2026-08-21T20:43:40.210806+00:00"
+      "checked_at": "2026-08-21T20:52:02.084272+00:00"
     },
     {
       "platform": "R75PT01",
@@ -609,7 +609,7 @@
       },
       "fota_api_status": "Checked (Live API - Up to date)",
       "extracted_details": null,
-      "checked_at": "2026-08-21T20:43:40.210806+00:00"
+      "checked_at": "2026-08-21T20:52:02.084272+00:00"
     },
     {
       "platform": "R851T02",
@@ -633,7 +633,7 @@
       },
       "fota_api_status": "Checked (Live API - Up to date)",
       "extracted_details": null,
-      "checked_at": "2026-08-21T20:43:40.210806+00:00"
+      "checked_at": "2026-08-21T20:52:02.084272+00:00"
     },
     {
       "platform": "R851T10",
@@ -657,7 +657,7 @@
       },
       "fota_api_status": "Checked (Live API - Up to date)",
       "extracted_details": null,
-      "checked_at": "2026-08-21T20:43:40.210806+00:00"
+      "checked_at": "2026-08-21T20:52:02.084272+00:00"
     },
     {
       "platform": "T221T01",
@@ -681,7 +681,7 @@
       },
       "fota_api_status": "Checked (Live API - Up to date)",
       "extracted_details": null,
-      "checked_at": "2026-08-21T20:43:40.210806+00:00"
+      "checked_at": "2026-08-21T20:52:02.084272+00:00"
     },
     {
       "platform": "T221T02",
@@ -705,7 +705,7 @@
       },
       "fota_api_status": "Checked (Live API - Up to date)",
       "extracted_details": null,
-      "checked_at": "2026-08-21T20:43:40.210806+00:00"
+      "checked_at": "2026-08-21T20:52:02.084272+00:00"
     },
     {
       "platform": "T221T03",
@@ -729,7 +729,7 @@
       },
       "fota_api_status": "Checked (Live API - Up to date)",
       "extracted_details": null,
-      "checked_at": "2026-08-21T20:43:40.210806+00:00"
+      "checked_at": "2026-08-21T20:52:02.084272+00:00"
     },
     {
       "platform": "T221T04",
@@ -753,7 +753,7 @@
       },
       "fota_api_status": "Checked (Live API - Up to date)",
       "extracted_details": null,
-      "checked_at": "2026-08-21T20:43:40.210806+00:00"
+      "checked_at": "2026-08-21T20:52:02.084272+00:00"
     },
     {
       "platform": "T221T05",
@@ -777,7 +777,7 @@
       },
       "fota_api_status": "Checked (Live API - Up to date)",
       "extracted_details": null,
-      "checked_at": "2026-08-21T20:43:40.210806+00:00"
+      "checked_at": "2026-08-21T20:52:02.084272+00:00"
     },
     {
       "platform": "T221T06",
@@ -801,7 +801,7 @@
       },
       "fota_api_status": "Checked (Live API - Up to date)",
       "extracted_details": null,
-      "checked_at": "2026-08-21T20:43:40.210806+00:00"
+      "checked_at": "2026-08-21T20:52:02.084272+00:00"
     },
     {
       "platform": "T221T07",
@@ -825,7 +825,7 @@
       },
       "fota_api_status": "Checked (Live API - Up to date)",
       "extracted_details": null,
-      "checked_at": "2026-08-21T20:43:40.210806+00:00"
+      "checked_at": "2026-08-21T20:52:02.084272+00:00"
     },
     {
       "platform": "T221T08",
@@ -849,7 +849,7 @@
       },
       "fota_api_status": "Checked (Live API - Up to date)",
       "extracted_details": null,
-      "checked_at": "2026-08-21T20:43:40.210806+00:00"
+      "checked_at": "2026-08-21T20:52:02.084272+00:00"
     },
     {
       "platform": "T221T09",
@@ -873,7 +873,7 @@
       },
       "fota_api_status": "Checked (Live API - Up to date)",
       "extracted_details": null,
-      "checked_at": "2026-08-21T20:43:40.210806+00:00"
+      "checked_at": "2026-08-21T20:52:02.084272+00:00"
     },
     {
       "platform": "T615T01",
@@ -897,7 +897,7 @@
       },
       "fota_api_status": "Checked (Live API - Up to date)",
       "extracted_details": null,
-      "checked_at": "2026-08-21T20:43:40.210806+00:00"
+      "checked_at": "2026-08-21T20:52:02.084272+00:00"
     },
     {
       "platform": "T615T02",
@@ -921,7 +921,7 @@
       },
       "fota_api_status": "Checked (Live API - Up to date)",
       "extracted_details": null,
-      "checked_at": "2026-08-21T20:43:40.210806+00:00"
+      "checked_at": "2026-08-21T20:52:02.084272+00:00"
     },
     {
       "platform": "T615T03",
@@ -945,7 +945,7 @@
       },
       "fota_api_status": "Checked (Live API - Up to date)",
       "extracted_details": null,
-      "checked_at": "2026-08-21T20:43:40.210806+00:00"
+      "checked_at": "2026-08-21T20:52:02.084272+00:00"
     },
     {
       "platform": "T653T01",
@@ -969,7 +969,7 @@
       },
       "fota_api_status": "Checked (Live API - Up to date)",
       "extracted_details": null,
-      "checked_at": "2026-08-21T20:43:40.210806+00:00"
+      "checked_at": "2026-08-21T20:52:02.084272+00:00"
     },
     {
       "platform": "T653T02",
@@ -993,7 +993,7 @@
       },
       "fota_api_status": "Checked (Live API - Up to date)",
       "extracted_details": null,
-      "checked_at": "2026-08-21T20:43:40.210806+00:00"
+      "checked_at": "2026-08-21T20:52:02.084272+00:00"
     },
     {
       "platform": "T653T03",
@@ -1017,7 +1017,7 @@
       },
       "fota_api_status": "Checked (Live API - Up to date)",
       "extracted_details": null,
-      "checked_at": "2026-08-21T20:43:40.210806+00:00"
+      "checked_at": "2026-08-21T20:52:02.084272+00:00"
     },
     {
       "platform": "T655T01",
@@ -1041,7 +1041,7 @@
       },
       "fota_api_status": "Checked (Live API - Up to date)",
       "extracted_details": null,
-      "checked_at": "2026-08-21T20:43:40.210806+00:00"
+      "checked_at": "2026-08-21T20:52:02.084272+00:00"
     },
     {
       "platform": "T658T01",
@@ -1065,7 +1065,7 @@
       },
       "fota_api_status": "Checked (Live API - Up to date)",
       "extracted_details": null,
-      "checked_at": "2026-08-21T20:43:40.210806+00:00"
+      "checked_at": "2026-08-21T20:52:02.084272+00:00"
     },
     {
       "platform": "T800T02",
@@ -1109,7 +1109,7 @@
         "bluetooth_version": "Bluetooth 5.2 (RTL8852B / RTL8761AT)",
         "broadcast_tuners": "DVB-T2 / DVB-C / DVB-S2 (EU/Global)"
       },
-      "checked_at": "2026-08-21T20:43:40.210806+00:00"
+      "checked_at": "2026-08-21T20:52:02.084272+00:00"
     }
   ]
 }
