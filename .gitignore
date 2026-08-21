@@ -66,3 +66,4 @@ test_server.ps1
 .agent/
 scripts/check-links.js.bak
 build_log.txt
+/scratch

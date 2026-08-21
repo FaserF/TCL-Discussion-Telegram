@@ -1,0 +1,40 @@
+name: Firmware Tracker
+
+on:
+  schedule:
+    - cron: '0 4 * * *'  # Runs daily at 04:00 UTC (06:00 CEST / 05:00 CET)
+  workflow_dispatch:        # Allows manual trigger from GitHub UI
+
+permissions:
+  contents: write
+
+jobs:
+  track-firmwares:
+    runs-on: ubuntu-latest
+    container:
+      image: alpine:latest
+
+    steps:
+      - name: Install Dependencies
+        run: |
+          apk add --no-cache python3 git
+
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Run TCL TV Firmware Tracker
+        run: |
+          python3 scripts/fetch_firmwares.py
+
+      - name: Commit and Push Changes
+        run: |
+          git config --global --add safe.directory "$PWD"
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/firmwares.md docs/assets/firmwares.json docs/assets/news.json
+          if git diff --staged --quiet; then
+            echo "No changes in firmware data."
+          else
+            git commit -m "chore(tracker): auto-update TCL TV firmware status & banner [skip ci]"
+            git push
+          fi

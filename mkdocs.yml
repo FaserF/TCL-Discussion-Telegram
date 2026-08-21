@@ -96,6 +96,8 @@ markdown_extensions:
 nav:
   - Home: index.md
   - Technical Guides:
+      - TCL Update Mechanisms & Internals: update_mechanisms.md
+      - Firmware Status & Tracker: firmwares.md
       - TCL Firmware Installation Guides: guides.md
       - Platforms & Chipsets: chipsets.md
       - Rooting & Custom ROMs: rooting.md

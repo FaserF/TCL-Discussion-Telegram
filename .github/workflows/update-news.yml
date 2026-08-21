@@ -20,19 +20,16 @@ on:
 jobs:
   update-news:
     runs-on: ubuntu-latest
+    container:
+      image: alpine:latest
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v7
-
-      - name: Set up Python
-        uses: actions/setup-python@v7
-        with:
-          python-version: '3.x'
-
-      - name: Install dependencies
+      - name: Install Dependencies
         run: |
-          pip install requests beautifulsoup4
+          apk add --no-cache python3 py3-pip py3-requests py3-beautifulsoup4 jq git
+
+      - uses: actions/checkout@v4
 
       - name: Fetch Live Data (if needed)
         id: news-data
@@ -44,15 +41,14 @@ jobs:
 
           if [ "$ACTIVE" = "true" ] && [ -z "$TEXT" ]; then
             echo "Fetching live telegram data..."
-            python scripts/fetch_telegram.py > live_news.json
+            python3 scripts/fetch_telegram.py > live_news.json
             LIVE_TEXT=$(jq -r '.text' live_news.json)
             LIVE_LINK=$(jq -r '.link' live_news.json)
             TEXT="$LIVE_TEXT"
             LINK="$LIVE_LINK"
           fi
 
-          # Create final JSON
-          # Use jq for safe JSON creation
+          mkdir -p docs/assets
           jq -n \
             --arg active "$ACTIVE" \
             --arg date "$DATE" \
@@ -63,8 +59,9 @@ jobs:
 
       - name: Commit and Push
         run: |
-          git config --global user.name 'GitHub Actions'
-          git config --global user.email 'actions@github.com'
+          git config --global --add safe.directory "$PWD"
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git add docs/assets/news.json
           git commit -m "news: update banner [skip ci]" || echo "No changes to commit"
           git push
