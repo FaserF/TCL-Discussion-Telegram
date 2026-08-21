@@ -9,17 +9,30 @@ const IGNORE_URLS = [
     'https://react.dev/error',
     'https://reactrouter.com',
     'https://github.com/FaserF/AegisBot',
-    'https://missrose.org'
+    'https://missrose.org',
+    'http://eu-update.cedock.com',
+    'http://na-update.cedock.com',
+    'http://as-update.cedock.com',
+    'http://as.update.cedock.com',
+    'http://celesw.tcl.com',
+    'http://{region}-update.cedock.com',
+    'http://filter-upgrade.huan.tv',
+    'http://eu-filter-upgrade.huan.tv',
+    'http://na-filter-upgrade.huan.tv',
+    'http://as-filter-upgrade.huan.tv'
 ];
 
 const EXTENSIONS = ['.jsx', '.js', '.md', '.html'];
 const SEARCH_DIRS = ['src', 'docs'];
 
-// Improved regex to handle trailing punctuation like ) or . or , and markdown symbols like ` or *
-const urlRegex = /https?:\/\/[^\s"'><*`)]+[^\s"'><.,):*`]/g;
+// Improved regex to handle trailing punctuation like ) or ] or \ or . or , and markdown symbols like ` or *
+const urlRegex = /https?:\/\/[^\s"'><*`)\x5d\\]+[^\s"'><.,):*`\x5d\\]/g;
 
 async function checkLink(url) {
-    if (IGNORE_URLS.some(ignore => url.startsWith(ignore))) {
+    // Normalize url by trimming trailing punctuation
+    url = url.replace(/[\x5d\\)]+$/, '');
+
+    if (IGNORE_URLS.some(ignore => url.startsWith(ignore)) || url.includes('cedock.com') || url.includes('huan.tv') || url.includes('{region}')) {
         return { url, status: 'ignored' };
     }
 
