@@ -97,7 +97,7 @@
       "family_name": "R75P / RT75 (0008T01)",
       "soc_specs": "Realtek RT75 (G10 Platform, Entry-Mid 4K GTV)",
       "featured_models": "P8LS, P7L, V6D, T6D, U65A, P6K, P7K, V6C, T6C, C6KS, C6CS, U65/75, MQLED70K, P755, C655, C655 Pro, T7B, V6B, QLED780/810, QM51L, QM5K, Q51K, Q63K, S551G, Q651G",
-      "latest_firmware": "V8-0008T01-LF1V636",
+      "latest_firmware": "V8-0008T01-LF1V630",
       "build_number": "002205",
       "release_type": "Full OTA (ZIP)",
       "package_size": "1.92 GB",
