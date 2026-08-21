@@ -10,7 +10,8 @@ The community-driven technical hub for the **TCL Discussion** Telegram group. Fi
 
 <div class="hero-action-group" markdown="1">
 
-[View Firmware Update Channel](https://t.me/tclupdates){ .md-button .md-button--primary }
+[⚡ Firmware Status & Tracker](firmwares.md){ .md-button .md-button--primary }
+[View Firmware Update Channel](https://t.me/tclupdates){ .md-button .md-button--secondary }
 [Go to Discussion Group](https://t.me/tclupdates_discussion){ .md-button .md-button--secondary }
 
 </div>
@@ -20,17 +21,17 @@ The community-driven technical hub for the **TCL Discussion** Telegram group. Fi
 <div class="feature-grid" markdown="1">
 
 <div class="feature-card" markdown="1">
+### :material-update: Firmware Tracker
+Live OTA firmware versions, direct CDN download links, package sizes, and Android build properties across 42+ TCL platforms.
+
+[Firmware Status & Tracker](firmwares.md){ .md-button .md-button--primary style="width:100%" }
+</div>
+
+<div class="feature-card" markdown="1">
 ### :material-flash: Quick Start
 New to TCL flashing? Start with our guides to understand the difference between **Local Update (OTA)** and **IMG Flash**.
 
 [Installation Guides](guides.md){ .md-button .md-button--secondary style="width:100%" }
-</div>
-
-<div class="feature-card" markdown="1">
-### :material-robot: Firmware Bot
-Our official Telegram bot provides verified download links based on your specific TV model, region, and chipset.
-
-[@FirmwareTCLbot](https://t.me/FirmwareTCLbot){ .md-button .md-button--secondary style="width:100%" }
 </div>
 
 <div class="feature-card" markdown="1">

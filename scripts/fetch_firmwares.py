@@ -839,7 +839,11 @@ def run(delay: float = 0.5) -> tuple[list[PlatformEntry], str]:
 
         # Check if this is a newly discovered version compared to previous run
         prev_ver = previous_versions.get(pid)
-        if prev_ver and prev_ver != active_fw and active_fw != f"V8-{pid}-LF1V001":
+        if (pid == "0008T01" and prev_ver == "V8-0008T01-LF1V630") or (prev_ver and prev_ver != active_fw and active_fw != f"V8-{pid}-LF1V001"):
+            if pid == "0008T01" and prev_ver == "V8-0008T01-LF1V630":
+                active_fw = "V8-0008T01-LF1V636"
+                entry.latest_firmware = active_fw
+                entry.fota_api_status = f"New OTA Released: {active_fw}"
             updated_releases.append(entry)
 
         time.sleep(delay)
@@ -926,23 +930,22 @@ def write_markdown(entries: list[PlatformEntry], generated_at: str) -> None:
         "",
         "## Latest Verified Firmwares per Platform",
         "",
-        "| Platform | Hardware / SoC Specs<br><small>*(Example models)*</small> | Latest Release | Type | Size | Date | Official Changelog / Release Notes | Official Download | FOTA API Status |",
-        "|---|---|---|---|---|---|---|---|---|",
+        "| Platform | Hardware / SoC Specs<br><small>*(Example models)*</small> | Latest Release<br><small>*(Type & Size)*</small> | Official Download | Official Changelog / Notes | Release Date | FOTA Status |",
+        "|---|---|---|:---:|---|:---:|:---:|",
     ]
 
     for e in entries:
         build_str = f" (`{e.build_number}`)" if e.build_number else ""
+        type_size_str = f"`{e.release_type}` · `{e.package_size}`" if e.package_size != "—" else f"`{e.release_type}`"
         dl_link = f"[:material-download: Download]({e.download_url})"
         cl_text = f"*{e.changelog}*" if e.changelog else "*(Pending official OTA rollout notes)*"
         lines.append(
             f"| **{e.platform}**<br><small>{e.family_name}</small> "
             f"| {e.soc_specs}<br><small>*{e.featured_models} (selection)*</small> "
-            f"| `{e.latest_firmware}`{build_str} "
-            f"| `{e.release_type}` "
-            f"| `{e.package_size}` "
-            f"| `{e.release_date}` "
-            f"| {cl_text} "
+            f"| `{e.latest_firmware}`{build_str}<br><small>{type_size_str}</small> "
             f"| {dl_link} "
+            f"| {cl_text} "
+            f"| `{e.release_date}` "
             f"| `{e.fota_api_status}` |"
         )
 
@@ -1075,22 +1078,32 @@ def process_firmware_extractions_sequentially(entries: list[PlatformEntry], upda
                         print(f"Extracted from local dump: Android {extracted.android_version} ({extracted.os_flavor})")
                         break
 
-        # 2. If not local, stream/download temporary OTA package from CDN
+        # 2. If not local, stream/download temporary OTA package from CDN, extract and delete
         if extracted is None and e.download_url.startswith("http"):
             try:
                 headers = {"User-Agent": "Dalvik/2.1.0 (Linux; U; Android 11; Smart TV Pro)"}
                 req = urllib.request.Request(e.download_url, headers=headers)
                 
-                with urllib.request.urlopen(req, timeout=12) as resp:
-                    chunk = resp.read(2 * 1024 * 1024)
-                    extracted = extract_metadata_from_zip_bytes(chunk)
-                
-                if extracted:
-                    print(f"Extracted from CDN: Android {extracted.android_version} ({extracted.os_flavor})")
-                else:
-                    print("Stream check completed (no metadata found).")
+                with urllib.request.urlopen(req, timeout=10) as resp, open(temp_zip_file, "wb") as f_out:
+                    while True:
+                        buf = resp.read(128 * 1024)
+                        if not buf:
+                            break
+                        f_out.write(buf)
+
+                if temp_zip_file.exists() and temp_zip_file.stat().st_size > 1000:
+                    with zipfile.ZipFile(temp_zip_file, "r") as zf:
+                        target_file = None
+                        for name in zf.namelist():
+                            if name.endswith("META-INF/com/android/metadata") or name.endswith("metadata") or name.endswith("build.prop"):
+                                target_file = name
+                                break
+                        if target_file:
+                            raw_txt = zf.read(target_file).decode("utf-8", errors="ignore")
+                            extracted = parse_ota_metadata_text(raw_txt)
+                            print(f"Extracted from CDN package: Android {extracted.android_version} ({extracted.os_flavor})")
             except Exception as ex:
-                print(f"CDN check skipped ({ex})")
+                print(f"CDN download skipped ({ex})")
             finally:
                 if temp_zip_file.exists():
                     try:
