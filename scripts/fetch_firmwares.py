@@ -408,7 +408,6 @@ def load_existing_platforms() -> tuple[dict[str, dict[str, Any]], dict[str, str]
                             if entry.get(k) is not None:
                                 platforms_map[pid][k] = entry[k]
                     else:
-                        print(f"  [Discovery] Loaded dynamically preserved platform: {pid}")
                         platforms_map[pid] = entry
         except Exception as e:
             print(f"  [Warning] Failed to parse existing JSON: {e}")
@@ -1038,8 +1037,137 @@ def process_firmware_extractions_sequentially(entries: list[PlatformEntry], upda
     updated_platform_ids = {u.platform for u in updated_releases}
     
     # 1. Any platform with a brand new firmware release (highest priority)
+def parse_zip_central_directory(tail_bytes: bytes) -> dict[str, tuple[int, int, int]]:
+    """Parses ZIP Central Directory from tail bytes to locate file headers and byte offsets."""
+    eocd_sig = b"\x50\x4b\x05\x06"
+    pos = tail_bytes.rfind(eocd_sig)
+    if pos == -1:
+        return {}
+
+    cd_sig = b"\x50\x4b\x01\x02"
+    files: dict[str, tuple[int, int, int]] = {}
+    idx = 0
+    while True:
+        cd_entry = tail_bytes.find(cd_sig, idx, pos)
+        if cd_entry == -1:
+            break
+
+        method = struct.unpack("<H", tail_bytes[cd_entry + 10 : cd_entry + 12])[0]
+        c_size, u_size = struct.unpack("<II", tail_bytes[cd_entry + 20 : cd_entry + 28])
+        fn_len, extra_len, comm_len = struct.unpack("<HHH", tail_bytes[cd_entry + 28 : cd_entry + 34])
+        offset = struct.unpack("<I", tail_bytes[cd_entry + 42 : cd_entry + 46])[0]
+
+        fname = tail_bytes[cd_entry + 46 : cd_entry + 46 + fn_len].decode("utf-8", errors="ignore")
+        files[fname] = (method, c_size, u_size, offset)
+        idx = cd_entry + 46 + fn_len + extra_len + comm_len
+
+    return files
+
+
+def fetch_remote_zip_metadata_range(url: str, timeout: int = 4) -> Optional[ExtractedBuildDetails]:
+    """
+    Downloads ONLY the ZIP Central Directory and metadata file using HTTP Range headers (~64KB to 1MB total)
+    instead of transferring the full 2 GB archive.
+    """
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)",
+        "Accept": "*/*",
+        "Connection": "close",
+    }
+
+    # 1. Fetch the last 1MB of the ZIP to inspect the Central Directory
+    req_tail = urllib.request.Request(url, headers={**headers, "Range": "bytes=-1048576"})
+    tail_data: Optional[bytes] = None
+    try:
+        with urllib.request.urlopen(req_tail, timeout=timeout) as resp:
+            tail_data = resp.read()
+    except Exception:
+        pass
+
+    if not tail_data:
+        # Fallback: check first 1MB if server doesn't support suffix range
+        try:
+            req_head = urllib.request.Request(url, headers={**headers, "Range": "bytes=0-1048576"})
+            with urllib.request.urlopen(req_head, timeout=timeout) as resp:
+                head_data = resp.read()
+                return extract_metadata_from_zip_bytes(head_data)
+        except Exception:
+            return None
+
+    # Parse central directory to locate META-INF/com/android/metadata
+    files = parse_zip_central_directory(tail_data)
+    target_name = None
+    for fn in files:
+        if fn.endswith("META-INF/com/android/metadata") or fn.endswith("metadata") or fn.endswith("build.prop"):
+            target_name = fn
+            break
+
+    if not target_name:
+        return extract_metadata_from_zip_bytes(tail_data)
+
+    method, c_size, u_size, offset = files[target_name]
+
+    # Fetch exact range of the metadata file: local header (30 bytes) + filename + extra + compressed data
+    req_range = urllib.request.Request(url, headers={**headers, "Range": f"bytes={offset}-{offset + c_size + 256}"})
+    try:
+        with urllib.request.urlopen(req_range, timeout=timeout) as resp:
+            raw_chunk = resp.read()
+            # Local header format: 30 bytes prefix + fn_len + extra_len
+            if len(raw_chunk) >= 30 and raw_chunk[:4] == b"\x50\x4b\x03\x04":
+                loc_fn_len, loc_extra_len = struct.unpack("<HH", raw_chunk[26:30])
+                payload_start = 30 + loc_fn_len + loc_extra_len
+                comp_data = raw_chunk[payload_start : payload_start + c_size]
+
+                if method == 8:  # Deflate
+                    decomp_txt = zlib.decompress(comp_data, -zlib.MAX_WBITS).decode("utf-8", errors="ignore")
+                else:  # Stored
+                    decomp_txt = comp_data.decode("utf-8", errors="ignore")
+
+                return parse_ota_metadata_text(decomp_txt)
+    except Exception:
+        pass
+
+    return None
+
+
+def get_all_candidate_mirrors(platform: str, fw_name: str, build_number: str, default_url: str) -> list[str]:
+    """Generates all regional CDN mirror endpoints and alternate paths for a given firmware release."""
+    pdir = "V8" + platform.replace("-", "")
+    bno_suffix = f".{build_number}" if build_number else ""
+
+    mirrors = [
+        default_url,
+        f"http://eu-update.cedock.com/apps/resource2/{pdir}/{fw_name}/FOTA-OTA/{fw_name}{bno_suffix}.zip",
+        f"http://na-update.cedock.com/apps/resource2/{pdir}/{fw_name}/FOTA-OTA/{fw_name}{bno_suffix}.zip",
+        f"http://as-update.cedock.com/apps/resource2/{pdir}/{fw_name}/FOTA-OTA/{fw_name}{bno_suffix}.zip",
+        f"http://as.update.cedock.com/apps/resource2/{pdir}/{fw_name}/FOTA-OTA/{fw_name}{bno_suffix}.zip",
+        f"http://update.cedock.com/apps/resource2/{pdir}/{fw_name}/FOTA-OTA/{fw_name}{bno_suffix}.zip",
+        f"http://celesw.tcl.com/CSEU%20TV/Software/{fw_name}.zip",
+    ]
+    # Unique preserved order
+    seen = set()
+    return [m for m in mirrors if m and not (m in seen or seen.add(m))]
+
+
+def process_firmware_extractions_sequentially(
+    entries: list[PlatformEntry],
+    updated_releases: list[PlatformEntry],
+    generated_at: str,
+    max_missing_per_run: int = 5,
+) -> None:
+    """
+    Sequentially processes firmware packages to extract deep build properties using HTTP Range requests.
+    STRICT RULE:
+    - ONLY queries when a platform received a new firmware release OR when metadata is missing (null).
+    - Uses HTTP Range requests to inspect only the ZIP Central Directory in milliseconds without full download.
+    - NEVER re-downloads platforms that already have verified extracted_details.
+    - Incrementally updates firmwares.json and docs/firmwares.md so progress is persisted permanently.
+    """
+    updated_platform_ids = {u.platform for u in updated_releases}
+
+    # 1. Any platform with a brand new firmware release (highest priority)
     new_update_entries = [e for e in entries if e.platform in updated_platform_ids]
-    
+
     # 2. Platforms where extracted_details is still None (backfill queue)
     missing_entries = [e for e in entries if e.extracted_details is None and e.platform not in updated_platform_ids]
 
@@ -1050,71 +1178,32 @@ def process_firmware_extractions_sequentially(entries: list[PlatformEntry], upda
         return
 
     print(f"\n[Firmware Extraction] Processing {len(pending_entries)} platform(s) for metadata extraction (Updates: {len(new_update_entries)}, Missing backfill: {min(len(missing_entries), max_missing_per_run)})...")
-    
-    local_dumps_dir = Path.home() / "Downloads" / "Telegram Desktop"
-    temp_zip_file = REPO_ROOT / ".temp_extract_ota.zip"
 
     updated_any = False
     for idx, e in enumerate(pending_entries):
-        # If this was an update, clear old extracted_details to force fresh extraction from new package
         if e.platform in updated_platform_ids:
             e.extracted_details = None
 
-        print(f"  [{idx+1}/{len(pending_entries)}] Checking firmware metadata for {e.platform} ({e.latest_firmware}) ...", end=" ", flush=True)
+        print(f"  [{idx+1}/{len(pending_entries)}] Checking firmware metadata for {e.platform} ({e.latest_firmware}) via Range requests...", end=" ", flush=True)
 
         extracted: Optional[ExtractedBuildDetails] = None
 
-        # 1. Check if local dump exists in Telegram Desktop
-        if local_dumps_dir.exists():
-            for folder_name in (e.latest_firmware, f"V8-{e.platform}", e.platform):
-                candidate_dir = local_dumps_dir / folder_name
-                if candidate_dir.exists() and candidate_dir.is_dir():
-                    meta_file = candidate_dir / "META-INF" / "com" / "android" / "metadata"
-                    if not meta_file.exists():
-                        meta_file = candidate_dir / "metadata"
-                    if meta_file.exists():
-                        text = meta_file.read_text(encoding="utf-8", errors="ignore")
-                        extracted = parse_ota_metadata_text(text)
-                        print(f"Extracted from local dump: Android {extracted.android_version} ({extracted.os_flavor})")
-                        break
+        # Try multi-mirror candidate list with HTTP Range requests
+        candidate_mirrors = get_all_candidate_mirrors(e.platform, e.latest_firmware, e.build_number, e.download_url)
+        for mirror_url in candidate_mirrors:
+            extracted = fetch_remote_zip_metadata_range(mirror_url, timeout=3)
+            if extracted:
+                print(f"Extracted via Range ({mirror_url[:40]}...): Android {extracted.android_version} ({extracted.os_flavor})")
+                break
 
-        # 2. If not local, stream/download temporary OTA package from CDN, extract and delete
-        if extracted is None and e.download_url.startswith("http"):
-            try:
-                headers = {"User-Agent": "Dalvik/2.1.0 (Linux; U; Android 11; Smart TV Pro)"}
-                req = urllib.request.Request(e.download_url, headers=headers)
-                
-                with urllib.request.urlopen(req, timeout=10) as resp, open(temp_zip_file, "wb") as f_out:
-                    while True:
-                        buf = resp.read(128 * 1024)
-                        if not buf:
-                            break
-                        f_out.write(buf)
-
-                if temp_zip_file.exists() and temp_zip_file.stat().st_size > 1000:
-                    with zipfile.ZipFile(temp_zip_file, "r") as zf:
-                        target_file = None
-                        for name in zf.namelist():
-                            if name.endswith("META-INF/com/android/metadata") or name.endswith("metadata") or name.endswith("build.prop"):
-                                target_file = name
-                                break
-                        if target_file:
-                            raw_txt = zf.read(target_file).decode("utf-8", errors="ignore")
-                            extracted = parse_ota_metadata_text(raw_txt)
-                            print(f"Extracted from CDN package: Android {extracted.android_version} ({extracted.os_flavor})")
-            except Exception as ex:
-                print(f"CDN download skipped ({ex})")
-            finally:
-                if temp_zip_file.exists():
-                    try:
-                        temp_zip_file.unlink()
-                    except Exception:
-                        pass
+        if not extracted:
+            print("CDN Range check skipped (remote mirrors unreachable or timeout).")
+            print("  [Notice] CDN currently unreachable or restricted. Skipping remaining extractions for this run.")
+            break
 
         if extracted:
             e.extracted_details = extracted
             updated_any = True
-            # Incrementally write to JSON and MD
             write_json(entries, generated_at)
             write_markdown(entries, generated_at)
 
