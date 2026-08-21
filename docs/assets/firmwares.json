@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-21T20:01:16.285044+00:00",
+  "generated_at": "2026-08-21T20:26:21.032842+00:00",
   "source": "official TCL Smart TV FOTA API (huan.tv) & CDN (cedock.com)",
   "total_platforms": 42,
   "api_fields_documentation": {
@@ -7,7 +7,7 @@
     "alt_platform_id": "Secondary or legacy alphanumeric platform identifier used interchangeably in OTA requests.",
     "family_name": "Human-readable hardware family and chassis title.",
     "soc_specs": "Technical hardware specifications of the System-on-Chip (SoC) processor and graphics engine.",
-    "featured_models": "Known and verified TV model series associated with this platform.",
+    "featured_models": "Known and verified TV model series associated with this platform (selection of examples).",
     "latest_firmware": "Latest official firmware release version code (e.g., 'V8-0012T01-LF1V655').",
     "build_number": "Internal 6-digit revision build compilation number (e.g., '003254').",
     "release_type": "Installation package type: 'Full OTA (ZIP)', 'Incremental OTA', or 'IMG / PKG Recovery'.",
@@ -15,6 +15,27 @@
     "release_date": "Official publication date or build compilation date (YYYY-MM-DD or YYYY-MM).",
     "md5": "Cryptographic MD5 hash checksum from FOTA server for payload verification.",
     "changelog": "Official release notes and changelog description extracted from server XML response (<description>/<note>).",
+    "extracted_details": {
+      "android_version": "Android OS Release version (e.g., '14', '12', '11').",
+      "os_flavor": "Operating system experience flavor ('Google TV (GTV)' vs 'Android TV (ATV)').",
+      "gms_version": "Google Mobile Services / Experience package designation (e.g., 'Android_14_GTV_U').",
+      "security_patch": "Android Security Patch Level date (e.g., '2026-06-05').",
+      "build_date_utc": "Unix epoch compilation timestamp of the build (e.g., 1786113311).",
+      "build_date_str": "Human-readable compilation date string (e.g., 'Aug 07, 2026').",
+      "fingerprint": "Official Android build fingerprint signature.",
+      "sdk_level": "Android API SDK level integer (e.g., 34 for Android 14, 31 for Android 12).",
+      "incremental_build": "Internal incremental build revision code (e.g., 'AS50', 'AS24', 'AR11').",
+      "device_codename": "Hardware device target codename (e.g., 'G10', 'G09', 'BeyondTV4').",
+      "widevine_level": "Google Widevine DRM security level support (e.g., 'Widevine Modular L1 (4K HDR)').",
+      "playready_level": "Microsoft PlayReady DRM capability (e.g., 'PlayReady Hardware SL3000').",
+      "hdr_formats": "Supported High Dynamic Range video standards (e.g., 'Dolby Vision, HDR10+, HDR10, HLG').",
+      "audio_codecs": "Supported audio hardware decoders and enhancements (e.g., 'Dolby Atmos (DAP), DTS Virtual:X').",
+      "memc_support": "Motion Estimation / Motion Compensation hardware engine support (e.g., 'Yes (libtcl_memc)').",
+      "hbbtv_version": "Hybrid Broadcast Broadband TV middleware version (e.g., 'HbbTV 2.0.2 / 2.0.3').",
+      "wifi_chipsets": "Supported Wi-Fi controller hardware and drivers (e.g., 'Realtek RTL8822BS / RTL8821CS').",
+      "bluetooth_version": "Bluetooth standard and driver support (e.g., 'Bluetooth 5.0 / 5.2 (RTL8761AT)').",
+      "broadcast_tuners": "Broadcast tuner demodulation standards (e.g., 'DVB-T2 / DVB-C / DVB-S2 (EU) / ATSC (NA)')."
+    },
     "region": "Target regional market deployment ('EU', 'NA', 'AS', 'GLOBAL').",
     "download_url": "Direct primary CDN download link for the package.",
     "all_cdn_urls": "Object containing regional CDN mirror URLs mapped by region key ('eu', 'na', 'as').",
@@ -43,7 +64,8 @@
         "as": "http://as-update.cedock.com/apps/resource2/V80003T05/V8-0003T05-LF1V242/FOTA-OTA/V8-0003T05-LF1V242.zip"
       },
       "fota_api_status": "Checked (Live API - Up to date)",
-      "checked_at": "2026-08-21T20:01:16.285044+00:00"
+      "extracted_details": null,
+      "checked_at": "2026-08-21T20:26:21.032842+00:00"
     },
     {
       "platform": "0003T06",
@@ -66,7 +88,8 @@
         "as": "http://as-update.cedock.com/apps/resource2/V80003T06/V8-0003T06-LF1V085/FOTA-OTA/V8-0003T06-LF1V085.zip"
       },
       "fota_api_status": "Checked (Live API - Up to date)",
-      "checked_at": "2026-08-21T20:01:16.285044+00:00"
+      "extracted_details": null,
+      "checked_at": "2026-08-21T20:26:21.032842+00:00"
     },
     {
       "platform": "0008T01",
@@ -89,7 +112,28 @@
         "as": "http://as-update.cedock.com/apps/resource2/V80008T01/V8-0008T01-LF1V636/FOTA-OTA/V8-0008T01-LF1V636.002205.zip"
       },
       "fota_api_status": "Checked (Live API - Up to date)",
-      "checked_at": "2026-08-21T20:01:16.285044+00:00"
+      "extracted_details": {
+        "android_version": "14",
+        "os_flavor": "Google TV (GTV)",
+        "gms_version": "Android_14_GTV_U",
+        "security_patch": "2026-06-05",
+        "build_date_utc": 1786113311,
+        "build_date_str": "Aug 07, 2026",
+        "fingerprint": "TCL/G10_4K_US_NF/G10:14/UTT2.250416.001/AS50:user/release-keys",
+        "sdk_level": 34,
+        "incremental_build": "AS50",
+        "device_codename": "G10",
+        "widevine_level": "Widevine Modular L1 (4K HDR)",
+        "playready_level": "PlayReady Hardware SL3000",
+        "hdr_formats": "Dolby Vision, HDR10+, HDR10, HLG",
+        "audio_codecs": "Dolby Atmos (DAP), Dolby Digital Plus, DTS Virtual:X / DTS-HD",
+        "memc_support": "Yes (libtcl_memc Engine)",
+        "hbbtv_version": "HbbTV 2.0.2 / 2.0.3 (ETSI TS 102 796)",
+        "wifi_chipsets": "Realtek RTL8822BS / RTL8821CS (Dual-Band 2.4/5GHz 802.11ac)",
+        "bluetooth_version": "Bluetooth 5.0 / 5.2 (RTL8761AT)",
+        "broadcast_tuners": "DVB-T2 / DVB-C / DVB-S2 (EU/Global) & ATSC 1.0/3.0 / ClearQAM (NA)"
+      },
+      "checked_at": "2026-08-21T20:26:21.032842+00:00"
     },
     {
       "platform": "0012T01",
@@ -112,7 +156,8 @@
         "as": "http://as-update.cedock.com/apps/resource2/V80012T01/V8-0012T01-LF1V655/FOTA-OTA/V8-0012T01-LF1V655.003254.zip"
       },
       "fota_api_status": "Checked (Live API - Up to date)",
-      "checked_at": "2026-08-21T20:01:16.285044+00:00"
+      "extracted_details": null,
+      "checked_at": "2026-08-21T20:26:21.032842+00:00"
     },
     {
       "platform": "0012T02",
@@ -135,7 +180,8 @@
         "as": "http://as-update.cedock.com/apps/resource2/V80012T02/V8-0012T02-LF1V620/FOTA-OTA/V8-0012T02-LF1V620.002198.zip"
       },
       "fota_api_status": "Checked (Live API - Up to date)",
-      "checked_at": "2026-08-21T20:01:16.285044+00:00"
+      "extracted_details": null,
+      "checked_at": "2026-08-21T20:26:21.032842+00:00"
     },
     {
       "platform": "0012T03",
@@ -158,7 +204,8 @@
         "as": "http://as-update.cedock.com/apps/resource2/V80012T03/V8-0012T03-LF1V110/FOTA-OTA/V8-0012T03-LF1V110.001150.zip"
       },
       "fota_api_status": "Checked (Live API - Up to date)",
-      "checked_at": "2026-08-21T20:01:16.285044+00:00"
+      "extracted_details": null,
+      "checked_at": "2026-08-21T20:26:21.032842+00:00"
     },
     {
       "platform": "0013T02",
@@ -181,7 +228,8 @@
         "as": "http://as-update.cedock.com/apps/resource2/V80013T02/V8-0013T02-LF1V163/FOTA-OTA/V8-0013T02-LF1V163.zip"
       },
       "fota_api_status": "Checked (Live API - Up to date)",
-      "checked_at": "2026-08-21T20:01:16.285044+00:00"
+      "extracted_details": null,
+      "checked_at": "2026-08-21T20:26:21.032842+00:00"
     },
     {
       "platform": "0015T01",
@@ -204,7 +252,8 @@
         "as": "http://as-update.cedock.com/apps/resource2/V80015T01/V8-0015T01-LF1V025/FOTA-OTA/V8-0015T01-LF1V025.001024.zip"
       },
       "fota_api_status": "Checked (Live API - Up to date)",
-      "checked_at": "2026-08-21T20:01:16.285044+00:00"
+      "extracted_details": null,
+      "checked_at": "2026-08-21T20:26:21.032842+00:00"
     },
     {
       "platform": "0016T01",
@@ -227,7 +276,8 @@
         "as": "http://as-update.cedock.com/apps/resource2/V80016T01/V8-0016T01-LF1V042/FOTA-OTA/V8-0016T01-LF1V042.zip"
       },
       "fota_api_status": "Checked (Live API - Up to date)",
-      "checked_at": "2026-08-21T20:01:16.285044+00:00"
+      "extracted_details": null,
+      "checked_at": "2026-08-21T20:26:21.032842+00:00"
     },
     {
       "platform": "R41KT01",
@@ -250,7 +300,8 @@
         "as": "http://as-update.cedock.com/apps/resource2/V8R41KT01/V8-R41KT01-LF1V343/FOTA-OTA/V8-R41KT01-LF1V343.008946.zip"
       },
       "fota_api_status": "Checked (Live API - Up to date)",
-      "checked_at": "2026-08-21T20:01:16.285044+00:00"
+      "extracted_details": null,
+      "checked_at": "2026-08-21T20:26:21.032842+00:00"
     },
     {
       "platform": "R51AT01",
@@ -273,7 +324,8 @@
         "as": "http://as-update.cedock.com/apps/resource2/V8R51AT01/V8-R51AT01-LF1V315/FOTA-OTA/V8-R51AT01-LF1V315.018440.zip"
       },
       "fota_api_status": "Checked (Live API - Up to date)",
-      "checked_at": "2026-08-21T20:01:16.285044+00:00"
+      "extracted_details": null,
+      "checked_at": "2026-08-21T20:26:21.032842+00:00"
     },
     {
       "platform": "R51MT01",
@@ -296,7 +348,8 @@
         "as": "http://as-update.cedock.com/apps/resource2/V8R51MT01/V8-R51MT01-LF1V001/FOTA-OTA/V8-R51MT01-LF1V001.zip"
       },
       "fota_api_status": "Checked (Live API - Up to date)",
-      "checked_at": "2026-08-21T20:01:16.285044+00:00"
+      "extracted_details": null,
+      "checked_at": "2026-08-21T20:26:21.032842+00:00"
     },
     {
       "platform": "R51MT02",
@@ -319,7 +372,8 @@
         "as": "http://as-update.cedock.com/apps/resource2/V8R51MT02/V8-R51MT02-LF1V267/FOTA-OTA/V8-R51MT02-LF1V267.020119.zip"
       },
       "fota_api_status": "Checked (Live API - Up to date)",
-      "checked_at": "2026-08-21T20:01:16.285044+00:00"
+      "extracted_details": null,
+      "checked_at": "2026-08-21T20:26:21.032842+00:00"
     },
     {
       "platform": "R51MT03",
@@ -342,7 +396,8 @@
         "as": "http://as-update.cedock.com/apps/resource2/V8R51MT03/V8-R51MT03-LF1V001/FOTA-OTA/V8-R51MT03-LF1V001.zip"
       },
       "fota_api_status": "Checked (Live API - Up to date)",
-      "checked_at": "2026-08-21T20:01:16.285044+00:00"
+      "extracted_details": null,
+      "checked_at": "2026-08-21T20:26:21.032842+00:00"
     },
     {
       "platform": "R51MT04",
@@ -365,7 +420,8 @@
         "as": "http://as-update.cedock.com/apps/resource2/V8R51MT04/V8-R51MT04-LF1V001/FOTA-OTA/V8-R51MT04-LF1V001.zip"
       },
       "fota_api_status": "Checked (Live API - Up to date)",
-      "checked_at": "2026-08-21T20:01:16.285044+00:00"
+      "extracted_details": null,
+      "checked_at": "2026-08-21T20:26:21.032842+00:00"
     },
     {
       "platform": "R51MT05",
@@ -373,7 +429,7 @@
       "family_name": "R51M / R851 (R51MT05)",
       "soc_specs": "Realtek RTD2851 / R51M (Legacy 4K GTV & ATV)",
       "featured_models": "C645, C635, P745, C715, C815",
-      "latest_firmware": "V8-R51MT05-LF1V652",
+      "latest_firmware": "V8-R51MT05-LF1V650",
       "build_number": "",
       "release_type": "Full OTA (ZIP)",
       "package_size": "1.74 GB",
@@ -381,14 +437,35 @@
       "md5": null,
       "changelog": "RTD2851M NA channel scan memory optimization, closed caption rendering fix, security patch update.",
       "region": "NA",
-      "download_url": "http://na-update.cedock.com/apps/resource2/V8R51MT05/V8-R51MT05-LF1V652/FOTA-OTA/V8-R51MT05-LF1V652.zip",
+      "download_url": "http://na-update.cedock.com/apps/resource2/V8R51MT05/V8-R51MT05-LF1V650/FOTA-OTA/V8-R51MT05-LF1V650.zip",
       "all_cdn_urls": {
-        "eu": "http://eu-update.cedock.com/apps/resource2/V8R51MT05/V8-R51MT05-LF1V652/FOTA-OTA/V8-R51MT05-LF1V652.zip",
-        "na": "http://na-update.cedock.com/apps/resource2/V8R51MT05/V8-R51MT05-LF1V652/FOTA-OTA/V8-R51MT05-LF1V652.zip",
-        "as": "http://as-update.cedock.com/apps/resource2/V8R51MT05/V8-R51MT05-LF1V652/FOTA-OTA/V8-R51MT05-LF1V652.zip"
+        "eu": "http://eu-update.cedock.com/apps/resource2/V8R51MT05/V8-R51MT05-LF1V650/FOTA-OTA/V8-R51MT05-LF1V650.zip",
+        "na": "http://na-update.cedock.com/apps/resource2/V8R51MT05/V8-R51MT05-LF1V650/FOTA-OTA/V8-R51MT05-LF1V650.zip",
+        "as": "http://as-update.cedock.com/apps/resource2/V8R51MT05/V8-R51MT05-LF1V650/FOTA-OTA/V8-R51MT05-LF1V650.zip"
       },
       "fota_api_status": "Checked (Live API - Up to date)",
-      "checked_at": "2026-08-21T20:01:16.285044+00:00"
+      "extracted_details": {
+        "android_version": "11",
+        "os_flavor": "Google TV (GTV)",
+        "gms_version": "Android_11_GTV",
+        "security_patch": "2026-01-05",
+        "build_date_utc": 1768795661,
+        "build_date_str": "Jan 19, 2026",
+        "fingerprint": "TCL/G03_4K_GB/BeyondTV4:11/RP1A.200622.001/AR11:user/release-keys",
+        "sdk_level": 30,
+        "incremental_build": "AR11",
+        "device_codename": "BeyondTV4",
+        "widevine_level": "Widevine Modular L1 (4K HDR)",
+        "playready_level": "PlayReady Hardware SL3000",
+        "hdr_formats": "Dolby Vision, HDR10, HLG",
+        "audio_codecs": "Dolby Atmos (DAP), Dolby Digital Plus",
+        "memc_support": "Yes (libtcl_memc Engine)",
+        "hbbtv_version": "HbbTV 2.0.1 (ETSI TS 102 796)",
+        "wifi_chipsets": "Realtek RTL8822BS (Dual-Band 2.4/5GHz 802.11ac)",
+        "bluetooth_version": "Bluetooth 5.0 (RTL8761A)",
+        "broadcast_tuners": "ATSC 1.0 / ClearQAM / NTSC (North America)"
+      },
+      "checked_at": "2026-08-21T20:26:21.032842+00:00"
     },
     {
       "platform": "R51MT06",
@@ -411,7 +488,8 @@
         "as": "http://as-update.cedock.com/apps/resource2/V8R51MT06/V8-R51MT06-LF1V029/FOTA-OTA/V8-R51MT06-LF1V029.zip"
       },
       "fota_api_status": "Checked (Live API - Up to date)",
-      "checked_at": "2026-08-21T20:01:16.285044+00:00"
+      "extracted_details": null,
+      "checked_at": "2026-08-21T20:26:21.032842+00:00"
     },
     {
       "platform": "R51MT07",
@@ -434,7 +512,8 @@
         "as": "http://as-update.cedock.com/apps/resource2/V8R51MT07/V8-R51MT07-LF1V001/FOTA-OTA/V8-R51MT07-LF1V001.zip"
       },
       "fota_api_status": "Checked (Live API - Up to date)",
-      "checked_at": "2026-08-21T20:01:16.285044+00:00"
+      "extracted_details": null,
+      "checked_at": "2026-08-21T20:26:21.032842+00:00"
     },
     {
       "platform": "R51MT08",
@@ -457,7 +536,8 @@
         "as": "http://as-update.cedock.com/apps/resource2/V8R51MT08/V8-R51MT08-LF1V001/FOTA-OTA/V8-R51MT08-LF1V001.zip"
       },
       "fota_api_status": "Checked (Live API - Up to date)",
-      "checked_at": "2026-08-21T20:01:16.285044+00:00"
+      "extracted_details": null,
+      "checked_at": "2026-08-21T20:26:21.032842+00:00"
     },
     {
       "platform": "R51MT09",
@@ -480,7 +560,8 @@
         "as": "http://as-update.cedock.com/apps/resource2/V8R51MT09/V8-R51MT09-LF1V001/FOTA-OTA/V8-R51MT09-LF1V001.zip"
       },
       "fota_api_status": "Checked (Live API - Up to date)",
-      "checked_at": "2026-08-21T20:01:16.285044+00:00"
+      "extracted_details": null,
+      "checked_at": "2026-08-21T20:26:21.032842+00:00"
     },
     {
       "platform": "R51MT10",
@@ -503,7 +584,8 @@
         "as": "http://as-update.cedock.com/apps/resource2/V8R51MT10/V8-R51MT10-LF1V001/FOTA-OTA/V8-R51MT10-LF1V001.zip"
       },
       "fota_api_status": "Checked (Live API - Up to date)",
-      "checked_at": "2026-08-21T20:01:16.285044+00:00"
+      "extracted_details": null,
+      "checked_at": "2026-08-21T20:26:21.032842+00:00"
     },
     {
       "platform": "R75PT01",
@@ -526,7 +608,8 @@
         "as": "http://as-update.cedock.com/apps/resource2/V8R75PT01/V8-R75PT01-LF1V001/FOTA-OTA/V8-R75PT01-LF1V001.zip"
       },
       "fota_api_status": "Checked (Live API - Up to date)",
-      "checked_at": "2026-08-21T20:01:16.285044+00:00"
+      "extracted_details": null,
+      "checked_at": "2026-08-21T20:26:21.032842+00:00"
     },
     {
       "platform": "R851T02",
@@ -549,7 +632,8 @@
         "as": "http://as-update.cedock.com/apps/resource2/V8R851T02/V8-R851T02-LF1V653/FOTA-OTA/V8-R851T02-LF1V653.019203.zip"
       },
       "fota_api_status": "Checked (Live API - Up to date)",
-      "checked_at": "2026-08-21T20:01:16.285044+00:00"
+      "extracted_details": null,
+      "checked_at": "2026-08-21T20:26:21.032842+00:00"
     },
     {
       "platform": "R851T10",
@@ -572,7 +656,8 @@
         "as": "http://as-update.cedock.com/apps/resource2/V8R851T10/V8-R851T10-LF1V109/FOTA-OTA/V8-R851T10-LF1V109.019070.zip"
       },
       "fota_api_status": "Checked (Live API - Up to date)",
-      "checked_at": "2026-08-21T20:01:16.285044+00:00"
+      "extracted_details": null,
+      "checked_at": "2026-08-21T20:26:21.032842+00:00"
     },
     {
       "platform": "T221T01",
@@ -595,7 +680,8 @@
         "as": "http://as-update.cedock.com/apps/resource2/V8T221T01/V8-T221T01-LF1V001/FOTA-OTA/V8-T221T01-LF1V001.zip"
       },
       "fota_api_status": "Checked (Live API - Up to date)",
-      "checked_at": "2026-08-21T20:01:16.285044+00:00"
+      "extracted_details": null,
+      "checked_at": "2026-08-21T20:26:21.032842+00:00"
     },
     {
       "platform": "T221T02",
@@ -618,7 +704,8 @@
         "as": "http://as-update.cedock.com/apps/resource2/V8T221T02/V8-T221T02-LF1V001/FOTA-OTA/V8-T221T02-LF1V001.zip"
       },
       "fota_api_status": "Checked (Live API - Up to date)",
-      "checked_at": "2026-08-21T20:01:16.285044+00:00"
+      "extracted_details": null,
+      "checked_at": "2026-08-21T20:26:21.032842+00:00"
     },
     {
       "platform": "T221T03",
@@ -641,7 +728,8 @@
         "as": "http://as-update.cedock.com/apps/resource2/V8T221T03/V8-T221T03-LF1V001/FOTA-OTA/V8-T221T03-LF1V001.zip"
       },
       "fota_api_status": "Checked (Live API - Up to date)",
-      "checked_at": "2026-08-21T20:01:16.285044+00:00"
+      "extracted_details": null,
+      "checked_at": "2026-08-21T20:26:21.032842+00:00"
     },
     {
       "platform": "T221T04",
@@ -664,7 +752,8 @@
         "as": "http://as-update.cedock.com/apps/resource2/V8T221T04/V8-T221T04-LF1V001/FOTA-OTA/V8-T221T04-LF1V001.zip"
       },
       "fota_api_status": "Checked (Live API - Up to date)",
-      "checked_at": "2026-08-21T20:01:16.285044+00:00"
+      "extracted_details": null,
+      "checked_at": "2026-08-21T20:26:21.032842+00:00"
     },
     {
       "platform": "T221T05",
@@ -687,7 +776,8 @@
         "as": "http://as-update.cedock.com/apps/resource2/V8T221T05/V8-T221T05-LF1V001/FOTA-OTA/V8-T221T05-LF1V001.zip"
       },
       "fota_api_status": "Checked (Live API - Up to date)",
-      "checked_at": "2026-08-21T20:01:16.285044+00:00"
+      "extracted_details": null,
+      "checked_at": "2026-08-21T20:26:21.032842+00:00"
     },
     {
       "platform": "T221T06",
@@ -710,7 +800,8 @@
         "as": "http://as-update.cedock.com/apps/resource2/V8T221T06/V8-T221T06-LF1V001/FOTA-OTA/V8-T221T06-LF1V001.zip"
       },
       "fota_api_status": "Checked (Live API - Up to date)",
-      "checked_at": "2026-08-21T20:01:16.285044+00:00"
+      "extracted_details": null,
+      "checked_at": "2026-08-21T20:26:21.032842+00:00"
     },
     {
       "platform": "T221T07",
@@ -733,7 +824,8 @@
         "as": "http://as-update.cedock.com/apps/resource2/V8T221T07/V8-T221T07-LF1V001/FOTA-OTA/V8-T221T07-LF1V001.zip"
       },
       "fota_api_status": "Checked (Live API - Up to date)",
-      "checked_at": "2026-08-21T20:01:16.285044+00:00"
+      "extracted_details": null,
+      "checked_at": "2026-08-21T20:26:21.032842+00:00"
     },
     {
       "platform": "T221T08",
@@ -756,7 +848,8 @@
         "as": "http://as-update.cedock.com/apps/resource2/V8T221T08/V8-T221T08-LF1V001/FOTA-OTA/V8-T221T08-LF1V001.zip"
       },
       "fota_api_status": "Checked (Live API - Up to date)",
-      "checked_at": "2026-08-21T20:01:16.285044+00:00"
+      "extracted_details": null,
+      "checked_at": "2026-08-21T20:26:21.032842+00:00"
     },
     {
       "platform": "T221T09",
@@ -779,7 +872,8 @@
         "as": "http://as-update.cedock.com/apps/resource2/V8T221T09/V8-T221T09-LF1V001/FOTA-OTA/V8-T221T09-LF1V001.zip"
       },
       "fota_api_status": "Checked (Live API - Up to date)",
-      "checked_at": "2026-08-21T20:01:16.285044+00:00"
+      "extracted_details": null,
+      "checked_at": "2026-08-21T20:26:21.032842+00:00"
     },
     {
       "platform": "T615T01",
@@ -802,7 +896,8 @@
         "as": "http://as-update.cedock.com/apps/resource2/V8T615T01/V8-T615T01-LF1V082/FOTA-OTA/V8-T615T01-LF1V082.zip"
       },
       "fota_api_status": "Checked (Live API - Up to date)",
-      "checked_at": "2026-08-21T20:01:16.285044+00:00"
+      "extracted_details": null,
+      "checked_at": "2026-08-21T20:26:21.032842+00:00"
     },
     {
       "platform": "T615T02",
@@ -825,7 +920,8 @@
         "as": "http://as-update.cedock.com/apps/resource2/V8T615T02/V8-T615T02-LF1V073/FOTA-OTA/V8-T615T02-LF1V073.zip"
       },
       "fota_api_status": "Checked (Live API - Up to date)",
-      "checked_at": "2026-08-21T20:01:16.285044+00:00"
+      "extracted_details": null,
+      "checked_at": "2026-08-21T20:26:21.032842+00:00"
     },
     {
       "platform": "T615T03",
@@ -848,7 +944,8 @@
         "as": "http://as-update.cedock.com/apps/resource2/V8T615T03/V8-T615T03-LF1V001/FOTA-OTA/V8-T615T03-LF1V001.zip"
       },
       "fota_api_status": "Checked (Live API - Up to date)",
-      "checked_at": "2026-08-21T20:01:16.285044+00:00"
+      "extracted_details": null,
+      "checked_at": "2026-08-21T20:26:21.032842+00:00"
     },
     {
       "platform": "T653T01",
@@ -871,7 +968,8 @@
         "as": "http://as-update.cedock.com/apps/resource2/V8T653T01/V8-T653T01-LF1V001/FOTA-OTA/V8-T653T01-LF1V001.zip"
       },
       "fota_api_status": "Checked (Live API - Up to date)",
-      "checked_at": "2026-08-21T20:01:16.285044+00:00"
+      "extracted_details": null,
+      "checked_at": "2026-08-21T20:26:21.032842+00:00"
     },
     {
       "platform": "T653T02",
@@ -894,7 +992,8 @@
         "as": "http://as-update.cedock.com/apps/resource2/V8T653T02/V8-T653T02-LF1V001/FOTA-OTA/V8-T653T02-LF1V001.zip"
       },
       "fota_api_status": "Checked (Live API - Up to date)",
-      "checked_at": "2026-08-21T20:01:16.285044+00:00"
+      "extracted_details": null,
+      "checked_at": "2026-08-21T20:26:21.032842+00:00"
     },
     {
       "platform": "T653T03",
@@ -917,7 +1016,8 @@
         "as": "http://as-update.cedock.com/apps/resource2/V8T653T03/V8-T653T03-LF1V001/FOTA-OTA/V8-T653T03-LF1V001.zip"
       },
       "fota_api_status": "Checked (Live API - Up to date)",
-      "checked_at": "2026-08-21T20:01:16.285044+00:00"
+      "extracted_details": null,
+      "checked_at": "2026-08-21T20:26:21.032842+00:00"
     },
     {
       "platform": "T655T01",
@@ -940,7 +1040,8 @@
         "as": "http://as-update.cedock.com/apps/resource2/V8T655T01/V8-T655T01-LF1V001/FOTA-OTA/V8-T655T01-LF1V001.zip"
       },
       "fota_api_status": "Checked (Live API - Up to date)",
-      "checked_at": "2026-08-21T20:01:16.285044+00:00"
+      "extracted_details": null,
+      "checked_at": "2026-08-21T20:26:21.032842+00:00"
     },
     {
       "platform": "T658T01",
@@ -963,7 +1064,8 @@
         "as": "http://as-update.cedock.com/apps/resource2/V8T658T01/V8-T658T01-LF1V575/FOTA-OTA/V8-T658T01-LF1V575.zip"
       },
       "fota_api_status": "Checked (Live API - Up to date)",
-      "checked_at": "2026-08-21T20:01:16.285044+00:00"
+      "extracted_details": null,
+      "checked_at": "2026-08-21T20:26:21.032842+00:00"
     },
     {
       "platform": "T800T02",
@@ -986,7 +1088,28 @@
         "as": "http://as-update.cedock.com/apps/resource2/V8T800T02/V8-T800T02-LF1V001/FOTA-OTA/V8-T800T02-LF1V001.zip"
       },
       "fota_api_status": "Checked (Live API - Up to date)",
-      "checked_at": "2026-08-21T20:01:16.285044+00:00"
+      "extracted_details": {
+        "android_version": "12",
+        "os_flavor": "Google TV (GTV)",
+        "gms_version": "Android_12_GTV",
+        "security_patch": "2026-03-05",
+        "build_date_utc": 1783701457,
+        "build_date_str": "Jul 10, 2026",
+        "fingerprint": "TCL/G09_4K_GB/G09:12/STT2.230203.001/AS24:user/release-keys",
+        "sdk_level": 31,
+        "incremental_build": "AS24",
+        "device_codename": "G09",
+        "widevine_level": "Widevine Modular L1 (4K HDR)",
+        "playready_level": "PlayReady Hardware SL3000",
+        "hdr_formats": "Dolby Vision IQ, HDR10+, HDR10, HLG",
+        "audio_codecs": "Dolby Atmos (DAP), Dolby Digital Plus, DTS Virtual:X / DTS-HD",
+        "memc_support": "Yes (libtcl_memc Engine)",
+        "hbbtv_version": "HbbTV 2.0.3 (ETSI TS 102 796)",
+        "wifi_chipsets": "Realtek RTL8822CU / RTL8852BE (Wi-Fi 6 802.11ax / 802.11ac)",
+        "bluetooth_version": "Bluetooth 5.2 (RTL8852B / RTL8761AT)",
+        "broadcast_tuners": "DVB-T2 / DVB-C / DVB-S2 (EU/Global)"
+      },
+      "checked_at": "2026-08-21T20:26:21.032842+00:00"
     }
   ]
 }

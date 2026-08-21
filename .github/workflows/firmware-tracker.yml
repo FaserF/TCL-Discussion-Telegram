@@ -17,12 +17,15 @@ jobs:
     steps:
       - name: Install Dependencies
         run: |
-          apk add --no-cache python3 git
+          apk add --no-cache python3 git ca-certificates
 
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Run TCL TV Firmware Tracker
+      - name: Run TCL TV Firmware Tracker & Telegram Broadcast
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
         run: |
           python3 scripts/fetch_firmwares.py
 
