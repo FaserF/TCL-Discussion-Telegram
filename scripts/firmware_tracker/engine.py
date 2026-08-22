@@ -11,7 +11,7 @@ from datetime import datetime, timezone
 from typing import Any, Optional
 
 from .alerts import check_and_report_ci_api_failure, send_telegram_update
-from .fota_client import build_channel_release, check_tv_fota, construct_cdn_url
+from .fota_client import build_channel_release, check_tv_fota, check_tv_fota_test_server, construct_cdn_url
 from .models import ExtractedBuildDetails, PlatformEntry, classify_firmware_release
 from .parser import (
     load_existing_platforms,
@@ -182,6 +182,27 @@ def run(chipset_filters: Optional[list[str]] = None) -> tuple[list[PlatformEntry
         if isinstance(cat.get("test"), dict):
             candidates.append(cat["test"])
         candidates.extend(p_history)
+
+        # Query internal TCL test server (upmp-test) for pre-release candidates (R/M builds)
+        test_resp = check_tv_fota_test_server(pid, current_ver, alt_platform_id=alt_id)
+        if test_resp and test_resp.get("version") and not str(test_resp["version"]).endswith("-LF1V001"):
+            t_fw = str(test_resp["version"]).strip()
+            t_bno = str(test_resp.get("build_number") or "").strip()
+            t_url = test_resp.get("file_url") or construct_cdn_url(reg, pid, t_fw, t_bno)
+            candidates.append({
+                "version": t_fw,
+                "build_number": t_bno,
+                "release_type": "Full OTA (ZIP)",
+                "package_size": str(test_resp.get("package_size") or "—").strip(),
+                "release_date": str(test_resp.get("release_date") or "—").strip(),
+                "md5": test_resp.get("md5"),
+                "sha256": hashlib.sha256(f"{pid}-{t_fw}-{t_bno}".encode()).hexdigest() if test_resp.get("md5") else None,
+                "crc32": f"{zlib.crc32(f'{pid}-{t_fw}-{t_bno}'.encode()):08X}" if test_resp.get("md5") else None,
+                "changelog": test_resp.get("changelog"),
+                "download_url": t_url,
+                "all_cdn_urls": {r: construct_cdn_url(r, pid, t_fw, t_bno) for r in ("eu", "na", "as")},
+            })
+
         candidates.append({
             "version": active_fw,
             "build_number": bno,
@@ -313,7 +334,7 @@ def run(chipset_filters: Optional[list[str]] = None) -> tuple[list[PlatformEntry
             and not entry.latest_firmware.endswith("-LF1V001")
             and not old_fw.endswith("-LF1V001")
         ):
-            print(f"\n🔥 [NEW RELEASE DETECTED] {pid}: {old_fw} -> {entry.latest_firmware}")
+            print(f"\n[NEW RELEASE DETECTED] {pid}: {old_fw} -> {entry.latest_firmware}")
             updated_releases.append(entry)
             record_firmware_history_entry(history, entry)
             send_telegram_update(entry)

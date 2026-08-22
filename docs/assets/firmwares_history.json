@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-08-22T10:29:03.851006+00:00",
+  "generated_at": "2026-08-22T11:15:21.882352+00:00",
   "source": "official TCL Smart TV FOTA historical archive (cedock.com / huan.tv)",
-  "total_archived_platforms": 5,
-  "total_archived_releases": 5,
+  "total_archived_platforms": 1,
+  "total_archived_releases": 1,
   "api_fields_documentation": {
     "version": "Historical firmware release version identifier.",
     "build_number": "Internal 6-digit revision build compilation number.",
@@ -20,50 +20,6 @@
     "extracted_details": "Deep build properties extracted from the package payload."
   },
   "history": {
-    "0003T05": [
-      {
-        "version": "V8-0003T05-LF1V242",
-        "build_number": "002400",
-        "release_type": "Full OTA (ZIP)",
-        "release_category": "Production (Stable)",
-        "is_test_release": false,
-        "package_size": "1.92 GB",
-        "release_date": "2026-06-15",
-        "md5": "e61c1f5174aeb91dd31ebcad01a04a30",
-        "sha256": "db01e98b5619836442cc40ba0b0f4a57a715e343f4642976477b4fde4ae4be1b",
-        "crc32": "3712D508",
-        "changelog": "Previous production release.",
-        "download_url": "http://eu-update.cedock.com/apps/resource2/V80003T05/V8-0003T05-LF1V242/FOTA-OTA/V8-0003T05-LF1V242.zip",
-        "all_cdn_urls": {
-          "eu": "http://eu-update.cedock.com/apps/resource2/V80003T05/V8-0003T05-LF1V242/FOTA-OTA/V8-0003T05-LF1V242.zip",
-          "na": "http://na-update.cedock.com/apps/resource2/V80003T05/V8-0003T05-LF1V242/FOTA-OTA/V8-0003T05-LF1V242.zip",
-          "as": "http://as-update.cedock.com/apps/resource2/V80003T05/V8-0003T05-LF1V242/FOTA-OTA/V8-0003T05-LF1V242.zip"
-        },
-        "extracted_details": null
-      }
-    ],
-    "0003T06": [
-      {
-        "version": "V8-0003T06-LF1V085",
-        "build_number": "002400",
-        "release_type": "Full OTA (ZIP)",
-        "release_category": "Production (Stable)",
-        "is_test_release": false,
-        "package_size": "1.92 GB",
-        "release_date": "2026-06-15",
-        "md5": "4c06228d046707bcb00a1e43b74dd182",
-        "sha256": "d3a6a1e06f427eba087bd5d58e0f679aacaa4c1f4b29f98ac32d8fa6cc4b5e17",
-        "crc32": "9063AAC6",
-        "changelog": "Previous production release.",
-        "download_url": "http://eu-update.cedock.com/apps/resource2/V80003T06/V8-0003T06-LF1V085/FOTA-OTA/V8-0003T06-LF1V085.zip",
-        "all_cdn_urls": {
-          "eu": "http://eu-update.cedock.com/apps/resource2/V80003T06/V8-0003T06-LF1V085/FOTA-OTA/V8-0003T06-LF1V085.zip",
-          "na": "http://na-update.cedock.com/apps/resource2/V80003T06/V8-0003T06-LF1V085/FOTA-OTA/V8-0003T06-LF1V085.zip",
-          "as": "http://as-update.cedock.com/apps/resource2/V80003T06/V8-0003T06-LF1V085/FOTA-OTA/V8-0003T06-LF1V085.zip"
-        },
-        "extracted_details": null
-      }
-    ],
     "0008T01": [
       {
         "version": "V8-0008T01-LF1V630",
@@ -76,56 +32,12 @@
         "md5": "e5e1193de1755386a48c167ad58dd5d6",
         "sha256": "e549ec838e22af30c92a57a3e25829ec2ee37125ec81cedf32a727876454f964",
         "crc32": "859BEE7F",
-        "changelog": "Previous production release.",
+        "changelog": null,
         "download_url": "http://eu-update.cedock.com/apps/resource2/V80008T01/V8-0008T01-LF1V630/FOTA-OTA/V8-0008T01-LF1V630.zip",
         "all_cdn_urls": {
           "eu": "http://eu-update.cedock.com/apps/resource2/V80008T01/V8-0008T01-LF1V630/FOTA-OTA/V8-0008T01-LF1V630.zip",
           "na": "http://na-update.cedock.com/apps/resource2/V80008T01/V8-0008T01-LF1V630/FOTA-OTA/V8-0008T01-LF1V630.zip",
           "as": "http://as-update.cedock.com/apps/resource2/V80008T01/V8-0008T01-LF1V630/FOTA-OTA/V8-0008T01-LF1V630.zip"
-        },
-        "extracted_details": null
-      }
-    ],
-    "R851T02": [
-      {
-        "version": "V8-R851T02-LF1V653",
-        "build_number": "002400",
-        "release_type": "Full OTA (ZIP)",
-        "release_category": "Production (Stable)",
-        "is_test_release": false,
-        "package_size": "1.92 GB",
-        "release_date": "2026-06-15",
-        "md5": "eb4351335662e4b5bf083f9d42297f31",
-        "sha256": "9159d7b47f5b9e4aa67ae3da023c99ce12df8fa5d877075ff3771ee6f73958d9",
-        "crc32": "842C574A",
-        "changelog": "Previous production release.",
-        "download_url": "http://eu-update.cedock.com/apps/resource2/V8R851T02/V8-R851T02-LF1V653/FOTA-OTA/V8-R851T02-LF1V653.zip",
-        "all_cdn_urls": {
-          "eu": "http://eu-update.cedock.com/apps/resource2/V8R851T02/V8-R851T02-LF1V653/FOTA-OTA/V8-R851T02-LF1V653.zip",
-          "na": "http://na-update.cedock.com/apps/resource2/V8R851T02/V8-R851T02-LF1V653/FOTA-OTA/V8-R851T02-LF1V653.zip",
-          "as": "http://as-update.cedock.com/apps/resource2/V8R851T02/V8-R851T02-LF1V653/FOTA-OTA/V8-R851T02-LF1V653.zip"
-        },
-        "extracted_details": null
-      }
-    ],
-    "R851T10": [
-      {
-        "version": "V8-R851T10-LF1V109",
-        "build_number": "002400",
-        "release_type": "Full OTA (ZIP)",
-        "release_category": "Production (Stable)",
-        "is_test_release": false,
-        "package_size": "1.92 GB",
-        "release_date": "2026-06-15",
-        "md5": "22ba85216b1be2a3eb3724df535cc8ad",
-        "sha256": "9ba6ff181ca31af6d5411499408edaa1dd36a68800908532ce289f42cfb2dfbd",
-        "crc32": "88E1EA3E",
-        "changelog": "Previous production release.",
-        "download_url": "http://eu-update.cedock.com/apps/resource2/V8R851T10/V8-R851T10-LF1V109/FOTA-OTA/V8-R851T10-LF1V109.zip",
-        "all_cdn_urls": {
-          "eu": "http://eu-update.cedock.com/apps/resource2/V8R851T10/V8-R851T10-LF1V109/FOTA-OTA/V8-R851T10-LF1V109.zip",
-          "na": "http://na-update.cedock.com/apps/resource2/V8R851T10/V8-R851T10-LF1V109/FOTA-OTA/V8-R851T10-LF1V109.zip",
-          "as": "http://as-update.cedock.com/apps/resource2/V8R851T10/V8-R851T10-LF1V109/FOTA-OTA/V8-R851T10-LF1V109.zip"
         },
         "extracted_details": null
       }

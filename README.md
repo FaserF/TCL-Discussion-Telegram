@@ -10,10 +10,9 @@ A modern, community-driven documentation site and automated firmware tracking pl
 
 This repository features a **100% dynamic, automated TCL TV Firmware Tracking Engine** powered by official TCL FOTA upgrade servers (`huan.tv`) and official Content Delivery Networks (`cedock.com`).
 
-- 📊 **[Live Firmware Catalog](docs/firmwares.md)**: Real-time table covering 42+ TCL TV SoC platforms with latest verified OTA releases, package sizes, compilation dates, changelogs, and direct CDN download links.
-- 📡 **[FOTA API & Protocol Documentation](docs/update_mechanisms.md)**: Reverse-engineered specification of official TCL TV update endpoints, XML payloads, and `HUAN-Sign` MD5 cryptographic signatures.
-- 🤖 **[Firmware Tracking Engine (`scripts/fetch_firmwares.py`)](scripts/fetch_firmwares.py)**: Python automation script that queries official TCL FOTA endpoints, performs sequential package extraction, and triggers Telegram community broadcasts.
-- 🗄️ **[Structured JSON Dataset (`docs/assets/firmwares.json`)](docs/assets/firmwares.json)**: Machine-readable API dataset providing verified firmware details, hardware specifications, and deep Android build metadata.
+- 📊 **[Live Firmware Catalog](docs/firmwares.md)**: Real-time table covering 50+ TCL TV SoC platforms with latest verified OTA releases, package sizes, compilation dates, changelogs, and direct CDN download links.
+- 🤖 **[Firmware Tracking Engine (`scripts/fetch_firmwares.py`)](scripts/fetch_firmwares.py)**: Modular Python package that tracks official TCL firmware releases, performs remote package extraction, and publishes updates.
+- 🗄️ **[Structured JSON Datasets (`docs/assets/firmwares.json`)](docs/assets/firmwares.json)**: Machine-readable API dataset providing verified firmware details, hardware specifications, and deep Android build metadata.
 
 ---
 

@@ -6,7 +6,7 @@ Common technical questions, troubleshooting steps, and verified solutions for TC
     The **Project ID** is an internal identifier (typically 1 to 6 digits) that maps the TV motherboard firmware to your specific panel type, tuner region, and backlight configuration.
 
     1.  **TV Settings:** Navigate to **Settings** > **System** > **About** > **Product Information** and look for the **Project ID** field.
-    2.  **Service Menu:** Enter code `1950` or `6425` on the **Contrast** menu (see [Guides](guides.md#advanced-service-menus--secret-codes)).
+    2.  **Service Menu:** Enter code `1950` or `6425` on the **Contrast** menu (see [Guides](guides.md#advanced-service-menus-secret-codes)).
     3.  **Hardware Sticker:** Check the small white barcode sticker located on the physical motherboard inside the TV chassis.
 
 ??? question "How do I re-enable the 'Shutdown / Power Off' option on the remote (Google TV / Android 14)?"
@@ -90,4 +90,4 @@ Common technical questions, troubleshooting steps, and verified solutions for TC
     *   **Requirement:** You **must** use a full **IMG / PKG** file. (OTA `.zip` files cannot be used for downgrading).
     *   **Data Loss:** An IMG/PKG flash performs a complete low-level storage wipe.
     *   **Project ID Safety:** Never downgrade to a firmware version older than the initial release of your TV model, or the TV will boot to a black screen due to missing panel whitelists.
-    *   **Instructions:** Follow our detailed [IMG / PKG Flashing Guide](guides.md#how-to-flash-img-pkg-recovery--downgrade).
+    *   **Instructions:** Follow our detailed [IMG / PKG Flashing Guide](guides.md#how-to-flash-img-pkg-recovery-downgrade).

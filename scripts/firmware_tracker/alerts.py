@@ -26,7 +26,7 @@ def format_telegram_message(entry: PlatformEntry) -> str:
     safe_fw = html.escape(entry.latest_firmware)
     safe_platform = html.escape(entry.platform)
     safe_models = html.escape(entry.featured_models)
-    safe_changelog = html.escape(entry.changelog) if entry.changelog else "General performance enhancements and system optimizations."
+    safe_changelog = html.escape(entry.changelog) if entry.changelog else ""
     safe_type = html.escape(entry.release_type)
     safe_size = format_size(entry.package_size)
     safe_date = html.escape(entry.release_date)

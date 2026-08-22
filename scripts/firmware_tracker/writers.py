@@ -294,7 +294,7 @@ def write_markdown(entries: list[PlatformEntry], generated_at: str, history: Opt
             f"- **Firmware Packages & Downloads**:",
             f"  - 📦 **OTA Package (ZIP)** (for TV menu update): [{e.latest_firmware}.zip]({e.download_url})" + (f" (`{e.package_size}`)" if e.package_size != "—" else ""),
             rec_pkg_line,
-            f"- **Official Changelog / Server Notes**: {e.changelog or 'Official production release.'}",
+            f"- **Official Changelog / Server Notes**: {e.changelog or '—'}",
         ]
 
         if e.is_test_release:
@@ -309,22 +309,24 @@ def write_markdown(entries: list[PlatformEntry], generated_at: str, history: Opt
         if e.beta:
             b_crc_str = f" · **CRC-32**: `0x{e.beta.crc32}`" if e.beta.crc32 else ""
             b_sha_str = f" · **SHA-256**: `{e.beta.sha256}`" if e.beta.sha256 else ""
+            b_cl_str = f" · *{e.beta.changelog}*" if e.beta.changelog else ""
             lines += [
                 f"> 🧪 **Active Beta / Release Candidate (RC)**: `{e.beta.version}`  ",
                 f"> **Type & Size**: `{e.beta.release_type}` · `{e.beta.package_size}` · **Release Date**: `{e.beta.release_date}`  ",
                 f"> **MD5**: `{e.beta.md5 or '—'}`{b_sha_str}{b_crc_str}  ",
-                f"> **Download**: [Direct Beta Download]({e.beta.download_url}) · *{e.beta.changelog or 'Beta testing build'}*",
+                f"> **Download**: [Direct Beta Download]({e.beta.download_url}){b_cl_str}",
                 "",
             ]
 
         if e.test:
             t_crc_str = f" · **CRC-32**: `0x{e.test.crc32}`" if e.test.crc32 else ""
             t_sha_str = f" · **SHA-256**: `{e.test.sha256}`" if e.test.sha256 else ""
+            t_cl_str = f" · *{e.test.changelog}*" if e.test.changelog else ""
             lines += [
                 f"> 🔬 **Active Manufacturing / Pre-production Test**: `{e.test.version}`  ",
                 f"> **Type & Size**: `{e.test.release_type}` · `{e.test.package_size}` · **Release Date**: `{e.test.release_date}`  ",
                 f"> **MD5**: `{e.test.md5 or '—'}`{t_sha_str}{t_crc_str}  ",
-                f"> **Download**: [Direct Test Download]({e.test.download_url}) · *{e.test.changelog or 'Test build'}*",
+                f"> **Download**: [Direct Test Download]({e.test.download_url}){t_cl_str}",
                 "",
             ]
 

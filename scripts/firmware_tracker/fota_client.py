@@ -108,36 +108,51 @@ def _single_fota_query(region: str, model_id: str, ver: str, timeout: float = 1.
         return None
 
 
-def check_tv_fota(platform_id: str, current_ver: str, region: str = "eu", alt_platform_id: Optional[str] = None) -> Optional[dict[str, Any]]:
+def check_tv_fota(platform_id: str, current_ver: str, region: str = "eu", alt_platform_id: str = "") -> Optional[dict[str, Any]]:
     """
-    Queries the official TCL Smart TV FOTA upgrade server for a platform.
-    Automatically checks region and candidate model aliases against live FOTA API.
+    Checks the TCL TV FOTA upgrade servers across all regions for a specific platform.
     """
     reg_clean = region.lower()
     res = _single_fota_query(reg_clean, platform_id, current_ver)
     if res:
         return res
 
-    cand_models = []
-    if alt_platform_id and alt_platform_id != platform_id:
-        cand_models.append(alt_platform_id)
+    # For legacy MStar/Thomson platforms, try without the T-suffix (e.g. MS6586 for MS6586T02)
     m_base = re.sub(r"T\d+$", "", platform_id)
-    if m_base != platform_id and m_base not in cand_models:
-        cand_models.append(m_base)
-
-    for m in cand_models:
-        res = _single_fota_query(reg_clean, m, current_ver)
+    if m_base != platform_id and len(m_base) >= 4:
+        res = _single_fota_query(reg_clean, m_base, current_ver)
         if res:
             return res
 
     for other_reg in ("eu", "na", "as", "cn"):
         if other_reg == reg_clean:
             continue
-        for m in [platform_id] + cand_models:
-            res = _single_fota_query(other_reg, m, current_ver)
+        res = _single_fota_query(other_reg, platform_id, current_ver)
+        if res:
+            return res
+        if m_base != platform_id and len(m_base) >= 4:
+            res = _single_fota_query(other_reg, m_base, current_ver)
             if res:
                 return res
 
+    return None
+
+
+def check_tv_fota_test_server(platform_id: str, current_ver: str, alt_platform_id: str = "") -> Optional[dict[str, Any]]:
+    """
+    Explicitly queries the internal TCL test server (testfilter-upgrade.huan.tv with upmp-test)
+    to discover active Beta (R-series) or Pre-production (M-series) release candidates.
+    """
+    res = _single_fota_query("test", platform_id, current_ver)
+    if res:
+        res["region"] = "TEST"
+        return res
+    m_base = re.sub(r"T\d+$", "", platform_id)
+    if m_base != platform_id and len(m_base) >= 4:
+        res = _single_fota_query("test", m_base, current_ver)
+        if res:
+            res["region"] = "TEST"
+            return res
     return None
 
 

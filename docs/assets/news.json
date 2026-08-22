@@ -1,6 +1,33 @@
 {
-    "active": true,
-    "date": "2026-08-22",
-    "text": "New Firmware Updates released for 0008T01, R51MT10!",
-    "link": "firmwares/"
+  "generated_at": "2026-08-22T10:50:36.726888+00:00",
+  "news": [
+    {
+      "id": "fw-r851t02-v8-r851t02-lf1v653",
+      "type": "firmware_update",
+      "title": "New Firmware Released: R51M / R851 (Google TV) (R851T02) (V8-R851T02-LF1V653)",
+      "platform": "R851T02",
+      "version": "V8-R851T02-LF1V653",
+      "release_date": "2026-06-15",
+      "timestamp": "2026-08-22T10:50:36.726888+00:00",
+      "download_url": "http://eu-update.cedock.com/apps/resource2/V8R851T02/V8-R851T02-LF1V653/FOTA-OTA/V8-R851T02-LF1V653.zip",
+      "md5": "eb4351335662e4b5bf083f9d42297f31",
+      "sha256": "9159d7b47f5b9e4aa67ae3da023c99ce12df8fa5d877075ff3771ee6f73958d9",
+      "crc32": "842C574A",
+      "summary": "TCL released firmware V8-R851T02-LF1V653 for R51M / R851 (Google TV) (R851T02) (R851T02). Package format: Full OTA (ZIP) (1.92 GB)."
+    },
+    {
+      "id": "fw-r51mt05-v8-r851t02-lf1v653",
+      "type": "firmware_update",
+      "title": "New Firmware Released: R51M / R851 (Google TV) (R51MT05) (V8-R851T02-LF1V653)",
+      "platform": "R51MT05",
+      "version": "V8-R851T02-LF1V653",
+      "release_date": "2026-06-15",
+      "timestamp": "2026-08-22T10:50:36.726888+00:00",
+      "download_url": "http://eu-update.cedock.com/apps/resource2/V8R851T02/V8-R851T02-LF1V653/FOTA-OTA/V8-R851T02-LF1V653.zip",
+      "md5": "eb4351335662e4b5bf083f9d42297f31",
+      "sha256": "9159d7b47f5b9e4aa67ae3da023c99ce12df8fa5d877075ff3771ee6f73958d9",
+      "crc32": "842C574A",
+      "summary": "TCL released firmware V8-R851T02-LF1V653 for R51M / R851 (Google TV) (R51MT05) (R51MT05). Package format: Full OTA (ZIP) (1.92 GB)."
+    }
+  ]
 }

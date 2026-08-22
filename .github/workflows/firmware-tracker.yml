@@ -34,7 +34,7 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add docs/firmwares.md docs/assets/firmwares.json docs/assets/news.json
+          git add docs/firmwares.md docs/assets/firmwares.json docs/assets/firmwares_beta_test.json docs/assets/firmwares_history.json docs/assets/news.json
           if git diff --staged --quiet; then
             echo "No changes in firmware data."
           else

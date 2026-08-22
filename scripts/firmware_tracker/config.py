@@ -30,6 +30,7 @@ TV_FOTA_HOSTS = {
     "na": "na-filter-upgrade.huan.tv",
     "as": "as-filter-upgrade.huan.tv",
     "cn": "filter-upgrade.huan.tv",
+    "test": "testfilter-upgrade.huan.tv",
 }
 
 TV_FOTA_PATH = "/service/upmp/upgradeIncrInterface"
@@ -39,6 +40,7 @@ TV_APP_KEYS = {
     "na": "dacf21ce497259eae5f65312da7d868c",
     "as": "35b8fa949e0578f41f6e751991c800aa",
     "cn": "d49a5258bfcc5f6c3e430f67a0313e90",
+    "test": "3550bec90eee953f85361ff46d378e4e",
 }
 
 TV_APP_IDS = {
@@ -46,6 +48,7 @@ TV_APP_IDS = {
     "na": "upmp-na",
     "as": "upmp-as",
     "cn": "upmp-cn",
+    "test": "upmp-test",
 }
 
 CDN_HOSTS = {

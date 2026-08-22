@@ -1,3 +1,6 @@
+> **INTERNAL DEVELOPER REFERENCE (Not for public web publication)**
+> This reference documents the reverse-engineered FOTA XML protocol, HMAC signing specifications, and CDN infrastructure.
+
 # TCL TV Firmware Update Mechanisms
 
 Technical reference for the TCL Smart TV FOTA (Firmware Over-The-Air) update infrastructure, URL patterns, reverse-engineering findings, and server protocols.
@@ -115,8 +118,8 @@ All requests to `/service/upmp/upgradeIncrInterface` are authenticated using `HU
     <callid>0</callid>
     <client>
       <devmodel>TCL-EU-RTD51M-S1</devmodel>
-      <didtoken>1dbb8210ebd6821ba275ff296f7acaf9</didtoken>
-      <dnum>580900822</dnum>
+      <didtoken>00000000000000000000000000000000</didtoken>
+      <dnum>000000000</dnum>
       <projectid>0</projectid>
       <systemver>11</systemver>
     </client>

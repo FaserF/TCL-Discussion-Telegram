@@ -175,11 +175,38 @@ def extract_metadata_from_zip_bytes(zip_bytes: bytes) -> Optional[ExtractedBuild
     return None
 
 
-def fetch_remote_zip_metadata_range(url: str, timeout: int = 2) -> Optional[ExtractedBuildDetails]:
+_DEAD_HOSTS: set[str] = set()
+
+
+def _is_host_dead(url: str) -> bool:
+    if not url or not url.startswith("http"):
+        return True
+    try:
+        from urllib.parse import urlparse
+        host = urlparse(url).netloc
+        return host in _DEAD_HOSTS
+    except Exception:
+        return True
+
+
+def _mark_host_dead(url: str) -> None:
+    try:
+        from urllib.parse import urlparse
+        host = urlparse(url).netloc
+        if host:
+            _DEAD_HOSTS.add(host)
+    except Exception:
+        pass
+
+
+def fetch_remote_zip_metadata_range(url: str, timeout: float = 1.5) -> Optional[ExtractedBuildDetails]:
     """
     Downloads ONLY the ZIP Central Directory and metadata file using HTTP Range headers (~64KB to 1MB total)
     instead of transferring the full 2 GB archive.
     """
+    if not url or not url.startswith("http") or _is_host_dead(url):
+        return None
+
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)",
         "Accept": "*/*",
@@ -192,10 +219,15 @@ def fetch_remote_zip_metadata_range(url: str, timeout: int = 2) -> Optional[Extr
     try:
         with urllib.request.urlopen(req_tail, timeout=timeout) as resp:
             tail_data = resp.read()
-    except Exception:
-        pass
+    except Exception as exc:
+        # If host timed out or connection refused, mark host dead
+        err_msg = str(exc).lower()
+        if "timed out" in err_msg or "refused" in err_msg or "unreachable" in err_msg or "getaddrinfo failed" in err_msg:
+            _mark_host_dead(url)
 
     if not tail_data:
+        if _is_host_dead(url):
+            return None
         try:
             req_head = urllib.request.Request(url, headers={**headers, "Range": "bytes=0-1048576"})
             with urllib.request.urlopen(req_head, timeout=timeout) as resp:
@@ -248,7 +280,7 @@ def probe_remote_recovery_package(urls: list[str], timeout: float = 1.5) -> Opti
         "Connection": "close",
     }
     for u in urls:
-        if not u:
+        if not u or not u.startswith("http") or _is_host_dead(u):
             continue
         try:
             req = urllib.request.Request(u, headers=headers, method="HEAD")
@@ -263,7 +295,10 @@ def probe_remote_recovery_package(urls: list[str], timeout: float = 1.5) -> Opti
                         else:
                             size_str = f"{sz_bytes / (1024**2):.1f} MB"
                     return (u, size_str)
-        except Exception:
+        except Exception as exc:
+            err_msg = str(exc).lower()
+            if "timed out" in err_msg or "refused" in err_msg or "unreachable" in err_msg or "getaddrinfo failed" in err_msg:
+                _mark_host_dead(u)
             continue
     return None
 
@@ -272,20 +307,26 @@ def get_all_candidate_mirrors(platform: str, fw_name: str, build_number: str, de
     """
     Generates all regional CDN mirror endpoints and alternate paths for a given firmware release.
     """
+    if not fw_name or fw_name == "—":
+        return []
+
     pdir = "V8" + platform.replace("-", "")
     bno_suffix = f".{build_number}" if build_number else ""
 
-    mirrors = [
-        default_url,
+    mirrors = []
+    if default_url and default_url.startswith("http"):
+        mirrors.append(default_url)
+
+    mirrors.extend([
         f"http://eu-update.cedock.com/apps/resource2/{pdir}/{fw_name}/FOTA-OTA/{fw_name}{bno_suffix}.zip",
         f"http://na-update.cedock.com/apps/resource2/{pdir}/{fw_name}/FOTA-OTA/{fw_name}{bno_suffix}.zip",
         f"http://as-update.cedock.com/apps/resource2/{pdir}/{fw_name}/FOTA-OTA/{fw_name}{bno_suffix}.zip",
         f"http://as.update.cedock.com/apps/resource2/{pdir}/{fw_name}/FOTA-OTA/{fw_name}{bno_suffix}.zip",
         f"http://update.cedock.com/apps/resource2/{pdir}/{fw_name}/FOTA-OTA/{fw_name}{bno_suffix}.zip",
         f"http://celesw.tcl.com/CSEU%20TV/Software/{fw_name}.zip",
-    ]
+    ])
     seen = set()
-    return [m for m in mirrors if m and not (m in seen or seen.add(m))]
+    return [m for m in mirrors if m and not _is_host_dead(m) and not (m in seen or seen.add(m))]
 
 
 def process_firmware_extractions_sequentially(
@@ -304,8 +345,7 @@ def process_firmware_extractions_sequentially(
     - ONLY queries when a platform received a new firmware release OR when metadata is missing (null)
       or explicitly forced via CLI.
     - Uses HTTP Range requests to inspect only the ZIP Central Directory in milliseconds without full download.
-    - NEVER re-downloads platforms that already have verified extracted_details unless force_extract is set.
-    - Incrementally updates firmwares.json, firmwares_history.json, and docs/firmwares.md.
+    - Fast circuit breaker: if remote hosts are unreachable/404 or missing URLs, instantly skips remaining.
     """
     updated_platform_ids = {u.platform for u in updated_releases}
 
@@ -325,6 +365,7 @@ def process_firmware_extractions_sequentially(
 
     print(f"\n[Firmware Extraction] Processing {len(pending_entries)} platform(s) for metadata extraction...")
 
+    consecutive_mirror_failures = 0
     updated_any = False
     for idx, e in enumerate(pending_entries):
         if e.platform in updated_platform_ids or force_extract:
@@ -332,19 +373,29 @@ def process_firmware_extractions_sequentially(
 
         print(f"  [{idx+1}/{len(pending_entries)}] Checking firmware metadata for {e.platform} ({e.latest_firmware}) via Range requests...", end=" ", flush=True)
 
+        if consecutive_mirror_failures >= 3:
+            print("CDN Range check skipped (remote hosts unreachable or 404 - circuit breaker activated).")
+            continue
+
         extracted: Optional[ExtractedBuildDetails] = None
 
         candidate_mirrors = get_all_candidate_mirrors(e.platform, e.latest_firmware, e.build_number, e.download_url)
+        if not candidate_mirrors:
+            print("CDN Range check skipped (no candidate URLs / remote hosts unreachable).")
+            consecutive_mirror_failures += 1
+            continue
+
         for mirror_url in candidate_mirrors:
-            extracted = fetch_remote_zip_metadata_range(mirror_url, timeout=3)
+            extracted = fetch_remote_zip_metadata_range(mirror_url, timeout=1.5)
             if extracted:
                 print(f"Extracted via Range ({mirror_url[:40]}...): Android {extracted.android_version} ({extracted.os_flavor})")
+                consecutive_mirror_failures = 0
                 break
 
         # Probe for Recovery IMG / PKG package in parallel
-        if not e.recovery_pkg_url:
+        if not e.recovery_pkg_url and consecutive_mirror_failures < 3:
             rec_candidates = construct_recovery_cdn_urls(e.region, e.platform, e.latest_firmware, e.build_number)
-            rec_res = probe_remote_recovery_package(rec_candidates, timeout=1.5)
+            rec_res = probe_remote_recovery_package(rec_candidates, timeout=1.0)
             if rec_res:
                 e.recovery_pkg_url, e.recovery_pkg_size = rec_res
                 if e.stable:
@@ -352,6 +403,7 @@ def process_firmware_extractions_sequentially(
                 print(f"[Recovery IMG/PKG Found]: {e.recovery_pkg_url} ({e.recovery_pkg_size})")
 
         if not extracted:
+            consecutive_mirror_failures += 1
             print("CDN Range check skipped (remote mirrors unreachable or 404).")
             continue
 

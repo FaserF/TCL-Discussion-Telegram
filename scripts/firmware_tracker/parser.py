@@ -47,47 +47,33 @@ def parse_chipsets_markdown() -> dict[str, dict[str, Any]]:
                 specs_clean = re.sub(r"[\*\_]", "", specs_raw).strip()
                 models_clean = re.sub(r"[\*\_]", "", models_raw).strip()
 
+                primary_match = re.search(r"\*\*([0-9A-Za-z]+(?:T[0-9]+)?)\*\*", id_raw)
+                if not primary_match:
+                    continue
+                p_id = primary_match.group(1)
+
                 found_ids = re.findall(r"([0-9A-Za-z]+(?:T[0-9]+)?)", id_raw)
+                clean_ids = [i for i in found_ids if i not in ("and", "or", "to", "ID", "IDs", "TV", "Menu") and len(i) >= 4]
+                alt_id = clean_ids[1] if len(clean_ids) > 1 and clean_ids[1] != p_id else p_id
 
-                range_match = re.search(r"([0-9A-Za-z]+T)(\d+)\.\.T?(\d+)", id_raw)
-                expanded_ids = []
-                if range_match:
-                    prefix = range_match.group(1)
-                    start_n = int(range_match.group(2))
-                    end_n = int(range_match.group(3))
-                    width = len(range_match.group(2))
-                    for n in range(start_n, end_n + 1):
-                        expanded_ids.append(f"{prefix}{n:0{width}d}")
-                else:
-                    expanded_ids = [i for i in found_ids if i not in ("and", "or", "to", "ID", "IDs", "TV", "Menu")]
+                reg = "NA" if ("(NA" in fam_raw or "(NA" in id_raw or "NA" in p_id or p_id in ("0012T02", "T653T02", "T615T02")) else "EU"
 
-                for p_id in expanded_ids:
-                    if len(p_id) < 5:
-                        continue
-                    reg = "NA" if "(NA" in fam_raw or "(NA" in id_raw or "NA" in p_id else "EU"
-
-                    alt_id = p_id
-                    for other in expanded_ids:
-                        if other != p_id:
-                            alt_id = other
-                            break
-
-                    platforms[p_id] = {
-                        "platform": p_id,
-                        "alt_platform_id": alt_id,
-                        "family_name": f"{fam_clean} ({p_id})",
-                        "soc_specs": specs_clean,
-                        "featured_models": models_clean,
-                        "latest_firmware": f"V8-{p_id}-LF1V001",
-                        "build_number": "",
-                        "release_type": "Full OTA (ZIP)",
-                        "package_size": "—",
-                        "release_date": "—",
-                        "md5": None,
-                        "changelog": None,
-                        "extracted_details": None,
-                        "region": reg,
-                    }
+                platforms[p_id] = {
+                    "platform": p_id,
+                    "alt_platform_id": alt_id,
+                    "family_name": f"{fam_clean} ({p_id})",
+                    "soc_specs": specs_clean,
+                    "featured_models": models_clean,
+                    "latest_firmware": f"V8-{p_id}-LF1V001",
+                    "build_number": "",
+                    "release_type": "Full OTA (ZIP)",
+                    "package_size": "—",
+                    "release_date": "—",
+                    "md5": None,
+                    "changelog": None,
+                    "extracted_details": None,
+                    "region": reg,
+                }
 
     print(f"[Chipsets Parser] Dynamically loaded {len(platforms)} platform definitions from {CHIPSETS_MD.name}")
     return platforms
