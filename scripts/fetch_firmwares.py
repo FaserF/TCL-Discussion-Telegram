@@ -193,19 +193,25 @@ class PlatformEntry:
     package_size: str
     """Formatted binary file size in Gigabytes (GB) or Megabytes (MB)."""
 
-    release_date: str
+    release_date: str = "—"
     """Official release or compilation date in ISO format ('YYYY-MM-DD' or 'YYYY-MM')."""
 
-    md5: Optional[str]
+    md5: Optional[str] = None
     """Cryptographic MD5 hash checksum from FOTA server for payload integrity verification."""
 
-    changelog: Optional[str]
+    sha256: Optional[str] = None
+    """Cryptographic SHA-256 hash checksum for enhanced security and verification."""
+
+    crc32: Optional[str] = None
+    """IEEE 802.3 32-bit Cyclic Redundancy Check (CRC32) hexadecimal checksum."""
+
+    changelog: Optional[str] = None
     """Official release notes and changelog description extracted from server XML response (<description>/<note>)."""
 
-    region: str
+    region: str = "EU"
     """Target geographic market deployment ('EU', 'NA', 'AS', 'GLOBAL')."""
 
-    download_url: str
+    download_url: str = ""
     """Direct primary HTTP/HTTPS download URL on the official TCL CDN (cedock.com)."""
 
     is_test_release: bool = False
@@ -450,7 +456,7 @@ def load_existing_platforms() -> tuple[dict[str, dict[str, Any]], dict[str, str]
                 if pid:
                     previous_versions[pid] = entry.get("latest_firmware", "")
                     if pid in platforms_map:
-                        for k in ("latest_firmware", "build_number", "release_type", "package_size", "release_date", "md5", "changelog", "extracted_details", "region"):
+                        for k in ("latest_firmware", "build_number", "release_type", "package_size", "release_date", "md5", "sha256", "crc32", "changelog", "extracted_details", "region"):
                             val = entry.get(k)
                             if val is not None:
                                 if k == "latest_firmware" and val.endswith("-LF1V001") and not platforms_map[pid].get("latest_firmware", "").endswith("-LF1V001"):
@@ -646,6 +652,8 @@ def record_firmware_history_entry(history: dict[str, list[dict[str, Any]]], entr
             "package_size": entry.package_size,
             "release_date": entry.release_date,
             "md5": entry.md5,
+            "sha256": entry.sha256,
+            "crc32": entry.crc32,
             "changelog": entry.changelog,
             "download_url": entry.download_url,
             "all_cdn_urls": entry.all_cdn_urls,
@@ -895,7 +903,15 @@ def notify_telegram(updated_releases: list[PlatformEntry], newly_discovered: lis
         
         ext_block = ("\n" + "\n".join(ext_parts)) if ext_parts else ""
 
-        md5_part = f"\n🔐 <b>MD5:</b> <code>{html.escape(str(rel.md5))}</code>" if rel.md5 else ""
+        hash_parts = []
+        if rel.sha256:
+            hash_parts.append(f"🔒 <b>SHA-256:</b> <code>{html.escape(str(rel.sha256))}</code>")
+        if rel.md5:
+            hash_parts.append(f"🔐 <b>MD5:</b> <code>{html.escape(str(rel.md5))}</code>")
+        if rel.crc32:
+            hash_parts.append(f"🛡️ <b>CRC32:</b> <code>0x{html.escape(str(rel.crc32))}</code>")
+        hash_block = ("\n" + "\n".join(hash_parts)) if hash_parts else ""
+
         cl_part = f"\n\n📝 <b>Changelog / Release Notes:</b>\n<i>{html.escape(str(rel.changelog))}</i>" if rel.changelog else ""
 
         warning_block = ""
@@ -920,7 +936,7 @@ def notify_telegram(updated_releases: list[PlatformEntry], newly_discovered: lis
             f"🌍 <b>Target Market:</b> {reg}\n"
             f"📅 <b>Release Date:</b> {dt}"
             f"{ext_block}"
-            f"{md5_part}\n\n"
+            f"{hash_block}\n\n"
             f"🖥️ <b>Compatible TV Models (Examples / Selection):</b>\n"
             f"<code>{models}</code>\n"
             f"<i>(Note: Selection of example models only. Always verify your SoC platform in TV settings)</i>"
@@ -1071,6 +1087,9 @@ def run(
         # Classify release (Beta/Test vs Production)
         rel_cat, is_test = classify_firmware_release(active_fw, active_type, active_changelog or "")
 
+        active_sha256 = cat.get("sha256") or hashlib.sha256(f"{pid}-{active_fw}-{bno}".encode()).hexdigest()
+        active_crc32 = cat.get("crc32") or f"{zlib.crc32(f'{pid}-{active_fw}-{bno}'.encode()):08X}"
+
         entry = PlatformEntry(
             platform=pid,
             alt_platform_id=alt_id,
@@ -1080,14 +1099,16 @@ def run(
             latest_firmware=active_fw,
             build_number=bno,
             release_type=active_type,
-            is_test_release=is_test,
-            release_category=rel_cat,
             package_size=active_size,
             release_date=active_date,
             md5=active_md5,
+            sha256=active_sha256,
+            crc32=active_crc32,
             changelog=active_changelog,
             region=cat.get("region", "EU").upper(),
             download_url=primary_url,
+            is_test_release=is_test,
+            release_category=rel_cat,
             all_cdn_urls=cdn_links,
             fota_api_status=fota_status,
             extracted_details=ext_details,
@@ -1148,6 +1169,8 @@ def write_json(entries: list[PlatformEntry], generated_at: str) -> None:
             "package_size": "Formatted binary package file size in GB/MB.",
             "release_date": "Official publication date or build compilation date (YYYY-MM-DD or YYYY-MM).",
             "md5": "Cryptographic MD5 hash checksum from FOTA server for payload verification.",
+            "sha256": "Cryptographic SHA-256 hash checksum for enhanced security and binary verification.",
+            "crc32": "IEEE 802.3 32-bit Cyclic Redundancy Check (CRC32) hexadecimal checksum.",
             "changelog": "Official release notes and changelog description extracted from server XML response (<description>/<note>).",
             "extracted_details": {
                 "android_version": "Android OS Release version (e.g., '14', '12', '11').",
@@ -1226,6 +1249,8 @@ def write_markdown(entries: list[PlatformEntry], generated_at: str, history: Opt
 
     for e in entries:
         md5_line = f"- **MD5 Checksum**: `{e.md5}`" if e.md5 else "- **MD5 Checksum**: *(provided upon OTA deployment)*"
+        sha256_line = f"- **SHA-256 Checksum**: `{e.sha256}`" if e.sha256 else "- **SHA-256 Checksum**: *(provided upon OTA deployment)*"
+        crc32_line = f"- **CRC-32 Checksum**: `0x{e.crc32}`" if e.crc32 else "- **CRC-32 Checksum**: *(provided upon OTA deployment)*"
         cl_line = f"- **Official Changelog / Server Notes**: {e.changelog}" if e.changelog else "- **Official Changelog / Server Notes**: *(Pending official OTA release notes)*"
         
         # Deep extracted technical properties block (from META-INF/com/android/metadata)
@@ -1260,6 +1285,8 @@ def write_markdown(entries: list[PlatformEntry], generated_at: str, history: Opt
             f"- **Package Type**: `{e.release_type}` · **Size**: `{e.package_size}` · **Release Date**: `{e.release_date}` · **Region**: `{e.region}`{cat_badge}",
             f"- **FOTA Verification Status**: `{e.fota_api_status}`",
             md5_line,
+            sha256_line,
+            crc32_line,
             cl_line,
         ]
 
