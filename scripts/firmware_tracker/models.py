@@ -62,6 +62,10 @@ class ChannelRelease:
     crc32: Optional[str] = None
     changelog: Optional[str] = None
     download_url: str = ""
+    recovery_pkg_url: Optional[str] = None
+    recovery_pkg_size: Optional[str] = None
+    recovery_pkg_md5: Optional[str] = None
+    recovery_pkg_sha256: Optional[str] = None
     all_cdn_urls: dict = field(default_factory=dict)
     extracted_details: Optional[ExtractedBuildDetails] = None
 
@@ -87,6 +91,10 @@ class PlatformEntry:
     changelog: Optional[str] = None
     region: str = "EU"
     download_url: str = ""
+    recovery_pkg_url: Optional[str] = None
+    recovery_pkg_size: Optional[str] = None
+    recovery_pkg_md5: Optional[str] = None
+    recovery_pkg_sha256: Optional[str] = None
     is_test_release: bool = False
     release_category: str = "Production (Stable)"
     all_cdn_urls: dict = field(default_factory=dict)

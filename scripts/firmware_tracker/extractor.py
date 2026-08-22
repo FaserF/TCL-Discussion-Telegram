@@ -12,6 +12,7 @@ import zlib
 from datetime import datetime, timezone
 from typing import Any, Optional
 
+from .fota_client import construct_recovery_cdn_urls
 from .models import ExtractedBuildDetails, PlatformEntry
 from .parser import record_firmware_history_entry
 
@@ -236,6 +237,37 @@ def fetch_remote_zip_metadata_range(url: str, timeout: int = 2) -> Optional[Extr
     return None
 
 
+def probe_remote_recovery_package(urls: list[str], timeout: float = 1.5) -> Optional[tuple[str, str]]:
+    """
+    Quickly probes candidate CDN URLs using HTTP HEAD to discover if an official IMG/PKG recovery image exists.
+    Returns (live_url, formatted_size) if found.
+    """
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+        "Accept": "*/*",
+        "Connection": "close",
+    }
+    for u in urls:
+        if not u:
+            continue
+        try:
+            req = urllib.request.Request(u, headers=headers, method="HEAD")
+            with urllib.request.urlopen(req, timeout=timeout) as resp:
+                if resp.status == 200:
+                    cl = resp.headers.get("Content-Length")
+                    size_str = "—"
+                    if cl and cl.isdigit():
+                        sz_bytes = int(cl)
+                        if sz_bytes > 1024 * 1024 * 1024:
+                            size_str = f"{sz_bytes / (1024**3):.2f} GB"
+                        else:
+                            size_str = f"{sz_bytes / (1024**2):.1f} MB"
+                    return (u, size_str)
+        except Exception:
+            continue
+    return None
+
+
 def get_all_candidate_mirrors(platform: str, fw_name: str, build_number: str, default_url: str) -> list[str]:
     """
     Generates all regional CDN mirror endpoints and alternate paths for a given firmware release.
@@ -308,6 +340,16 @@ def process_firmware_extractions_sequentially(
             if extracted:
                 print(f"Extracted via Range ({mirror_url[:40]}...): Android {extracted.android_version} ({extracted.os_flavor})")
                 break
+
+        # Probe for Recovery IMG / PKG package in parallel
+        if not e.recovery_pkg_url:
+            rec_candidates = construct_recovery_cdn_urls(e.region, e.platform, e.latest_firmware, e.build_number)
+            rec_res = probe_remote_recovery_package(rec_candidates, timeout=1.5)
+            if rec_res:
+                e.recovery_pkg_url, e.recovery_pkg_size = rec_res
+                if e.stable:
+                    e.stable.recovery_pkg_url, e.stable.recovery_pkg_size = rec_res
+                print(f"[Recovery IMG/PKG Found]: {e.recovery_pkg_url} ({e.recovery_pkg_size})")
 
         if not extracted:
             print("CDN Range check skipped (remote mirrors unreachable or 404).")

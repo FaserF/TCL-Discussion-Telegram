@@ -110,7 +110,9 @@ def load_existing_platforms() -> dict[str, dict[str, Any]]:
                     for k in (
                         "latest_firmware", "build_number", "release_type", "package_size",
                         "release_date", "md5", "sha256", "crc32", "changelog",
-                        "extracted_details", "region", "stable", "beta", "test"
+                        "download_url", "recovery_pkg_url", "recovery_pkg_size",
+                        "recovery_pkg_md5", "recovery_pkg_sha256", "extracted_details",
+                        "region", "stable", "beta", "test"
                     )
                 }
         return res
@@ -120,7 +122,7 @@ def load_existing_platforms() -> dict[str, dict[str, Any]]:
 
 def load_firmware_history() -> dict[str, list[dict[str, Any]]]:
     """
-    Loads the persistent historical firmware database from docs/assets/firmwares_history.json.
+    Loads the persistent historical database from docs/assets/firmwares_history.json.
     """
     if not HISTORY_JSON.exists():
         return {}
@@ -156,6 +158,10 @@ def record_firmware_history_entry(history: dict[str, list[dict[str, Any]]], entr
             "crc32": entry.crc32,
             "changelog": entry.changelog,
             "download_url": entry.download_url,
+            "recovery_pkg_url": entry.recovery_pkg_url,
+            "recovery_pkg_size": entry.recovery_pkg_size,
+            "recovery_pkg_md5": entry.recovery_pkg_md5,
+            "recovery_pkg_sha256": entry.recovery_pkg_sha256,
             "all_cdn_urls": entry.all_cdn_urls,
             "extracted_details": asdict(entry.extracted_details) if entry.extracted_details else None,
             "recorded_at": datetime.now(timezone.utc).isoformat(),

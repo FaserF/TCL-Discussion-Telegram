@@ -151,6 +151,28 @@ def construct_cdn_url(region: str, platform_id: str, fw_full_name: str, build_nu
     return f"http://{host}/apps/resource2/{pdir}/{fw_full_name}/FOTA-OTA/{fw_full_name}{suffix}.zip"
 
 
+def construct_recovery_cdn_urls(region: str, platform_id: str, fw_full_name: str, build_number: str = "") -> list[str]:
+    """
+    Generates candidate URLs for factory recovery flash packages (.pkg, .img, _PKG.zip).
+    """
+    host = CDN_HOSTS.get(region.lower(), f"{region.lower()}-update.cedock.com")
+    pdir = "V8" + platform_id.replace("-", "")
+    bno_suffix = f".{build_number}" if build_number else ""
+    return [
+        f"http://{host}/apps/resource2/{pdir}/{fw_full_name}/FOTA-IMG/{fw_full_name}.pkg",
+        f"http://{host}/apps/resource2/{pdir}/{fw_full_name}/FOTA-IMG/Update.pkg",
+        f"http://{host}/apps/resource2/{pdir}/{fw_full_name}/FOTA-IMG/{fw_full_name}.img",
+        f"http://{host}/apps/resource2/{pdir}/{fw_full_name}/FOTA-IMG/Update.img",
+        f"http://{host}/apps/resource2/{pdir}/{fw_full_name}/FOTA-OTA/{fw_full_name}_PKG.zip",
+        f"http://{host}/apps/resource2/{pdir}/{fw_full_name}/FOTA-OTA/{fw_full_name}_IMG.zip",
+        f"http://{host}/apps/resource2/{pdir}/{fw_full_name}/USB/{fw_full_name}.pkg",
+        f"http://{host}/apps/resource2/{pdir}/{fw_full_name}/PKG/{fw_full_name}.zip",
+        f"http://{host}/apps/resource2/{pdir}/{fw_full_name}/PKG/{fw_full_name}.pkg",
+        f"http://celesw.tcl.com/CSEU%20TV/Software/{fw_full_name}.pkg",
+        f"http://celesw.tcl.com/CSEU%20TV/Software/{fw_full_name}_PKG.zip",
+    ]
+
+
 def build_channel_release(data: Optional[dict[str, Any]], pid: str, reg: str) -> Optional[ChannelRelease]:
     """
     Constructs a validated ChannelRelease instance from a dictionary record.
@@ -167,6 +189,10 @@ def build_channel_release(data: Optional[dict[str, Any]], pid: str, reg: str) ->
     crc_val = data.get("crc32") or (f"{zlib.crc32(f'{pid}-{ver}-{bno}'.encode()):08X}" if md5_val else None)
     cl = data.get("changelog")
     dl = data.get("download_url") or construct_cdn_url(reg, pid, ver, bno)
+    pkg_url = data.get("recovery_pkg_url")
+    pkg_sz = data.get("recovery_pkg_size")
+    pkg_md5 = data.get("recovery_pkg_md5")
+    pkg_sha = data.get("recovery_pkg_sha256")
     cdn_map = data.get("all_cdn_urls") or {r: construct_cdn_url(r, pid, ver, bno) for r in ("eu", "na", "as")}
     rel_cat, is_t = classify_firmware_release(ver, ptype, cl or "")
 
@@ -190,6 +216,10 @@ def build_channel_release(data: Optional[dict[str, Any]], pid: str, reg: str) ->
         crc32=crc_val,
         changelog=cl,
         download_url=dl,
+        recovery_pkg_url=pkg_url,
+        recovery_pkg_size=pkg_sz,
+        recovery_pkg_md5=pkg_md5,
+        recovery_pkg_sha256=pkg_sha,
         all_cdn_urls=cdn_map,
         extracted_details=ext_d,
     )

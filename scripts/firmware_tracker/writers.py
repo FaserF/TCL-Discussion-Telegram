@@ -57,6 +57,10 @@ def write_json(entries: list[PlatformEntry], generated_at: str) -> None:
             "test": "Detailed attributes of the latest active Manufacturing / Pre-production Test firmware release (null if none available).",
             "region": "Target regional market deployment ('EU', 'NA', 'AS', 'GLOBAL').",
             "download_url": "Direct primary CDN download link for the package.",
+            "recovery_pkg_url": "Direct CDN download link for factory recovery flash image (.pkg / .img / _PKG.zip), if available.",
+            "recovery_pkg_size": "Formatted binary file size of the recovery package in GB/MB.",
+            "recovery_pkg_md5": "Cryptographic MD5 hash checksum for the recovery package.",
+            "recovery_pkg_sha256": "Cryptographic SHA-256 hash checksum for the recovery package.",
             "all_cdn_urls": "Object containing regional CDN mirror URLs mapped by region key ('eu', 'na', 'as').",
             "fota_api_status": "Validation and connection status against the official live TCL FOTA upgrade server.",
             "checked_at": "ISO-8601 UTC timestamp recording when the platform was last queried against the server."
@@ -209,7 +213,12 @@ def write_markdown(entries: list[PlatformEntry], generated_at: str, history: Opt
 
     for e in entries:
         fw_code = f"`{e.latest_firmware}`"
-        dl_link = f"[:material-download: Download]({e.download_url})" if e.download_url else "—"
+        dl_links = []
+        if e.download_url:
+            dl_links.append(f"[:material-download: OTA (ZIP)]({e.download_url})")
+        if e.recovery_pkg_url:
+            dl_links.append(f"[:material-hammer-wrench: Recovery (PKG)]({e.recovery_pkg_url})")
+        dl_link = "<br>".join(dl_links) if dl_links else "—"
 
         os_tag = "—"
         if e.extracted_details and e.extracted_details.android_version != "—":
@@ -260,6 +269,12 @@ def write_markdown(entries: list[PlatformEntry], generated_at: str, history: Opt
         sha_field = f"- **SHA-256 Checksum**: `{e.sha256}`" if e.sha256 else ""
         crc_field = f"- **CRC-32 Checksum**: `0x{e.crc32}`" if e.crc32 else ""
 
+        rec_pkg_line = (
+            f"  - 🛠️ **Recovery Image (PKG/IMG)** (for USB flash/unbrick): [{e.recovery_pkg_url.split('/')[-1]}]({e.recovery_pkg_url}) (`{e.recovery_pkg_size}`)"
+            if e.recovery_pkg_url
+            else "  - 🛠️ **Recovery Image (PKG/IMG)**: *No separate factory recovery image on official servers (install via OTA ZIP).*"
+        )
+
         lines += [
             f'<a id="platform-{e.platform.lower()}"></a>',
             f"#### {e.family_name} (`{e.latest_firmware}`)",
@@ -275,7 +290,12 @@ def write_markdown(entries: list[PlatformEntry], generated_at: str, history: Opt
         if crc_field:
             lines.append(crc_field)
 
-        lines.append(f"- **Official Changelog / Server Notes**: {e.changelog or 'Official production release.'}")
+        lines += [
+            f"- **Firmware Packages & Downloads**:",
+            f"  - 📦 **OTA Package (ZIP)** (for TV menu update): [{e.latest_firmware}.zip]({e.download_url})" + (f" (`{e.package_size}`)" if e.package_size != "—" else ""),
+            rec_pkg_line,
+            f"- **Official Changelog / Server Notes**: {e.changelog or 'Official production release.'}",
+        ]
 
         if e.is_test_release:
             lines += [

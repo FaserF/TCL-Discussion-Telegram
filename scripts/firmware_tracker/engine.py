@@ -104,6 +104,10 @@ def run(chipset_filters: Optional[list[str]] = None) -> tuple[list[PlatformEntry
                 changelog=cat.get("changelog") if cat else None,
                 region=reg,
                 download_url=(cat.get("download_url") or construct_cdn_url(reg, pid, fw_code, bno)) if cat else construct_cdn_url(reg, pid, fw_code, bno),
+                recovery_pkg_url=cat.get("recovery_pkg_url") if cat else None,
+                recovery_pkg_size=cat.get("recovery_pkg_size") if cat else None,
+                recovery_pkg_md5=cat.get("recovery_pkg_md5") if cat else None,
+                recovery_pkg_sha256=cat.get("recovery_pkg_sha256") if cat else None,
                 is_test_release=is_test,
                 release_category=rel_cat,
                 all_cdn_urls=(cat.get("all_cdn_urls") or {r: construct_cdn_url(r, pid, fw_code, bno) for r in ("eu", "na", "as")}) if cat else {r: construct_cdn_url(r, pid, fw_code, bno) for r in ("eu", "na", "as")},
@@ -189,6 +193,10 @@ def run(chipset_filters: Optional[list[str]] = None) -> tuple[list[PlatformEntry
             "crc32": active_crc32,
             "changelog": active_changelog,
             "download_url": primary_url,
+            "recovery_pkg_url": cat.get("recovery_pkg_url"),
+            "recovery_pkg_size": cat.get("recovery_pkg_size"),
+            "recovery_pkg_md5": cat.get("recovery_pkg_md5"),
+            "recovery_pkg_sha256": cat.get("recovery_pkg_sha256"),
             "all_cdn_urls": cdn_links,
             "extracted_details": ext_details,
         })
@@ -236,6 +244,10 @@ def run(chipset_filters: Optional[list[str]] = None) -> tuple[list[PlatformEntry
             main_crc32 = main_rel.crc32
             main_changelog = main_rel.changelog
             main_url = main_rel.download_url
+            main_rec_url = main_rel.recovery_pkg_url
+            main_rec_size = main_rel.recovery_pkg_size
+            main_rec_md5 = main_rel.recovery_pkg_md5
+            main_rec_sha = main_rel.recovery_pkg_sha256
             main_cdn_urls = main_rel.all_cdn_urls
             main_ext = main_rel.extracted_details
             main_is_test = main_rel.is_test_release
@@ -251,6 +263,10 @@ def run(chipset_filters: Optional[list[str]] = None) -> tuple[list[PlatformEntry
             main_crc32 = active_crc32
             main_changelog = active_changelog
             main_url = primary_url
+            main_rec_url = cat.get("recovery_pkg_url")
+            main_rec_size = cat.get("recovery_pkg_size")
+            main_rec_md5 = cat.get("recovery_pkg_md5")
+            main_rec_sha = cat.get("recovery_pkg_sha256")
             main_cdn_urls = cdn_links
             main_ext = ext_details
             main_is_test = is_test
@@ -273,6 +289,10 @@ def run(chipset_filters: Optional[list[str]] = None) -> tuple[list[PlatformEntry
             changelog=main_changelog,
             region=reg.upper(),
             download_url=main_url,
+            recovery_pkg_url=main_rec_url,
+            recovery_pkg_size=main_rec_size,
+            recovery_pkg_md5=main_rec_md5,
+            recovery_pkg_sha256=main_rec_sha,
             is_test_release=main_is_test,
             release_category=main_cat,
             all_cdn_urls=main_cdn_urls,
