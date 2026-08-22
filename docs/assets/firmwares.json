@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-22T10:19:28.129137+00:00",
+  "generated_at": "2026-08-22T10:24:54.407200+00:00",
   "source": "official TCL Smart TV FOTA API (huan.tv) & CDN (cedock.com)",
   "total_platforms": 52,
   "api_fields_documentation": {
@@ -111,7 +111,7 @@
       },
       "beta": null,
       "test": null,
-      "checked_at": "2026-08-22T10:19:28.129137+00:00"
+      "checked_at": "2026-08-22T10:24:54.407200+00:00"
     },
     {
       "platform": "0008T02",
@@ -153,7 +153,7 @@
       "stable": null,
       "beta": null,
       "test": null,
-      "checked_at": "2026-08-22T10:19:28.129137+00:00"
+      "checked_at": "2026-08-22T10:24:54.407200+00:00"
     },
     {
       "platform": "0012T01",
@@ -225,7 +225,7 @@
       },
       "beta": null,
       "test": null,
-      "checked_at": "2026-08-22T10:19:28.129137+00:00"
+      "checked_at": "2026-08-22T10:24:54.407200+00:00"
     },
     {
       "platform": "0012T02",
@@ -297,7 +297,7 @@
       },
       "beta": null,
       "test": null,
-      "checked_at": "2026-08-22T10:19:28.129137+00:00"
+      "checked_at": "2026-08-22T10:24:54.407200+00:00"
     },
     {
       "platform": "0012T03",
@@ -369,7 +369,7 @@
       },
       "beta": null,
       "test": null,
-      "checked_at": "2026-08-22T10:19:28.129137+00:00"
+      "checked_at": "2026-08-22T10:24:54.407200+00:00"
     },
     {
       "platform": "0013T01",
@@ -411,7 +411,7 @@
       "stable": null,
       "beta": null,
       "test": null,
-      "checked_at": "2026-08-22T10:19:28.129137+00:00"
+      "checked_at": "2026-08-22T10:24:54.407200+00:00"
     },
     {
       "platform": "0013T02",
@@ -483,7 +483,7 @@
       },
       "beta": null,
       "test": null,
-      "checked_at": "2026-08-22T10:19:28.129137+00:00"
+      "checked_at": "2026-08-22T10:24:54.407200+00:00"
     },
     {
       "platform": "0013T03",
@@ -525,7 +525,7 @@
       "stable": null,
       "beta": null,
       "test": null,
-      "checked_at": "2026-08-22T10:19:28.129137+00:00"
+      "checked_at": "2026-08-22T10:24:54.407200+00:00"
     },
     {
       "platform": "0014T01",
@@ -567,7 +567,7 @@
       "stable": null,
       "beta": null,
       "test": null,
-      "checked_at": "2026-08-22T10:19:28.129137+00:00"
+      "checked_at": "2026-08-22T10:24:54.407200+00:00"
     },
     {
       "platform": "0015T01",
@@ -639,7 +639,7 @@
       },
       "beta": null,
       "test": null,
-      "checked_at": "2026-08-22T10:19:28.129137+00:00"
+      "checked_at": "2026-08-22T10:24:54.407200+00:00"
     },
     {
       "platform": "0015T02",
@@ -681,7 +681,7 @@
       "stable": null,
       "beta": null,
       "test": null,
-      "checked_at": "2026-08-22T10:19:28.129137+00:00"
+      "checked_at": "2026-08-22T10:24:54.407200+00:00"
     },
     {
       "platform": "0016T01",
@@ -753,7 +753,7 @@
       },
       "beta": null,
       "test": null,
-      "checked_at": "2026-08-22T10:19:28.129137+00:00"
+      "checked_at": "2026-08-22T10:24:54.407200+00:00"
     },
     {
       "platform": "0017T01",
@@ -795,7 +795,7 @@
       "stable": null,
       "beta": null,
       "test": null,
-      "checked_at": "2026-08-22T10:19:28.129137+00:00"
+      "checked_at": "2026-08-22T10:24:54.407200+00:00"
     },
     {
       "platform": "0018T01",
@@ -826,7 +826,7 @@
       "stable": null,
       "beta": null,
       "test": null,
-      "checked_at": "2026-08-22T10:19:28.129137+00:00"
+      "checked_at": "2026-08-22T10:24:54.407200+00:00"
     },
     {
       "platform": "MS48EST01",
@@ -868,7 +868,7 @@
       "stable": null,
       "beta": null,
       "test": null,
-      "checked_at": "2026-08-22T10:19:28.129137+00:00"
+      "checked_at": "2026-08-22T10:24:54.407200+00:00"
     },
     {
       "platform": "MS6488T01",
@@ -910,7 +910,7 @@
       "stable": null,
       "beta": null,
       "test": null,
-      "checked_at": "2026-08-22T10:19:28.129137+00:00"
+      "checked_at": "2026-08-22T10:24:54.407200+00:00"
     },
     {
       "platform": "MS6586T01",
@@ -952,7 +952,7 @@
       "stable": null,
       "beta": null,
       "test": null,
-      "checked_at": "2026-08-22T10:19:28.129137+00:00"
+      "checked_at": "2026-08-22T10:24:54.407200+00:00"
     },
     {
       "platform": "MS6586T02",
@@ -994,7 +994,7 @@
       "stable": null,
       "beta": null,
       "test": null,
-      "checked_at": "2026-08-22T10:19:28.129137+00:00"
+      "checked_at": "2026-08-22T10:24:54.407200+00:00"
     },
     {
       "platform": "MS6886T01",
@@ -1036,7 +1036,7 @@
       "stable": null,
       "beta": null,
       "test": null,
-      "checked_at": "2026-08-22T10:19:28.129137+00:00"
+      "checked_at": "2026-08-22T10:24:54.407200+00:00"
     },
     {
       "platform": "MS6886T02",
@@ -1078,7 +1078,7 @@
       "stable": null,
       "beta": null,
       "test": null,
-      "checked_at": "2026-08-22T10:19:28.129137+00:00"
+      "checked_at": "2026-08-22T10:24:54.407200+00:00"
     },
     {
       "platform": "NT67T01",
@@ -1120,7 +1120,7 @@
       "stable": null,
       "beta": null,
       "test": null,
-      "checked_at": "2026-08-22T10:19:28.129137+00:00"
+      "checked_at": "2026-08-22T10:24:54.407200+00:00"
     },
     {
       "platform": "R41KT01",
@@ -1192,7 +1192,7 @@
       },
       "beta": null,
       "test": null,
-      "checked_at": "2026-08-22T10:19:28.129137+00:00"
+      "checked_at": "2026-08-22T10:24:54.407200+00:00"
     },
     {
       "platform": "R51AT01",
@@ -1264,7 +1264,7 @@
       },
       "beta": null,
       "test": null,
-      "checked_at": "2026-08-22T10:19:28.129137+00:00"
+      "checked_at": "2026-08-22T10:24:54.407200+00:00"
     },
     {
       "platform": "R51MT01",
@@ -1306,7 +1306,7 @@
       "stable": null,
       "beta": null,
       "test": null,
-      "checked_at": "2026-08-22T10:19:28.129137+00:00"
+      "checked_at": "2026-08-22T10:24:54.407200+00:00"
     },
     {
       "platform": "R51MT02",
@@ -1378,7 +1378,7 @@
       },
       "beta": null,
       "test": null,
-      "checked_at": "2026-08-22T10:19:28.129137+00:00"
+      "checked_at": "2026-08-22T10:24:54.407200+00:00"
     },
     {
       "platform": "R51MT03",
@@ -1420,7 +1420,7 @@
       "stable": null,
       "beta": null,
       "test": null,
-      "checked_at": "2026-08-22T10:19:28.129137+00:00"
+      "checked_at": "2026-08-22T10:24:54.407200+00:00"
     },
     {
       "platform": "R51MT04",
@@ -1462,7 +1462,7 @@
       "stable": null,
       "beta": null,
       "test": null,
-      "checked_at": "2026-08-22T10:19:28.129137+00:00"
+      "checked_at": "2026-08-22T10:24:54.407200+00:00"
     },
     {
       "platform": "R51MT05",
@@ -1534,7 +1534,7 @@
       },
       "beta": null,
       "test": null,
-      "checked_at": "2026-08-22T10:19:28.129137+00:00"
+      "checked_at": "2026-08-22T10:24:54.407200+00:00"
     },
     {
       "platform": "R51MT06",
@@ -1606,7 +1606,7 @@
       },
       "beta": null,
       "test": null,
-      "checked_at": "2026-08-22T10:19:28.129137+00:00"
+      "checked_at": "2026-08-22T10:24:54.407200+00:00"
     },
     {
       "platform": "R51MT07",
@@ -1648,7 +1648,7 @@
       "stable": null,
       "beta": null,
       "test": null,
-      "checked_at": "2026-08-22T10:19:28.129137+00:00"
+      "checked_at": "2026-08-22T10:24:54.407200+00:00"
     },
     {
       "platform": "R51MT08",
@@ -1690,7 +1690,7 @@
       "stable": null,
       "beta": null,
       "test": null,
-      "checked_at": "2026-08-22T10:19:28.129137+00:00"
+      "checked_at": "2026-08-22T10:24:54.407200+00:00"
     },
     {
       "platform": "R51MT09",
@@ -1732,7 +1732,7 @@
       "stable": null,
       "beta": null,
       "test": null,
-      "checked_at": "2026-08-22T10:19:28.129137+00:00"
+      "checked_at": "2026-08-22T10:24:54.407200+00:00"
     },
     {
       "platform": "R51MT10",
@@ -1804,7 +1804,7 @@
       },
       "beta": null,
       "test": null,
-      "checked_at": "2026-08-22T10:19:28.129137+00:00"
+      "checked_at": "2026-08-22T10:24:54.407200+00:00"
     },
     {
       "platform": "R75PT01",
@@ -1876,7 +1876,7 @@
       },
       "beta": null,
       "test": null,
-      "checked_at": "2026-08-22T10:19:28.129137+00:00"
+      "checked_at": "2026-08-22T10:24:54.407200+00:00"
     },
     {
       "platform": "T221T01",
@@ -1948,7 +1948,7 @@
       },
       "beta": null,
       "test": null,
-      "checked_at": "2026-08-22T10:19:28.129137+00:00"
+      "checked_at": "2026-08-22T10:24:54.407200+00:00"
     },
     {
       "platform": "T221T02",
@@ -2020,7 +2020,7 @@
       },
       "beta": null,
       "test": null,
-      "checked_at": "2026-08-22T10:19:28.129137+00:00"
+      "checked_at": "2026-08-22T10:24:54.407200+00:00"
     },
     {
       "platform": "T221T03",
@@ -2062,7 +2062,7 @@
       "stable": null,
       "beta": null,
       "test": null,
-      "checked_at": "2026-08-22T10:19:28.129137+00:00"
+      "checked_at": "2026-08-22T10:24:54.407200+00:00"
     },
     {
       "platform": "T221T04",
@@ -2104,7 +2104,7 @@
       "stable": null,
       "beta": null,
       "test": null,
-      "checked_at": "2026-08-22T10:19:28.129137+00:00"
+      "checked_at": "2026-08-22T10:24:54.407200+00:00"
     },
     {
       "platform": "T221T05",
@@ -2146,7 +2146,7 @@
       "stable": null,
       "beta": null,
       "test": null,
-      "checked_at": "2026-08-22T10:19:28.129137+00:00"
+      "checked_at": "2026-08-22T10:24:54.407200+00:00"
     },
     {
       "platform": "T221T06",
@@ -2188,7 +2188,7 @@
       "stable": null,
       "beta": null,
       "test": null,
-      "checked_at": "2026-08-22T10:19:28.129137+00:00"
+      "checked_at": "2026-08-22T10:24:54.407200+00:00"
     },
     {
       "platform": "T221T07",
@@ -2230,7 +2230,7 @@
       "stable": null,
       "beta": null,
       "test": null,
-      "checked_at": "2026-08-22T10:19:28.129137+00:00"
+      "checked_at": "2026-08-22T10:24:54.407200+00:00"
     },
     {
       "platform": "T221T08",
@@ -2272,7 +2272,7 @@
       "stable": null,
       "beta": null,
       "test": null,
-      "checked_at": "2026-08-22T10:19:28.129137+00:00"
+      "checked_at": "2026-08-22T10:24:54.407200+00:00"
     },
     {
       "platform": "T221T09",
@@ -2314,7 +2314,7 @@
       "stable": null,
       "beta": null,
       "test": null,
-      "checked_at": "2026-08-22T10:19:28.129137+00:00"
+      "checked_at": "2026-08-22T10:24:54.407200+00:00"
     },
     {
       "platform": "T615T01",
@@ -2386,7 +2386,7 @@
       },
       "beta": null,
       "test": null,
-      "checked_at": "2026-08-22T10:19:28.129137+00:00"
+      "checked_at": "2026-08-22T10:24:54.407200+00:00"
     },
     {
       "platform": "T615T02",
@@ -2458,7 +2458,7 @@
       },
       "beta": null,
       "test": null,
-      "checked_at": "2026-08-22T10:19:28.129137+00:00"
+      "checked_at": "2026-08-22T10:24:54.407200+00:00"
     },
     {
       "platform": "T615T03",
@@ -2530,7 +2530,7 @@
       },
       "beta": null,
       "test": null,
-      "checked_at": "2026-08-22T10:19:28.129137+00:00"
+      "checked_at": "2026-08-22T10:24:54.407200+00:00"
     },
     {
       "platform": "T653T01",
@@ -2602,7 +2602,7 @@
       },
       "beta": null,
       "test": null,
-      "checked_at": "2026-08-22T10:19:28.129137+00:00"
+      "checked_at": "2026-08-22T10:24:54.407200+00:00"
     },
     {
       "platform": "T653T02",
@@ -2674,7 +2674,7 @@
       },
       "beta": null,
       "test": null,
-      "checked_at": "2026-08-22T10:19:28.129137+00:00"
+      "checked_at": "2026-08-22T10:24:54.407200+00:00"
     },
     {
       "platform": "T653T03",
@@ -2746,7 +2746,7 @@
       },
       "beta": null,
       "test": null,
-      "checked_at": "2026-08-22T10:19:28.129137+00:00"
+      "checked_at": "2026-08-22T10:24:54.407200+00:00"
     },
     {
       "platform": "T655T01",
@@ -2818,7 +2818,7 @@
       },
       "beta": null,
       "test": null,
-      "checked_at": "2026-08-22T10:19:28.129137+00:00"
+      "checked_at": "2026-08-22T10:24:54.407200+00:00"
     },
     {
       "platform": "T658T01",
@@ -2868,7 +2868,7 @@
       },
       "beta": null,
       "test": null,
-      "checked_at": "2026-08-22T10:19:28.129137+00:00"
+      "checked_at": "2026-08-22T10:24:54.407200+00:00"
     },
     {
       "platform": "T800T02",
@@ -2940,7 +2940,7 @@
       },
       "beta": null,
       "test": null,
-      "checked_at": "2026-08-22T10:19:28.129137+00:00"
+      "checked_at": "2026-08-22T10:24:54.407200+00:00"
     }
   ]
 }

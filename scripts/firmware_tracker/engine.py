@@ -123,9 +123,9 @@ def run(chipset_filters: Optional[list[str]] = None) -> tuple[list[PlatformEntry
         reg = cat.get("region", "EU").lower()
 
         fota_total_queried += 1
-        resp = check_tv_fota(pid, current_ver, region=reg)
-        if not resp and alt_id != pid:
-            resp = check_tv_fota(alt_id, current_ver, region=reg)
+        resp = check_tv_fota(pid, current_ver, region=reg, alt_platform_id=alt_id)
+        if resp and resp.get("region"):
+            reg = resp["region"]
 
         if resp:
             active_fw = resp["version"]

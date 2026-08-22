@@ -26,19 +26,14 @@ def tv_fota_sign(app_key: str, device_id: str, timestamp_str: str) -> str:
     return hashlib.md5(raw.encode("utf-8")).hexdigest()
 
 
-def check_tv_fota(platform_id: str, current_ver: str, region: str = "eu") -> Optional[dict[str, Any]]:
-    """
-    Queries the official TCL Smart TV FOTA upgrade server for a platform.
-    Uses the exact XML POST protocol and HMAC signature extracted from SystemUpdate.apk.
-    """
-    region_key = region.lower()
-    host = TV_FOTA_HOSTS.get(region_key, TV_FOTA_HOSTS["eu"])
-    app_key = TV_APP_KEYS.get(region_key, TV_APP_KEYS["eu"])
-    app_id = TV_APP_IDS.get(region_key, TV_APP_IDS["eu"])
+def _single_fota_query(region: str, model_id: str, ver: str, timeout: float = 1.5) -> Optional[dict[str, Any]]:
+    host = TV_FOTA_HOSTS.get(region, TV_FOTA_HOSTS["eu"])
+    app_key = TV_APP_KEYS.get(region, TV_APP_KEYS["eu"])
+    app_id = TV_APP_IDS.get(region, TV_APP_IDS["eu"])
 
     now_utc = datetime.now(timezone.utc)
     ts_str = now_utc.strftime("%Y%m%d%H%M%S")
-    device_id = f"TCL-{region_key.upper()}-TRACKER-001"
+    device_id = f"TCL-{region.upper()}-TRACKER-001"
 
     sign = tv_fota_sign(app_key, device_id, ts_str)
 
@@ -50,10 +45,10 @@ def check_tv_fota(platform_id: str, current_ver: str, region: str = "eu") -> Opt
         f'  <deviceid>{device_id}</deviceid>\n'
         f'  <time>{ts_str}</time>\n'
         f'  <sign>{sign}</sign>\n'
-        f'  <version>{current_ver}</version>\n'
+        f'  <version>{ver}</version>\n'
         '  <language>en</language>\n'
-        f'  <region>{region_key}</region>\n'
-        f'  <model>{platform_id}</model>\n'
+        f'  <region>{region}</region>\n'
+        f'  <model>{model_id}</model>\n'
         '</request>'
     )
 
@@ -68,7 +63,7 @@ def check_tv_fota(platform_id: str, current_ver: str, region: str = "eu") -> Opt
     req = urllib.request.Request(url, data=xml_body.encode("utf-8"), headers=headers, method="POST")
 
     try:
-        with urllib.request.urlopen(req, timeout=4) as resp:
+        with urllib.request.urlopen(req, timeout=timeout) as resp:
             data = resp.read()
             root = ET.fromstring(data)
 
@@ -77,7 +72,7 @@ def check_tv_fota(platform_id: str, current_ver: str, region: str = "eu") -> Opt
                 return None
 
             version = root.findtext(".//version") or root.findtext(".//target_version")
-            if not version:
+            if not version or version.strip().endswith("-LF1V001"):
                 return None
 
             file_url = root.findtext(".//file_url") or root.findtext(".//url") or ""
@@ -107,9 +102,43 @@ def check_tv_fota(platform_id: str, current_ver: str, region: str = "eu") -> Opt
                 "md5": md5_val.strip() if md5_val else None,
                 "changelog": changelog.strip() if changelog else None,
                 "build_number": build_num.strip(),
+                "region": region,
             }
     except Exception:
         return None
+
+
+def check_tv_fota(platform_id: str, current_ver: str, region: str = "eu", alt_platform_id: Optional[str] = None) -> Optional[dict[str, Any]]:
+    """
+    Queries the official TCL Smart TV FOTA upgrade server for a platform.
+    Automatically checks region and candidate model aliases against live FOTA API.
+    """
+    reg_clean = region.lower()
+    res = _single_fota_query(reg_clean, platform_id, current_ver)
+    if res:
+        return res
+
+    cand_models = []
+    if alt_platform_id and alt_platform_id != platform_id:
+        cand_models.append(alt_platform_id)
+    m_base = re.sub(r"T\d+$", "", platform_id)
+    if m_base != platform_id and m_base not in cand_models:
+        cand_models.append(m_base)
+
+    for m in cand_models:
+        res = _single_fota_query(reg_clean, m, current_ver)
+        if res:
+            return res
+
+    for other_reg in ("eu", "na", "as", "cn"):
+        if other_reg == reg_clean:
+            continue
+        for m in [platform_id] + cand_models:
+            res = _single_fota_query(other_reg, m, current_ver)
+            if res:
+                return res
+
+    return None
 
 
 def construct_cdn_url(region: str, platform_id: str, fw_full_name: str, build_number: str = "") -> str:

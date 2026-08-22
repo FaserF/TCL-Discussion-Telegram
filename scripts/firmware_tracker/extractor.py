@@ -315,6 +315,12 @@ def process_firmware_extractions_sequentially(
 
         if extracted:
             e.extracted_details = extracted
+            if e.stable and e.stable.version == e.latest_firmware:
+                e.stable.extracted_details = extracted
+            if e.beta and e.beta.version == e.latest_firmware:
+                e.beta.extracted_details = extracted
+            if e.test and e.test.version == e.latest_firmware:
+                e.test.extracted_details = extracted
             updated_any = True
             record_firmware_history_entry(history, e)
             if writers_module:
