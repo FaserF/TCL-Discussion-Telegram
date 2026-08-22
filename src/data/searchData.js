@@ -3,31 +3,38 @@
 
 export const searchData = [
     {
-        "id": "pentonic-800-t655t01-0015t01",
-        "title": "Pentonic 800 (T655T01 (`0015T01`))",
+        "id": "pentonic-800-0015t01-t655t01-0015t02",
+        "title": "Pentonic 800 (0015T01 (`T655T01`, `0015T02`))",
         "category": "Chipset",
         "content": "Featured Models: X11L, C8L, RM9L, QM8L (2026). Notes: MediaTek MT9655 (MT55), Flagship 4K Mini-LED.",
         "link": "/guides"
     },
     {
-        "id": "pentonic-700-t653t01-0012t01",
-        "title": "Pentonic 700 (T653T01 (`0012T01`))",
+        "id": "pentonic-700-global-eu-0012t01-t653t01",
+        "title": "Pentonic 700 (Global/EU) (0012T01 (`T653T01`))",
         "category": "Chipset",
         "content": "Featured Models: X955, X955 Max (115\"), C955, C855, C805, C765, C755, C745X2, C845X2, C7L, C6L, RM7L, X11K, C9K, C8K, C7K, C6K, P8K, T8C, 98C655, 85C655Pro, 98P745, 98P755. Notes: MediaTek MT9653 / MT9618 (MT53), 4K 144Hz VRR.",
         "link": "/guides"
     },
     {
-        "id": "pentonic-700-na-la-t653t02-0012t02",
-        "title": "Pentonic 700 (NA/LA) (T653T02 (`0012T02`))",
+        "id": "pentonic-700-na-la-0012t02-t653t02",
+        "title": "Pentonic 700 (NA/LA) (0012T02 (`T653T02`))",
         "category": "Chipset",
         "content": "Featured Models: QM891G, QM851G, QM751G, Q651G, Q750G, S551G, RM7L, QM7L, Q77L, X11K, QM8K, QM7K, Q77K, QM6K, QM67K. Notes: MediaTek Pentonic 700 (G08 / N. America & LATAM).",
         "link": "/guides"
     },
     {
-        "id": "pentonic-700-flagship-t653t03-0012t03",
-        "title": "Pentonic 700 (Flagship) (T653T03 (`0012T03`))",
+        "id": "pentonic-700-flagship-0012t03-t653t03",
+        "title": "Pentonic 700 (Flagship) (0012T03 (`T653T03`))",
         "category": "Chipset",
         "content": "Featured Models: QM9K Series. Notes: MediaTek Pentonic 700 (G16).",
+        "link": "/guides"
+    },
+    {
+        "id": "pentonic-600-0014t01-t658t01",
+        "title": "Pentonic 600 (0014T01 (`T658T01`))",
+        "category": "Chipset",
+        "content": "Featured Models: C655 (Selected AP/LA Releases). Notes: MediaTek MT9658 (Pentonic 600).",
         "link": "/guides"
     },
     {
@@ -38,38 +45,94 @@ export const searchData = [
         "link": "/guides"
     },
     {
-        "id": "t800-t800t02-0013t02",
-        "title": "T800 (T800T02 (`0013T02`))",
+        "id": "next-gen-g17-0017t01",
+        "title": "Next-Gen G17 (0017T01)",
+        "category": "Chipset",
+        "content": "Featured Models: Upcoming 2026/2027 Lineup. Notes: 4K Flagship Google TV (G17 Platform).",
+        "link": "/guides"
+    },
+    {
+        "id": "next-gen-g18-0018t01",
+        "title": "Next-Gen G18 (0018T01)",
+        "category": "Chipset",
+        "content": "Featured Models: Upcoming Future Lineup. Notes: 4K Flagship Google TV (G18 Platform).",
+        "link": "/guides"
+    },
+    {
+        "id": "t800-amlogic-g09-0013t02-t800t02-0013t01-0013t03",
+        "title": "T800 (Amlogic G09) (0013T02 (`T800T02`, `0013T01`, `0013T03`))",
         "category": "Chipset",
         "content": "Featured Models: C655, C655 Pro, P755, T7B, P7K, C6KS, 55P755. Notes: Amlogic AMLT963D4 (G09, 5-Core A55 @ 1.5GHz / 1.9GHz DVFS, Mali-G57 MC1, 2GB DDR4-3200).",
         "link": "/guides"
     },
     {
-        "id": "t615-mt9615-t615t01-t03",
-        "title": "T615 / MT9615 (T615T01..T03)",
+        "id": "t615-mt9615-global-eu-t615t01",
+        "title": "T615 / MT9615 (Global/EU) (T615T01)",
         "category": "Chipset",
-        "content": "Featured Models: C845, C835, C735, C825, C728, C645 (Late), P745, Q7 (2023), R646 (2021). Notes: MediaTek MT9615 (4K 120/144Hz).",
+        "content": "Featured Models: C845, C835, C735, C825, C728, C645 (Late), P745. Notes: MediaTek MT9615 (4K 120/144Hz).",
         "link": "/guides"
     },
     {
-        "id": "r75p-rt75-r75pt01-0008t01",
-        "title": "R75P / RT75 (R75PT01 (`0008T01`))",
+        "id": "t615-mt9615-na-t615t02",
+        "title": "T615 / MT9615 (NA) (T615T02)",
+        "category": "Chipset",
+        "content": "Featured Models: Q7 (2023 NA Series). Notes: MediaTek MT9615 (4K 120/144Hz NA).",
+        "link": "/guides"
+    },
+    {
+        "id": "t615-mt9615-r646-t615t03",
+        "title": "T615 / MT9615 (R646) (T615T03)",
+        "category": "Chipset",
+        "content": "Featured Models: R646 (2021 Flagship Mini-LED). Notes: MediaTek MT9615 (4K 120/144Hz Mini-LED).",
+        "link": "/guides"
+    },
+    {
+        "id": "r75p-rt75-global-eu-0008t01-r75pt01-0008t02",
+        "title": "R75P / RT75 (Global/EU) (0008T01 (`R75PT01`, `0008T02`))",
         "category": "Chipset",
         "content": "Featured Models: P8LS, P7L, V6D, T6D, U65A, P6K, P7K, V6C, T6C, C6KS, C6CS, U65/75, MQLED70K, P755, C655, C655 Pro, T7B, V6B, QLED780/810, QM51L, QM5K, Q51K, Q63K, S551G, Q651G. Notes: Realtek RT75 (G10 Platform, Entry-Mid 4K GTV).",
         "link": "/guides"
     },
     {
-        "id": "t221-mt21-t221t01-t09-0003t05-t09",
-        "title": "T221 / MT21 (T221T01..T09 (`0003T05..T09`))",
+        "id": "t221-mt21-google-tv-0003t05-t221t01",
+        "title": "T221 / MT21 (Google TV) (0003T05 (`T221T01`))",
         "category": "Chipset",
-        "content": "Featured Models: S350G, S55H, S5200 (Late), 32S5400, S5400A. Notes: MediaTek MT21 (2K / FHD Google TV & Android TV).",
+        "content": "Featured Models: S350G, S55H, 32S5400, S5400A (Google TV). Notes: MediaTek MT21 (2K / FHD Google TV).",
         "link": "/guides"
     },
     {
-        "id": "r51m-r851-r51mt01-t10-r851t02",
-        "title": "R51M / R851 (R51MT01..T10 (`R851T02`))",
+        "id": "t221-mt21-android-tv-0003t06-t221t02",
+        "title": "T221 / MT21 (Android TV) (0003T06 (`T221T02`))",
         "category": "Chipset",
-        "content": "Featured Models: C645, C635, P745, C715, C815. Notes: Realtek RTD2851 / R51M (Legacy 4K GTV & ATV).",
+        "content": "Featured Models: S5200 (Late), 32S5400 (Android TV). Notes: MediaTek MT21 (2K / FHD Android TV).",
+        "link": "/guides"
+    },
+    {
+        "id": "r51m-google-tv-r51mt05",
+        "title": "R51M (Google TV) (R51MT05)",
+        "category": "Chipset",
+        "content": "Featured Models: C645, C635, P745 (Google TV). Notes: Realtek RTD2851 / R51M (4K Google TV).",
+        "link": "/guides"
+    },
+    {
+        "id": "r851-google-tv-r851t02",
+        "title": "R851 (Google TV) (R851T02)",
+        "category": "Chipset",
+        "content": "Featured Models: C728, C825, C735 (Early Google TV). Notes: Realtek RTD2851 / R851 (4K Google TV).",
+        "link": "/guides"
+    },
+    {
+        "id": "r51m-android-tv-r51mt02-r51mt06-r51mt10",
+        "title": "R51M (Android TV) (R51MT02 (`R51MT06`, `R51MT10`))",
+        "category": "Chipset",
+        "content": "Featured Models: C715, C815, P715 (Android TV). Notes: Realtek RTD2851 / R51M (4K Android TV).",
+        "link": "/guides"
+    },
+    {
+        "id": "r851-android-tv-r851t10",
+        "title": "R851 (Android TV) (R851T10)",
+        "category": "Chipset",
+        "content": "Featured Models: C715, C815 (Android TV). Notes: Realtek RTD2851 / R851 (4K Android TV).",
         "link": "/guides"
     },
     {
@@ -83,7 +146,42 @@ export const searchData = [
         "id": "r41k-r41kt01",
         "title": "R41K (R41KT01)",
         "category": "Chipset",
-        "content": "Featured Models: S6500 Series, 32S60AI. Notes: Realtek Entry Legacy.",
+        "content": "Featured Models: S6500 Series, 32S60AI, ES560. Notes: Realtek RTD2841K Entry Legacy (Android TV 9/11).",
+        "link": "/guides"
+    },
+    {
+        "id": "ms6886-ms88-ms6886t02-ms6886t01-ms6886",
+        "title": "MS6886 (MS88) (MS6886T02 (`MS6886T01`, `MS6886`))",
+        "category": "Chipset",
+        "content": "Featured Models: EC780, X815, C815 (Early), EP680. Notes: MStar MSD6886 (4K Android TV 9/11).",
+        "link": "/guides"
+    },
+    {
+        "id": "ms6586-ms86-ms6586t02-ms6586t01-ms6586",
+        "title": "MS6586 (MS86) (MS6586T02 (`MS6586T01`, `MS6586`))",
+        "category": "Chipset",
+        "content": "Featured Models: C2, P2, P6, C4, C6, DP660, EP640, EP660. Notes: MStar MSD6586 (4K Android TV 7/8/9).",
+        "link": "/guides"
+    },
+    {
+        "id": "ms6488-ms84-ms6488t01-ms6488-ms84",
+        "title": "MS6488 (MS84) (MS6488T01 (`MS6488`, `MS84`))",
+        "category": "Chipset",
+        "content": "Featured Models: C1, P1 Series. Notes: MStar MSD6488 (4K Legacy Android TV 7/8).",
+        "link": "/guides"
+    },
+    {
+        "id": "ms48es-ms48-ms48est01-ms48es-ms48",
+        "title": "MS48ES (MS48) (MS48EST01 (`MS48ES`, `MS48`))",
+        "category": "Chipset",
+        "content": "Featured Models: S6000, S6800, F40, F50. Notes: MStar MS48 (2K FHD Legacy Android TV 7/8).",
+        "link": "/guides"
+    },
+    {
+        "id": "novatek-nt67-nt67t01-nt67",
+        "title": "Novatek NT67 (NT67T01 (`NT67`))",
+        "category": "Chipset",
+        "content": "Featured Models: Thomson / TCL Regional Android TV Series. Notes: Novatek NT72671 / NT72673 (Android TV).",
         "link": "/guides"
     },
     {

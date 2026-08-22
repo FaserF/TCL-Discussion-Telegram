@@ -1,23 +1,28 @@
 [
     {
-        "name": "Pentonic 800 (T655T01 (`0015T01`))",
+        "name": "Pentonic 800 (0015T01 (`T655T01`, `0015T02`))",
         "models": "X11L, C8L, RM9L, QM8L (2026)",
         "type": "MediaTek MT9655 (MT55), Flagship 4K Mini-LED"
     },
     {
-        "name": "Pentonic 700 (T653T01 (`0012T01`))",
+        "name": "Pentonic 700 (Global/EU) (0012T01 (`T653T01`))",
         "models": "X955, X955 Max (115\"), C955, C855, C805, C765, C755, C745X2, C845X2, C7L, C6L, RM7L, X11K, C9K, C8K, C7K, C6K, P8K, T8C, 98C655, 85C655Pro, 98P745, 98P755",
         "type": "MediaTek MT9653 / MT9618 (MT53), 4K 144Hz VRR"
     },
     {
-        "name": "Pentonic 700 (NA/LA) (T653T02 (`0012T02`))",
+        "name": "Pentonic 700 (NA/LA) (0012T02 (`T653T02`))",
         "models": "QM891G, QM851G, QM751G, Q651G, Q750G, S551G, RM7L, QM7L, Q77L, X11K, QM8K, QM7K, Q77K, QM6K, QM67K",
         "type": "MediaTek Pentonic 700 (G08 / N. America & LATAM)"
     },
     {
-        "name": "Pentonic 700 (Flagship) (T653T03 (`0012T03`))",
+        "name": "Pentonic 700 (Flagship) (0012T03 (`T653T03`))",
         "models": "QM9K Series",
         "type": "MediaTek Pentonic 700 (G16)"
+    },
+    {
+        "name": "Pentonic 600 (0014T01 (`T658T01`))",
+        "models": "C655 (Selected AP/LA Releases)",
+        "type": "MediaTek MT9658 (Pentonic 600)"
     },
     {
         "name": "G15 Platform (0016T01)",
@@ -25,29 +30,69 @@
         "type": "4K Google TV (G15 Platform)"
     },
     {
-        "name": "T800 (T800T02 (`0013T02`))",
+        "name": "Next-Gen G17 (0017T01)",
+        "models": "Upcoming 2026/2027 Lineup",
+        "type": "4K Flagship Google TV (G17 Platform)"
+    },
+    {
+        "name": "Next-Gen G18 (0018T01)",
+        "models": "Upcoming Future Lineup",
+        "type": "4K Flagship Google TV (G18 Platform)"
+    },
+    {
+        "name": "T800 (Amlogic G09) (0013T02 (`T800T02`, `0013T01`, `0013T03`))",
         "models": "C655, C655 Pro, P755, T7B, P7K, C6KS, 55P755",
         "type": "Amlogic AMLT963D4 (G09, 5-Core A55 @ 1.5GHz / 1.9GHz DVFS, Mali-G57 MC1, 2GB DDR4-3200)"
     },
     {
-        "name": "T615 / MT9615 (T615T01..T03)",
-        "models": "C845, C835, C735, C825, C728, C645 (Late), P745, Q7 (2023), R646 (2021)",
+        "name": "T615 / MT9615 (Global/EU) (T615T01)",
+        "models": "C845, C835, C735, C825, C728, C645 (Late), P745",
         "type": "MediaTek MT9615 (4K 120/144Hz)"
     },
     {
-        "name": "R75P / RT75 (R75PT01 (`0008T01`))",
+        "name": "T615 / MT9615 (NA) (T615T02)",
+        "models": "Q7 (2023 NA Series)",
+        "type": "MediaTek MT9615 (4K 120/144Hz NA)"
+    },
+    {
+        "name": "T615 / MT9615 (R646) (T615T03)",
+        "models": "R646 (2021 Flagship Mini-LED)",
+        "type": "MediaTek MT9615 (4K 120/144Hz Mini-LED)"
+    },
+    {
+        "name": "R75P / RT75 (Global/EU) (0008T01 (`R75PT01`, `0008T02`))",
         "models": "P8LS, P7L, V6D, T6D, U65A, P6K, P7K, V6C, T6C, C6KS, C6CS, U65/75, MQLED70K, P755, C655, C655 Pro, T7B, V6B, QLED780/810, QM51L, QM5K, Q51K, Q63K, S551G, Q651G",
         "type": "Realtek RT75 (G10 Platform, Entry-Mid 4K GTV)"
     },
     {
-        "name": "T221 / MT21 (T221T01..T09 (`0003T05..T09`))",
-        "models": "S350G, S55H, S5200 (Late), 32S5400, S5400A",
-        "type": "MediaTek MT21 (2K / FHD Google TV & Android TV)"
+        "name": "T221 / MT21 (Google TV) (0003T05 (`T221T01`))",
+        "models": "S350G, S55H, 32S5400, S5400A (Google TV)",
+        "type": "MediaTek MT21 (2K / FHD Google TV)"
     },
     {
-        "name": "R51M / R851 (R51MT01..T10 (`R851T02`))",
-        "models": "C645, C635, P745, C715, C815",
-        "type": "Realtek RTD2851 / R51M (Legacy 4K GTV & ATV)"
+        "name": "T221 / MT21 (Android TV) (0003T06 (`T221T02`))",
+        "models": "S5200 (Late), 32S5400 (Android TV)",
+        "type": "MediaTek MT21 (2K / FHD Android TV)"
+    },
+    {
+        "name": "R51M (Google TV) (R51MT05)",
+        "models": "C645, C635, P745 (Google TV)",
+        "type": "Realtek RTD2851 / R51M (4K Google TV)"
+    },
+    {
+        "name": "R851 (Google TV) (R851T02)",
+        "models": "C728, C825, C735 (Early Google TV)",
+        "type": "Realtek RTD2851 / R851 (4K Google TV)"
+    },
+    {
+        "name": "R51M (Android TV) (R51MT02 (`R51MT06`, `R51MT10`))",
+        "models": "C715, C815, P715 (Android TV)",
+        "type": "Realtek RTD2851 / R51M (4K Android TV)"
+    },
+    {
+        "name": "R851 (Android TV) (R851T10)",
+        "models": "C715, C815 (Android TV)",
+        "type": "Realtek RTD2851 / R851 (4K Android TV)"
     },
     {
         "name": "RT51 / AT51 (R51AT01)",
@@ -56,7 +101,32 @@
     },
     {
         "name": "R41K (R41KT01)",
-        "models": "S6500 Series, 32S60AI",
-        "type": "Realtek Entry Legacy"
+        "models": "S6500 Series, 32S60AI, ES560",
+        "type": "Realtek RTD2841K Entry Legacy (Android TV 9/11)"
+    },
+    {
+        "name": "MS6886 (MS88) (MS6886T02 (`MS6886T01`, `MS6886`))",
+        "models": "EC780, X815, C815 (Early), EP680",
+        "type": "MStar MSD6886 (4K Android TV 9/11)"
+    },
+    {
+        "name": "MS6586 (MS86) (MS6586T02 (`MS6586T01`, `MS6586`))",
+        "models": "C2, P2, P6, C4, C6, DP660, EP640, EP660",
+        "type": "MStar MSD6586 (4K Android TV 7/8/9)"
+    },
+    {
+        "name": "MS6488 (MS84) (MS6488T01 (`MS6488`, `MS84`))",
+        "models": "C1, P1 Series",
+        "type": "MStar MSD6488 (4K Legacy Android TV 7/8)"
+    },
+    {
+        "name": "MS48ES (MS48) (MS48EST01 (`MS48ES`, `MS48`))",
+        "models": "S6000, S6800, F40, F50",
+        "type": "MStar MS48 (2K FHD Legacy Android TV 7/8)"
+    },
+    {
+        "name": "Novatek NT67 (NT67T01 (`NT67`))",
+        "models": "Thomson / TCL Regional Android TV Series",
+        "type": "Novatek NT72671 / NT72673 (Android TV)"
     }
 ]

@@ -1,7 +1,7 @@
 [
     {
         "q": "How do I find my Project ID or Panel ID?",
-        "a": "The **Project ID** is an internal identifier (typically 1 to 6 digits) that maps the TV motherboard firmware to your specific panel type, tuner region, and backlight configuration.\n\n1.  **TV Settings:** Navigate to **Settings** > **System** > **About** > **Product Information** and look for the **Project ID** field.\n2.  **Service Menu:** Enter code `1950` or `6425` on the **Contrast** menu (see [Guides](guides.md#advanced-service-menus--secret-codes)).\n3.  **Hardware Sticker:** Check the small white barcode sticker located on the physical motherboard inside the TV chassis."
+        "a": "The **Project ID** is an internal identifier (typically 1 to 6 digits) that maps the TV motherboard firmware to your specific panel type, tuner region, and backlight configuration.\n\n1.  **TV Settings:** Navigate to **Settings** > **System** > **About** > **Product Information** and look for the **Project ID** field.\n2.  **Service Menu:** Enter code `1950` or `6425` on the **Contrast** menu (see [Guides](guides.md#advanced-service-menus-secret-codes)).\n3.  **Hardware Sticker:** Check the small white barcode sticker located on the physical motherboard inside the TV chassis."
     },
     {
         "q": "How do I re-enable the 'Shutdown / Power Off' option on the remote (Google TV / Android 14)?",
@@ -49,6 +49,6 @@
     },
     {
         "q": "How do I downgrade my firmware?",
-        "a": "<a id=\"how-to-downgrade\"></a>\nDowngrading is possible but requires strict adherence to safety rules:\n\n*   **Requirement:** You **must** use a full **IMG / PKG** file. (OTA `.zip` files cannot be used for downgrading).\n*   **Data Loss:** An IMG/PKG flash performs a complete low-level storage wipe.\n*   **Project ID Safety:** Never downgrade to a firmware version older than the initial release of your TV model, or the TV will boot to a black screen due to missing panel whitelists.\n*   **Instructions:** Follow our detailed [IMG / PKG Flashing Guide](guides.md#how-to-flash-img-pkg-recovery--downgrade)."
+        "a": "<a id=\"how-to-downgrade\"></a>\nDowngrading is possible but requires strict adherence to safety rules:\n\n*   **Requirement:** You **must** use a full **IMG / PKG** file. (OTA `.zip` files cannot be used for downgrading).\n*   **Data Loss:** An IMG/PKG flash performs a complete low-level storage wipe.\n*   **Project ID Safety:** Never downgrade to a firmware version older than the initial release of your TV model, or the TV will boot to a black screen due to missing panel whitelists.\n*   **Instructions:** Follow our detailed [IMG / PKG Flashing Guide](guides.md#how-to-flash-img-pkg-recovery-downgrade)."
     }
 ]
