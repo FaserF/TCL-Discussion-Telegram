@@ -1,7 +1,7 @@
 # TCL TV Firmware Tracker
 
 Official firmware tracking, package sizes, release dates, MD5 hashes, changelogs, and direct download links across all known TCL Smart TV platforms.
-Updated automatically every 24 hours at 06:00 German Time (04:00 UTC) via GitHub Actions · Last updated: **2026-08-21 21:10:28 UTC**.
+Updated automatically every 24 hours at 06:00 German Time (04:00 UTC) via GitHub Actions · Last updated: **2026-08-22 04:34:50 UTC**.
 
 !!! info "Model Listings & Platform Matching"
     The listed TV models per platform are **verified examples** and do not represent a complete list.
