@@ -14,17 +14,20 @@ Deep Firmware Extraction Engine:
 
 from __future__ import annotations
 
+import argparse
 import hashlib
 import html
 import io
 import json
 import os
 import re
+import struct
 import time
 import urllib.request
 import uuid
 import xml.etree.ElementTree as ET
 import zipfile
+import zlib
 from dataclasses import asdict, dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
@@ -37,11 +40,31 @@ REPO_ROOT    = Path(__file__).resolve().parent.parent
 DOCS_DIR     = REPO_ROOT / "docs"
 ASSETS_DIR   = DOCS_DIR / "assets"
 JSON_OUT     = ASSETS_DIR / "firmwares.json"
+HISTORY_JSON = ASSETS_DIR / "firmwares_history.json"
 MD_OUT       = DOCS_DIR / "firmwares.md"
 NEWS_OUT     = ASSETS_DIR / "news.json"
 CHIPSETS_MD  = DOCS_DIR / "chipsets.md"
 
 DOCS_BASE_URL = "https://faserf.github.io/TCL-Discussion-Telegram/firmwares/"
+
+
+def classify_firmware_release(version_str: str, raw_release_type: str = "Full OTA (ZIP)", description: str = "") -> tuple[str, bool]:
+    """
+    Classifies a firmware release into:
+    - release_category: 'Production (Stable)', 'Beta / Test Build (RC)', or 'Manufacturing / Test'
+    - is_test_release: True for Beta / Test builds, False for Production releases.
+    """
+    v_upper = (version_str or "").upper()
+    desc_upper = (description or "").upper()
+
+    if re.search(r"[-_]LF\d*R\d+|[-_]R\d{2,}", v_upper) or "LF1R" in v_upper:
+        return "Beta / Test Build (RC)", True
+    if re.search(r"[-_]LF\d*M\d+|[-_]M\d{2,}", v_upper) or "LF1M" in v_upper:
+        return "Manufacturing / Pre-production (Test)", True
+    if "[TEST]" in desc_upper or "[BETA]" in desc_upper or "TEST BUILD" in desc_upper or "RELEASE CANDIDATE" in desc_upper:
+        return "Beta / Test Build (RC)", True
+
+    return "Production (Stable)", False
 
 # ---------------------------------------------------------------------------
 # Official TCL Server API Constants (from SystemUpdate.apk bytecode)
@@ -76,13 +99,25 @@ CDN_HOSTS = {
 }
 
 PROBE_DISCOVERY_PLATFORMS = [
-    ("0014T01", "Pentonic 600 v2", "eu"),
-    ("0017T01", "Next-Gen 2026/2027 G17", "eu"),
-    ("0018T01", "Next-Gen 2026/2027 Platform", "eu"),
+    ("0014T01", "Pentonic 600", "eu"),
+    ("0014T02", "Pentonic 600 NA", "na"),
     ("0015T02", "Pentonic 800 NA", "na"),
+    ("0015T03", "Pentonic 800 Flagship", "eu"),
+    ("0016T02", "G15 Platform NA", "na"),
+    ("0017T01", "Next-Gen G17", "eu"),
+    ("0017T02", "Next-Gen G17 NA", "na"),
+    ("0018T01", "Next-Gen G18 Platform", "eu"),
+    ("0018T02", "Next-Gen G18 NA", "na"),
+    ("0019T01", "Next-Gen G19 Platform", "eu"),
+    ("0020T01", "Next-Gen Flagship Platform", "eu"),
     ("0013T01", "T800 Amlogic v1", "eu"),
     ("0013T03", "T800 Amlogic v3", "eu"),
     ("0008T02", "R75P RT75 NA variant", "na"),
+    ("T655T02", "Pentonic 800 v2", "eu"),
+    ("T658T02", "Pentonic 600 v2", "eu"),
+    ("T800T01", "T800 Amlogic Entry", "eu"),
+    ("T800T03", "T800 Amlogic Flagship", "eu"),
+    ("NT68T01", "Novatek NT68 Android TV", "eu"),
 ]
 
 # ---------------------------------------------------------------------------
@@ -91,65 +126,38 @@ PROBE_DISCOVERY_PLATFORMS = [
 @dataclass
 class ExtractedBuildDetails:
     """
-    Detailed technical metadata extracted directly from the firmware package
-    (META-INF/com/android/metadata, build.prop, DRM manifests, audio/video configs, and drivers).
+    Authentic Android system build properties extracted directly from
+    META-INF/com/android/metadata inside official firmware packages.
     """
     android_version: Optional[str] = None
-    """Android OS Release Version (e.g. '14', '12', '11', '9')."""
+    """Android OS Release version (e.g., '14', '12', '11', '9')."""
 
     os_flavor: Optional[str] = None
-    """System UI & Experience flavor: 'Google TV (GTV)' or 'Android TV (ATV)'."""
+    """Operating system experience flavor ('Google TV (GTV)' vs 'Android TV (ATV)')."""
 
     gms_version: Optional[str] = None
-    """Google Mobile Services / Experience designation (e.g. 'Android_14_GTV_U', 'Android_12_GTV')."""
+    """Google Experience / GMS package designation (e.g., 'Android_14_GTV_U', 'Android_12_GTV')."""
 
     security_patch: Optional[str] = None
-    """Android Security Patch Level date string (e.g. '2026-06-05')."""
+    """Android Security Patch Level date (e.g., '2026-06-05')."""
 
     build_date_utc: Optional[int] = None
-    """Unix epoch compilation timestamp (e.g. 1786113311)."""
+    """Unix epoch compilation timestamp of the build (e.g., 1786113311)."""
 
     build_date_str: Optional[str] = None
-    """Human-readable compilation date string (e.g. 'Aug 07, 2026')."""
+    """Human-readable compilation date string (e.g., 'Aug 07, 2026')."""
 
     fingerprint: Optional[str] = None
-    """Official Android build fingerprint string."""
+    """Official Android build fingerprint signature."""
 
     sdk_level: Optional[int] = None
-    """Android API SDK level integer (e.g. 34 for Android 14, 31 for Android 12)."""
+    """Android API SDK level integer (e.g., 34 for Android 14, 31 for Android 12)."""
 
     incremental_build: Optional[str] = None
-    """Internal incremental revision code (e.g. 'AS50', 'AS24', 'AR11')."""
+    """Internal incremental build revision code (e.g., 'AS50', 'AS24', 'AR11')."""
 
     device_codename: Optional[str] = None
-    """Hardware target device codename (e.g. 'G10', 'G09', 'BeyondTV4')."""
-
-    widevine_level: Optional[str] = None
-    """Google Widevine DRM security capability (e.g. 'Widevine Modular L1 (4K HDR)')."""
-
-    playready_level: Optional[str] = None
-    """Microsoft PlayReady DRM capability (e.g. 'PlayReady Hardware SL3000')."""
-
-    hdr_formats: Optional[str] = None
-    """Supported High Dynamic Range video standards (e.g. 'Dolby Vision, HDR10+, HDR10, HLG')."""
-
-    audio_codecs: Optional[str] = None
-    """Hardware audio decoding & processing (e.g. 'Dolby Atmos (DAP), Dolby Digital Plus, DTS Virtual:X')."""
-
-    memc_support: Optional[str] = None
-    """Motion Estimation / Motion Compensation hardware engine status (e.g. 'Yes (libtcl_memc)')."""
-
-    hbbtv_version: Optional[str] = None
-    """Hybrid Broadcast Broadband TV middleware version (e.g. 'HbbTV 2.0.2 / 2.0.3')."""
-
-    wifi_chipsets: Optional[str] = None
-    """Supported Wi-Fi hardware controller drivers (e.g. 'Realtek RTL8822BS / RTL8821CS (Dual-Band AC)')."""
-
-    bluetooth_version: Optional[str] = None
-    """Bluetooth controller driver & standard (e.g. 'Bluetooth 5.0 / 5.2 (RTL8761AT)')."""
-
-    broadcast_tuners: Optional[str] = None
-    """Broadcast tuner demodulation standards (e.g. 'DVB-T2 / DVB-C / DVB-S2 (EU) / ATSC (NA)')."""
+    """Hardware device target codename (e.g., 'G10', 'G09', 'BeyondTV4')."""
 
 
 @dataclass
@@ -199,6 +207,12 @@ class PlatformEntry:
 
     download_url: str
     """Direct primary HTTP/HTTPS download URL on the official TCL CDN (cedock.com)."""
+
+    is_test_release: bool = False
+    """True if this release is an experimental Beta / Test build or Release Candidate (R/M build)."""
+
+    release_category: str = "Production (Stable)"
+    """Categorized status: 'Production (Stable)', 'Beta / Test Build (RC)', or 'Manufacturing / Test'."""
 
     all_cdn_urls: dict = field(default_factory=dict)
     """Dictionary mapping regional CDN keys ('eu', 'na', 'as') to direct mirror download URLs."""
@@ -257,10 +271,6 @@ def parse_ota_metadata_text(text: str) -> ExtractedBuildDetails:
             android_ver = m.group(1)
 
     # Extract OS flavor (Google TV vs Android TV) strictly from firmware metadata & build properties
-    # Genuine differentiation:
-    # 1. Solution property: ro.tcl.product.solution or client ID base (GTS = Google TV)
-    # 2. Launcher presence (LauncherX = GTV vs Leanback TVLauncher = ATV)
-    # 3. Explicit GTV / ATV tag in build fingerprint or release software version ID
     sw_id = meta.get("post-software-version-id", "")
     desc = meta.get("ro.build.description", "")
     solution = meta.get("ro.tcl.product.solution", "")
@@ -274,7 +284,6 @@ def parse_ota_metadata_text(text: str) -> ExtractedBuildDetails:
         os_flavor = "Android TV (ATV)"
         gms = f"Android_{android_ver}_ATV" if android_ver else "Android TV"
     else:
-        # Fallback based on verified chassis architecture
         is_gtv = bool(fingerprint and any(k in fingerprint.upper() for k in ("BEYONDTV4", "G0", "G1")))
         os_flavor = "Google TV (GTV)" if is_gtv else "Android TV (ATV)"
         gms = f"Android_{android_ver}_GTV" if is_gtv and android_ver else (f"Android_{android_ver}_ATV" if android_ver else None)
@@ -290,136 +299,6 @@ def parse_ota_metadata_text(text: str) -> ExtractedBuildDetails:
         sdk_level=sdk_val,
         incremental_build=incr,
         device_codename=dev,
-        widevine_level="Widevine Modular L1 (4K HDR)",
-        playready_level="PlayReady Hardware SL3000",
-        hdr_formats="Dolby Vision, HDR10+, HDR10, HLG",
-        audio_codecs="Dolby Atmos (DAP), Dolby Digital Plus, DTS Virtual:X / DTS-HD",
-        memc_support="Yes (libtcl_memc Engine)",
-        hbbtv_version="HbbTV 2.0.2 / 2.0.3 (ETSI TS 102 796)",
-        wifi_chipsets="Realtek RTL8822BS / RTL8821CS (Dual-Band 2.4/5GHz 802.11ac)",
-        bluetooth_version="Bluetooth 5.0 / 5.2 (RTL8761AT)",
-        broadcast_tuners="DVB-T2 / DVB-C / DVB-S2 (EU/Global) & ATSC 1.0/3.0 / ClearQAM (NA)"
-    )
-
-
-def generate_platform_baseline_details(platform_id: str, soc_specs: str, family_name: str, latest_firmware: str) -> ExtractedBuildDetails:
-    """
-    Generates genuine hardware architecture and Android OS specifications for platform families
-    based on verified chipset capabilities, release nomenclature, and hardware specifications.
-    """
-    pid = platform_id.upper()
-    soc = (soc_specs or "").upper()
-    fam = (family_name or "").upper()
-
-    # Default baseline attributes
-    android_ver = "11"
-    os_flavor = "Android TV (ATV)"
-    sdk_level = 30
-    widevine = "Widevine Modular L1 (4K Ultra-HD HDR)"
-    playready = "PlayReady Hardware SL3000"
-    hdr = "Dolby Vision, HDR10+, HDR10, HLG"
-    audio = "Dolby Atmos (DAP), Dolby Digital Plus, DTS Virtual:X"
-    memc = "Yes (libtcl_memc Motion Engine)"
-    hbbtv = "HbbTV 2.0.2 / 2.0.3 (ETSI TS 102 796)"
-    wifi = "Dual-Band 2.4/5GHz 802.11ac (WiFi 5)"
-    bt = "Bluetooth 5.0 / 5.1"
-    tuners = "DVB-T2 / DVB-C / DVB-S2 (EU/Global) & ATSC 1.0/3.0 (NA)"
-
-    if "0015" in pid or "T655" in pid or "PENTONIC 800" in fam or "MT9655" in soc:
-        android_ver = "14"
-        os_flavor = "Google TV (GTV)"
-        sdk_level = 34
-        hdr = "Dolby Vision IQ, HDR10+ Adaptive, HDR10, HLG"
-        audio = "Dolby Atmos, DTS:X, eARC, Dolby AC-4"
-        memc = "Yes (144Hz VRR / MEMC Clarity Engine)"
-        wifi = "MediaTek MT7921 / MT7922 (WiFi 6 / 6E 802.11ax)"
-        bt = "Bluetooth 5.2 / 5.3"
-    elif "0012" in pid or "T653" in pid or "PENTONIC 700" in fam or "MT9653" in soc:
-        android_ver = "12"
-        os_flavor = "Google TV (GTV)"
-        sdk_level = 31
-        hdr = "Dolby Vision IQ, HDR10+, HDR10, HLG"
-        audio = "Dolby Atmos, DTS:X, DTS Virtual:X, Dolby Digital Plus"
-        memc = "Yes (120Hz/144Hz Motion Clarity Pro)"
-        wifi = "MediaTek MT7921 (WiFi 6 802.11ax)"
-        bt = "Bluetooth 5.2"
-    elif "0008" in pid or "R75P" in pid or "RTD2875" in soc or "T800" in pid or "0013" in pid:
-        android_ver = "12"
-        os_flavor = "Google TV (GTV)"
-        sdk_level = 31
-        hdr = "Dolby Vision, HDR10+, HDR10, HLG"
-        audio = "Dolby Atmos, Dolby Digital Plus, DTS-HD"
-        memc = "Yes (120Hz MEMC Engine)"
-        wifi = "Realtek RTL8852BE (WiFi 6) / RTL8822CU (WiFi 5)"
-        bt = "Bluetooth 5.1 / 5.2"
-    elif "T615" in pid or "MT9615" in soc:
-        android_ver = "11"
-        os_flavor = "Google TV (GTV)"
-        sdk_level = 30
-        hdr = "Dolby Vision IQ, HDR10, HLG"
-        audio = "Dolby Atmos, Dolby Digital Plus, DTS"
-        memc = "Yes (120Hz MEMC)"
-        wifi = "WiFi 6 (802.11ax)"
-        bt = "Bluetooth 5.2"
-    elif "T658" in pid or "0016" in pid or "PENTONIC 600" in fam:
-        android_ver = "12"
-        os_flavor = "Google TV (GTV)"
-        sdk_level = 31
-        hdr = "Dolby Vision, HDR10+, HDR10, HLG"
-        audio = "Dolby Atmos, Dolby Digital Plus"
-        memc = "Yes (60Hz/120Hz DLG MEMC)"
-        wifi = "WiFi 5 / WiFi 6 (802.11ac/ax)"
-        bt = "Bluetooth 5.1"
-    elif "R51M" in pid or "R851" in pid or "RTD2851M" in soc:
-        android_ver = "11"
-        os_flavor = "Google TV (GTV)" if ("GTV" in fam or "V6" in latest_firmware or "V5" in latest_firmware) else "Android TV (ATV)"
-        sdk_level = 30
-        hdr = "Dolby Vision, HDR10, HLG"
-        audio = "Dolby Atmos, Dolby Digital Plus, DTS Studio Sound"
-        memc = "Yes (60Hz MEMC / 120Hz DLG)"
-        wifi = "Realtek RTL8822BS / RTL8821CS (WiFi 5 802.11ac)"
-        bt = "Bluetooth 5.0"
-    elif "0003" in pid or "T221" in pid or "MT21" in fam or "MT9221" in soc or "MT5621" in soc:
-        android_ver = "11"
-        os_flavor = "Android TV (ATV)"
-        sdk_level = 30
-        hdr = "HDR10, HLG"
-        audio = "Dolby Audio, Dolby Digital Plus"
-        memc = "No (FHD 60Hz Native)"
-        wifi = "Dual-Band 2.4/5GHz 802.11a/b/g/n/ac"
-        bt = "Bluetooth 5.0"
-    elif "R41K" in pid or "RTD2841" in soc:
-        android_ver = "11"
-        os_flavor = "Android TV (ATV)"
-        sdk_level = 30
-        hdr = "HDR10, HLG"
-        audio = "Dolby Audio, Dolby Digital Plus"
-        memc = "No (HD/FHD Entry Platform)"
-        wifi = "Single-Band 2.4GHz 802.11b/g/n"
-        bt = "Bluetooth 5.0"
-
-    gms = f"Android_{android_ver}_GTV" if "Google TV" in os_flavor else f"Android_{android_ver}_ATV"
-
-    return ExtractedBuildDetails(
-        android_version=android_ver,
-        os_flavor=os_flavor,
-        gms_version=gms,
-        security_patch="Current Vendor Security Maintenance",
-        build_date_utc=None,
-        build_date_str=None,
-        fingerprint=f"TCL/{pid}/{pid}:{android_ver}/{latest_firmware}/user/release-keys",
-        sdk_level=sdk_level,
-        incremental_build=latest_firmware.split("-")[-1] if "-" in latest_firmware else latest_firmware,
-        device_codename=f"tcl_{pid.lower()}",
-        widevine_level=widevine,
-        playready_level=playready,
-        hdr_formats=hdr,
-        audio_codecs=audio,
-        memc_support=memc,
-        hbbtv_version=hbbtv,
-        wifi_chipsets=wifi,
-        bluetooth_version=bt,
-        broadcast_tuners=tuners,
     )
 
 
@@ -730,6 +609,142 @@ def probe_and_discover_new_platforms(known_platforms: dict[str, dict[str, Any]],
 
 
 # ---------------------------------------------------------------------------
+# Historical Firmware Archive Engine (docs/assets/firmwares_history.json)
+# ---------------------------------------------------------------------------
+
+def load_firmware_history() -> dict[str, list[dict[str, Any]]]:
+    """
+    Loads historical firmware records from docs/assets/firmwares_history.json.
+    Returns a dict mapping platform_id -> list of historical release dictionaries.
+    """
+    if not HISTORY_JSON.exists():
+        return {}
+    try:
+        data = json.loads(HISTORY_JSON.read_text(encoding="utf-8"))
+        return data.get("history", {})
+    except Exception as e:
+        print(f"[Warning] Failed to parse firmwares_history.json: {e}")
+        return {}
+
+
+def record_firmware_history_entry(history: dict[str, list[dict[str, Any]]], entry: PlatformEntry) -> None:
+    """
+    Records a firmware version into the history archive if not already recorded.
+    """
+    pid = entry.platform
+    if pid not in history:
+        history[pid] = []
+
+    existing_versions = {h.get("version") for h in history[pid] if h.get("version")}
+    if entry.latest_firmware and entry.latest_firmware not in existing_versions and not entry.latest_firmware.endswith("-LF1V001"):
+        record = {
+            "version": entry.latest_firmware,
+            "build_number": entry.build_number,
+            "release_type": entry.release_type,
+            "is_test_release": entry.is_test_release,
+            "release_category": entry.release_category,
+            "package_size": entry.package_size,
+            "release_date": entry.release_date,
+            "md5": entry.md5,
+            "changelog": entry.changelog,
+            "download_url": entry.download_url,
+            "all_cdn_urls": entry.all_cdn_urls,
+            "extracted_details": asdict(entry.extracted_details) if entry.extracted_details else None,
+            "recorded_at": datetime.now(timezone.utc).isoformat(),
+        }
+        history[pid].insert(0, record)
+
+
+def save_firmware_history(history: dict[str, list[dict[str, Any]]]) -> None:
+    """
+    Saves the aggregated historical database to docs/assets/firmwares_history.json.
+    """
+    payload = {
+        "schema_version": "1.0",
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "source": "official TCL Smart TV FOTA API (huan.tv) & CDN (cedock.com)",
+        "total_platforms": len(history),
+        "history": history,
+    }
+    HISTORY_JSON.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    print(f"[History JSON] Written to {HISTORY_JSON}")
+
+
+# ---------------------------------------------------------------------------
+# GitHub CI Issue Reporter (Auto-alert on API failure with anti-spam)
+# ---------------------------------------------------------------------------
+
+def check_and_report_ci_api_failure(failed_count: int, total_count: int, last_error_msg: str) -> None:
+    """
+    When running in GitHub Actions CI, detects if the FOTA upgrade API is failing
+    (e.g., due to rotated HMAC keys, blocked endpoints, or auth changes).
+    Creates an issue automatically if one is not already open (anti-spam).
+    """
+    if os.environ.get("GITHUB_ACTIONS") != "true":
+        return
+
+    # Trigger alert if more than 50% of API queries failed
+    if total_count == 0 or failed_count < (total_count // 2):
+        return
+
+    repo = os.environ.get("GITHUB_REPOSITORY")
+    token = os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN")
+    if not repo or not token:
+        print("[CI Alert] GITHUB_REPOSITORY or GITHUB_TOKEN not available. Skipping issue creation.")
+        return
+
+    issue_title = "[FOTA API Alert] TCL Upgrade API Authentication Failure (Secret / HMAC Key Rotation Required)"
+    issues_url = f"https://api.github.com/repos/{repo}/issues?state=open"
+    headers = {
+        "Authorization": f"Bearer {token}",
+        "Accept": "application/vnd.github+json",
+        "User-Agent": "TCL-Firmware-Tracker-CI",
+    }
+
+    try:
+        req = urllib.request.Request(issues_url, headers=headers)
+        with urllib.request.urlopen(req, timeout=10) as resp:
+            existing_issues = json.loads(resp.read().decode("utf-8"))
+
+        for iss in existing_issues:
+            if issue_title in iss.get("title", "") or "[FOTA API Alert]" in iss.get("title", ""):
+                print(f"[CI Alert] Open issue already exists (#{iss.get('number')}: '{iss.get('title')}'). Skipping creation to prevent spam.")
+                return
+
+        now_str = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
+        issue_body = (
+            f"## ⚠️ TCL FOTA Upgrade API Failure Detected in CI\n\n"
+            f"During automated workflow execution at `{now_str}`, the TCL Firmware Tracker encountered widespread API failures.\n\n"
+            f"### Diagnostics:\n"
+            f"- **Failed Queries:** {failed_count} / {total_count} platforms\n"
+            f"- **Last Error Recorded:** `{last_error_msg}`\n"
+            f"- **Probable Cause:** The FOTA HMAC signing secret key (`TV_APP_KEYS`), SystemUpdate APK credentials, or server endpoints (`huan.tv`) may have changed or expired.\n\n"
+            f"### Suggested Actions:\n"
+            f"1. Check connectivity to `eu-filter-upgrade.huan.tv`.\n"
+            f"2. Inspect recent TCL `SystemUpdate.apk` bytecode to extract updated HMAC app keys if rotation occurred.\n\n"
+            f"*This alert was automatically generated by `scripts/fetch_firmwares.py`.*"
+        )
+
+        post_data = json.dumps({
+            "title": issue_title,
+            "body": issue_body,
+            "labels": ["bug", "api-alert"],
+        }).encode("utf-8")
+
+        post_req = urllib.request.Request(
+            f"https://api.github.com/repos/{repo}/issues",
+            data=post_data,
+            headers={**headers, "Content-Type": "application/json"},
+            method="POST"
+        )
+        with urllib.request.urlopen(post_req, timeout=10) as resp:
+            res_json = json.loads(resp.read().decode("utf-8"))
+            print(f"[CI Alert] Successfully created GitHub Issue #{res_json.get('number')}: '{issue_title}'")
+    except Exception as e:
+        print(f"[CI Alert] Failed to query/create GitHub issue: {e}")
+
+
+# ---------------------------------------------------------------------------
 # News Banner Trigger Engine
 # ---------------------------------------------------------------------------
 
@@ -757,7 +772,8 @@ def update_news_banner(updated_releases: list[PlatformEntry], newly_discovered: 
     if updated_releases:
         if len(updated_releases) == 1:
             rel = updated_releases[0]
-            banner_parts.append(f"New Firmware Update: {rel.latest_firmware} for {rel.platform} ({rel.family_name}) released!")
+            tag = " [Beta/Test]" if rel.is_test_release else ""
+            banner_parts.append(f"New Firmware Update{tag}: {rel.latest_firmware} for {rel.platform} ({rel.family_name}) released!")
         else:
             p_list = ", ".join(r.platform for r in updated_releases[:3])
             if len(updated_releases) > 3:
@@ -806,20 +822,20 @@ def send_telegram_message(bot_token: str, chat_id: str, html_content: str) -> bo
                 print("  [Telegram] Message successfully broadcast to channel.")
                 return True
             else:
-                print(f"  [Telegram Error] API returned: {res}")
+                print(f"  [Telegram Warning] API returned: {res.get('description')}")
                 return False
     except Exception as e:
-        print(f"  [Telegram Error] Failed to send message: {e}")
+        print(f"  [Telegram Error] Failed to send broadcast: {e}")
         return False
 
 
 def notify_telegram(updated_releases: list[PlatformEntry], newly_discovered: list[dict[str, Any]]) -> None:
     """
-    Broadcasts professional release announcements to the Telegram channel
-    when TELEGRAM_BOT_TOKEN and TELEGRAM_CHANNEL_ID environment variables are set.
+    Dispatches automated Telegram updates to the official community channel.
+    Includes prominent warnings for Beta / Test releases.
     """
-    bot_token = os.environ.get("TELEGRAM_BOT_TOKEN") or os.environ.get("TELEGRAM_TOKEN")
-    chat_id   = os.environ.get("TELEGRAM_CHANNEL_ID") or os.environ.get("TELEGRAM_CHAT_ID")
+    bot_token = os.environ.get("TELEGRAM_BOT_TOKEN")
+    chat_id = os.environ.get("TELEGRAM_CHANNEL_ID")
 
     if not bot_token or not chat_id:
         print("[Telegram] Bot token or channel ID secret not configured. Skipping Telegram broadcast.")
@@ -882,12 +898,21 @@ def notify_telegram(updated_releases: list[PlatformEntry], newly_discovered: lis
         md5_part = f"\n🔐 <b>MD5:</b> <code>{html.escape(str(rel.md5))}</code>" if rel.md5 else ""
         cl_part = f"\n\n📝 <b>Changelog / Release Notes:</b>\n<i>{html.escape(str(rel.changelog))}</i>" if rel.changelog else ""
 
+        warning_block = ""
+        if rel.is_test_release:
+            warning_block = (
+                "\n\n⚠️ <b>BETA / TEST FIRMWARE ALERT</b>\n"
+                "<i>This build is an experimental Release Candidate (R-build). It may contain bugs, incomplete features, or unstable drivers. Flash at your own risk!</i>"
+            )
+
         eu_link = rel.all_cdn_urls.get("eu", rel.download_url)
         na_link = rel.all_cdn_urls.get("na", rel.download_url)
         as_link = rel.all_cdn_urls.get("as", rel.download_url)
 
+        cat_badge = f" <i>({rel.release_category})</i>" if rel.is_test_release else ""
+
         msg = (
-            f"🆕 <b>New TCL {p_id} Platform Update Available</b>\n\n"
+            f"🆕 <b>New TCL {p_id} Platform Update Available{cat_badge}</b>\n\n"
             f"📺 <b>Platform:</b> <b>{p_name}</b>\n"
             f"⚙️ <b>Hardware / SoC:</b> <i>{soc}</i>\n"
             f"⚡ <b>Version:</b> <code>{fw}</code>{bno}\n"
@@ -899,7 +924,8 @@ def notify_telegram(updated_releases: list[PlatformEntry], newly_discovered: lis
             f"🖥️ <b>Compatible TV Models (Examples / Selection):</b>\n"
             f"<code>{models}</code>\n"
             f"<i>(Note: Selection of example models only. Always verify your SoC platform in TV settings)</i>"
-            f"{cl_part}\n\n"
+            f"{cl_part}"
+            f"{warning_block}\n\n"
             f"🔗 <b>Official Direct Downloads:</b>\n"
             f"• <a href=\"{eu_link}\">EU / Global CDN</a>\n"
             f"• <a href=\"{na_link}\">NA CDN</a>\n"
@@ -910,22 +936,70 @@ def notify_telegram(updated_releases: list[PlatformEntry], newly_discovered: lis
         time.sleep(1.0)
 
 
+def resolve_target_platforms(platforms_map: dict[str, dict[str, Any]], requested_chipsets: list[str]) -> set[str]:
+    """
+    Resolves requested chipset search terms (IDs, alt IDs, family names) to matching platform IDs.
+    """
+    if not requested_chipsets:
+        return set()
+
+    matched: set[str] = set()
+    for req in requested_chipsets:
+        req_norm = req.strip().upper()
+        if not req_norm or req_norm == "ALL":
+            continue
+        found = False
+        for pid, cat in platforms_map.items():
+            pid_upper = pid.upper()
+            alt_upper = str(cat.get("alt_platform_id", "")).upper()
+            fam_upper = str(cat.get("family_name", "")).upper()
+            soc_upper = str(cat.get("soc_specs", "")).upper()
+            if req_norm == pid_upper or req_norm == alt_upper or req_norm in fam_upper or req_norm in soc_upper:
+                matched.add(pid)
+                found = True
+        if not found:
+            print(f"[Chipset Filter Warning] No platform matched search term '{req}'.")
+    return matched
+
+
 # ---------------------------------------------------------------------------
 # Tracker Execution Loop
 # ---------------------------------------------------------------------------
 
-def run(delay: float = 0.5) -> tuple[list[PlatformEntry], str]:
+def run(
+    delay: float = 0.5,
+    chipset_filters: Optional[list[str]] = None,
+) -> tuple[list[PlatformEntry], list[PlatformEntry], str, dict[str, list[dict[str, Any]]], Optional[set[str]]]:
     now = datetime.now(timezone.utc).isoformat()
     platforms_map, previous_versions = load_existing_platforms()
+    history = load_firmware_history()
 
     newly_discovered: list[dict[str, Any]] = []
-    probe_and_discover_new_platforms(platforms_map, newly_discovered)
+    target_pids: Optional[set[str]] = None
+
+    # Handle specific chipset filtering
+    if chipset_filters:
+        target_pids = resolve_target_platforms(platforms_map, chipset_filters)
+        if target_pids:
+            p_list = ", ".join(sorted(target_pids))
+            print(f"[Chipset Filter] Active targets ({len(target_pids)}): {p_list}")
+        else:
+            print(f"[Chipset Filter] No matching chipsets found. Querying all platforms by default.")
+            target_pids = None
+
+    if not target_pids:
+        probe_and_discover_new_platforms(platforms_map, newly_discovered)
 
     entries: list[PlatformEntry] = []
     updated_releases: list[PlatformEntry] = []
+    failed_api_queries = 0
+    last_api_error = ""
 
     print(f"\n[TCL TV Firmware Tracker] Starting run at {now}")
-    print(f"[TCL TV Firmware Tracker] Tracking {len(platforms_map)} platform families\n")
+    if target_pids:
+        print(f"[TCL TV Firmware Tracker] Querying {len(target_pids)} targeted platform(s) (Remaining {len(platforms_map)-len(target_pids)} loaded from cache)\n")
+    else:
+        print(f"[TCL TV Firmware Tracker] Tracking all {len(platforms_map)} platform families\n")
 
     for pid, cat in sorted(platforms_map.items()):
         p_name = cat.get("family_name", pid)
@@ -934,8 +1008,6 @@ def run(delay: float = 0.5) -> tuple[list[PlatformEntry], str]:
         bno = cat.get("build_number", "")
         alt_id = cat.get("alt_platform_id", pid)
 
-        print(f"  Querying {pid} ({p_name}) ...", end=" ", flush=True)
-
         primary_url = construct_cdn_url(reg, pid, fw, bno)
 
         # Build regional CDN links
@@ -943,14 +1015,23 @@ def run(delay: float = 0.5) -> tuple[list[PlatformEntry], str]:
         for r in ("eu", "na", "as"):
             cdn_links[r] = construct_cdn_url(r, pid, fw, bno)
 
-        # Query live FOTA API
-        fota_resp = check_tv_fota(pid, fw, reg)
-        if (not fota_resp or not fota_resp.get("version")) and alt_id != pid:
-            fota_resp_alt = check_tv_fota(alt_id, fw, reg)
-            if fota_resp_alt and fota_resp_alt.get("version"):
-                fota_resp = fota_resp_alt
+        is_queried = (target_pids is None) or (pid in target_pids)
+        fota_resp = None
 
-        fota_status = "Checked (Live API - Up to date)"
+        if is_queried:
+            print(f"  Querying {pid} ({p_name}) ...", end=" ", flush=True)
+            # Query live FOTA API
+            fota_resp = check_tv_fota(pid, fw, reg)
+            if fota_resp is None:
+                failed_api_queries += 1
+                last_api_error = f"HTTP/Auth failure on platform {pid}"
+
+            if (not fota_resp or not fota_resp.get("version")) and alt_id != pid:
+                fota_resp_alt = check_tv_fota(alt_id, fw, reg)
+                if fota_resp_alt and fota_resp_alt.get("version"):
+                    fota_resp = fota_resp_alt
+
+        fota_status = cat.get("fota_api_status", "Checked (Live API - Up to date)")
         active_fw = fw
         active_size = cat.get("package_size", "—")
         active_date = cat.get("release_date", "—")
@@ -965,9 +1046,6 @@ def run(delay: float = 0.5) -> tuple[list[PlatformEntry], str]:
             ext_details = ExtractedBuildDetails(**{k: v for k, v in raw_ext.items() if k in ExtractedBuildDetails.__annotations__})
         elif isinstance(raw_ext, ExtractedBuildDetails):
             ext_details = raw_ext
-
-        if ext_details is None:
-            ext_details = generate_platform_baseline_details(pid, cat.get("soc_specs", ""), p_name, active_fw)
 
         if fota_resp and fota_resp.get("version"):
             active_fw = fota_resp["version"]
@@ -990,6 +1068,9 @@ def run(delay: float = 0.5) -> tuple[list[PlatformEntry], str]:
         if (not active_date or active_date in ("—", "")) and ext_details and ext_details.build_date_str:
             active_date = ext_details.build_date_str
 
+        # Classify release (Beta/Test vs Production)
+        rel_cat, is_test = classify_firmware_release(active_fw, active_type, active_changelog or "")
+
         entry = PlatformEntry(
             platform=pid,
             alt_platform_id=alt_id,
@@ -999,6 +1080,8 @@ def run(delay: float = 0.5) -> tuple[list[PlatformEntry], str]:
             latest_firmware=active_fw,
             build_number=bno,
             release_type=active_type,
+            is_test_release=is_test,
+            release_category=rel_cat,
             package_size=active_size,
             release_date=active_date,
             md5=active_md5,
@@ -1013,6 +1096,9 @@ def run(delay: float = 0.5) -> tuple[list[PlatformEntry], str]:
 
         entries.append(entry)
 
+        # Record in historical archive
+        record_firmware_history_entry(history, entry)
+
         # Check if this is a newly discovered version compared to previous run
         prev_ver = previous_versions.get(pid)
         if (pid == "0008T01" and prev_ver == "V8-0008T01-LF1V630") or (prev_ver and prev_ver != active_fw and active_fw != f"V8-{pid}-LF1V001"):
@@ -1020,9 +1106,14 @@ def run(delay: float = 0.5) -> tuple[list[PlatformEntry], str]:
                 active_fw = "V8-0008T01-LF1V636"
                 entry.latest_firmware = active_fw
                 entry.fota_api_status = f"New OTA Released: {active_fw}"
+                record_firmware_history_entry(history, entry)
             updated_releases.append(entry)
 
-        time.sleep(delay)
+        if is_queried and not target_pids:
+            time.sleep(delay)
+
+    # Check CI API Health
+    check_and_report_ci_api_failure(failed_api_queries, len(platforms_map), last_api_error)
 
     # Trigger banner and Telegram broadcast if new platforms or updates occurred
     if updated_releases or newly_discovered:
@@ -1030,7 +1121,7 @@ def run(delay: float = 0.5) -> tuple[list[PlatformEntry], str]:
         notify_telegram(updated_releases, newly_discovered)
 
     print(f"\n[TCL TV Firmware Tracker] Successfully processed {len(entries)} platforms.")
-    return entries, updated_releases, now
+    return entries, updated_releases, now, history, target_pids
 
 
 # ---------------------------------------------------------------------------
@@ -1052,6 +1143,8 @@ def write_json(entries: list[PlatformEntry], generated_at: str) -> None:
             "latest_firmware": "Latest official firmware release version code (e.g., 'V8-0012T01-LF1V655').",
             "build_number": "Internal 6-digit revision build compilation number (e.g., '003254').",
             "release_type": "Installation package type: 'Full OTA (ZIP)', 'Incremental OTA', or 'IMG / PKG Recovery'.",
+            "is_test_release": "Boolean flag indicating if the package is a Beta/Test release candidate (R/M build).",
+            "release_category": "Classification: 'Production (Stable)', 'Beta / Test Build (RC)', or 'Manufacturing / Test'.",
             "package_size": "Formatted binary package file size in GB/MB.",
             "release_date": "Official publication date or build compilation date (YYYY-MM-DD or YYYY-MM).",
             "md5": "Cryptographic MD5 hash checksum from FOTA server for payload verification.",
@@ -1066,16 +1159,7 @@ def write_json(entries: list[PlatformEntry], generated_at: str) -> None:
                 "fingerprint": "Official Android build fingerprint signature.",
                 "sdk_level": "Android API SDK level integer (e.g., 34 for Android 14, 31 for Android 12).",
                 "incremental_build": "Internal incremental build revision code (e.g., 'AS50', 'AS24', 'AR11').",
-                "device_codename": "Hardware device target codename (e.g., 'G10', 'G09', 'BeyondTV4').",
-                "widevine_level": "Google Widevine DRM security level support (e.g., 'Widevine Modular L1 (4K HDR)').",
-                "playready_level": "Microsoft PlayReady DRM capability (e.g., 'PlayReady Hardware SL3000').",
-                "hdr_formats": "Supported High Dynamic Range video standards (e.g., 'Dolby Vision, HDR10+, HDR10, HLG').",
-                "audio_codecs": "Supported audio hardware decoders and enhancements (e.g., 'Dolby Atmos (DAP), DTS Virtual:X').",
-                "memc_support": "Motion Estimation / Motion Compensation hardware engine support (e.g., 'Yes (libtcl_memc)').",
-                "hbbtv_version": "Hybrid Broadcast Broadband TV middleware version (e.g., 'HbbTV 2.0.2 / 2.0.3').",
-                "wifi_chipsets": "Supported Wi-Fi controller hardware and drivers (e.g., 'Realtek RTL8822BS / RTL8821CS').",
-                "bluetooth_version": "Bluetooth standard and driver support (e.g., 'Bluetooth 5.0 / 5.2 (RTL8761AT)').",
-                "broadcast_tuners": "Broadcast tuner demodulation standards (e.g., 'DVB-T2 / DVB-C / DVB-S2 (EU) / ATSC (NA)')."
+                "device_codename": "Hardware device target codename (e.g., 'G10', 'G09', 'BeyondTV4')."
             },
             "region": "Target regional market deployment ('EU', 'NA', 'AS', 'GLOBAL').",
             "download_url": "Direct primary CDN download link for the package.",
@@ -1089,8 +1173,9 @@ def write_json(entries: list[PlatformEntry], generated_at: str) -> None:
     print(f"[JSON] Written to {JSON_OUT}")
 
 
-def write_markdown(entries: list[PlatformEntry], generated_at: str) -> None:
+def write_markdown(entries: list[PlatformEntry], generated_at: str, history: Optional[dict[str, list[dict[str, Any]]]] = None) -> None:
     ts = generated_at[:19].replace("T", " ") + " UTC"
+    hist = history or {}
 
     lines: list[str] = [
         "# TCL TV Firmware Tracker",
@@ -1107,8 +1192,8 @@ def write_markdown(entries: list[PlatformEntry], generated_at: str) -> None:
         "",
         "## Latest Verified Firmwares per Platform",
         "",
-        "| Platform | Hardware / SoC Specs<br><small>*(Example models)*</small> | Latest Release<br><small>*(Type & Size)*</small> | Official Download | Official Changelog / Notes | Release Date | FOTA Status |",
-        "|---|---|---|:---:|---|:---:|:---:|",
+        "| Platform | Hardware / SoC Specs<br><small>*(Example models)*</small> | Latest Release<br><small>*(Type & Size)*</small> | Status / Type | Official Download | Official Changelog / Notes | Release Date | FOTA Status |",
+        "|---|---|---|:---:|:---:|---|:---:|:---:|",
     ]
 
     for e in entries:
@@ -1116,10 +1201,13 @@ def write_markdown(entries: list[PlatformEntry], generated_at: str) -> None:
         type_size_str = f"`{e.release_type}` · `{e.package_size}`" if e.package_size != "—" else f"`{e.release_type}`"
         dl_link = f"[:material-download: Download]({e.download_url})"
         cl_text = f"*{e.changelog}*" if e.changelog else "*(Pending official OTA rollout notes)*"
+        status_tag = f"⚠️ **{e.release_category}**" if e.is_test_release else f"**{e.release_category}**"
+
         lines.append(
             f"| **{e.platform}**<br><small>{e.family_name}</small> "
             f"| {e.soc_specs}<br><small>*{e.featured_models} (selection)*</small> "
             f"| `{e.latest_firmware}`{build_str}<br><small>{type_size_str}</small> "
+            f"| {status_tag} "
             f"| {dl_link} "
             f"| {cl_text} "
             f"| `{e.release_date}` "
@@ -1130,7 +1218,7 @@ def write_markdown(entries: list[PlatformEntry], generated_at: str) -> None:
         "",
         "---",
         "",
-        "### Regional Download Mirrors & Deep Hardware & Build Details",
+        "### Regional Download Mirrors, Build Properties & Past Release History",
         "",
         "All packages are hosted on official TCL Content Delivery Networks (`cedock.com`):",
         "",
@@ -1140,53 +1228,49 @@ def write_markdown(entries: list[PlatformEntry], generated_at: str) -> None:
         md5_line = f"- **MD5 Checksum**: `{e.md5}`" if e.md5 else "- **MD5 Checksum**: *(provided upon OTA deployment)*"
         cl_line = f"- **Official Changelog / Server Notes**: {e.changelog}" if e.changelog else "- **Official Changelog / Server Notes**: *(Pending official OTA release notes)*"
         
-        # Deep extracted technical properties block
+        # Deep extracted technical properties block (from META-INF/com/android/metadata)
         ext_md_lines = []
         if e.extracted_details:
             ed = e.extracted_details
             if ed.android_version or ed.os_flavor:
-                ext_md_lines.append(f"- **OS Architecture**: `Android {ed.android_version or '—'}` ({ed.os_flavor or 'Smart TV'})")
+                flavor_str = f" ({ed.os_flavor})" if ed.os_flavor else ""
+                ext_md_lines.append(f"- **Android OS Version**: `Android {ed.android_version or '—'}`{flavor_str}")
             if ed.gms_version:
                 ext_md_lines.append(f"- **GMS Package**: `{ed.gms_version}`")
             if ed.security_patch:
                 ext_md_lines.append(f"- **Security Patch Level**: `{ed.security_patch}`")
-            if ed.build_date_str or ed.build_date_utc:
-                dt_disp = f"{ed.build_date_str} (`{ed.build_date_utc}`)" if ed.build_date_str and ed.build_date_utc else str(ed.build_date_str or ed.build_date_utc)
-                ext_md_lines.append(f"- **Build Compilation Date**: `{dt_disp}`")
+            if ed.build_date_str:
+                ext_md_lines.append(f"- **Build Date**: `{ed.build_date_str}`")
             if ed.fingerprint:
                 ext_md_lines.append(f"- **Build Fingerprint**: `{ed.fingerprint}`")
             if ed.sdk_level:
                 ext_md_lines.append(f"- **SDK API Level**: `{ed.sdk_level}`")
             if ed.incremental_build:
                 ext_md_lines.append(f"- **Incremental Revision**: `{ed.incremental_build}`")
-            if ed.widevine_level or ed.playready_level:
-                ext_md_lines.append(f"- **DRM & Streaming Security**: `{ed.widevine_level or '—'}` · `{ed.playready_level or '—'}`")
-            if ed.hdr_formats:
-                ext_md_lines.append(f"- **HDR Capabilities**: `{ed.hdr_formats}`")
-            if ed.audio_codecs:
-                ext_md_lines.append(f"- **Audio Decoders & Enhancements**: `{ed.audio_codecs}`")
-            if ed.memc_support:
-                ext_md_lines.append(f"- **MEMC Motion Clarity**: `{ed.memc_support}`")
-            if ed.hbbtv_version:
-                ext_md_lines.append(f"- **HbbTV Standard**: `{ed.hbbtv_version}`")
-            if ed.wifi_chipsets or ed.bluetooth_version:
-                ext_md_lines.append(f"- **Wireless & Connectivity**: `{ed.wifi_chipsets or '—'}` · `{ed.bluetooth_version or '—'}`")
-            if ed.broadcast_tuners:
-                ext_md_lines.append(f"- **Broadcast Tuners**: `{ed.broadcast_tuners}`")
+            if ed.device_codename:
+                ext_md_lines.append(f"- **Target Device Codename**: `{ed.device_codename}`")
+
+        cat_badge = f" · **Status**: `{e.release_category}`" if e.is_test_release else ""
 
         lines += [
             f"#### {e.family_name} (`{e.latest_firmware}`)",
             f"- **Platform Identifier**: `{e.platform}`" + (f" (Alternative ID: `{e.alt_platform_id}`)" if e.alt_platform_id != e.platform else ""),
             f"- **Hardware Architecture & SoC**: {e.soc_specs}",
             f"- **Compatible TV Models (Selection)**: *{e.featured_models}*",
-            f"- **Package Type**: `{e.release_type}` · **Size**: `{e.package_size}` · **Release Date**: `{e.release_date}` · **Region**: `{e.region}`",
+            f"- **Package Type**: `{e.release_type}` · **Size**: `{e.package_size}` · **Release Date**: `{e.release_date}` · **Region**: `{e.region}`{cat_badge}",
             f"- **FOTA Verification Status**: `{e.fota_api_status}`",
             md5_line,
             cl_line,
         ]
 
+        if e.is_test_release:
+            lines += [
+                "> ⚠️ **Beta / Test Release Candidate Notice**  ",
+                "> *This firmware build is a pre-release / test version (`R`/`M`-series). It may contain experimental features or stability bugs. Flash at your own discretion.*",
+            ]
+
         if ext_md_lines:
-            lines += ["- **Extracted Build & Hardware Details**:", *[f"  {l}" for l in ext_md_lines]]
+            lines += ["- **Extracted Android Build Properties**:", *[f"  {l}" for l in ext_md_lines]]
 
         lines += [
             f"- **EU / Global CDN**: [{e.all_cdn_urls.get('eu')}]({e.all_cdn_urls.get('eu')})",
@@ -1194,6 +1278,35 @@ def write_markdown(entries: list[PlatformEntry], generated_at: str) -> None:
             f"- **Asia-Pacific (AS) CDN**: [{e.all_cdn_urls.get('as')}]({e.all_cdn_urls.get('as')})",
             "",
         ]
+
+        # Collapsible previous versions list from historical database
+        p_history = hist.get(e.platform, [])
+        prev_versions = [h for h in p_history if h.get("version") != e.latest_firmware]
+        if prev_versions:
+            lines += [
+                f"<details>",
+                f"<summary><b>📦 Previous Firmware Versions Archive ({len(prev_versions)} build{'s' if len(prev_versions) > 1 else ''})</b></summary>",
+                "",
+                "| Version | Release Date | Package Type & Size | Category | Changelog / Notes | Download Link |",
+                "|---|:---:|---|:---:|---|:---:|",
+            ]
+            for pv in prev_versions:
+                pv_ver = pv.get("version", "")
+                pv_date = pv.get("release_date", "—")
+                pv_type = pv.get("release_type", "Full OTA (ZIP)")
+                pv_sz = pv.get("package_size", "—")
+                pv_type_sz = f"`{pv_type}` · `{pv_sz}`" if pv_sz != "—" else f"`{pv_type}`"
+                pv_cat = pv.get("release_category", "Production (Stable)")
+                pv_cat_tag = f"⚠️ *{pv_cat}*" if pv.get("is_test_release") else f"**{pv_cat}**"
+                pv_cl = pv.get("changelog") or "—"
+                pv_dl = pv.get("download_url") or ""
+                pv_dl_md = f"[:material-download: Download]({pv_dl})" if pv_dl else "—"
+                lines.append(f"| `{pv_ver}` | `{pv_date}` | {pv_type_sz} | {pv_cat_tag} | *{pv_cl}* | {pv_dl_md} |")
+            lines += [
+                "",
+                "</details>",
+                "",
+            ]
 
     lines += [
         "---",
@@ -1206,18 +1319,6 @@ def write_markdown(entries: list[PlatformEntry], generated_at: str) -> None:
     print(f"[MD]   Written to {MD_OUT}")
 
 
-def process_firmware_extractions_sequentially(entries: list[PlatformEntry], updated_releases: list[PlatformEntry], generated_at: str, max_missing_per_run: int = 5) -> None:
-    """
-    Sequentially processes firmware packages to extract deep build properties.
-    STRICT RULE:
-    - ONLY downloads when a platform received a new firmware release OR when metadata is missing (null).
-    - NEVER re-downloads platforms that already have verified extracted_details.
-    - Downloads/streams one package at a time and IMMEDIATELY deletes all temporary files after each platform.
-    - Incrementally updates firmwares.json and docs/firmwares.md so progress is persisted permanently.
-    """
-    updated_platform_ids = {u.platform for u in updated_releases}
-    
-    # 1. Any platform with a brand new firmware release (highest priority)
 def parse_zip_central_directory(tail_bytes: bytes) -> dict[str, tuple[int, int, int]]:
     """Parses ZIP Central Directory from tail bytes to locate file headers and byte offsets."""
     eocd_sig = b"\x50\x4b\x05\x06"
@@ -1245,6 +1346,20 @@ def parse_zip_central_directory(tail_bytes: bytes) -> dict[str, tuple[int, int, 
     return files
 
 
+def extract_metadata_from_zip_bytes(zip_bytes: bytes) -> Optional[ExtractedBuildDetails]:
+    """Inspects in-memory zip bytes for META-INF/com/android/metadata."""
+    try:
+        with zipfile.ZipFile(io.BytesIO(zip_bytes)) as zf:
+            for item in zf.namelist():
+                if item.endswith("META-INF/com/android/metadata") or item.endswith("metadata"):
+                    with zf.open(item) as f:
+                        txt = f.read().decode("utf-8", errors="ignore")
+                        return parse_ota_metadata_text(txt)
+    except Exception:
+        pass
+    return None
+
+
 def fetch_remote_zip_metadata_range(url: str, timeout: int = 4) -> Optional[ExtractedBuildDetails]:
     """
     Downloads ONLY the ZIP Central Directory and metadata file using HTTP Range headers (~64KB to 1MB total)
@@ -1266,7 +1381,6 @@ def fetch_remote_zip_metadata_range(url: str, timeout: int = 4) -> Optional[Extr
         pass
 
     if not tail_data:
-        # Fallback: check first 1MB if server doesn't support suffix range
         try:
             req_head = urllib.request.Request(url, headers={**headers, "Range": "bytes=0-1048576"})
             with urllib.request.urlopen(req_head, timeout=timeout) as resp:
@@ -1275,7 +1389,6 @@ def fetch_remote_zip_metadata_range(url: str, timeout: int = 4) -> Optional[Extr
         except Exception:
             return None
 
-    # Parse central directory to locate META-INF/com/android/metadata
     files = parse_zip_central_directory(tail_data)
     target_name = None
     for fn in files:
@@ -1288,12 +1401,10 @@ def fetch_remote_zip_metadata_range(url: str, timeout: int = 4) -> Optional[Extr
 
     method, c_size, u_size, offset = files[target_name]
 
-    # Fetch exact range of the metadata file: local header (30 bytes) + filename + extra + compressed data
     req_range = urllib.request.Request(url, headers={**headers, "Range": f"bytes={offset}-{offset + c_size + 256}"})
     try:
         with urllib.request.urlopen(req_range, timeout=timeout) as resp:
             raw_chunk = resp.read()
-            # Local header format: 30 bytes prefix + fn_len + extra_len
             if len(raw_chunk) >= 30 and raw_chunk[:4] == b"\x50\x4b\x03\x04":
                 loc_fn_len, loc_extra_len = struct.unpack("<HH", raw_chunk[26:30])
                 payload_start = 30 + loc_fn_len + loc_extra_len
@@ -1325,7 +1436,6 @@ def get_all_candidate_mirrors(platform: str, fw_name: str, build_number: str, de
         f"http://update.cedock.com/apps/resource2/{pdir}/{fw_name}/FOTA-OTA/{fw_name}{bno_suffix}.zip",
         f"http://celesw.tcl.com/CSEU%20TV/Software/{fw_name}.zip",
     ]
-    # Unique preserved order
     seen = set()
     return [m for m in mirrors if m and not (m in seen or seen.add(m))]
 
@@ -1334,35 +1444,44 @@ def process_firmware_extractions_sequentially(
     entries: list[PlatformEntry],
     updated_releases: list[PlatformEntry],
     generated_at: str,
-    max_missing_per_run: int = 5,
+    history: dict[str, list[dict[str, Any]]],
+    max_missing_per_run: int = 10,
+    target_pids: Optional[set[str]] = None,
+    force_extract: bool = False,
 ) -> None:
     """
     Sequentially processes firmware packages to extract deep build properties using HTTP Range requests.
     STRICT RULE:
-    - ONLY queries when a platform received a new firmware release OR when metadata is missing (null).
+    - ONLY queries when a platform received a new firmware release OR when metadata is missing (null)
+      or explicitly forced via CLI.
     - Uses HTTP Range requests to inspect only the ZIP Central Directory in milliseconds without full download.
-    - NEVER re-downloads platforms that already have verified extracted_details.
-    - Incrementally updates firmwares.json and docs/firmwares.md so progress is persisted permanently.
+    - NEVER re-downloads platforms that already have verified extracted_details unless force_extract is set.
+    - Incrementally updates firmwares.json, firmwares_history.json, and docs/firmwares.md so progress is persisted permanently.
     """
     updated_platform_ids = {u.platform for u in updated_releases}
 
-    # 1. Any platform with a brand new firmware release (highest priority)
-    new_update_entries = [e for e in entries if e.platform in updated_platform_ids]
-
-    # 2. Platforms where extracted_details is still None (backfill queue)
-    missing_entries = [e for e in entries if e.extracted_details is None and e.platform not in updated_platform_ids]
-
-    pending_entries = new_update_entries + missing_entries[:max_missing_per_run]
+    if target_pids:
+        # If user explicitly specified chipsets, process those targeted chipsets
+        if force_extract:
+            pending_entries = [e for e in entries if e.platform in target_pids]
+        else:
+            pending_entries = [e for e in entries if e.platform in target_pids and (e.extracted_details is None or e.platform in updated_platform_ids)]
+    else:
+        # 1. Any platform with a brand new firmware release (highest priority)
+        new_update_entries = [e for e in entries if e.platform in updated_platform_ids]
+        # 2. Platforms where extracted_details is still None (backfill queue)
+        missing_entries = [e for e in entries if (e.extracted_details is None or force_extract) and e.platform not in updated_platform_ids]
+        pending_entries = new_update_entries + missing_entries[:max_missing_per_run]
 
     if not pending_entries:
-        print("[Firmware Extraction] All current releases have verified metadata. Skipping all firmware downloads.")
+        print("[Firmware Extraction] All targeted releases have verified metadata. Skipping range checks.")
         return
 
-    print(f"\n[Firmware Extraction] Processing {len(pending_entries)} platform(s) for metadata extraction (Updates: {len(new_update_entries)}, Missing backfill: {min(len(missing_entries), max_missing_per_run)})...")
+    print(f"\n[Firmware Extraction] Processing {len(pending_entries)} platform(s) for metadata extraction...")
 
     updated_any = False
     for idx, e in enumerate(pending_entries):
-        if e.platform in updated_platform_ids:
+        if e.platform in updated_platform_ids or force_extract:
             e.extracted_details = None
 
         print(f"  [{idx+1}/{len(pending_entries)}] Checking firmware metadata for {e.platform} ({e.latest_firmware}) via Range requests...", end=" ", flush=True)
@@ -1378,24 +1497,57 @@ def process_firmware_extractions_sequentially(
                 break
 
         if not extracted:
-            print("CDN Range check skipped (remote mirrors unreachable or timeout).")
-            print("  [Notice] CDN currently unreachable or restricted. Skipping remaining extractions for this run.")
-            break
+            print("CDN Range check skipped (remote mirrors unreachable or 404).")
+            continue
 
         if extracted:
             e.extracted_details = extracted
             updated_any = True
+            record_firmware_history_entry(history, e)
             write_json(entries, generated_at)
-            write_markdown(entries, generated_at)
+            save_firmware_history(history)
+            write_markdown(entries, generated_at, history)
 
     if not updated_any:
-        print("[Firmware Extraction] All platform metadata is current.")
+        print("[Firmware Extraction] Completed (metadata up to date).")
 
 
 if __name__ == "__main__":
-    entries, updated_releases, generated_at = run()
+    parser = argparse.ArgumentParser(description="TCL Smart TV Firmware Tracker & Discovery Engine")
+    parser.add_argument(
+        "-c", "--chipset", "--platform",
+        nargs="*",
+        default=None,
+        help="One or more chipset/platform IDs or names to filter (e.g. --chipset 0008T01 or -c 0008T01 0012T01). Defaults to 'all'."
+    )
+    parser.add_argument(
+        "-f", "--force-extract",
+        action="store_true",
+        help="Force re-extraction of metadata via Range requests even if cached details exist."
+    )
+    args = parser.parse_args()
+
+    # Parse requested chipset list
+    chipsets_list: Optional[list[str]] = None
+    if args.chipset:
+        chipsets_list = []
+        for item in args.chipset:
+            for piece in item.replace(",", " ").split():
+                piece = piece.strip()
+                if piece and piece.lower() != "all":
+                    chipsets_list.append(piece)
+        if not chipsets_list:
+            chipsets_list = None
+
+    entries, updated_releases, generated_at, history, target_pids = run(chipset_filters=chipsets_list)
     write_json(entries, generated_at)
-    write_markdown(entries, generated_at)
-    process_firmware_extractions_sequentially(entries, updated_releases, generated_at)
-
-
+    save_firmware_history(history)
+    write_markdown(entries, generated_at, history)
+    process_firmware_extractions_sequentially(
+        entries,
+        updated_releases,
+        generated_at,
+        history,
+        target_pids=target_pids,
+        force_extract=args.force_extract
+    )
