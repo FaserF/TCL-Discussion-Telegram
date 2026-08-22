@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-22T09:59:32.610566+00:00",
+  "generated_at": "2026-08-22T10:12:18.687390+00:00",
   "source": "official TCL Smart TV FOTA API (huan.tv) & CDN (cedock.com)",
   "total_platforms": 52,
   "api_fields_documentation": {
@@ -8,10 +8,10 @@
     "family_name": "Human-readable hardware family and chassis title.",
     "soc_specs": "Technical hardware specifications of the System-on-Chip (SoC) processor and graphics engine.",
     "featured_models": "Known and verified TV model series associated with this platform (selection of examples).",
-    "latest_firmware": "Latest official firmware release version code (e.g., 'V8-0012T01-LF1V655').",
+    "latest_firmware": "Latest verified Production (Stable) firmware release version code (e.g., 'V8-0012T01-LF1V655').",
     "build_number": "Internal 6-digit revision build compilation number (e.g., '003254').",
     "release_type": "Installation package type: 'Full OTA (ZIP)', 'Incremental OTA', or 'IMG / PKG Recovery'.",
-    "is_test_release": "Boolean flag indicating if the package is a Beta/Test release candidate (R/M build).",
+    "is_test_release": "Boolean flag indicating if the primary package is a Beta/Test release candidate (R/M build).",
     "release_category": "Classification: 'Production (Stable)', 'Beta / Test Build (RC)', or 'Manufacturing / Test'.",
     "package_size": "Formatted binary package file size in GB/MB.",
     "release_date": "Official publication date or build compilation date (YYYY-MM-DD or YYYY-MM).",
@@ -31,6 +31,9 @@
       "incremental_build": "Internal incremental build revision code (e.g., 'AS50', 'AS24', 'AR11').",
       "device_codename": "Hardware device target codename (e.g., 'G10', 'G09', 'BeyondTV4')."
     },
+    "stable": "Detailed attributes of the latest verified Production (Stable) firmware release.",
+    "beta": "Detailed attributes of the latest active Beta / Release Candidate (RC) firmware release (null if none available).",
+    "test": "Detailed attributes of the latest active Manufacturing / Pre-production Test firmware release (null if none available).",
     "region": "Target regional market deployment ('EU', 'NA', 'AS', 'GLOBAL').",
     "download_url": "Direct primary CDN download link for the package.",
     "all_cdn_urls": "Object containing regional CDN mirror URLs mapped by region key ('eu', 'na', 'as').",
@@ -75,7 +78,40 @@
         "incremental_build": "LF1V001",
         "device_codename": "tcl_0008t01"
       },
-      "checked_at": "2026-08-22T09:59:32.610566+00:00"
+      "stable": {
+        "version": "V8-0008T01-LF1V636",
+        "build_number": "622816",
+        "release_type": "Full OTA (ZIP)",
+        "release_category": "Production (Stable)",
+        "is_test_release": false,
+        "package_size": "1.92 GB",
+        "release_date": "2026-08-07",
+        "md5": "a5712354fc8723dd5c11afb2608f6091",
+        "sha256": "8e21687d12671a678a12f3322498d3bcc1771c31fec9bf604ccf81f4f8a01121",
+        "crc32": "CF291DE2",
+        "changelog": "Android 14 Google TV (GTV U) release: Security patch 2026-06-05, G10_4K_US_NF AS50 release.",
+        "download_url": "http://eu-update.cedock.com/apps/resource2/V80008T01/V8-0008T01-LF1V636/FOTA-OTA/V8-0008T01-LF1V636.622816.zip",
+        "all_cdn_urls": {
+          "eu": "http://eu-update.cedock.com/apps/resource2/V80008T01/V8-0008T01-LF1V636/FOTA-OTA/V8-0008T01-LF1V636.622816.zip",
+          "na": "http://na-update.cedock.com/apps/resource2/V80008T01/V8-0008T01-LF1V636/FOTA-OTA/V8-0008T01-LF1V636.622816.zip",
+          "as": "http://as-update.cedock.com/apps/resource2/V80008T01/V8-0008T01-LF1V636/FOTA-OTA/V8-0008T01-LF1V636.622816.zip"
+        },
+        "extracted_details": {
+          "android_version": "12",
+          "os_flavor": "Google TV (GTV)",
+          "gms_version": "Android_12_GTV",
+          "security_patch": "2026-08-05",
+          "build_date_utc": 1786060800,
+          "build_date_str": "Aug 07, 2026",
+          "fingerprint": "TCL/0008T01/0008T01:12/V8-0008T01-LF1V001/user/release-keys",
+          "sdk_level": 31,
+          "incremental_build": "LF1V001",
+          "device_codename": "tcl_0008t01"
+        }
+      },
+      "beta": null,
+      "test": null,
+      "checked_at": "2026-08-22T10:12:18.687390+00:00"
     },
     {
       "platform": "0008T02",
@@ -114,7 +150,10 @@
         "incremental_build": "LF1V001",
         "device_codename": "tcl_0008t02"
       },
-      "checked_at": "2026-08-22T09:59:32.610566+00:00"
+      "stable": null,
+      "beta": null,
+      "test": null,
+      "checked_at": "2026-08-22T10:12:18.687390+00:00"
     },
     {
       "platform": "0012T01",
@@ -153,7 +192,40 @@
         "incremental_build": "LF1V001",
         "device_codename": "tcl_0012t01"
       },
-      "checked_at": "2026-08-22T09:59:32.610566+00:00"
+      "stable": {
+        "version": "V8-0012T01-LF1V655",
+        "build_number": "628400",
+        "release_type": "Full OTA (ZIP)",
+        "release_category": "Production (Stable)",
+        "is_test_release": false,
+        "package_size": "2.35 GB",
+        "release_date": "2026-01",
+        "md5": "e0573619c0bb0f93afe2be6aeefb472a",
+        "sha256": "00357ef7ec8897e71310013d22e713a03c9994578b357c7f065ee03328352403",
+        "crc32": "F241FE0D",
+        "changelog": "Android 12/14 Google TV: Dolby Vision IQ enhancements, Game Master 2.0 stability, 144Hz VRR optimizations.",
+        "download_url": "http://eu-update.cedock.com/apps/resource2/V80012T01/V8-0012T01-LF1V655/FOTA-OTA/V8-0012T01-LF1V655.628400.zip",
+        "all_cdn_urls": {
+          "eu": "http://eu-update.cedock.com/apps/resource2/V80012T01/V8-0012T01-LF1V655/FOTA-OTA/V8-0012T01-LF1V655.628400.zip",
+          "na": "http://na-update.cedock.com/apps/resource2/V80012T01/V8-0012T01-LF1V655/FOTA-OTA/V8-0012T01-LF1V655.628400.zip",
+          "as": "http://as-update.cedock.com/apps/resource2/V80012T01/V8-0012T01-LF1V655/FOTA-OTA/V8-0012T01-LF1V655.628400.zip"
+        },
+        "extracted_details": {
+          "android_version": "12",
+          "os_flavor": "Google TV (GTV)",
+          "gms_version": "Android_12_GTV",
+          "security_patch": "2026-01-05",
+          "build_date_utc": 1786113311,
+          "build_date_str": "Aug 07, 2026",
+          "fingerprint": "TCL/0012T01/0012T01:12/V8-0012T01-LF1V001/user/release-keys",
+          "sdk_level": 31,
+          "incremental_build": "LF1V001",
+          "device_codename": "tcl_0012t01"
+        }
+      },
+      "beta": null,
+      "test": null,
+      "checked_at": "2026-08-22T10:12:18.687390+00:00"
     },
     {
       "platform": "0012T02",
@@ -192,7 +264,40 @@
         "incremental_build": "LF1V001",
         "device_codename": "tcl_0012t02"
       },
-      "checked_at": "2026-08-22T09:59:32.610566+00:00"
+      "stable": {
+        "version": "V8-0012T02-LF1V620",
+        "build_number": "439617",
+        "release_type": "Full OTA (ZIP)",
+        "release_category": "Production (Stable)",
+        "is_test_release": false,
+        "package_size": "2.28 GB",
+        "release_date": "2025-11",
+        "md5": "aaf24d608a1866c214d95d91f92aaf2d",
+        "sha256": "3a332afe7fe06e4b53b66ca3ac7edb51697b89066cafce5e8212d1d24174a931",
+        "crc32": "08739BC3",
+        "changelog": "North American Google TV: QM851G/QM751G local dimming timing adjustments, ATSC 3.0 tuner stability.",
+        "download_url": "http://na-update.cedock.com/apps/resource2/V80012T02/V8-0012T02-LF1V620/FOTA-OTA/V8-0012T02-LF1V620.439617.zip",
+        "all_cdn_urls": {
+          "eu": "http://eu-update.cedock.com/apps/resource2/V80012T02/V8-0012T02-LF1V620/FOTA-OTA/V8-0012T02-LF1V620.439617.zip",
+          "na": "http://na-update.cedock.com/apps/resource2/V80012T02/V8-0012T02-LF1V620/FOTA-OTA/V8-0012T02-LF1V620.439617.zip",
+          "as": "http://as-update.cedock.com/apps/resource2/V80012T02/V8-0012T02-LF1V620/FOTA-OTA/V8-0012T02-LF1V620.439617.zip"
+        },
+        "extracted_details": {
+          "android_version": "12",
+          "os_flavor": "Google TV (GTV)",
+          "gms_version": "Android_12_GTV",
+          "security_patch": "2025-11-05",
+          "build_date_utc": 1786113311,
+          "build_date_str": "Aug 07, 2026",
+          "fingerprint": "TCL/0012T02/0012T02:12/V8-0012T02-LF1V001/user/release-keys",
+          "sdk_level": 31,
+          "incremental_build": "LF1V001",
+          "device_codename": "tcl_0012t02"
+        }
+      },
+      "beta": null,
+      "test": null,
+      "checked_at": "2026-08-22T10:12:18.687390+00:00"
     },
     {
       "platform": "0012T03",
@@ -231,7 +336,40 @@
         "incremental_build": "LF1V001",
         "device_codename": "tcl_0012t03"
       },
-      "checked_at": "2026-08-22T09:59:32.610566+00:00"
+      "stable": {
+        "version": "V8-0012T03-LF1V110",
+        "build_number": "877669",
+        "release_type": "Full OTA (ZIP)",
+        "release_category": "Production (Stable)",
+        "is_test_release": false,
+        "package_size": "2.41 GB",
+        "release_date": "2025-10",
+        "md5": "c5d75c11a51dae5dabf77e96dc205525",
+        "sha256": "68715a058595b923cf1f931e4f894f2c3819af52b189756c9247aed06d730f85",
+        "crc32": "D9A29CE7",
+        "changelog": "G16 flagship chassis DSP audio processor updates and high-zone Mini-LED panel drive optimizations.",
+        "download_url": "http://eu-update.cedock.com/apps/resource2/V80012T03/V8-0012T03-LF1V110/FOTA-OTA/V8-0012T03-LF1V110.877669.zip",
+        "all_cdn_urls": {
+          "eu": "http://eu-update.cedock.com/apps/resource2/V80012T03/V8-0012T03-LF1V110/FOTA-OTA/V8-0012T03-LF1V110.877669.zip",
+          "na": "http://na-update.cedock.com/apps/resource2/V80012T03/V8-0012T03-LF1V110/FOTA-OTA/V8-0012T03-LF1V110.877669.zip",
+          "as": "http://as-update.cedock.com/apps/resource2/V80012T03/V8-0012T03-LF1V110/FOTA-OTA/V8-0012T03-LF1V110.877669.zip"
+        },
+        "extracted_details": {
+          "android_version": "12",
+          "os_flavor": "Google TV (GTV)",
+          "gms_version": "Android_12_GTV",
+          "security_patch": "2025-10-05",
+          "build_date_utc": 1786113311,
+          "build_date_str": "Aug 07, 2026",
+          "fingerprint": "TCL/0012T03/0012T03:12/V8-0012T03-LF1V001/user/release-keys",
+          "sdk_level": 31,
+          "incremental_build": "LF1V001",
+          "device_codename": "tcl_0012t03"
+        }
+      },
+      "beta": null,
+      "test": null,
+      "checked_at": "2026-08-22T10:12:18.687390+00:00"
     },
     {
       "platform": "0013T01",
@@ -270,7 +408,10 @@
         "incremental_build": "LF1V001",
         "device_codename": "tcl_0013t01"
       },
-      "checked_at": "2026-08-22T09:59:32.610566+00:00"
+      "stable": null,
+      "beta": null,
+      "test": null,
+      "checked_at": "2026-08-22T10:12:18.687390+00:00"
     },
     {
       "platform": "0013T02",
@@ -309,7 +450,40 @@
         "incremental_build": "LF1V001",
         "device_codename": "tcl_0013t02"
       },
-      "checked_at": "2026-08-22T09:59:32.610566+00:00"
+      "stable": {
+        "version": "V8-0013T02-LF1V163",
+        "build_number": "941121",
+        "release_type": "Full OTA (ZIP)",
+        "release_category": "Production (Stable)",
+        "is_test_release": false,
+        "package_size": "1.82 GB",
+        "release_date": "2025-08",
+        "md5": "e868ca24e11ffcf319807d3bccc8d28e",
+        "sha256": "9f1fa9fedd938ae690d2fee156c3e967a8d06254c59f4ac66b01c9e692fc3d47",
+        "crc32": "DE45B257",
+        "changelog": "Amlogic G09 Google TV system optimization: DVFS CPU scaling, memory management improvements.",
+        "download_url": "http://eu-update.cedock.com/apps/resource2/V80013T02/V8-0013T02-LF1V163/FOTA-OTA/V8-0013T02-LF1V163.941121.zip",
+        "all_cdn_urls": {
+          "eu": "http://eu-update.cedock.com/apps/resource2/V80013T02/V8-0013T02-LF1V163/FOTA-OTA/V8-0013T02-LF1V163.941121.zip",
+          "na": "http://na-update.cedock.com/apps/resource2/V80013T02/V8-0013T02-LF1V163/FOTA-OTA/V8-0013T02-LF1V163.941121.zip",
+          "as": "http://as-update.cedock.com/apps/resource2/V80013T02/V8-0013T02-LF1V163/FOTA-OTA/V8-0013T02-LF1V163.941121.zip"
+        },
+        "extracted_details": {
+          "android_version": "12",
+          "os_flavor": "Google TV (GTV)",
+          "gms_version": "Android_12_GTV",
+          "security_patch": "2025-08-05",
+          "build_date_utc": 1786113311,
+          "build_date_str": "Aug 07, 2026",
+          "fingerprint": "TCL/0013T02/0013T02:12/V8-0013T02-LF1V001/user/release-keys",
+          "sdk_level": 31,
+          "incremental_build": "LF1V001",
+          "device_codename": "tcl_0013t02"
+        }
+      },
+      "beta": null,
+      "test": null,
+      "checked_at": "2026-08-22T10:12:18.687390+00:00"
     },
     {
       "platform": "0013T03",
@@ -348,7 +522,10 @@
         "incremental_build": "LF1V001",
         "device_codename": "tcl_0013t03"
       },
-      "checked_at": "2026-08-22T09:59:32.610566+00:00"
+      "stable": null,
+      "beta": null,
+      "test": null,
+      "checked_at": "2026-08-22T10:12:18.687390+00:00"
     },
     {
       "platform": "0014T01",
@@ -387,7 +564,10 @@
         "incremental_build": "LF1V001",
         "device_codename": "tcl_0014t01"
       },
-      "checked_at": "2026-08-22T09:59:32.610566+00:00"
+      "stable": null,
+      "beta": null,
+      "test": null,
+      "checked_at": "2026-08-22T10:12:18.687390+00:00"
     },
     {
       "platform": "0015T01",
@@ -426,7 +606,40 @@
         "incremental_build": "LF1V001",
         "device_codename": "tcl_0015t01"
       },
-      "checked_at": "2026-08-22T09:59:32.610566+00:00"
+      "stable": {
+        "version": "V8-0015T01-LF1V025",
+        "build_number": "156484",
+        "release_type": "Full OTA (ZIP)",
+        "release_category": "Production (Stable)",
+        "is_test_release": false,
+        "package_size": "~2.1 GB",
+        "release_date": "2026-02",
+        "md5": "89b01dae244cb3dfb1b89cc47a5c9b6a",
+        "sha256": "95edd608020a57c5a0a4fe6b5eb82dde593295963e13084c9c33fc2d9bd5b4c4",
+        "crc32": "E46C147A",
+        "changelog": "Android 14 Google TV flagship build: MediaTek MT9655 (Pentonic 800), 144Hz VRR & Mini-LED dimming engine.",
+        "download_url": "http://eu-update.cedock.com/apps/resource2/V80015T01/V8-0015T01-LF1V025/FOTA-OTA/V8-0015T01-LF1V025.156484.zip",
+        "all_cdn_urls": {
+          "eu": "http://eu-update.cedock.com/apps/resource2/V80015T01/V8-0015T01-LF1V025/FOTA-OTA/V8-0015T01-LF1V025.156484.zip",
+          "na": "http://na-update.cedock.com/apps/resource2/V80015T01/V8-0015T01-LF1V025/FOTA-OTA/V8-0015T01-LF1V025.156484.zip",
+          "as": "http://as-update.cedock.com/apps/resource2/V80015T01/V8-0015T01-LF1V025/FOTA-OTA/V8-0015T01-LF1V025.156484.zip"
+        },
+        "extracted_details": {
+          "android_version": "14",
+          "os_flavor": "Google TV (GTV)",
+          "gms_version": "Android_14_GTV",
+          "security_patch": "2026-02-05",
+          "build_date_utc": 1786113311,
+          "build_date_str": "Aug 07, 2026",
+          "fingerprint": "TCL/0015T01/0015T01:14/V8-0015T01-LF1V001/user/release-keys",
+          "sdk_level": 34,
+          "incremental_build": "LF1V001",
+          "device_codename": "tcl_0015t01"
+        }
+      },
+      "beta": null,
+      "test": null,
+      "checked_at": "2026-08-22T10:12:18.687390+00:00"
     },
     {
       "platform": "0015T02",
@@ -465,7 +678,10 @@
         "incremental_build": "LF1V001",
         "device_codename": "tcl_0015t02"
       },
-      "checked_at": "2026-08-22T09:59:32.610566+00:00"
+      "stable": null,
+      "beta": null,
+      "test": null,
+      "checked_at": "2026-08-22T10:12:18.687390+00:00"
     },
     {
       "platform": "0016T01",
@@ -504,7 +720,40 @@
         "incremental_build": "LF1V001",
         "device_codename": "tcl_0016t01"
       },
-      "checked_at": "2026-08-22T09:59:32.610566+00:00"
+      "stable": {
+        "version": "V8-0016T01-LF1V042",
+        "build_number": "779776",
+        "release_type": "Full OTA (ZIP)",
+        "release_category": "Production (Stable)",
+        "is_test_release": false,
+        "package_size": "1.98 GB",
+        "release_date": "2026-03",
+        "md5": "f7c9b7710dbf32aa3546453b2677f856",
+        "sha256": "c2d41ccdb2db91a32bfc44722f77022b872599224c5706771825674289f2489d",
+        "crc32": "E56EA4C9",
+        "changelog": "New 2026 G15 Google TV architecture baseline release for mainstream 4K smart TV series.",
+        "download_url": "http://eu-update.cedock.com/apps/resource2/V80016T01/V8-0016T01-LF1V042/FOTA-OTA/V8-0016T01-LF1V042.779776.zip",
+        "all_cdn_urls": {
+          "eu": "http://eu-update.cedock.com/apps/resource2/V80016T01/V8-0016T01-LF1V042/FOTA-OTA/V8-0016T01-LF1V042.779776.zip",
+          "na": "http://na-update.cedock.com/apps/resource2/V80016T01/V8-0016T01-LF1V042/FOTA-OTA/V8-0016T01-LF1V042.779776.zip",
+          "as": "http://as-update.cedock.com/apps/resource2/V80016T01/V8-0016T01-LF1V042/FOTA-OTA/V8-0016T01-LF1V042.779776.zip"
+        },
+        "extracted_details": {
+          "android_version": "12",
+          "os_flavor": "Google TV (GTV)",
+          "gms_version": "Android_12_GTV",
+          "security_patch": "2026-03-05",
+          "build_date_utc": 1786113311,
+          "build_date_str": "Aug 07, 2026",
+          "fingerprint": "TCL/0016T01/0016T01:12/V8-0016T01-LF1V001/user/release-keys",
+          "sdk_level": 31,
+          "incremental_build": "LF1V001",
+          "device_codename": "tcl_0016t01"
+        }
+      },
+      "beta": null,
+      "test": null,
+      "checked_at": "2026-08-22T10:12:18.687390+00:00"
     },
     {
       "platform": "0017T01",
@@ -543,7 +792,10 @@
         "incremental_build": "LF1V001",
         "device_codename": "tcl_0017t01"
       },
-      "checked_at": "2026-08-22T09:59:32.610566+00:00"
+      "stable": null,
+      "beta": null,
+      "test": null,
+      "checked_at": "2026-08-22T10:12:18.687390+00:00"
     },
     {
       "platform": "0018T01",
@@ -571,7 +823,10 @@
       },
       "fota_api_status": "Checked (Live API - Up to date)",
       "extracted_details": null,
-      "checked_at": "2026-08-22T09:59:32.610566+00:00"
+      "stable": null,
+      "beta": null,
+      "test": null,
+      "checked_at": "2026-08-22T10:12:18.687390+00:00"
     },
     {
       "platform": "MS48EST01",
@@ -610,7 +865,10 @@
         "incremental_build": "LF1V001",
         "device_codename": "tcl_ms48est01"
       },
-      "checked_at": "2026-08-22T09:59:32.610566+00:00"
+      "stable": null,
+      "beta": null,
+      "test": null,
+      "checked_at": "2026-08-22T10:12:18.687390+00:00"
     },
     {
       "platform": "MS6488T01",
@@ -649,7 +907,10 @@
         "incremental_build": "LF1V001",
         "device_codename": "tcl_ms6488t01"
       },
-      "checked_at": "2026-08-22T09:59:32.610566+00:00"
+      "stable": null,
+      "beta": null,
+      "test": null,
+      "checked_at": "2026-08-22T10:12:18.687390+00:00"
     },
     {
       "platform": "MS6586T01",
@@ -688,7 +949,10 @@
         "incremental_build": "LF1V001",
         "device_codename": "tcl_ms6586t01"
       },
-      "checked_at": "2026-08-22T09:59:32.610566+00:00"
+      "stable": null,
+      "beta": null,
+      "test": null,
+      "checked_at": "2026-08-22T10:12:18.687390+00:00"
     },
     {
       "platform": "MS6586T02",
@@ -727,7 +991,10 @@
         "incremental_build": "LF1V001",
         "device_codename": "tcl_ms6586t02"
       },
-      "checked_at": "2026-08-22T09:59:32.610566+00:00"
+      "stable": null,
+      "beta": null,
+      "test": null,
+      "checked_at": "2026-08-22T10:12:18.687390+00:00"
     },
     {
       "platform": "MS6886T01",
@@ -766,7 +1033,10 @@
         "incremental_build": "LF1V001",
         "device_codename": "tcl_ms6886t01"
       },
-      "checked_at": "2026-08-22T09:59:32.610566+00:00"
+      "stable": null,
+      "beta": null,
+      "test": null,
+      "checked_at": "2026-08-22T10:12:18.687390+00:00"
     },
     {
       "platform": "MS6886T02",
@@ -805,7 +1075,10 @@
         "incremental_build": "LF1V001",
         "device_codename": "tcl_ms6886t02"
       },
-      "checked_at": "2026-08-22T09:59:32.610566+00:00"
+      "stable": null,
+      "beta": null,
+      "test": null,
+      "checked_at": "2026-08-22T10:12:18.687390+00:00"
     },
     {
       "platform": "NT67T01",
@@ -844,7 +1117,10 @@
         "incremental_build": "LF1V001",
         "device_codename": "tcl_nt67t01"
       },
-      "checked_at": "2026-08-22T09:59:32.610566+00:00"
+      "stable": null,
+      "beta": null,
+      "test": null,
+      "checked_at": "2026-08-22T10:12:18.687390+00:00"
     },
     {
       "platform": "R41KT01",
@@ -863,8 +1139,8 @@
       "changelog": "Final legacy Android TV 9/11 stability maintenance package for Realtek R41K platforms.",
       "region": "EU",
       "download_url": "http://eu-update.cedock.com/apps/resource2/V8R41KT01/V8-R41KT01-LF1V343/FOTA-OTA/V8-R41KT01-LF1V343.945042.zip",
-      "is_test_release": true,
-      "release_category": "Beta / Test Build (RC)",
+      "is_test_release": false,
+      "release_category": "Production (Stable)",
       "all_cdn_urls": {
         "eu": "http://eu-update.cedock.com/apps/resource2/V8R41KT01/V8-R41KT01-LF1V343/FOTA-OTA/V8-R41KT01-LF1V343.945042.zip",
         "na": "http://na-update.cedock.com/apps/resource2/V8R41KT01/V8-R41KT01-LF1V343/FOTA-OTA/V8-R41KT01-LF1V343.945042.zip",
@@ -883,7 +1159,40 @@
         "incremental_build": "LF1V001",
         "device_codename": "tcl_r41kt01"
       },
-      "checked_at": "2026-08-22T09:59:32.610566+00:00"
+      "stable": {
+        "version": "V8-R41KT01-LF1V343",
+        "build_number": "945042",
+        "release_type": "Full OTA (ZIP)",
+        "release_category": "Production (Stable)",
+        "is_test_release": false,
+        "package_size": "1.25 GB",
+        "release_date": "2022-11",
+        "md5": "3f2c5fd78262d2e8a98c85fe99502526",
+        "sha256": "adfb1eb42d880a4fdeb4b998dd7695d64bf79bfbc6f3fe24fc4c7b3a8fe96e77",
+        "crc32": "343B8CE0",
+        "changelog": "Final legacy Android TV 9/11 stability maintenance package for Realtek R41K platforms.",
+        "download_url": "http://eu-update.cedock.com/apps/resource2/V8R41KT01/V8-R41KT01-LF1V343/FOTA-OTA/V8-R41KT01-LF1V343.945042.zip",
+        "all_cdn_urls": {
+          "eu": "http://eu-update.cedock.com/apps/resource2/V8R41KT01/V8-R41KT01-LF1V343/FOTA-OTA/V8-R41KT01-LF1V343.945042.zip",
+          "na": "http://na-update.cedock.com/apps/resource2/V8R41KT01/V8-R41KT01-LF1V343/FOTA-OTA/V8-R41KT01-LF1V343.945042.zip",
+          "as": "http://as-update.cedock.com/apps/resource2/V8R41KT01/V8-R41KT01-LF1V343/FOTA-OTA/V8-R41KT01-LF1V343.945042.zip"
+        },
+        "extracted_details": {
+          "android_version": "11",
+          "os_flavor": "Android TV (ATV)",
+          "gms_version": "Android_11_ATV",
+          "security_patch": "2022-11-05",
+          "build_date_utc": 1786113311,
+          "build_date_str": "Aug 07, 2026",
+          "fingerprint": "TCL/R41KT01/R41KT01:11/V8-R41KT01-LF1V001/user/release-keys",
+          "sdk_level": 30,
+          "incremental_build": "LF1V001",
+          "device_codename": "tcl_r41kt01"
+        }
+      },
+      "beta": null,
+      "test": null,
+      "checked_at": "2026-08-22T10:12:18.687390+00:00"
     },
     {
       "platform": "R51AT01",
@@ -902,8 +1211,8 @@
       "changelog": "Legacy Realtek RT51 Android TV 11 maintenance build, Bluetooth remote reliability fix.",
       "region": "EU",
       "download_url": "http://eu-update.cedock.com/apps/resource2/V8R51AT01/V8-R51AT01-LF1V315/FOTA-OTA/V8-R51AT01-LF1V315.185337.zip",
-      "is_test_release": true,
-      "release_category": "Beta / Test Build (RC)",
+      "is_test_release": false,
+      "release_category": "Production (Stable)",
       "all_cdn_urls": {
         "eu": "http://eu-update.cedock.com/apps/resource2/V8R51AT01/V8-R51AT01-LF1V315/FOTA-OTA/V8-R51AT01-LF1V315.185337.zip",
         "na": "http://na-update.cedock.com/apps/resource2/V8R51AT01/V8-R51AT01-LF1V315/FOTA-OTA/V8-R51AT01-LF1V315.185337.zip",
@@ -922,7 +1231,40 @@
         "incremental_build": "LF1V001",
         "device_codename": "tcl_r51at01"
       },
-      "checked_at": "2026-08-22T09:59:32.610566+00:00"
+      "stable": {
+        "version": "V8-R51AT01-LF1V315",
+        "build_number": "185337",
+        "release_type": "Full OTA (ZIP)",
+        "release_category": "Production (Stable)",
+        "is_test_release": false,
+        "package_size": "1.62 GB",
+        "release_date": "2023-06",
+        "md5": "5fec09674cebaa1505c005f31a5baf5d",
+        "sha256": "cf7203240967abf1b0697c018528c6936e347121149eeacc4aef7f9e3f2fca89",
+        "crc32": "FFAF3604",
+        "changelog": "Legacy Realtek RT51 Android TV 11 maintenance build, Bluetooth remote reliability fix.",
+        "download_url": "http://eu-update.cedock.com/apps/resource2/V8R51AT01/V8-R51AT01-LF1V315/FOTA-OTA/V8-R51AT01-LF1V315.185337.zip",
+        "all_cdn_urls": {
+          "eu": "http://eu-update.cedock.com/apps/resource2/V8R51AT01/V8-R51AT01-LF1V315/FOTA-OTA/V8-R51AT01-LF1V315.185337.zip",
+          "na": "http://na-update.cedock.com/apps/resource2/V8R51AT01/V8-R51AT01-LF1V315/FOTA-OTA/V8-R51AT01-LF1V315.185337.zip",
+          "as": "http://as-update.cedock.com/apps/resource2/V8R51AT01/V8-R51AT01-LF1V315/FOTA-OTA/V8-R51AT01-LF1V315.185337.zip"
+        },
+        "extracted_details": {
+          "android_version": "11",
+          "os_flavor": "Android TV (ATV)",
+          "gms_version": "Android_11_ATV",
+          "security_patch": "2023-06-05",
+          "build_date_utc": 1786113311,
+          "build_date_str": "Aug 07, 2026",
+          "fingerprint": "TCL/R51AT01/R51AT01:11/V8-R51AT01-LF1V001/user/release-keys",
+          "sdk_level": 30,
+          "incremental_build": "LF1V001",
+          "device_codename": "tcl_r51at01"
+        }
+      },
+      "beta": null,
+      "test": null,
+      "checked_at": "2026-08-22T10:12:18.687390+00:00"
     },
     {
       "platform": "R51MT01",
@@ -941,8 +1283,8 @@
       "changelog": "RTD2851M revision v2 memory optimization, Miracast and Chromecast stability improvements.",
       "region": "EU",
       "download_url": "http://eu-update.cedock.com/apps/resource2/V8R51MT01/V8-R51MT01-LF1V001/FOTA-OTA/V8-R51MT01-LF1V001.626877.zip",
-      "is_test_release": true,
-      "release_category": "Beta / Test Build (RC)",
+      "is_test_release": false,
+      "release_category": "Production (Stable)",
       "all_cdn_urls": {
         "eu": "http://eu-update.cedock.com/apps/resource2/V8R51MT01/V8-R51MT01-LF1V001/FOTA-OTA/V8-R51MT01-LF1V001.626877.zip",
         "na": "http://na-update.cedock.com/apps/resource2/V8R51MT01/V8-R51MT01-LF1V001/FOTA-OTA/V8-R51MT01-LF1V001.626877.zip",
@@ -961,7 +1303,10 @@
         "incremental_build": "LF1V001",
         "device_codename": "tcl_r51mt01"
       },
-      "checked_at": "2026-08-22T09:59:32.610566+00:00"
+      "stable": null,
+      "beta": null,
+      "test": null,
+      "checked_at": "2026-08-22T10:12:18.687390+00:00"
     },
     {
       "platform": "R51MT02",
@@ -980,8 +1325,8 @@
       "changelog": "RTD2851M revision v2 memory optimization, Miracast and Chromecast stability improvements.",
       "region": "EU",
       "download_url": "http://eu-update.cedock.com/apps/resource2/V8R51MT02/V8-R51MT02-LF1V267/FOTA-OTA/V8-R51MT02-LF1V267.162390.zip",
-      "is_test_release": true,
-      "release_category": "Beta / Test Build (RC)",
+      "is_test_release": false,
+      "release_category": "Production (Stable)",
       "all_cdn_urls": {
         "eu": "http://eu-update.cedock.com/apps/resource2/V8R51MT02/V8-R51MT02-LF1V267/FOTA-OTA/V8-R51MT02-LF1V267.162390.zip",
         "na": "http://na-update.cedock.com/apps/resource2/V8R51MT02/V8-R51MT02-LF1V267/FOTA-OTA/V8-R51MT02-LF1V267.162390.zip",
@@ -1000,7 +1345,40 @@
         "incremental_build": "LF1V001",
         "device_codename": "tcl_r51mt02"
       },
-      "checked_at": "2026-08-22T09:59:32.610566+00:00"
+      "stable": {
+        "version": "V8-R51MT02-LF1V267",
+        "build_number": "162390",
+        "release_type": "Full OTA (ZIP)",
+        "release_category": "Production (Stable)",
+        "is_test_release": false,
+        "package_size": "1.75 GB",
+        "release_date": "2024-05",
+        "md5": "1e8aa5882d0495402d8e112fdeff9672",
+        "sha256": "1444115910deffcbd869ea92936b0e176489ef727cfcc8d1397957cfb217bd2c",
+        "crc32": "C325D708",
+        "changelog": "RTD2851M revision v2 memory optimization, Miracast and Chromecast stability improvements.",
+        "download_url": "http://eu-update.cedock.com/apps/resource2/V8R51MT02/V8-R51MT02-LF1V267/FOTA-OTA/V8-R51MT02-LF1V267.162390.zip",
+        "all_cdn_urls": {
+          "eu": "http://eu-update.cedock.com/apps/resource2/V8R51MT02/V8-R51MT02-LF1V267/FOTA-OTA/V8-R51MT02-LF1V267.162390.zip",
+          "na": "http://na-update.cedock.com/apps/resource2/V8R51MT02/V8-R51MT02-LF1V267/FOTA-OTA/V8-R51MT02-LF1V267.162390.zip",
+          "as": "http://as-update.cedock.com/apps/resource2/V8R51MT02/V8-R51MT02-LF1V267/FOTA-OTA/V8-R51MT02-LF1V267.162390.zip"
+        },
+        "extracted_details": {
+          "android_version": "11",
+          "os_flavor": "Android TV (ATV)",
+          "gms_version": "Android_11_ATV",
+          "security_patch": "2024-05-05",
+          "build_date_utc": 1786113311,
+          "build_date_str": "Aug 07, 2026",
+          "fingerprint": "TCL/R51MT02/R51MT02:11/V8-R51MT02-LF1V001/user/release-keys",
+          "sdk_level": 30,
+          "incremental_build": "LF1V001",
+          "device_codename": "tcl_r51mt02"
+        }
+      },
+      "beta": null,
+      "test": null,
+      "checked_at": "2026-08-22T10:12:18.687390+00:00"
     },
     {
       "platform": "R51MT03",
@@ -1019,8 +1397,8 @@
       "changelog": "Realtek RTD2851M regional chassis variant: Google TV platform stability and multimedia decoder updates.",
       "region": "EU",
       "download_url": "http://eu-update.cedock.com/apps/resource2/V8R51MT03/V8-R51MT03-LF1V001/FOTA-OTA/V8-R51MT03-LF1V001.607708.zip",
-      "is_test_release": true,
-      "release_category": "Beta / Test Build (RC)",
+      "is_test_release": false,
+      "release_category": "Production (Stable)",
       "all_cdn_urls": {
         "eu": "http://eu-update.cedock.com/apps/resource2/V8R51MT03/V8-R51MT03-LF1V001/FOTA-OTA/V8-R51MT03-LF1V001.607708.zip",
         "na": "http://na-update.cedock.com/apps/resource2/V8R51MT03/V8-R51MT03-LF1V001/FOTA-OTA/V8-R51MT03-LF1V001.607708.zip",
@@ -1039,7 +1417,10 @@
         "incremental_build": "LF1V001",
         "device_codename": "tcl_r51mt03"
       },
-      "checked_at": "2026-08-22T09:59:32.610566+00:00"
+      "stable": null,
+      "beta": null,
+      "test": null,
+      "checked_at": "2026-08-22T10:12:18.687390+00:00"
     },
     {
       "platform": "R51MT04",
@@ -1058,8 +1439,8 @@
       "changelog": "Realtek RTD2851M regional chassis variant: Google TV platform stability and HDMI CEC fixes.",
       "region": "EU",
       "download_url": "http://eu-update.cedock.com/apps/resource2/V8R51MT04/V8-R51MT04-LF1V001/FOTA-OTA/V8-R51MT04-LF1V001.973503.zip",
-      "is_test_release": true,
-      "release_category": "Beta / Test Build (RC)",
+      "is_test_release": false,
+      "release_category": "Production (Stable)",
       "all_cdn_urls": {
         "eu": "http://eu-update.cedock.com/apps/resource2/V8R51MT04/V8-R51MT04-LF1V001/FOTA-OTA/V8-R51MT04-LF1V001.973503.zip",
         "na": "http://na-update.cedock.com/apps/resource2/V8R51MT04/V8-R51MT04-LF1V001/FOTA-OTA/V8-R51MT04-LF1V001.973503.zip",
@@ -1078,7 +1459,10 @@
         "incremental_build": "LF1V001",
         "device_codename": "tcl_r51mt04"
       },
-      "checked_at": "2026-08-22T09:59:32.610566+00:00"
+      "stable": null,
+      "beta": null,
+      "test": null,
+      "checked_at": "2026-08-22T10:12:18.687390+00:00"
     },
     {
       "platform": "R51MT05",
@@ -1097,8 +1481,8 @@
       "changelog": "RTD2851M NA channel scan memory optimization, closed caption rendering fix, security patch update.",
       "region": "EU",
       "download_url": "http://eu-update.cedock.com/apps/resource2/V8R51MT05/V8-R51MT05-LF1V652/FOTA-OTA/V8-R51MT05-LF1V652.102029.zip",
-      "is_test_release": true,
-      "release_category": "Beta / Test Build (RC)",
+      "is_test_release": false,
+      "release_category": "Production (Stable)",
       "all_cdn_urls": {
         "eu": "http://eu-update.cedock.com/apps/resource2/V8R51MT05/V8-R51MT05-LF1V652/FOTA-OTA/V8-R51MT05-LF1V652.102029.zip",
         "na": "http://na-update.cedock.com/apps/resource2/V8R51MT05/V8-R51MT05-LF1V652/FOTA-OTA/V8-R51MT05-LF1V652.102029.zip",
@@ -1117,7 +1501,40 @@
         "incremental_build": "LF1V001",
         "device_codename": "tcl_r51mt05"
       },
-      "checked_at": "2026-08-22T09:59:32.610566+00:00"
+      "stable": {
+        "version": "V8-R51MT05-LF1V652",
+        "build_number": "102029",
+        "release_type": "Full OTA (ZIP)",
+        "release_category": "Production (Stable)",
+        "is_test_release": false,
+        "package_size": "1.74 GB",
+        "release_date": "2024-04",
+        "md5": "dc8cba08ffac17ebcf6b4458d902d394",
+        "sha256": "7a2542a0204ddb1827af80631bb4ec281afca2b8e4d4c49771365b5cab3fcfc2",
+        "crc32": "83A1D1B6",
+        "changelog": "RTD2851M NA channel scan memory optimization, closed caption rendering fix, security patch update.",
+        "download_url": "http://eu-update.cedock.com/apps/resource2/V8R51MT05/V8-R51MT05-LF1V652/FOTA-OTA/V8-R51MT05-LF1V652.102029.zip",
+        "all_cdn_urls": {
+          "eu": "http://eu-update.cedock.com/apps/resource2/V8R51MT05/V8-R51MT05-LF1V652/FOTA-OTA/V8-R51MT05-LF1V652.102029.zip",
+          "na": "http://na-update.cedock.com/apps/resource2/V8R51MT05/V8-R51MT05-LF1V652/FOTA-OTA/V8-R51MT05-LF1V652.102029.zip",
+          "as": "http://as-update.cedock.com/apps/resource2/V8R51MT05/V8-R51MT05-LF1V652/FOTA-OTA/V8-R51MT05-LF1V652.102029.zip"
+        },
+        "extracted_details": {
+          "android_version": "11",
+          "os_flavor": "Android TV (ATV)",
+          "gms_version": "Android_11_ATV",
+          "security_patch": "2024-04-05",
+          "build_date_utc": 1786113311,
+          "build_date_str": "Aug 07, 2026",
+          "fingerprint": "TCL/R51MT05/R51MT05:11/V8-R51MT05-LF1V001/user/release-keys",
+          "sdk_level": 30,
+          "incremental_build": "LF1V001",
+          "device_codename": "tcl_r51mt05"
+        }
+      },
+      "beta": null,
+      "test": null,
+      "checked_at": "2026-08-22T10:12:18.687390+00:00"
     },
     {
       "platform": "R51MT06",
@@ -1136,8 +1553,8 @@
       "changelog": "Series 5/6 NA Google TV interface performance tweaks, optical audio latency reduction.",
       "region": "EU",
       "download_url": "http://eu-update.cedock.com/apps/resource2/V8R51MT06/V8-R51MT06-LF1V029/FOTA-OTA/V8-R51MT06-LF1V029.407989.zip",
-      "is_test_release": true,
-      "release_category": "Beta / Test Build (RC)",
+      "is_test_release": false,
+      "release_category": "Production (Stable)",
       "all_cdn_urls": {
         "eu": "http://eu-update.cedock.com/apps/resource2/V8R51MT06/V8-R51MT06-LF1V029/FOTA-OTA/V8-R51MT06-LF1V029.407989.zip",
         "na": "http://na-update.cedock.com/apps/resource2/V8R51MT06/V8-R51MT06-LF1V029/FOTA-OTA/V8-R51MT06-LF1V029.407989.zip",
@@ -1156,7 +1573,40 @@
         "incremental_build": "LF1V001",
         "device_codename": "tcl_r51mt06"
       },
-      "checked_at": "2026-08-22T09:59:32.610566+00:00"
+      "stable": {
+        "version": "V8-R51MT06-LF1V029",
+        "build_number": "407989",
+        "release_type": "Full OTA (ZIP)",
+        "release_category": "Production (Stable)",
+        "is_test_release": false,
+        "package_size": "1.71 GB",
+        "release_date": "2023-11",
+        "md5": "c77fbe610cd7f0ba8aefefb023e641be",
+        "sha256": "832bce9eb5ecd1873eae58ec2a9d8ef66a7d22e1f084775de2ed747ea19659fe",
+        "crc32": "BFC5FBDB",
+        "changelog": "Series 5/6 NA Google TV interface performance tweaks, optical audio latency reduction.",
+        "download_url": "http://eu-update.cedock.com/apps/resource2/V8R51MT06/V8-R51MT06-LF1V029/FOTA-OTA/V8-R51MT06-LF1V029.407989.zip",
+        "all_cdn_urls": {
+          "eu": "http://eu-update.cedock.com/apps/resource2/V8R51MT06/V8-R51MT06-LF1V029/FOTA-OTA/V8-R51MT06-LF1V029.407989.zip",
+          "na": "http://na-update.cedock.com/apps/resource2/V8R51MT06/V8-R51MT06-LF1V029/FOTA-OTA/V8-R51MT06-LF1V029.407989.zip",
+          "as": "http://as-update.cedock.com/apps/resource2/V8R51MT06/V8-R51MT06-LF1V029/FOTA-OTA/V8-R51MT06-LF1V029.407989.zip"
+        },
+        "extracted_details": {
+          "android_version": "11",
+          "os_flavor": "Android TV (ATV)",
+          "gms_version": "Android_11_ATV",
+          "security_patch": "2023-11-05",
+          "build_date_utc": 1786113311,
+          "build_date_str": "Aug 07, 2026",
+          "fingerprint": "TCL/R51MT06/R51MT06:11/V8-R51MT06-LF1V001/user/release-keys",
+          "sdk_level": 30,
+          "incremental_build": "LF1V001",
+          "device_codename": "tcl_r51mt06"
+        }
+      },
+      "beta": null,
+      "test": null,
+      "checked_at": "2026-08-22T10:12:18.687390+00:00"
     },
     {
       "platform": "R51MT07",
@@ -1175,8 +1625,8 @@
       "changelog": "Realtek RTD2851M regional variant build: picture profile presets and audio delay calibration.",
       "region": "EU",
       "download_url": "http://eu-update.cedock.com/apps/resource2/V8R51MT07/V8-R51MT07-LF1V001/FOTA-OTA/V8-R51MT07-LF1V001.717386.zip",
-      "is_test_release": true,
-      "release_category": "Beta / Test Build (RC)",
+      "is_test_release": false,
+      "release_category": "Production (Stable)",
       "all_cdn_urls": {
         "eu": "http://eu-update.cedock.com/apps/resource2/V8R51MT07/V8-R51MT07-LF1V001/FOTA-OTA/V8-R51MT07-LF1V001.717386.zip",
         "na": "http://na-update.cedock.com/apps/resource2/V8R51MT07/V8-R51MT07-LF1V001/FOTA-OTA/V8-R51MT07-LF1V001.717386.zip",
@@ -1195,7 +1645,10 @@
         "incremental_build": "LF1V001",
         "device_codename": "tcl_r51mt07"
       },
-      "checked_at": "2026-08-22T09:59:32.610566+00:00"
+      "stable": null,
+      "beta": null,
+      "test": null,
+      "checked_at": "2026-08-22T10:12:18.687390+00:00"
     },
     {
       "platform": "R51MT08",
@@ -1214,8 +1667,8 @@
       "changelog": "Realtek RTD2851M regional variant build: Wi-Fi driver robustness and system stability.",
       "region": "EU",
       "download_url": "http://eu-update.cedock.com/apps/resource2/V8R51MT08/V8-R51MT08-LF1V001/FOTA-OTA/V8-R51MT08-LF1V001.439791.zip",
-      "is_test_release": true,
-      "release_category": "Beta / Test Build (RC)",
+      "is_test_release": false,
+      "release_category": "Production (Stable)",
       "all_cdn_urls": {
         "eu": "http://eu-update.cedock.com/apps/resource2/V8R51MT08/V8-R51MT08-LF1V001/FOTA-OTA/V8-R51MT08-LF1V001.439791.zip",
         "na": "http://na-update.cedock.com/apps/resource2/V8R51MT08/V8-R51MT08-LF1V001/FOTA-OTA/V8-R51MT08-LF1V001.439791.zip",
@@ -1234,7 +1687,10 @@
         "incremental_build": "LF1V001",
         "device_codename": "tcl_r51mt08"
       },
-      "checked_at": "2026-08-22T09:59:32.610566+00:00"
+      "stable": null,
+      "beta": null,
+      "test": null,
+      "checked_at": "2026-08-22T10:12:18.687390+00:00"
     },
     {
       "platform": "R51MT09",
@@ -1253,8 +1709,8 @@
       "changelog": "Realtek RTD2851M regional variant build: TV tuner reception and channel scan optimizations.",
       "region": "EU",
       "download_url": "http://eu-update.cedock.com/apps/resource2/V8R51MT09/V8-R51MT09-LF1V001/FOTA-OTA/V8-R51MT09-LF1V001.105024.zip",
-      "is_test_release": true,
-      "release_category": "Beta / Test Build (RC)",
+      "is_test_release": false,
+      "release_category": "Production (Stable)",
       "all_cdn_urls": {
         "eu": "http://eu-update.cedock.com/apps/resource2/V8R51MT09/V8-R51MT09-LF1V001/FOTA-OTA/V8-R51MT09-LF1V001.105024.zip",
         "na": "http://na-update.cedock.com/apps/resource2/V8R51MT09/V8-R51MT09-LF1V001/FOTA-OTA/V8-R51MT09-LF1V001.105024.zip",
@@ -1273,7 +1729,10 @@
         "incremental_build": "LF1V001",
         "device_codename": "tcl_r51mt09"
       },
-      "checked_at": "2026-08-22T09:59:32.610566+00:00"
+      "stable": null,
+      "beta": null,
+      "test": null,
+      "checked_at": "2026-08-22T10:12:18.687390+00:00"
     },
     {
       "platform": "R51MT10",
@@ -1292,8 +1751,8 @@
       "changelog": "Series 4/5 entry 4K stability build, USB multimedia playback codec updates.",
       "region": "EU",
       "download_url": "http://eu-update.cedock.com/apps/resource2/V8R51MT10/V8-R51MT10-LF1V109/FOTA-OTA/V8-R51MT10-LF1V109.312038.zip",
-      "is_test_release": true,
-      "release_category": "Beta / Test Build (RC)",
+      "is_test_release": false,
+      "release_category": "Production (Stable)",
       "all_cdn_urls": {
         "eu": "http://eu-update.cedock.com/apps/resource2/V8R51MT10/V8-R51MT10-LF1V109/FOTA-OTA/V8-R51MT10-LF1V109.312038.zip",
         "na": "http://na-update.cedock.com/apps/resource2/V8R51MT10/V8-R51MT10-LF1V109/FOTA-OTA/V8-R51MT10-LF1V109.312038.zip",
@@ -1312,7 +1771,40 @@
         "incremental_build": "LF1V001",
         "device_codename": "tcl_r51mt10"
       },
-      "checked_at": "2026-08-22T09:59:32.610566+00:00"
+      "stable": {
+        "version": "V8-R51MT10-LF1V109",
+        "build_number": "312038",
+        "release_type": "Full OTA (ZIP)",
+        "release_category": "Production (Stable)",
+        "is_test_release": false,
+        "package_size": "1.73 GB",
+        "release_date": "2023-09",
+        "md5": "12e048a36c2c42d5ef03d6b9c13cfc26",
+        "sha256": "35d22f268eb206b4105c14a96b42c186229ec04be2f9fe367edc6fc4c5faa6ca",
+        "crc32": "9BB381F6",
+        "changelog": "Series 4/5 entry 4K stability build, USB multimedia playback codec updates.",
+        "download_url": "http://eu-update.cedock.com/apps/resource2/V8R51MT10/V8-R51MT10-LF1V109/FOTA-OTA/V8-R51MT10-LF1V109.312038.zip",
+        "all_cdn_urls": {
+          "eu": "http://eu-update.cedock.com/apps/resource2/V8R51MT10/V8-R51MT10-LF1V109/FOTA-OTA/V8-R51MT10-LF1V109.312038.zip",
+          "na": "http://na-update.cedock.com/apps/resource2/V8R51MT10/V8-R51MT10-LF1V109/FOTA-OTA/V8-R51MT10-LF1V109.312038.zip",
+          "as": "http://as-update.cedock.com/apps/resource2/V8R51MT10/V8-R51MT10-LF1V109/FOTA-OTA/V8-R51MT10-LF1V109.312038.zip"
+        },
+        "extracted_details": {
+          "android_version": "11",
+          "os_flavor": "Android TV (ATV)",
+          "gms_version": "Android_11_ATV",
+          "security_patch": "2023-09-05",
+          "build_date_utc": 1786113311,
+          "build_date_str": "Aug 07, 2026",
+          "fingerprint": "TCL/R51MT10/R51MT10:11/V8-R51MT10-LF1V001/user/release-keys",
+          "sdk_level": 30,
+          "incremental_build": "LF1V001",
+          "device_codename": "tcl_r51mt10"
+        }
+      },
+      "beta": null,
+      "test": null,
+      "checked_at": "2026-08-22T10:12:18.687390+00:00"
     },
     {
       "platform": "R75PT01",
@@ -1331,8 +1823,8 @@
       "changelog": "Android 14 Google TV (GTV U) release: Security patch 2026-06-05, G10_4K_US_NF AS50 release.",
       "region": "EU",
       "download_url": "http://eu-update.cedock.com/apps/resource2/V8R75PT01/V8-R75PT01-LF1V545/FOTA-OTA/V8-R75PT01-LF1V545.645674.zip",
-      "is_test_release": true,
-      "release_category": "Beta / Test Build (RC)",
+      "is_test_release": false,
+      "release_category": "Production (Stable)",
       "all_cdn_urls": {
         "eu": "http://eu-update.cedock.com/apps/resource2/V8R75PT01/V8-R75PT01-LF1V545/FOTA-OTA/V8-R75PT01-LF1V545.645674.zip",
         "na": "http://na-update.cedock.com/apps/resource2/V8R75PT01/V8-R75PT01-LF1V545/FOTA-OTA/V8-R75PT01-LF1V545.645674.zip",
@@ -1351,7 +1843,40 @@
         "incremental_build": "LF1V001",
         "device_codename": "tcl_r75pt01"
       },
-      "checked_at": "2026-08-22T09:59:32.610566+00:00"
+      "stable": {
+        "version": "V8-R75PT01-LF1V545",
+        "build_number": "645674",
+        "release_type": "Full OTA (ZIP)",
+        "release_category": "Production (Stable)",
+        "is_test_release": false,
+        "package_size": "1.92 GB",
+        "release_date": "2026-08-07",
+        "md5": "391cdffb44411798ca5a12a431d245ec",
+        "sha256": "b5f8bbb203043f3b3e5d566cc9f526827cc086ea311ce31ee30d9e8f50a4806d",
+        "crc32": "BA22A8CD",
+        "changelog": "Android 14 Google TV (GTV U) release: Security patch 2026-06-05, G10_4K_US_NF AS50 release.",
+        "download_url": "http://eu-update.cedock.com/apps/resource2/V8R75PT01/V8-R75PT01-LF1V545/FOTA-OTA/V8-R75PT01-LF1V545.645674.zip",
+        "all_cdn_urls": {
+          "eu": "http://eu-update.cedock.com/apps/resource2/V8R75PT01/V8-R75PT01-LF1V545/FOTA-OTA/V8-R75PT01-LF1V545.645674.zip",
+          "na": "http://na-update.cedock.com/apps/resource2/V8R75PT01/V8-R75PT01-LF1V545/FOTA-OTA/V8-R75PT01-LF1V545.645674.zip",
+          "as": "http://as-update.cedock.com/apps/resource2/V8R75PT01/V8-R75PT01-LF1V545/FOTA-OTA/V8-R75PT01-LF1V545.645674.zip"
+        },
+        "extracted_details": {
+          "android_version": "12",
+          "os_flavor": "Google TV (GTV)",
+          "gms_version": "Android_12_GTV",
+          "security_patch": "2026-08-05",
+          "build_date_utc": 1786060800,
+          "build_date_str": "Aug 07, 2026",
+          "fingerprint": "TCL/R75PT01/R75PT01:12/V8-R75PT01-LF1V001/user/release-keys",
+          "sdk_level": 31,
+          "incremental_build": "LF1V001",
+          "device_codename": "tcl_r75pt01"
+        }
+      },
+      "beta": null,
+      "test": null,
+      "checked_at": "2026-08-22T10:12:18.687390+00:00"
     },
     {
       "platform": "T221T01",
@@ -1390,7 +1915,40 @@
         "incremental_build": "LF1V001",
         "device_codename": "tcl_t221t01"
       },
-      "checked_at": "2026-08-22T09:59:32.610566+00:00"
+      "stable": {
+        "version": "V8-T221T01-LF1V242",
+        "build_number": "553714",
+        "release_type": "Full OTA (ZIP)",
+        "release_category": "Production (Stable)",
+        "is_test_release": false,
+        "package_size": "1.38 GB",
+        "release_date": "2024-03",
+        "md5": "01969db7ee5a4e9ed5baecba1b8ea497",
+        "sha256": "4ba8ab041d7dcd6635300023e1b428ca69c9ac84586ea1c529eca1319fa9d021",
+        "crc32": "E2759854",
+        "changelog": "MediaTek MT21 global FHD release: Android TV 11 stability build and tuner optimization.",
+        "download_url": "http://eu-update.cedock.com/apps/resource2/V8T221T01/V8-T221T01-LF1V242/FOTA-OTA/V8-T221T01-LF1V242.553714.zip",
+        "all_cdn_urls": {
+          "eu": "http://eu-update.cedock.com/apps/resource2/V8T221T01/V8-T221T01-LF1V242/FOTA-OTA/V8-T221T01-LF1V242.553714.zip",
+          "na": "http://na-update.cedock.com/apps/resource2/V8T221T01/V8-T221T01-LF1V242/FOTA-OTA/V8-T221T01-LF1V242.553714.zip",
+          "as": "http://as-update.cedock.com/apps/resource2/V8T221T01/V8-T221T01-LF1V242/FOTA-OTA/V8-T221T01-LF1V242.553714.zip"
+        },
+        "extracted_details": {
+          "android_version": "11",
+          "os_flavor": "Android TV (ATV)",
+          "gms_version": "Android_11_ATV",
+          "security_patch": "2024-03-05",
+          "build_date_utc": 1786113311,
+          "build_date_str": "Aug 07, 2026",
+          "fingerprint": "TCL/T221T01/T221T01:11/V8-T221T01-LF1V001/user/release-keys",
+          "sdk_level": 30,
+          "incremental_build": "LF1V001",
+          "device_codename": "tcl_t221t01"
+        }
+      },
+      "beta": null,
+      "test": null,
+      "checked_at": "2026-08-22T10:12:18.687390+00:00"
     },
     {
       "platform": "T221T02",
@@ -1429,7 +1987,40 @@
         "incremental_build": "LF1V001",
         "device_codename": "tcl_t221t02"
       },
-      "checked_at": "2026-08-22T09:59:32.610566+00:00"
+      "stable": {
+        "version": "V8-T221T02-LF1V085",
+        "build_number": "407126",
+        "release_type": "Full OTA (ZIP)",
+        "release_category": "Production (Stable)",
+        "is_test_release": false,
+        "package_size": "1.34 GB",
+        "release_date": "2023-10",
+        "md5": "68a5c7925e8b72a66daede8b64d220e5",
+        "sha256": "f2ef5d3ff9432f92e169bdebd383abf3bd76fabd8a46bedab3884ac426570e73",
+        "crc32": "DD5DAE8A",
+        "changelog": "MediaTek MT21 NA market release: ATSC channel scan fix and HDMI ARC latency improvements.",
+        "download_url": "http://eu-update.cedock.com/apps/resource2/V8T221T02/V8-T221T02-LF1V085/FOTA-OTA/V8-T221T02-LF1V085.407126.zip",
+        "all_cdn_urls": {
+          "eu": "http://eu-update.cedock.com/apps/resource2/V8T221T02/V8-T221T02-LF1V085/FOTA-OTA/V8-T221T02-LF1V085.407126.zip",
+          "na": "http://na-update.cedock.com/apps/resource2/V8T221T02/V8-T221T02-LF1V085/FOTA-OTA/V8-T221T02-LF1V085.407126.zip",
+          "as": "http://as-update.cedock.com/apps/resource2/V8T221T02/V8-T221T02-LF1V085/FOTA-OTA/V8-T221T02-LF1V085.407126.zip"
+        },
+        "extracted_details": {
+          "android_version": "11",
+          "os_flavor": "Android TV (ATV)",
+          "gms_version": "Android_11_ATV",
+          "security_patch": "2023-10-05",
+          "build_date_utc": 1786113311,
+          "build_date_str": "Aug 07, 2026",
+          "fingerprint": "TCL/T221T02/T221T02:11/V8-T221T02-LF1V001/user/release-keys",
+          "sdk_level": 30,
+          "incremental_build": "LF1V001",
+          "device_codename": "tcl_t221t02"
+        }
+      },
+      "beta": null,
+      "test": null,
+      "checked_at": "2026-08-22T10:12:18.687390+00:00"
     },
     {
       "platform": "T221T03",
@@ -1468,7 +2059,10 @@
         "incremental_build": "LF1V001",
         "device_codename": "tcl_t221t03"
       },
-      "checked_at": "2026-08-22T09:59:32.610566+00:00"
+      "stable": null,
+      "beta": null,
+      "test": null,
+      "checked_at": "2026-08-22T10:12:18.687390+00:00"
     },
     {
       "platform": "T221T04",
@@ -1507,7 +2101,10 @@
         "incremental_build": "LF1V001",
         "device_codename": "tcl_t221t04"
       },
-      "checked_at": "2026-08-22T09:59:32.610566+00:00"
+      "stable": null,
+      "beta": null,
+      "test": null,
+      "checked_at": "2026-08-22T10:12:18.687390+00:00"
     },
     {
       "platform": "T221T05",
@@ -1546,7 +2143,10 @@
         "incremental_build": "LF1V001",
         "device_codename": "tcl_t221t05"
       },
-      "checked_at": "2026-08-22T09:59:32.610566+00:00"
+      "stable": null,
+      "beta": null,
+      "test": null,
+      "checked_at": "2026-08-22T10:12:18.687390+00:00"
     },
     {
       "platform": "T221T06",
@@ -1585,7 +2185,10 @@
         "incremental_build": "LF1V001",
         "device_codename": "tcl_t221t06"
       },
-      "checked_at": "2026-08-22T09:59:32.610566+00:00"
+      "stable": null,
+      "beta": null,
+      "test": null,
+      "checked_at": "2026-08-22T10:12:18.687390+00:00"
     },
     {
       "platform": "T221T07",
@@ -1624,7 +2227,10 @@
         "incremental_build": "LF1V001",
         "device_codename": "tcl_t221t07"
       },
-      "checked_at": "2026-08-22T09:59:32.610566+00:00"
+      "stable": null,
+      "beta": null,
+      "test": null,
+      "checked_at": "2026-08-22T10:12:18.687390+00:00"
     },
     {
       "platform": "T221T08",
@@ -1663,7 +2269,10 @@
         "incremental_build": "LF1V001",
         "device_codename": "tcl_t221t08"
       },
-      "checked_at": "2026-08-22T09:59:32.610566+00:00"
+      "stable": null,
+      "beta": null,
+      "test": null,
+      "checked_at": "2026-08-22T10:12:18.687390+00:00"
     },
     {
       "platform": "T221T09",
@@ -1702,7 +2311,10 @@
         "incremental_build": "LF1V001",
         "device_codename": "tcl_t221t09"
       },
-      "checked_at": "2026-08-22T09:59:32.610566+00:00"
+      "stable": null,
+      "beta": null,
+      "test": null,
+      "checked_at": "2026-08-22T10:12:18.687390+00:00"
     },
     {
       "platform": "T615T01",
@@ -1741,7 +2353,40 @@
         "incremental_build": "LF1V001",
         "device_codename": "tcl_t615t01"
       },
-      "checked_at": "2026-08-22T09:59:32.610566+00:00"
+      "stable": {
+        "version": "V8-T615T01-LF1V082",
+        "build_number": "176126",
+        "release_type": "Full OTA (ZIP)",
+        "release_category": "Production (Stable)",
+        "is_test_release": false,
+        "package_size": "1.92 GB",
+        "release_date": "2024-05",
+        "md5": "59ca23d8dd5e07be6d73d58dd3a5f170",
+        "sha256": "2341b055b94308e7e332e80eda520763e891e6e231140c8f78c3e1e5ae241568",
+        "crc32": "D08CFF8E",
+        "changelog": "Pre-Pentonic 144Hz Game Master stability, black screen recovery patches, CEC soundbar handshake fixes.",
+        "download_url": "http://eu-update.cedock.com/apps/resource2/V8T615T01/V8-T615T01-LF1V082/FOTA-OTA/V8-T615T01-LF1V082.176126.zip",
+        "all_cdn_urls": {
+          "eu": "http://eu-update.cedock.com/apps/resource2/V8T615T01/V8-T615T01-LF1V082/FOTA-OTA/V8-T615T01-LF1V082.176126.zip",
+          "na": "http://na-update.cedock.com/apps/resource2/V8T615T01/V8-T615T01-LF1V082/FOTA-OTA/V8-T615T01-LF1V082.176126.zip",
+          "as": "http://as-update.cedock.com/apps/resource2/V8T615T01/V8-T615T01-LF1V082/FOTA-OTA/V8-T615T01-LF1V082.176126.zip"
+        },
+        "extracted_details": {
+          "android_version": "11",
+          "os_flavor": "Google TV (GTV)",
+          "gms_version": "Android_11_GTV",
+          "security_patch": "2024-05-05",
+          "build_date_utc": 1786113311,
+          "build_date_str": "Aug 07, 2026",
+          "fingerprint": "TCL/T615T01/T615T01:11/V8-T615T01-LF1V001/user/release-keys",
+          "sdk_level": 30,
+          "incremental_build": "LF1V001",
+          "device_codename": "tcl_t615t01"
+        }
+      },
+      "beta": null,
+      "test": null,
+      "checked_at": "2026-08-22T10:12:18.687390+00:00"
     },
     {
       "platform": "T615T02",
@@ -1780,7 +2425,40 @@
         "incremental_build": "LF1V001",
         "device_codename": "tcl_t615t02"
       },
-      "checked_at": "2026-08-22T09:59:32.610566+00:00"
+      "stable": {
+        "version": "V8-T615T02-LF1V073",
+        "build_number": "518224",
+        "release_type": "Full OTA (ZIP)",
+        "release_category": "Production (Stable)",
+        "is_test_release": false,
+        "package_size": "1.89 GB",
+        "release_date": "2024-04",
+        "md5": "f07a2972dca47c392ce4f51b65a89179",
+        "sha256": "f3c352d122d8bc55ed826239479dc3dfcc9523597cd11c370bba2c94b280e61c",
+        "crc32": "4185B600",
+        "changelog": "North American Google TV Q7/R646 local dimming zone sync and HDR color gamut adjustments.",
+        "download_url": "http://eu-update.cedock.com/apps/resource2/V8T615T02/V8-T615T02-LF1V073/FOTA-OTA/V8-T615T02-LF1V073.518224.zip",
+        "all_cdn_urls": {
+          "eu": "http://eu-update.cedock.com/apps/resource2/V8T615T02/V8-T615T02-LF1V073/FOTA-OTA/V8-T615T02-LF1V073.518224.zip",
+          "na": "http://na-update.cedock.com/apps/resource2/V8T615T02/V8-T615T02-LF1V073/FOTA-OTA/V8-T615T02-LF1V073.518224.zip",
+          "as": "http://as-update.cedock.com/apps/resource2/V8T615T02/V8-T615T02-LF1V073/FOTA-OTA/V8-T615T02-LF1V073.518224.zip"
+        },
+        "extracted_details": {
+          "android_version": "11",
+          "os_flavor": "Google TV (GTV)",
+          "gms_version": "Android_11_GTV",
+          "security_patch": "2024-04-05",
+          "build_date_utc": 1786113311,
+          "build_date_str": "Aug 07, 2026",
+          "fingerprint": "TCL/T615T02/T615T02:11/V8-T615T02-LF1V001/user/release-keys",
+          "sdk_level": 30,
+          "incremental_build": "LF1V001",
+          "device_codename": "tcl_t615t02"
+        }
+      },
+      "beta": null,
+      "test": null,
+      "checked_at": "2026-08-22T10:12:18.687390+00:00"
     },
     {
       "platform": "T615T03",
@@ -1819,7 +2497,40 @@
         "incremental_build": "LF1V001",
         "device_codename": "tcl_t615t03"
       },
-      "checked_at": "2026-08-22T09:59:32.610566+00:00"
+      "stable": {
+        "version": "V8-T615T03-LF1V082",
+        "build_number": "502331",
+        "release_type": "Full OTA (ZIP)",
+        "release_category": "Production (Stable)",
+        "is_test_release": false,
+        "package_size": "1.92 GB",
+        "release_date": "2024-05",
+        "md5": "b2f53f98570fd79525ad6517db646dbb",
+        "sha256": "3f6c33a6c281b8da1d3669d75dfdc2d82177152fdf6947d74877a3787d5c8169",
+        "crc32": "A81C95B2",
+        "changelog": "Pre-Pentonic 144Hz Game Master stability, black screen recovery patches, CEC soundbar handshake fixes.",
+        "download_url": "http://eu-update.cedock.com/apps/resource2/V8T615T03/V8-T615T03-LF1V082/FOTA-OTA/V8-T615T03-LF1V082.502331.zip",
+        "all_cdn_urls": {
+          "eu": "http://eu-update.cedock.com/apps/resource2/V8T615T03/V8-T615T03-LF1V082/FOTA-OTA/V8-T615T03-LF1V082.502331.zip",
+          "na": "http://na-update.cedock.com/apps/resource2/V8T615T03/V8-T615T03-LF1V082/FOTA-OTA/V8-T615T03-LF1V082.502331.zip",
+          "as": "http://as-update.cedock.com/apps/resource2/V8T615T03/V8-T615T03-LF1V082/FOTA-OTA/V8-T615T03-LF1V082.502331.zip"
+        },
+        "extracted_details": {
+          "android_version": "11",
+          "os_flavor": "Google TV (GTV)",
+          "gms_version": "Android_11_GTV",
+          "security_patch": "2024-05-05",
+          "build_date_utc": 1786113311,
+          "build_date_str": "Aug 07, 2026",
+          "fingerprint": "TCL/T615T03/T615T03:11/V8-T615T03-LF1V001/user/release-keys",
+          "sdk_level": 30,
+          "incremental_build": "LF1V001",
+          "device_codename": "tcl_t615t03"
+        }
+      },
+      "beta": null,
+      "test": null,
+      "checked_at": "2026-08-22T10:12:18.687390+00:00"
     },
     {
       "platform": "T653T01",
@@ -1858,7 +2569,40 @@
         "incremental_build": "LF1V001",
         "device_codename": "tcl_t653t01"
       },
-      "checked_at": "2026-08-22T09:59:32.610566+00:00"
+      "stable": {
+        "version": "V8-T653T01-LF1V655",
+        "build_number": "190489",
+        "release_type": "Full OTA (ZIP)",
+        "release_category": "Production (Stable)",
+        "is_test_release": false,
+        "package_size": "2.35 GB",
+        "release_date": "2026-01",
+        "md5": "9d687f52557a5a18b1649ffb0fa58fc4",
+        "sha256": "74d1a7d82f256fea9372d4b4f8be0119727dd1418a96fbdd839dc30e92894d78",
+        "crc32": "B134BEF4",
+        "changelog": "Android 12/14 Google TV: Dolby Vision IQ enhancements, Game Master 2.0 stability, 144Hz VRR optimizations.",
+        "download_url": "http://eu-update.cedock.com/apps/resource2/V8T653T01/V8-T653T01-LF1V655/FOTA-OTA/V8-T653T01-LF1V655.190489.zip",
+        "all_cdn_urls": {
+          "eu": "http://eu-update.cedock.com/apps/resource2/V8T653T01/V8-T653T01-LF1V655/FOTA-OTA/V8-T653T01-LF1V655.190489.zip",
+          "na": "http://na-update.cedock.com/apps/resource2/V8T653T01/V8-T653T01-LF1V655/FOTA-OTA/V8-T653T01-LF1V655.190489.zip",
+          "as": "http://as-update.cedock.com/apps/resource2/V8T653T01/V8-T653T01-LF1V655/FOTA-OTA/V8-T653T01-LF1V655.190489.zip"
+        },
+        "extracted_details": {
+          "android_version": "12",
+          "os_flavor": "Google TV (GTV)",
+          "gms_version": "Android_12_GTV",
+          "security_patch": "2026-01-05",
+          "build_date_utc": 1786113311,
+          "build_date_str": "Aug 07, 2026",
+          "fingerprint": "TCL/T653T01/T653T01:12/V8-T653T01-LF1V001/user/release-keys",
+          "sdk_level": 31,
+          "incremental_build": "LF1V001",
+          "device_codename": "tcl_t653t01"
+        }
+      },
+      "beta": null,
+      "test": null,
+      "checked_at": "2026-08-22T10:12:18.687390+00:00"
     },
     {
       "platform": "T653T02",
@@ -1897,7 +2641,40 @@
         "incremental_build": "LF1V001",
         "device_codename": "tcl_t653t02"
       },
-      "checked_at": "2026-08-22T09:59:32.610566+00:00"
+      "stable": {
+        "version": "V8-T653T02-LF1V620",
+        "build_number": "303526",
+        "release_type": "Full OTA (ZIP)",
+        "release_category": "Production (Stable)",
+        "is_test_release": false,
+        "package_size": "2.28 GB",
+        "release_date": "2025-11",
+        "md5": "e0088b23848c42387dc960abed08f18e",
+        "sha256": "e958c84356ebd594b126b5908d34842ebde12895cc28b234ed944300347cabeb",
+        "crc32": "3E16B7D0",
+        "changelog": "North American Google TV: QM851G/QM751G local dimming timing adjustments, ATSC 3.0 tuner stability.",
+        "download_url": "http://na-update.cedock.com/apps/resource2/V8T653T02/V8-T653T02-LF1V620/FOTA-OTA/V8-T653T02-LF1V620.303526.zip",
+        "all_cdn_urls": {
+          "eu": "http://eu-update.cedock.com/apps/resource2/V8T653T02/V8-T653T02-LF1V620/FOTA-OTA/V8-T653T02-LF1V620.303526.zip",
+          "na": "http://na-update.cedock.com/apps/resource2/V8T653T02/V8-T653T02-LF1V620/FOTA-OTA/V8-T653T02-LF1V620.303526.zip",
+          "as": "http://as-update.cedock.com/apps/resource2/V8T653T02/V8-T653T02-LF1V620/FOTA-OTA/V8-T653T02-LF1V620.303526.zip"
+        },
+        "extracted_details": {
+          "android_version": "12",
+          "os_flavor": "Google TV (GTV)",
+          "gms_version": "Android_12_GTV",
+          "security_patch": "2025-11-05",
+          "build_date_utc": 1786113311,
+          "build_date_str": "Aug 07, 2026",
+          "fingerprint": "TCL/T653T02/T653T02:12/V8-T653T02-LF1V001/user/release-keys",
+          "sdk_level": 31,
+          "incremental_build": "LF1V001",
+          "device_codename": "tcl_t653t02"
+        }
+      },
+      "beta": null,
+      "test": null,
+      "checked_at": "2026-08-22T10:12:18.687390+00:00"
     },
     {
       "platform": "T653T03",
@@ -1936,7 +2713,40 @@
         "incremental_build": "LF1V001",
         "device_codename": "tcl_t653t03"
       },
-      "checked_at": "2026-08-22T09:59:32.610566+00:00"
+      "stable": {
+        "version": "V8-T653T03-LF1V110",
+        "build_number": "146158",
+        "release_type": "Full OTA (ZIP)",
+        "release_category": "Production (Stable)",
+        "is_test_release": false,
+        "package_size": "2.41 GB",
+        "release_date": "2025-10",
+        "md5": "f10b2e9f3a23f36b74b96d837a45a326",
+        "sha256": "0b922bf0abd31f9f886c0658f51a0dcbe2a88eb51a034567738180f7b4d96f5a",
+        "crc32": "05C5FE59",
+        "changelog": "G16 flagship chassis DSP audio processor updates and high-zone Mini-LED panel drive optimizations.",
+        "download_url": "http://eu-update.cedock.com/apps/resource2/V8T653T03/V8-T653T03-LF1V110/FOTA-OTA/V8-T653T03-LF1V110.146158.zip",
+        "all_cdn_urls": {
+          "eu": "http://eu-update.cedock.com/apps/resource2/V8T653T03/V8-T653T03-LF1V110/FOTA-OTA/V8-T653T03-LF1V110.146158.zip",
+          "na": "http://na-update.cedock.com/apps/resource2/V8T653T03/V8-T653T03-LF1V110/FOTA-OTA/V8-T653T03-LF1V110.146158.zip",
+          "as": "http://as-update.cedock.com/apps/resource2/V8T653T03/V8-T653T03-LF1V110/FOTA-OTA/V8-T653T03-LF1V110.146158.zip"
+        },
+        "extracted_details": {
+          "android_version": "12",
+          "os_flavor": "Google TV (GTV)",
+          "gms_version": "Android_12_GTV",
+          "security_patch": "2025-10-05",
+          "build_date_utc": 1786113311,
+          "build_date_str": "Aug 07, 2026",
+          "fingerprint": "TCL/T653T03/T653T03:12/V8-T653T03-LF1V001/user/release-keys",
+          "sdk_level": 31,
+          "incremental_build": "LF1V001",
+          "device_codename": "tcl_t653t03"
+        }
+      },
+      "beta": null,
+      "test": null,
+      "checked_at": "2026-08-22T10:12:18.687390+00:00"
     },
     {
       "platform": "T655T01",
@@ -1975,7 +2785,40 @@
         "incremental_build": "LF1V001",
         "device_codename": "tcl_t655t01"
       },
-      "checked_at": "2026-08-22T09:59:32.610566+00:00"
+      "stable": {
+        "version": "V8-T655T01-LF1V025",
+        "build_number": "256205",
+        "release_type": "Full OTA (ZIP)",
+        "release_category": "Production (Stable)",
+        "is_test_release": false,
+        "package_size": "~2.1 GB",
+        "release_date": "2026-02",
+        "md5": "2dbafab978b799be10b47723a1f83814",
+        "sha256": "8c49af00a0f3b1dacb0af68669bfa19dd2d631c544d8ab8f986d132f19825f30",
+        "crc32": "6F3898BB",
+        "changelog": "Android 14 Google TV flagship build: MediaTek MT9655 (Pentonic 800), 144Hz VRR & Mini-LED dimming engine.",
+        "download_url": "http://eu-update.cedock.com/apps/resource2/V8T655T01/V8-T655T01-LF1V025/FOTA-OTA/V8-T655T01-LF1V025.256205.zip",
+        "all_cdn_urls": {
+          "eu": "http://eu-update.cedock.com/apps/resource2/V8T655T01/V8-T655T01-LF1V025/FOTA-OTA/V8-T655T01-LF1V025.256205.zip",
+          "na": "http://na-update.cedock.com/apps/resource2/V8T655T01/V8-T655T01-LF1V025/FOTA-OTA/V8-T655T01-LF1V025.256205.zip",
+          "as": "http://as-update.cedock.com/apps/resource2/V8T655T01/V8-T655T01-LF1V025/FOTA-OTA/V8-T655T01-LF1V025.256205.zip"
+        },
+        "extracted_details": {
+          "android_version": "14",
+          "os_flavor": "Google TV (GTV)",
+          "gms_version": "Android_14_GTV",
+          "security_patch": "2026-02-05",
+          "build_date_utc": 1786113311,
+          "build_date_str": "Aug 07, 2026",
+          "fingerprint": "TCL/T655T01/T655T01:14/V8-T655T01-LF1V001/user/release-keys",
+          "sdk_level": 34,
+          "incremental_build": "LF1V001",
+          "device_codename": "tcl_t655t01"
+        }
+      },
+      "beta": null,
+      "test": null,
+      "checked_at": "2026-08-22T10:12:18.687390+00:00"
     },
     {
       "platform": "T658T01",
@@ -1983,38 +2826,49 @@
       "family_name": "Pentonic 600 (T658T01)",
       "soc_specs": "MediaTek MT9658 (Pentonic 600)",
       "featured_models": "C655 (Selected AP/LA Releases)",
-      "latest_firmware": "V8-T658T01-LF1V001",
-      "build_number": "659436",
+      "latest_firmware": "V8-T658T01-LF1V575",
+      "build_number": "002400",
       "release_type": "Full OTA (ZIP)",
-      "package_size": "1.85 GB",
-      "release_date": "2026-03-20",
-      "md5": "b461de500812953e7660c318bc94d156",
-      "sha256": "071598a20b36a6e6c6e607b0787db74f98aa61b02d2afba6fc5a8b9f087e2e46",
-      "crc32": "7261735A",
-      "changelog": "Pentonic 600 (T658T01) official software release: System stability, kernel performance optimizations, and security patches.",
+      "package_size": "1.92 GB",
+      "release_date": "2026-06-15",
+      "md5": "30f8380c248ecbad00468e6065603f3b",
+      "sha256": "c7a213df69b1a47015657193046f10386fe18f9af71dc1ee9c16543e81cd5b0e",
+      "crc32": "5C176F1A",
+      "changelog": "Previous production release.",
       "region": "EU",
-      "download_url": "http://eu-update.cedock.com/apps/resource2/V8T658T01/V8-T658T01-LF1V001/FOTA-OTA/V8-T658T01-LF1V001.659436.zip",
+      "download_url": "http://eu-update.cedock.com/apps/resource2/V8T658T01/V8-T658T01-LF1V575/FOTA-OTA/V8-T658T01-LF1V575.zip",
       "is_test_release": false,
       "release_category": "Production (Stable)",
       "all_cdn_urls": {
-        "eu": "http://eu-update.cedock.com/apps/resource2/V8T658T01/V8-T658T01-LF1V001/FOTA-OTA/V8-T658T01-LF1V001.659436.zip",
-        "na": "http://na-update.cedock.com/apps/resource2/V8T658T01/V8-T658T01-LF1V001/FOTA-OTA/V8-T658T01-LF1V001.659436.zip",
-        "as": "http://as-update.cedock.com/apps/resource2/V8T658T01/V8-T658T01-LF1V001/FOTA-OTA/V8-T658T01-LF1V001.659436.zip"
+        "eu": "http://eu-update.cedock.com/apps/resource2/V8T658T01/V8-T658T01-LF1V575/FOTA-OTA/V8-T658T01-LF1V575.zip",
+        "na": "http://na-update.cedock.com/apps/resource2/V8T658T01/V8-T658T01-LF1V575/FOTA-OTA/V8-T658T01-LF1V575.zip",
+        "as": "http://as-update.cedock.com/apps/resource2/V8T658T01/V8-T658T01-LF1V575/FOTA-OTA/V8-T658T01-LF1V575.zip"
       },
       "fota_api_status": "Checked (Live API - Up to date)",
-      "extracted_details": {
-        "android_version": "12",
-        "os_flavor": "Google TV (GTV)",
-        "gms_version": "Android_12_GTV",
-        "security_patch": "2026-03-05",
-        "build_date_utc": 1773964800,
-        "build_date_str": "Mar 20, 2026",
-        "fingerprint": "TCL/T658T01/T658T01:12/V8-T658T01-LF1V001/user/release-keys",
-        "sdk_level": 31,
-        "incremental_build": "LF1V001",
-        "device_codename": "tcl_t658t01"
+      "extracted_details": null,
+      "stable": {
+        "version": "V8-T658T01-LF1V575",
+        "build_number": "002400",
+        "release_type": "Full OTA (ZIP)",
+        "release_category": "Production (Stable)",
+        "is_test_release": false,
+        "package_size": "1.92 GB",
+        "release_date": "2026-06-15",
+        "md5": "30f8380c248ecbad00468e6065603f3b",
+        "sha256": "c7a213df69b1a47015657193046f10386fe18f9af71dc1ee9c16543e81cd5b0e",
+        "crc32": "5C176F1A",
+        "changelog": "Previous production release.",
+        "download_url": "http://eu-update.cedock.com/apps/resource2/V8T658T01/V8-T658T01-LF1V575/FOTA-OTA/V8-T658T01-LF1V575.zip",
+        "all_cdn_urls": {
+          "eu": "http://eu-update.cedock.com/apps/resource2/V8T658T01/V8-T658T01-LF1V575/FOTA-OTA/V8-T658T01-LF1V575.zip",
+          "na": "http://na-update.cedock.com/apps/resource2/V8T658T01/V8-T658T01-LF1V575/FOTA-OTA/V8-T658T01-LF1V575.zip",
+          "as": "http://as-update.cedock.com/apps/resource2/V8T658T01/V8-T658T01-LF1V575/FOTA-OTA/V8-T658T01-LF1V575.zip"
+        },
+        "extracted_details": null
       },
-      "checked_at": "2026-08-22T09:59:32.610566+00:00"
+      "beta": null,
+      "test": null,
+      "checked_at": "2026-08-22T10:12:18.687390+00:00"
     },
     {
       "platform": "T800T02",
@@ -2053,7 +2907,40 @@
         "incremental_build": "LF1V001",
         "device_codename": "tcl_t800t02"
       },
-      "checked_at": "2026-08-22T09:59:32.610566+00:00"
+      "stable": {
+        "version": "V8-T800T02-LF1V163",
+        "build_number": "128694",
+        "release_type": "Full OTA (ZIP)",
+        "release_category": "Production (Stable)",
+        "is_test_release": false,
+        "package_size": "1.82 GB",
+        "release_date": "2025-08",
+        "md5": "270f558789d902fe7ffbdc7f9357931e",
+        "sha256": "ebe52901c55e4211acb4a6c01bed21d6d3ad93180bd08c3875e7929f936a1bc4",
+        "crc32": "608D9E72",
+        "changelog": "Amlogic G09 Google TV system optimization: DVFS CPU scaling, memory management improvements.",
+        "download_url": "http://eu-update.cedock.com/apps/resource2/V8T800T02/V8-T800T02-LF1V163/FOTA-OTA/V8-T800T02-LF1V163.128694.zip",
+        "all_cdn_urls": {
+          "eu": "http://eu-update.cedock.com/apps/resource2/V8T800T02/V8-T800T02-LF1V163/FOTA-OTA/V8-T800T02-LF1V163.128694.zip",
+          "na": "http://na-update.cedock.com/apps/resource2/V8T800T02/V8-T800T02-LF1V163/FOTA-OTA/V8-T800T02-LF1V163.128694.zip",
+          "as": "http://as-update.cedock.com/apps/resource2/V8T800T02/V8-T800T02-LF1V163/FOTA-OTA/V8-T800T02-LF1V163.128694.zip"
+        },
+        "extracted_details": {
+          "android_version": "12",
+          "os_flavor": "Google TV (GTV)",
+          "gms_version": "Android_12_GTV",
+          "security_patch": "2025-08-05",
+          "build_date_utc": 1786113311,
+          "build_date_str": "Aug 07, 2026",
+          "fingerprint": "TCL/T800T02/T800T02:12/V8-T800T02-LF1V001/user/release-keys",
+          "sdk_level": 31,
+          "incremental_build": "LF1V001",
+          "device_codename": "tcl_t800t02"
+        }
+      },
+      "beta": null,
+      "test": null,
+      "checked_at": "2026-08-22T10:12:18.687390+00:00"
     }
   ]
 }

@@ -1,0 +1,13 @@
+{
+  "generated_at": "2026-08-22T10:12:18.687390+00:00",
+  "source": "official TCL Smart TV FOTA API (huan.tv) & CDN (cedock.com)",
+  "total_platforms_with_pre_releases": 0,
+  "api_fields_documentation": {
+    "platform": "Primary hardware platform identifier code.",
+    "family_name": "Human-readable hardware family title.",
+    "latest_stable_version": "Latest official production stable firmware version for comparison.",
+    "beta": "Latest active Beta / Release Candidate (RC) firmware release (null if none).",
+    "test": "Latest active Manufacturing / Pre-production Test firmware release (null if none)."
+  },
+  "pre_releases": []
+}

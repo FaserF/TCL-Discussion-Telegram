@@ -2,7 +2,7 @@
 
 Official firmware tracking, package sizes, release dates, MD5 hashes, changelogs, and direct download links across all known TCL Smart TV platforms.
 
-> **Update Frequency:** Monitored automatically every 24 hours at 06:00 German Time (04:00 UTC) via GitHub Actions · **Last updated:** `2026-08-22 09:59:32 UTC`
+> **Update Frequency:** Monitored automatically every 24 hours at 06:00 German Time (04:00 UTC) via GitHub Actions · **Last updated:** `2026-08-22 10:12:18 UTC`
 
 !!! info "Model Listings & Platform Matching"
     The listed TV models per platform are **verified examples** and do not represent a complete list.
@@ -35,19 +35,19 @@ Official firmware tracking, package sizes, release dates, MD5 hashes, changelogs
 | **MS6886T01**<br><small>MS6886 (MS88) (MS6886T01)</small> | MStar MSD6886 (4K Android TV 9/11)<br><small>*EC780, X815, C815 (Early), EP680 (selection)*</small> | `V8-MS6886T01-LF1V001` (`388934`)<br><small>`Full OTA (ZIP)` · `1.15 GB`</small> | **Production (Stable)** | [:material-download: Download](http://eu-update.cedock.com/apps/resource2/V8MS6886T01/V8-MS6886T01-LF1V001/FOTA-OTA/V8-MS6886T01-LF1V001.388934.zip) | *MS6886 (MS88) (MS6886T01) official software release: System stability, kernel performance optimizations, and security patches.* | `2023-05-14` | `Checked (Live API - Up to date)` |
 | **MS6886T02**<br><small>MS6886 (MS88) (MS6886T02)</small> | MStar MSD6886 (4K Android TV 9/11)<br><small>*EC780, X815, C815 (Early), EP680 (selection)*</small> | `V8-MS6886T02-LF1V001` (`496968`)<br><small>`Full OTA (ZIP)` · `1.15 GB`</small> | **Production (Stable)** | [:material-download: Download](http://eu-update.cedock.com/apps/resource2/V8MS6886T02/V8-MS6886T02-LF1V001/FOTA-OTA/V8-MS6886T02-LF1V001.496968.zip) | *MS6886 (MS88) (MS6886T02) official software release: System stability, kernel performance optimizations, and security patches.* | `2023-05-14` | `Checked (Live API - Up to date)` |
 | **NT67T01**<br><small>Novatek NT67 (NT67T01)</small> | Novatek NT72671 / NT72673 (Android TV)<br><small>*Thomson / TCL Regional Android TV Series (selection)*</small> | `V8-NT67T01-LF1V001` (`962089`)<br><small>`Full OTA (ZIP)` · `1.15 GB`</small> | **Production (Stable)** | [:material-download: Download](http://eu-update.cedock.com/apps/resource2/V8NT67T01/V8-NT67T01-LF1V001/FOTA-OTA/V8-NT67T01-LF1V001.962089.zip) | *Novatek NT67 (NT67T01) official software release: System stability, kernel performance optimizations, and security patches.* | `2026-03-20` | `Checked (Live API - Up to date)` |
-| **R41KT01**<br><small>R41K (R41KT01)</small> | Realtek RTD2841K Entry Legacy (Android TV 9/11)<br><small>*S6500 Series, 32S60AI, ES560 (selection)*</small> | `V8-R41KT01-LF1V343` (`945042`)<br><small>`Full OTA (ZIP)` · `1.25 GB`</small> | ⚠️ **Beta / Test Build (RC)** | [:material-download: Download](http://eu-update.cedock.com/apps/resource2/V8R41KT01/V8-R41KT01-LF1V343/FOTA-OTA/V8-R41KT01-LF1V343.945042.zip) | *Final legacy Android TV 9/11 stability maintenance package for Realtek R41K platforms.* | `2022-11` | `Checked (Live API - Up to date)` |
-| **R51AT01**<br><small>RT51 / AT51 (R51AT01)</small> | Realtek RT51 (Legacy Android TV)<br><small>*P725, C725, P615, P635 (selection)*</small> | `V8-R51AT01-LF1V315` (`185337`)<br><small>`Full OTA (ZIP)` · `1.62 GB`</small> | ⚠️ **Beta / Test Build (RC)** | [:material-download: Download](http://eu-update.cedock.com/apps/resource2/V8R51AT01/V8-R51AT01-LF1V315/FOTA-OTA/V8-R51AT01-LF1V315.185337.zip) | *Legacy Realtek RT51 Android TV 11 maintenance build, Bluetooth remote reliability fix.* | `2023-06` | `Checked (Live API - Up to date)` |
-| **R51MT01**<br><small>R51M / R851 (R51MT01)</small> | Realtek RTD2851 / R51M (Legacy 4K GTV & ATV)<br><small>*C645, C635, P745, C715, C815 (selection)*</small> | `V8-R51MT01-LF1V001` (`626877`)<br><small>`Full OTA (ZIP)` · `1.75 GB`</small> | ⚠️ **Beta / Test Build (RC)** | [:material-download: Download](http://eu-update.cedock.com/apps/resource2/V8R51MT01/V8-R51MT01-LF1V001/FOTA-OTA/V8-R51MT01-LF1V001.626877.zip) | *RTD2851M revision v2 memory optimization, Miracast and Chromecast stability improvements.* | `2024-05` | `Checked (Live API - Up to date)` |
-| **R51MT02**<br><small>R51M / R851 (R51MT02)</small> | Realtek RTD2851 / R51M (Legacy 4K GTV & ATV)<br><small>*C645, C635, P745, C715, C815 (selection)*</small> | `V8-R51MT02-LF1V267` (`162390`)<br><small>`Full OTA (ZIP)` · `1.75 GB`</small> | ⚠️ **Beta / Test Build (RC)** | [:material-download: Download](http://eu-update.cedock.com/apps/resource2/V8R51MT02/V8-R51MT02-LF1V267/FOTA-OTA/V8-R51MT02-LF1V267.162390.zip) | *RTD2851M revision v2 memory optimization, Miracast and Chromecast stability improvements.* | `2024-05` | `Checked (Live API - Up to date)` |
-| **R51MT03**<br><small>R51M / R851 (R51MT03)</small> | Realtek RTD2851 / R51M (Legacy 4K GTV & ATV)<br><small>*C645, C635, P745, C715, C815 (selection)*</small> | `V8-R51MT03-LF1V001` (`607708`)<br><small>`Full OTA (ZIP)` · `1.75 GB`</small> | ⚠️ **Beta / Test Build (RC)** | [:material-download: Download](http://eu-update.cedock.com/apps/resource2/V8R51MT03/V8-R51MT03-LF1V001/FOTA-OTA/V8-R51MT03-LF1V001.607708.zip) | *Realtek RTD2851M regional chassis variant: Google TV platform stability and multimedia decoder updates.* | `2024-05` | `Checked (Live API - Up to date)` |
-| **R51MT04**<br><small>R51M / R851 (R51MT04)</small> | Realtek RTD2851 / R51M (Legacy 4K GTV & ATV)<br><small>*C645, C635, P745, C715, C815 (selection)*</small> | `V8-R51MT04-LF1V001` (`973503`)<br><small>`Full OTA (ZIP)` · `1.75 GB`</small> | ⚠️ **Beta / Test Build (RC)** | [:material-download: Download](http://eu-update.cedock.com/apps/resource2/V8R51MT04/V8-R51MT04-LF1V001/FOTA-OTA/V8-R51MT04-LF1V001.973503.zip) | *Realtek RTD2851M regional chassis variant: Google TV platform stability and HDMI CEC fixes.* | `2024-05` | `Checked (Live API - Up to date)` |
-| **R51MT05**<br><small>R51M / R851 (R51MT05)</small> | Realtek RTD2851 / R51M (Legacy 4K GTV & ATV)<br><small>*C645, C635, P745, C715, C815 (selection)*</small> | `V8-R51MT05-LF1V652` (`102029`)<br><small>`Full OTA (ZIP)` · `1.74 GB`</small> | ⚠️ **Beta / Test Build (RC)** | [:material-download: Download](http://eu-update.cedock.com/apps/resource2/V8R51MT05/V8-R51MT05-LF1V652/FOTA-OTA/V8-R51MT05-LF1V652.102029.zip) | *RTD2851M NA channel scan memory optimization, closed caption rendering fix, security patch update.* | `2024-04` | `Checked (Live API - Up to date)` |
-| **R51MT06**<br><small>R51M / R851 (R51MT06)</small> | Realtek RTD2851 / R51M (Legacy 4K GTV & ATV)<br><small>*C645, C635, P745, C715, C815 (selection)*</small> | `V8-R51MT06-LF1V029` (`407989`)<br><small>`Full OTA (ZIP)` · `1.71 GB`</small> | ⚠️ **Beta / Test Build (RC)** | [:material-download: Download](http://eu-update.cedock.com/apps/resource2/V8R51MT06/V8-R51MT06-LF1V029/FOTA-OTA/V8-R51MT06-LF1V029.407989.zip) | *Series 5/6 NA Google TV interface performance tweaks, optical audio latency reduction.* | `2023-11` | `Checked (Live API - Up to date)` |
-| **R51MT07**<br><small>R51M / R851 (R51MT07)</small> | Realtek RTD2851 / R51M (Legacy 4K GTV & ATV)<br><small>*C645, C635, P745, C715, C815 (selection)*</small> | `V8-R51MT07-LF1V001` (`717386`)<br><small>`Full OTA (ZIP)` · `1.75 GB`</small> | ⚠️ **Beta / Test Build (RC)** | [:material-download: Download](http://eu-update.cedock.com/apps/resource2/V8R51MT07/V8-R51MT07-LF1V001/FOTA-OTA/V8-R51MT07-LF1V001.717386.zip) | *Realtek RTD2851M regional variant build: picture profile presets and audio delay calibration.* | `2024-05` | `Checked (Live API - Up to date)` |
-| **R51MT08**<br><small>R51M / R851 (R51MT08)</small> | Realtek RTD2851 / R51M (Legacy 4K GTV & ATV)<br><small>*C645, C635, P745, C715, C815 (selection)*</small> | `V8-R51MT08-LF1V001` (`439791`)<br><small>`Full OTA (ZIP)` · `1.75 GB`</small> | ⚠️ **Beta / Test Build (RC)** | [:material-download: Download](http://eu-update.cedock.com/apps/resource2/V8R51MT08/V8-R51MT08-LF1V001/FOTA-OTA/V8-R51MT08-LF1V001.439791.zip) | *Realtek RTD2851M regional variant build: Wi-Fi driver robustness and system stability.* | `2024-05` | `Checked (Live API - Up to date)` |
-| **R51MT09**<br><small>R51M / R851 (R51MT09)</small> | Realtek RTD2851 / R51M (Legacy 4K GTV & ATV)<br><small>*C645, C635, P745, C715, C815 (selection)*</small> | `V8-R51MT09-LF1V001` (`105024`)<br><small>`Full OTA (ZIP)` · `1.75 GB`</small> | ⚠️ **Beta / Test Build (RC)** | [:material-download: Download](http://eu-update.cedock.com/apps/resource2/V8R51MT09/V8-R51MT09-LF1V001/FOTA-OTA/V8-R51MT09-LF1V001.105024.zip) | *Realtek RTD2851M regional variant build: TV tuner reception and channel scan optimizations.* | `2024-05` | `Checked (Live API - Up to date)` |
-| **R51MT10**<br><small>R51M / R851 (R51MT10)</small> | Realtek RTD2851 / R51M (Legacy 4K GTV & ATV)<br><small>*C645, C635, P745, C715, C815 (selection)*</small> | `V8-R51MT10-LF1V109` (`312038`)<br><small>`Full OTA (ZIP)` · `1.73 GB`</small> | ⚠️ **Beta / Test Build (RC)** | [:material-download: Download](http://eu-update.cedock.com/apps/resource2/V8R51MT10/V8-R51MT10-LF1V109/FOTA-OTA/V8-R51MT10-LF1V109.312038.zip) | *Series 4/5 entry 4K stability build, USB multimedia playback codec updates.* | `2023-09` | `Checked (Live API - Up to date)` |
-| **R75PT01**<br><small>R75P / RT75 (R75PT01)</small> | Realtek RT75 (G10 Platform, Entry-Mid 4K GTV)<br><small>*P8LS, P7L, V6D, T6D, U65A, P6K, P7K, V6C, T6C, C6KS, C6CS, U65/75, MQLED70K, P755, C655, C655 Pro, T7B, V6B, QLED780/810, QM51L, QM5K, Q51K, Q63K, S551G, Q651G (selection)*</small> | `V8-R75PT01-LF1V545` (`645674`)<br><small>`Full OTA (ZIP)` · `1.92 GB`</small> | ⚠️ **Beta / Test Build (RC)** | [:material-download: Download](http://eu-update.cedock.com/apps/resource2/V8R75PT01/V8-R75PT01-LF1V545/FOTA-OTA/V8-R75PT01-LF1V545.645674.zip) | *Android 14 Google TV (GTV U) release: Security patch 2026-06-05, G10_4K_US_NF AS50 release.* | `2026-08-07` | `Checked (Live API - Up to date)` |
+| **R41KT01**<br><small>R41K (R41KT01)</small> | Realtek RTD2841K Entry Legacy (Android TV 9/11)<br><small>*S6500 Series, 32S60AI, ES560 (selection)*</small> | `V8-R41KT01-LF1V343` (`945042`)<br><small>`Full OTA (ZIP)` · `1.25 GB`</small> | **Production (Stable)** | [:material-download: Download](http://eu-update.cedock.com/apps/resource2/V8R41KT01/V8-R41KT01-LF1V343/FOTA-OTA/V8-R41KT01-LF1V343.945042.zip) | *Final legacy Android TV 9/11 stability maintenance package for Realtek R41K platforms.* | `2022-11` | `Checked (Live API - Up to date)` |
+| **R51AT01**<br><small>RT51 / AT51 (R51AT01)</small> | Realtek RT51 (Legacy Android TV)<br><small>*P725, C725, P615, P635 (selection)*</small> | `V8-R51AT01-LF1V315` (`185337`)<br><small>`Full OTA (ZIP)` · `1.62 GB`</small> | **Production (Stable)** | [:material-download: Download](http://eu-update.cedock.com/apps/resource2/V8R51AT01/V8-R51AT01-LF1V315/FOTA-OTA/V8-R51AT01-LF1V315.185337.zip) | *Legacy Realtek RT51 Android TV 11 maintenance build, Bluetooth remote reliability fix.* | `2023-06` | `Checked (Live API - Up to date)` |
+| **R51MT01**<br><small>R51M / R851 (R51MT01)</small> | Realtek RTD2851 / R51M (Legacy 4K GTV & ATV)<br><small>*C645, C635, P745, C715, C815 (selection)*</small> | `V8-R51MT01-LF1V001` (`626877`)<br><small>`Full OTA (ZIP)` · `1.75 GB`</small> | **Production (Stable)** | [:material-download: Download](http://eu-update.cedock.com/apps/resource2/V8R51MT01/V8-R51MT01-LF1V001/FOTA-OTA/V8-R51MT01-LF1V001.626877.zip) | *RTD2851M revision v2 memory optimization, Miracast and Chromecast stability improvements.* | `2024-05` | `Checked (Live API - Up to date)` |
+| **R51MT02**<br><small>R51M / R851 (R51MT02)</small> | Realtek RTD2851 / R51M (Legacy 4K GTV & ATV)<br><small>*C645, C635, P745, C715, C815 (selection)*</small> | `V8-R51MT02-LF1V267` (`162390`)<br><small>`Full OTA (ZIP)` · `1.75 GB`</small> | **Production (Stable)** | [:material-download: Download](http://eu-update.cedock.com/apps/resource2/V8R51MT02/V8-R51MT02-LF1V267/FOTA-OTA/V8-R51MT02-LF1V267.162390.zip) | *RTD2851M revision v2 memory optimization, Miracast and Chromecast stability improvements.* | `2024-05` | `Checked (Live API - Up to date)` |
+| **R51MT03**<br><small>R51M / R851 (R51MT03)</small> | Realtek RTD2851 / R51M (Legacy 4K GTV & ATV)<br><small>*C645, C635, P745, C715, C815 (selection)*</small> | `V8-R51MT03-LF1V001` (`607708`)<br><small>`Full OTA (ZIP)` · `1.75 GB`</small> | **Production (Stable)** | [:material-download: Download](http://eu-update.cedock.com/apps/resource2/V8R51MT03/V8-R51MT03-LF1V001/FOTA-OTA/V8-R51MT03-LF1V001.607708.zip) | *Realtek RTD2851M regional chassis variant: Google TV platform stability and multimedia decoder updates.* | `2024-05` | `Checked (Live API - Up to date)` |
+| **R51MT04**<br><small>R51M / R851 (R51MT04)</small> | Realtek RTD2851 / R51M (Legacy 4K GTV & ATV)<br><small>*C645, C635, P745, C715, C815 (selection)*</small> | `V8-R51MT04-LF1V001` (`973503`)<br><small>`Full OTA (ZIP)` · `1.75 GB`</small> | **Production (Stable)** | [:material-download: Download](http://eu-update.cedock.com/apps/resource2/V8R51MT04/V8-R51MT04-LF1V001/FOTA-OTA/V8-R51MT04-LF1V001.973503.zip) | *Realtek RTD2851M regional chassis variant: Google TV platform stability and HDMI CEC fixes.* | `2024-05` | `Checked (Live API - Up to date)` |
+| **R51MT05**<br><small>R51M / R851 (R51MT05)</small> | Realtek RTD2851 / R51M (Legacy 4K GTV & ATV)<br><small>*C645, C635, P745, C715, C815 (selection)*</small> | `V8-R51MT05-LF1V652` (`102029`)<br><small>`Full OTA (ZIP)` · `1.74 GB`</small> | **Production (Stable)** | [:material-download: Download](http://eu-update.cedock.com/apps/resource2/V8R51MT05/V8-R51MT05-LF1V652/FOTA-OTA/V8-R51MT05-LF1V652.102029.zip) | *RTD2851M NA channel scan memory optimization, closed caption rendering fix, security patch update.* | `2024-04` | `Checked (Live API - Up to date)` |
+| **R51MT06**<br><small>R51M / R851 (R51MT06)</small> | Realtek RTD2851 / R51M (Legacy 4K GTV & ATV)<br><small>*C645, C635, P745, C715, C815 (selection)*</small> | `V8-R51MT06-LF1V029` (`407989`)<br><small>`Full OTA (ZIP)` · `1.71 GB`</small> | **Production (Stable)** | [:material-download: Download](http://eu-update.cedock.com/apps/resource2/V8R51MT06/V8-R51MT06-LF1V029/FOTA-OTA/V8-R51MT06-LF1V029.407989.zip) | *Series 5/6 NA Google TV interface performance tweaks, optical audio latency reduction.* | `2023-11` | `Checked (Live API - Up to date)` |
+| **R51MT07**<br><small>R51M / R851 (R51MT07)</small> | Realtek RTD2851 / R51M (Legacy 4K GTV & ATV)<br><small>*C645, C635, P745, C715, C815 (selection)*</small> | `V8-R51MT07-LF1V001` (`717386`)<br><small>`Full OTA (ZIP)` · `1.75 GB`</small> | **Production (Stable)** | [:material-download: Download](http://eu-update.cedock.com/apps/resource2/V8R51MT07/V8-R51MT07-LF1V001/FOTA-OTA/V8-R51MT07-LF1V001.717386.zip) | *Realtek RTD2851M regional variant build: picture profile presets and audio delay calibration.* | `2024-05` | `Checked (Live API - Up to date)` |
+| **R51MT08**<br><small>R51M / R851 (R51MT08)</small> | Realtek RTD2851 / R51M (Legacy 4K GTV & ATV)<br><small>*C645, C635, P745, C715, C815 (selection)*</small> | `V8-R51MT08-LF1V001` (`439791`)<br><small>`Full OTA (ZIP)` · `1.75 GB`</small> | **Production (Stable)** | [:material-download: Download](http://eu-update.cedock.com/apps/resource2/V8R51MT08/V8-R51MT08-LF1V001/FOTA-OTA/V8-R51MT08-LF1V001.439791.zip) | *Realtek RTD2851M regional variant build: Wi-Fi driver robustness and system stability.* | `2024-05` | `Checked (Live API - Up to date)` |
+| **R51MT09**<br><small>R51M / R851 (R51MT09)</small> | Realtek RTD2851 / R51M (Legacy 4K GTV & ATV)<br><small>*C645, C635, P745, C715, C815 (selection)*</small> | `V8-R51MT09-LF1V001` (`105024`)<br><small>`Full OTA (ZIP)` · `1.75 GB`</small> | **Production (Stable)** | [:material-download: Download](http://eu-update.cedock.com/apps/resource2/V8R51MT09/V8-R51MT09-LF1V001/FOTA-OTA/V8-R51MT09-LF1V001.105024.zip) | *Realtek RTD2851M regional variant build: TV tuner reception and channel scan optimizations.* | `2024-05` | `Checked (Live API - Up to date)` |
+| **R51MT10**<br><small>R51M / R851 (R51MT10)</small> | Realtek RTD2851 / R51M (Legacy 4K GTV & ATV)<br><small>*C645, C635, P745, C715, C815 (selection)*</small> | `V8-R51MT10-LF1V109` (`312038`)<br><small>`Full OTA (ZIP)` · `1.73 GB`</small> | **Production (Stable)** | [:material-download: Download](http://eu-update.cedock.com/apps/resource2/V8R51MT10/V8-R51MT10-LF1V109/FOTA-OTA/V8-R51MT10-LF1V109.312038.zip) | *Series 4/5 entry 4K stability build, USB multimedia playback codec updates.* | `2023-09` | `Checked (Live API - Up to date)` |
+| **R75PT01**<br><small>R75P / RT75 (R75PT01)</small> | Realtek RT75 (G10 Platform, Entry-Mid 4K GTV)<br><small>*P8LS, P7L, V6D, T6D, U65A, P6K, P7K, V6C, T6C, C6KS, C6CS, U65/75, MQLED70K, P755, C655, C655 Pro, T7B, V6B, QLED780/810, QM51L, QM5K, Q51K, Q63K, S551G, Q651G (selection)*</small> | `V8-R75PT01-LF1V545` (`645674`)<br><small>`Full OTA (ZIP)` · `1.92 GB`</small> | **Production (Stable)** | [:material-download: Download](http://eu-update.cedock.com/apps/resource2/V8R75PT01/V8-R75PT01-LF1V545/FOTA-OTA/V8-R75PT01-LF1V545.645674.zip) | *Android 14 Google TV (GTV U) release: Security patch 2026-06-05, G10_4K_US_NF AS50 release.* | `2026-08-07` | `Checked (Live API - Up to date)` |
 | **T221T01**<br><small>T221 / MT21 (T221T01)</small> | MediaTek MT21 (2K / FHD Google TV & Android TV)<br><small>*S350G, S55H, S5200 (Late), 32S5400, S5400A (selection)*</small> | `V8-T221T01-LF1V242` (`553714`)<br><small>`Full OTA (ZIP)` · `1.38 GB`</small> | **Production (Stable)** | [:material-download: Download](http://eu-update.cedock.com/apps/resource2/V8T221T01/V8-T221T01-LF1V242/FOTA-OTA/V8-T221T01-LF1V242.553714.zip) | *MediaTek MT21 global FHD release: Android TV 11 stability build and tuner optimization.* | `2024-03` | `Checked (Live API - Up to date)` |
 | **T221T02**<br><small>T221 / MT21 (T221T02)</small> | MediaTek MT21 (2K / FHD Google TV & Android TV)<br><small>*S350G, S55H, S5200 (Late), 32S5400, S5400A (selection)*</small> | `V8-T221T02-LF1V085` (`407126`)<br><small>`Full OTA (ZIP)` · `1.34 GB`</small> | **Production (Stable)** | [:material-download: Download](http://eu-update.cedock.com/apps/resource2/V8T221T02/V8-T221T02-LF1V085/FOTA-OTA/V8-T221T02-LF1V085.407126.zip) | *MediaTek MT21 NA market release: ATSC channel scan fix and HDMI ARC latency improvements.* | `2023-10` | `Checked (Live API - Up to date)` |
 | **T221T03**<br><small>T221 / MT21 (T221T03)</small> | MediaTek MT21 (2K / FHD Google TV & Android TV)<br><small>*S350G, S55H, S5200 (Late), 32S5400, S5400A (selection)*</small> | `V8-T221T03-LF1V001` (`948400`)<br><small>`Full OTA (ZIP)` · `1.38 GB`</small> | **Production (Stable)** | [:material-download: Download](http://eu-update.cedock.com/apps/resource2/V8T221T03/V8-T221T03-LF1V001/FOTA-OTA/V8-T221T03-LF1V001.948400.zip) | *MediaTek MT21 2K/FHD regional variant release: Android TV 11 stability build and tuner optimization.* | `2024-03` | `Checked (Live API - Up to date)` |
@@ -64,7 +64,7 @@ Official firmware tracking, package sizes, release dates, MD5 hashes, changelogs
 | **T653T02**<br><small>Pentonic 700 (NA/LA) (T653T02)</small> | MediaTek Pentonic 700 (G08 / N. America & LATAM)<br><small>*QM891G, QM851G, QM751G, Q651G, Q750G, S551G, RM7L, QM7L, Q77L, X11K, QM8K, QM7K, Q77K, QM6K, QM67K (selection)*</small> | `V8-T653T02-LF1V620` (`303526`)<br><small>`Full OTA (ZIP)` · `2.28 GB`</small> | **Production (Stable)** | [:material-download: Download](http://na-update.cedock.com/apps/resource2/V8T653T02/V8-T653T02-LF1V620/FOTA-OTA/V8-T653T02-LF1V620.303526.zip) | *North American Google TV: QM851G/QM751G local dimming timing adjustments, ATSC 3.0 tuner stability.* | `2025-11` | `Checked (Live API - Up to date)` |
 | **T653T03**<br><small>Pentonic 700 (Flagship) (T653T03)</small> | MediaTek Pentonic 700 (G16)<br><small>*QM9K Series (selection)*</small> | `V8-T653T03-LF1V110` (`146158`)<br><small>`Full OTA (ZIP)` · `2.41 GB`</small> | **Production (Stable)** | [:material-download: Download](http://eu-update.cedock.com/apps/resource2/V8T653T03/V8-T653T03-LF1V110/FOTA-OTA/V8-T653T03-LF1V110.146158.zip) | *G16 flagship chassis DSP audio processor updates and high-zone Mini-LED panel drive optimizations.* | `2025-10` | `Checked (Live API - Up to date)` |
 | **T655T01**<br><small>Pentonic 800 (T655T01)</small> | MediaTek MT9655 (MT55), Flagship 4K Mini-LED<br><small>*X11L, C8L, RM9L, QM8L (2026) (selection)*</small> | `V8-T655T01-LF1V025` (`256205`)<br><small>`Full OTA (ZIP)` · `~2.1 GB`</small> | **Production (Stable)** | [:material-download: Download](http://eu-update.cedock.com/apps/resource2/V8T655T01/V8-T655T01-LF1V025/FOTA-OTA/V8-T655T01-LF1V025.256205.zip) | *Android 14 Google TV flagship build: MediaTek MT9655 (Pentonic 800), 144Hz VRR & Mini-LED dimming engine.* | `2026-02` | `Checked (Live API - Up to date)` |
-| **T658T01**<br><small>Pentonic 600 (T658T01)</small> | MediaTek MT9658 (Pentonic 600)<br><small>*C655 (Selected AP/LA Releases) (selection)*</small> | `V8-T658T01-LF1V001` (`659436`)<br><small>`Full OTA (ZIP)` · `1.85 GB`</small> | **Production (Stable)** | [:material-download: Download](http://eu-update.cedock.com/apps/resource2/V8T658T01/V8-T658T01-LF1V001/FOTA-OTA/V8-T658T01-LF1V001.659436.zip) | *Pentonic 600 (T658T01) official software release: System stability, kernel performance optimizations, and security patches.* | `2026-03-20` | `Checked (Live API - Up to date)` |
+| **T658T01**<br><small>Pentonic 600 (T658T01)</small> | MediaTek MT9658 (Pentonic 600)<br><small>*C655 (Selected AP/LA Releases) (selection)*</small> | `V8-T658T01-LF1V575` (`002400`)<br><small>`Full OTA (ZIP)` · `1.92 GB`</small> | **Production (Stable)** | [:material-download: Download](http://eu-update.cedock.com/apps/resource2/V8T658T01/V8-T658T01-LF1V575/FOTA-OTA/V8-T658T01-LF1V575.zip) | *Previous production release.* | `2026-06-15` | `Checked (Live API - Up to date)` |
 | **T800T02**<br><small>T800 (T800T02)</small> | Amlogic AMLT963D4 (G09, 5-Core A55 @ 1.5GHz / 1.9GHz DVFS, Mali-G57 MC1, 2GB DDR4-3200)<br><small>*C655, C655 Pro, P755, T7B, P7K, C6KS, 55P755 (selection)*</small> | `V8-T800T02-LF1V163` (`128694`)<br><small>`Full OTA (ZIP)` · `1.82 GB`</small> | **Production (Stable)** | [:material-download: Download](http://eu-update.cedock.com/apps/resource2/V8T800T02/V8-T800T02-LF1V163/FOTA-OTA/V8-T800T02-LF1V163.128694.zip) | *Amlogic G09 Google TV system optimization: DVFS CPU scaling, memory management improvements.* | `2025-08` | `Checked (Live API - Up to date)` |
 
 ---
@@ -95,6 +95,15 @@ All packages are hosted on official TCL Content Delivery Networks (`cedock.com`)
 - **EU / Global CDN**: [http://eu-update.cedock.com/apps/resource2/V80008T01/V8-0008T01-LF1V636/FOTA-OTA/V8-0008T01-LF1V636.622816.zip](http://eu-update.cedock.com/apps/resource2/V80008T01/V8-0008T01-LF1V636/FOTA-OTA/V8-0008T01-LF1V636.622816.zip)
 - **North America (NA) CDN**: [http://na-update.cedock.com/apps/resource2/V80008T01/V8-0008T01-LF1V636/FOTA-OTA/V8-0008T01-LF1V636.622816.zip](http://na-update.cedock.com/apps/resource2/V80008T01/V8-0008T01-LF1V636/FOTA-OTA/V8-0008T01-LF1V636.622816.zip)
 - **Asia-Pacific (AS) CDN**: [http://as-update.cedock.com/apps/resource2/V80008T01/V8-0008T01-LF1V636/FOTA-OTA/V8-0008T01-LF1V636.622816.zip](http://as-update.cedock.com/apps/resource2/V80008T01/V8-0008T01-LF1V636/FOTA-OTA/V8-0008T01-LF1V636.622816.zip)
+
+<details>
+<summary><b>📦 Previous Firmware Versions Archive (1 build)</b></summary>
+
+| Version | Release Date | Package Type & Size | Category | Changelog / Notes | Download Link |
+|---|:---:|---|:---:|---|:---:|
+| `V8-0008T01-LF1V630` | `2026-06-15` | `Full OTA (ZIP)` · `1.92 GB` | **Production (Stable)** | *Previous production release.* | [:material-download: Download](http://eu-update.cedock.com/apps/resource2/V80008T01/V8-0008T01-LF1V630/FOTA-OTA/V8-0008T01-LF1V630.zip) |
+
+</details>
 
 #### R75P / RT75 (0008T02) (`V8-0008T02-LF1V001`)
 - **Platform Identifier**: `0008T02` (Alternative ID: `R75PT01`)
@@ -551,14 +560,12 @@ All packages are hosted on official TCL Content Delivery Networks (`cedock.com`)
 - **Platform Identifier**: `R41KT01`
 - **Hardware Architecture & SoC**: Realtek RTD2841K Entry Legacy (Android TV 9/11)
 - **Compatible TV Models (Selection)**: *S6500 Series, 32S60AI, ES560*
-- **Package Type**: `Full OTA (ZIP)` · **Size**: `1.25 GB` · **Release Date**: `2022-11` · **Region**: `EU` · **Status**: `Beta / Test Build (RC)`
+- **Package Type**: `Full OTA (ZIP)` · **Size**: `1.25 GB` · **Release Date**: `2022-11` · **Region**: `EU`
 - **FOTA Verification Status**: `Checked (Live API - Up to date)`
 - **MD5 Checksum**: `3f2c5fd78262d2e8a98c85fe99502526`
 - **SHA-256 Checksum**: `adfb1eb42d880a4fdeb4b998dd7695d64bf79bfbc6f3fe24fc4c7b3a8fe96e77`
 - **CRC-32 Checksum**: `0x343B8CE0`
 - **Official Changelog / Server Notes**: Final legacy Android TV 9/11 stability maintenance package for Realtek R41K platforms.
-> ⚠️ **Beta / Test Release Candidate Notice**  
-> *This firmware build is a pre-release / test version (`R`/`M`-series). It may contain experimental features or stability bugs. Flash at your own discretion.*
 - **Extracted Android Build Properties**:
   - **Android OS Version**: `Android 11` (Android TV (ATV))
   - **GMS Package**: `Android_11_ATV`
@@ -576,14 +583,12 @@ All packages are hosted on official TCL Content Delivery Networks (`cedock.com`)
 - **Platform Identifier**: `R51AT01`
 - **Hardware Architecture & SoC**: Realtek RT51 (Legacy Android TV)
 - **Compatible TV Models (Selection)**: *P725, C725, P615, P635*
-- **Package Type**: `Full OTA (ZIP)` · **Size**: `1.62 GB` · **Release Date**: `2023-06` · **Region**: `EU` · **Status**: `Beta / Test Build (RC)`
+- **Package Type**: `Full OTA (ZIP)` · **Size**: `1.62 GB` · **Release Date**: `2023-06` · **Region**: `EU`
 - **FOTA Verification Status**: `Checked (Live API - Up to date)`
 - **MD5 Checksum**: `5fec09674cebaa1505c005f31a5baf5d`
 - **SHA-256 Checksum**: `cf7203240967abf1b0697c018528c6936e347121149eeacc4aef7f9e3f2fca89`
 - **CRC-32 Checksum**: `0xFFAF3604`
 - **Official Changelog / Server Notes**: Legacy Realtek RT51 Android TV 11 maintenance build, Bluetooth remote reliability fix.
-> ⚠️ **Beta / Test Release Candidate Notice**  
-> *This firmware build is a pre-release / test version (`R`/`M`-series). It may contain experimental features or stability bugs. Flash at your own discretion.*
 - **Extracted Android Build Properties**:
   - **Android OS Version**: `Android 11` (Android TV (ATV))
   - **GMS Package**: `Android_11_ATV`
@@ -601,14 +606,12 @@ All packages are hosted on official TCL Content Delivery Networks (`cedock.com`)
 - **Platform Identifier**: `R51MT01` (Alternative ID: `R51MT02`)
 - **Hardware Architecture & SoC**: Realtek RTD2851 / R51M (Legacy 4K GTV & ATV)
 - **Compatible TV Models (Selection)**: *C645, C635, P745, C715, C815*
-- **Package Type**: `Full OTA (ZIP)` · **Size**: `1.75 GB` · **Release Date**: `2024-05` · **Region**: `EU` · **Status**: `Beta / Test Build (RC)`
+- **Package Type**: `Full OTA (ZIP)` · **Size**: `1.75 GB` · **Release Date**: `2024-05` · **Region**: `EU`
 - **FOTA Verification Status**: `Checked (Live API - Up to date)`
 - **MD5 Checksum**: `42dcb0fc095d8f0c12ef76ade349de67`
 - **SHA-256 Checksum**: `6d74d1eb56a9781d5b0eb69c42986e04d41bc9869bd71d9e0d07b5e32882ec0a`
 - **CRC-32 Checksum**: `0x83ACB8EA`
 - **Official Changelog / Server Notes**: RTD2851M revision v2 memory optimization, Miracast and Chromecast stability improvements.
-> ⚠️ **Beta / Test Release Candidate Notice**  
-> *This firmware build is a pre-release / test version (`R`/`M`-series). It may contain experimental features or stability bugs. Flash at your own discretion.*
 - **Extracted Android Build Properties**:
   - **Android OS Version**: `Android 11` (Android TV (ATV))
   - **GMS Package**: `Android_11_ATV`
@@ -626,14 +629,12 @@ All packages are hosted on official TCL Content Delivery Networks (`cedock.com`)
 - **Platform Identifier**: `R51MT02` (Alternative ID: `R51MT01`)
 - **Hardware Architecture & SoC**: Realtek RTD2851 / R51M (Legacy 4K GTV & ATV)
 - **Compatible TV Models (Selection)**: *C645, C635, P745, C715, C815*
-- **Package Type**: `Full OTA (ZIP)` · **Size**: `1.75 GB` · **Release Date**: `2024-05` · **Region**: `EU` · **Status**: `Beta / Test Build (RC)`
+- **Package Type**: `Full OTA (ZIP)` · **Size**: `1.75 GB` · **Release Date**: `2024-05` · **Region**: `EU`
 - **FOTA Verification Status**: `Checked (Live API - Up to date)`
 - **MD5 Checksum**: `1e8aa5882d0495402d8e112fdeff9672`
 - **SHA-256 Checksum**: `1444115910deffcbd869ea92936b0e176489ef727cfcc8d1397957cfb217bd2c`
 - **CRC-32 Checksum**: `0xC325D708`
 - **Official Changelog / Server Notes**: RTD2851M revision v2 memory optimization, Miracast and Chromecast stability improvements.
-> ⚠️ **Beta / Test Release Candidate Notice**  
-> *This firmware build is a pre-release / test version (`R`/`M`-series). It may contain experimental features or stability bugs. Flash at your own discretion.*
 - **Extracted Android Build Properties**:
   - **Android OS Version**: `Android 11` (Android TV (ATV))
   - **GMS Package**: `Android_11_ATV`
@@ -651,14 +652,12 @@ All packages are hosted on official TCL Content Delivery Networks (`cedock.com`)
 - **Platform Identifier**: `R51MT03` (Alternative ID: `R51MT01`)
 - **Hardware Architecture & SoC**: Realtek RTD2851 / R51M (Legacy 4K GTV & ATV)
 - **Compatible TV Models (Selection)**: *C645, C635, P745, C715, C815*
-- **Package Type**: `Full OTA (ZIP)` · **Size**: `1.75 GB` · **Release Date**: `2024-05` · **Region**: `EU` · **Status**: `Beta / Test Build (RC)`
+- **Package Type**: `Full OTA (ZIP)` · **Size**: `1.75 GB` · **Release Date**: `2024-05` · **Region**: `EU`
 - **FOTA Verification Status**: `Checked (Live API - Up to date)`
 - **MD5 Checksum**: `57bb83231df63ef27c012efb318f5dc2`
 - **SHA-256 Checksum**: `db0c97bd699103ec3a3cdfa7cd40b6dde86a13bc20825eaa8bc09bb052431442`
 - **CRC-32 Checksum**: `0xCFCA5365`
 - **Official Changelog / Server Notes**: Realtek RTD2851M regional chassis variant: Google TV platform stability and multimedia decoder updates.
-> ⚠️ **Beta / Test Release Candidate Notice**  
-> *This firmware build is a pre-release / test version (`R`/`M`-series). It may contain experimental features or stability bugs. Flash at your own discretion.*
 - **Extracted Android Build Properties**:
   - **Android OS Version**: `Android 11` (Android TV (ATV))
   - **GMS Package**: `Android_11_ATV`
@@ -676,14 +675,12 @@ All packages are hosted on official TCL Content Delivery Networks (`cedock.com`)
 - **Platform Identifier**: `R51MT04` (Alternative ID: `R51MT01`)
 - **Hardware Architecture & SoC**: Realtek RTD2851 / R51M (Legacy 4K GTV & ATV)
 - **Compatible TV Models (Selection)**: *C645, C635, P745, C715, C815*
-- **Package Type**: `Full OTA (ZIP)` · **Size**: `1.75 GB` · **Release Date**: `2024-05` · **Region**: `EU` · **Status**: `Beta / Test Build (RC)`
+- **Package Type**: `Full OTA (ZIP)` · **Size**: `1.75 GB` · **Release Date**: `2024-05` · **Region**: `EU`
 - **FOTA Verification Status**: `Checked (Live API - Up to date)`
 - **MD5 Checksum**: `3e5eed2bf48aeb3214211bf7c397b47f`
 - **SHA-256 Checksum**: `77a48b436e7bd22d4a98fdbdba1c9320cd8b8d00d33af72a86ad2aaf9d2bef6a`
 - **CRC-32 Checksum**: `0xB8A419E2`
 - **Official Changelog / Server Notes**: Realtek RTD2851M regional chassis variant: Google TV platform stability and HDMI CEC fixes.
-> ⚠️ **Beta / Test Release Candidate Notice**  
-> *This firmware build is a pre-release / test version (`R`/`M`-series). It may contain experimental features or stability bugs. Flash at your own discretion.*
 - **Extracted Android Build Properties**:
   - **Android OS Version**: `Android 11` (Android TV (ATV))
   - **GMS Package**: `Android_11_ATV`
@@ -701,14 +698,12 @@ All packages are hosted on official TCL Content Delivery Networks (`cedock.com`)
 - **Platform Identifier**: `R51MT05` (Alternative ID: `R51MT01`)
 - **Hardware Architecture & SoC**: Realtek RTD2851 / R51M (Legacy 4K GTV & ATV)
 - **Compatible TV Models (Selection)**: *C645, C635, P745, C715, C815*
-- **Package Type**: `Full OTA (ZIP)` · **Size**: `1.74 GB` · **Release Date**: `2024-04` · **Region**: `EU` · **Status**: `Beta / Test Build (RC)`
+- **Package Type**: `Full OTA (ZIP)` · **Size**: `1.74 GB` · **Release Date**: `2024-04` · **Region**: `EU`
 - **FOTA Verification Status**: `Checked (Live API - Up to date)`
 - **MD5 Checksum**: `dc8cba08ffac17ebcf6b4458d902d394`
 - **SHA-256 Checksum**: `7a2542a0204ddb1827af80631bb4ec281afca2b8e4d4c49771365b5cab3fcfc2`
 - **CRC-32 Checksum**: `0x83A1D1B6`
 - **Official Changelog / Server Notes**: RTD2851M NA channel scan memory optimization, closed caption rendering fix, security patch update.
-> ⚠️ **Beta / Test Release Candidate Notice**  
-> *This firmware build is a pre-release / test version (`R`/`M`-series). It may contain experimental features or stability bugs. Flash at your own discretion.*
 - **Extracted Android Build Properties**:
   - **Android OS Version**: `Android 11` (Android TV (ATV))
   - **GMS Package**: `Android_11_ATV`
@@ -722,18 +717,25 @@ All packages are hosted on official TCL Content Delivery Networks (`cedock.com`)
 - **North America (NA) CDN**: [http://na-update.cedock.com/apps/resource2/V8R51MT05/V8-R51MT05-LF1V652/FOTA-OTA/V8-R51MT05-LF1V652.102029.zip](http://na-update.cedock.com/apps/resource2/V8R51MT05/V8-R51MT05-LF1V652/FOTA-OTA/V8-R51MT05-LF1V652.102029.zip)
 - **Asia-Pacific (AS) CDN**: [http://as-update.cedock.com/apps/resource2/V8R51MT05/V8-R51MT05-LF1V652/FOTA-OTA/V8-R51MT05-LF1V652.102029.zip](http://as-update.cedock.com/apps/resource2/V8R51MT05/V8-R51MT05-LF1V652/FOTA-OTA/V8-R51MT05-LF1V652.102029.zip)
 
+<details>
+<summary><b>📦 Previous Firmware Versions Archive (1 build)</b></summary>
+
+| Version | Release Date | Package Type & Size | Category | Changelog / Notes | Download Link |
+|---|:---:|---|:---:|---|:---:|
+| `V8-R51MT05-LF1V650` | `2026-06-15` | `Full OTA (ZIP)` · `1.92 GB` | **Production (Stable)** | *Previous production release.* | [:material-download: Download](http://eu-update.cedock.com/apps/resource2/V8R51MT05/V8-R51MT05-LF1V650/FOTA-OTA/V8-R51MT05-LF1V650.zip) |
+
+</details>
+
 #### R51M / R851 (R51MT06) (`V8-R51MT06-LF1V029`)
 - **Platform Identifier**: `R51MT06` (Alternative ID: `R51MT01`)
 - **Hardware Architecture & SoC**: Realtek RTD2851 / R51M (Legacy 4K GTV & ATV)
 - **Compatible TV Models (Selection)**: *C645, C635, P745, C715, C815*
-- **Package Type**: `Full OTA (ZIP)` · **Size**: `1.71 GB` · **Release Date**: `2023-11` · **Region**: `EU` · **Status**: `Beta / Test Build (RC)`
+- **Package Type**: `Full OTA (ZIP)` · **Size**: `1.71 GB` · **Release Date**: `2023-11` · **Region**: `EU`
 - **FOTA Verification Status**: `Checked (Live API - Up to date)`
 - **MD5 Checksum**: `c77fbe610cd7f0ba8aefefb023e641be`
 - **SHA-256 Checksum**: `832bce9eb5ecd1873eae58ec2a9d8ef66a7d22e1f084775de2ed747ea19659fe`
 - **CRC-32 Checksum**: `0xBFC5FBDB`
 - **Official Changelog / Server Notes**: Series 5/6 NA Google TV interface performance tweaks, optical audio latency reduction.
-> ⚠️ **Beta / Test Release Candidate Notice**  
-> *This firmware build is a pre-release / test version (`R`/`M`-series). It may contain experimental features or stability bugs. Flash at your own discretion.*
 - **Extracted Android Build Properties**:
   - **Android OS Version**: `Android 11` (Android TV (ATV))
   - **GMS Package**: `Android_11_ATV`
@@ -751,14 +753,12 @@ All packages are hosted on official TCL Content Delivery Networks (`cedock.com`)
 - **Platform Identifier**: `R51MT07` (Alternative ID: `R51MT01`)
 - **Hardware Architecture & SoC**: Realtek RTD2851 / R51M (Legacy 4K GTV & ATV)
 - **Compatible TV Models (Selection)**: *C645, C635, P745, C715, C815*
-- **Package Type**: `Full OTA (ZIP)` · **Size**: `1.75 GB` · **Release Date**: `2024-05` · **Region**: `EU` · **Status**: `Beta / Test Build (RC)`
+- **Package Type**: `Full OTA (ZIP)` · **Size**: `1.75 GB` · **Release Date**: `2024-05` · **Region**: `EU`
 - **FOTA Verification Status**: `Checked (Live API - Up to date)`
 - **MD5 Checksum**: `2b64689c27f51939ef35aea0cef1db7c`
 - **SHA-256 Checksum**: `e3deaba04a144b0eb2003601985d98b943beeb1c0659598fbe8ac2288ac24a98`
 - **CRC-32 Checksum**: `0xA4EE8161`
 - **Official Changelog / Server Notes**: Realtek RTD2851M regional variant build: picture profile presets and audio delay calibration.
-> ⚠️ **Beta / Test Release Candidate Notice**  
-> *This firmware build is a pre-release / test version (`R`/`M`-series). It may contain experimental features or stability bugs. Flash at your own discretion.*
 - **Extracted Android Build Properties**:
   - **Android OS Version**: `Android 11` (Android TV (ATV))
   - **GMS Package**: `Android_11_ATV`
@@ -776,14 +776,12 @@ All packages are hosted on official TCL Content Delivery Networks (`cedock.com`)
 - **Platform Identifier**: `R51MT08` (Alternative ID: `R51MT01`)
 - **Hardware Architecture & SoC**: Realtek RTD2851 / R51M (Legacy 4K GTV & ATV)
 - **Compatible TV Models (Selection)**: *C645, C635, P745, C715, C815*
-- **Package Type**: `Full OTA (ZIP)` · **Size**: `1.75 GB` · **Release Date**: `2024-05` · **Region**: `EU` · **Status**: `Beta / Test Build (RC)`
+- **Package Type**: `Full OTA (ZIP)` · **Size**: `1.75 GB` · **Release Date**: `2024-05` · **Region**: `EU`
 - **FOTA Verification Status**: `Checked (Live API - Up to date)`
 - **MD5 Checksum**: `19b4990c0db71617e35766c8a0270580`
 - **SHA-256 Checksum**: `f81fd8956f086624523d3045137a8b4744d00bb2bd23e86d093deab0d4cb3c3c`
 - **CRC-32 Checksum**: `0xA6AE2C94`
 - **Official Changelog / Server Notes**: Realtek RTD2851M regional variant build: Wi-Fi driver robustness and system stability.
-> ⚠️ **Beta / Test Release Candidate Notice**  
-> *This firmware build is a pre-release / test version (`R`/`M`-series). It may contain experimental features or stability bugs. Flash at your own discretion.*
 - **Extracted Android Build Properties**:
   - **Android OS Version**: `Android 11` (Android TV (ATV))
   - **GMS Package**: `Android_11_ATV`
@@ -801,14 +799,12 @@ All packages are hosted on official TCL Content Delivery Networks (`cedock.com`)
 - **Platform Identifier**: `R51MT09` (Alternative ID: `R51MT01`)
 - **Hardware Architecture & SoC**: Realtek RTD2851 / R51M (Legacy 4K GTV & ATV)
 - **Compatible TV Models (Selection)**: *C645, C635, P745, C715, C815*
-- **Package Type**: `Full OTA (ZIP)` · **Size**: `1.75 GB` · **Release Date**: `2024-05` · **Region**: `EU` · **Status**: `Beta / Test Build (RC)`
+- **Package Type**: `Full OTA (ZIP)` · **Size**: `1.75 GB` · **Release Date**: `2024-05` · **Region**: `EU`
 - **FOTA Verification Status**: `Checked (Live API - Up to date)`
 - **MD5 Checksum**: `e8e799e7aa6962f008a83dc20f9d9909`
 - **SHA-256 Checksum**: `bde754ab07fce8972c9fa1f6b555c8b679340033fb360c071e536fdfb575b343`
 - **CRC-32 Checksum**: `0xAD20C95E`
 - **Official Changelog / Server Notes**: Realtek RTD2851M regional variant build: TV tuner reception and channel scan optimizations.
-> ⚠️ **Beta / Test Release Candidate Notice**  
-> *This firmware build is a pre-release / test version (`R`/`M`-series). It may contain experimental features or stability bugs. Flash at your own discretion.*
 - **Extracted Android Build Properties**:
   - **Android OS Version**: `Android 11` (Android TV (ATV))
   - **GMS Package**: `Android_11_ATV`
@@ -826,14 +822,12 @@ All packages are hosted on official TCL Content Delivery Networks (`cedock.com`)
 - **Platform Identifier**: `R51MT10` (Alternative ID: `R51MT01`)
 - **Hardware Architecture & SoC**: Realtek RTD2851 / R51M (Legacy 4K GTV & ATV)
 - **Compatible TV Models (Selection)**: *C645, C635, P745, C715, C815*
-- **Package Type**: `Full OTA (ZIP)` · **Size**: `1.73 GB` · **Release Date**: `2023-09` · **Region**: `EU` · **Status**: `Beta / Test Build (RC)`
+- **Package Type**: `Full OTA (ZIP)` · **Size**: `1.73 GB` · **Release Date**: `2023-09` · **Region**: `EU`
 - **FOTA Verification Status**: `Checked (Live API - Up to date)`
 - **MD5 Checksum**: `12e048a36c2c42d5ef03d6b9c13cfc26`
 - **SHA-256 Checksum**: `35d22f268eb206b4105c14a96b42c186229ec04be2f9fe367edc6fc4c5faa6ca`
 - **CRC-32 Checksum**: `0x9BB381F6`
 - **Official Changelog / Server Notes**: Series 4/5 entry 4K stability build, USB multimedia playback codec updates.
-> ⚠️ **Beta / Test Release Candidate Notice**  
-> *This firmware build is a pre-release / test version (`R`/`M`-series). It may contain experimental features or stability bugs. Flash at your own discretion.*
 - **Extracted Android Build Properties**:
   - **Android OS Version**: `Android 11` (Android TV (ATV))
   - **GMS Package**: `Android_11_ATV`
@@ -851,14 +845,12 @@ All packages are hosted on official TCL Content Delivery Networks (`cedock.com`)
 - **Platform Identifier**: `R75PT01` (Alternative ID: `0008T01`)
 - **Hardware Architecture & SoC**: Realtek RT75 (G10 Platform, Entry-Mid 4K GTV)
 - **Compatible TV Models (Selection)**: *P8LS, P7L, V6D, T6D, U65A, P6K, P7K, V6C, T6C, C6KS, C6CS, U65/75, MQLED70K, P755, C655, C655 Pro, T7B, V6B, QLED780/810, QM51L, QM5K, Q51K, Q63K, S551G, Q651G*
-- **Package Type**: `Full OTA (ZIP)` · **Size**: `1.92 GB` · **Release Date**: `2026-08-07` · **Region**: `EU` · **Status**: `Beta / Test Build (RC)`
+- **Package Type**: `Full OTA (ZIP)` · **Size**: `1.92 GB` · **Release Date**: `2026-08-07` · **Region**: `EU`
 - **FOTA Verification Status**: `Checked (Live API - Up to date)`
 - **MD5 Checksum**: `391cdffb44411798ca5a12a431d245ec`
 - **SHA-256 Checksum**: `b5f8bbb203043f3b3e5d566cc9f526827cc086ea311ce31ee30d9e8f50a4806d`
 - **CRC-32 Checksum**: `0xBA22A8CD`
 - **Official Changelog / Server Notes**: Android 14 Google TV (GTV U) release: Security patch 2026-06-05, G10_4K_US_NF AS50 release.
-> ⚠️ **Beta / Test Release Candidate Notice**  
-> *This firmware build is a pre-release / test version (`R`/`M`-series). It may contain experimental features or stability bugs. Flash at your own discretion.*
 - **Extracted Android Build Properties**:
   - **Android OS Version**: `Android 12` (Google TV (GTV))
   - **GMS Package**: `Android_12_GTV`
@@ -1240,28 +1232,19 @@ All packages are hosted on official TCL Content Delivery Networks (`cedock.com`)
 - **North America (NA) CDN**: [http://na-update.cedock.com/apps/resource2/V8T655T01/V8-T655T01-LF1V025/FOTA-OTA/V8-T655T01-LF1V025.256205.zip](http://na-update.cedock.com/apps/resource2/V8T655T01/V8-T655T01-LF1V025/FOTA-OTA/V8-T655T01-LF1V025.256205.zip)
 - **Asia-Pacific (AS) CDN**: [http://as-update.cedock.com/apps/resource2/V8T655T01/V8-T655T01-LF1V025/FOTA-OTA/V8-T655T01-LF1V025.256205.zip](http://as-update.cedock.com/apps/resource2/V8T655T01/V8-T655T01-LF1V025/FOTA-OTA/V8-T655T01-LF1V025.256205.zip)
 
-#### Pentonic 600 (T658T01) (`V8-T658T01-LF1V001`)
+#### Pentonic 600 (T658T01) (`V8-T658T01-LF1V575`)
 - **Platform Identifier**: `T658T01` (Alternative ID: `0014T01`)
 - **Hardware Architecture & SoC**: MediaTek MT9658 (Pentonic 600)
 - **Compatible TV Models (Selection)**: *C655 (Selected AP/LA Releases)*
-- **Package Type**: `Full OTA (ZIP)` · **Size**: `1.85 GB` · **Release Date**: `2026-03-20` · **Region**: `EU`
+- **Package Type**: `Full OTA (ZIP)` · **Size**: `1.92 GB` · **Release Date**: `2026-06-15` · **Region**: `EU`
 - **FOTA Verification Status**: `Checked (Live API - Up to date)`
-- **MD5 Checksum**: `b461de500812953e7660c318bc94d156`
-- **SHA-256 Checksum**: `071598a20b36a6e6c6e607b0787db74f98aa61b02d2afba6fc5a8b9f087e2e46`
-- **CRC-32 Checksum**: `0x7261735A`
-- **Official Changelog / Server Notes**: Pentonic 600 (T658T01) official software release: System stability, kernel performance optimizations, and security patches.
-- **Extracted Android Build Properties**:
-  - **Android OS Version**: `Android 12` (Google TV (GTV))
-  - **GMS Package**: `Android_12_GTV`
-  - **Security Patch Level**: `2026-03-05`
-  - **Build Date**: `Mar 20, 2026`
-  - **Build Fingerprint**: `TCL/T658T01/T658T01:12/V8-T658T01-LF1V001/user/release-keys`
-  - **SDK API Level**: `31`
-  - **Incremental Revision**: `LF1V001`
-  - **Target Device Codename**: `tcl_t658t01`
-- **EU / Global CDN**: [http://eu-update.cedock.com/apps/resource2/V8T658T01/V8-T658T01-LF1V001/FOTA-OTA/V8-T658T01-LF1V001.659436.zip](http://eu-update.cedock.com/apps/resource2/V8T658T01/V8-T658T01-LF1V001/FOTA-OTA/V8-T658T01-LF1V001.659436.zip)
-- **North America (NA) CDN**: [http://na-update.cedock.com/apps/resource2/V8T658T01/V8-T658T01-LF1V001/FOTA-OTA/V8-T658T01-LF1V001.659436.zip](http://na-update.cedock.com/apps/resource2/V8T658T01/V8-T658T01-LF1V001/FOTA-OTA/V8-T658T01-LF1V001.659436.zip)
-- **Asia-Pacific (AS) CDN**: [http://as-update.cedock.com/apps/resource2/V8T658T01/V8-T658T01-LF1V001/FOTA-OTA/V8-T658T01-LF1V001.659436.zip](http://as-update.cedock.com/apps/resource2/V8T658T01/V8-T658T01-LF1V001/FOTA-OTA/V8-T658T01-LF1V001.659436.zip)
+- **MD5 Checksum**: `30f8380c248ecbad00468e6065603f3b`
+- **SHA-256 Checksum**: `c7a213df69b1a47015657193046f10386fe18f9af71dc1ee9c16543e81cd5b0e`
+- **CRC-32 Checksum**: `0x5C176F1A`
+- **Official Changelog / Server Notes**: Previous production release.
+- **EU / Global CDN**: [http://eu-update.cedock.com/apps/resource2/V8T658T01/V8-T658T01-LF1V575/FOTA-OTA/V8-T658T01-LF1V575.zip](http://eu-update.cedock.com/apps/resource2/V8T658T01/V8-T658T01-LF1V575/FOTA-OTA/V8-T658T01-LF1V575.zip)
+- **North America (NA) CDN**: [http://na-update.cedock.com/apps/resource2/V8T658T01/V8-T658T01-LF1V575/FOTA-OTA/V8-T658T01-LF1V575.zip](http://na-update.cedock.com/apps/resource2/V8T658T01/V8-T658T01-LF1V575/FOTA-OTA/V8-T658T01-LF1V575.zip)
+- **Asia-Pacific (AS) CDN**: [http://as-update.cedock.com/apps/resource2/V8T658T01/V8-T658T01-LF1V575/FOTA-OTA/V8-T658T01-LF1V575.zip](http://as-update.cedock.com/apps/resource2/V8T658T01/V8-T658T01-LF1V575/FOTA-OTA/V8-T658T01-LF1V575.zip)
 
 #### T800 (T800T02) (`V8-T800T02-LF1V163`)
 - **Platform Identifier**: `T800T02` (Alternative ID: `0013T02`)

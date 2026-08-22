@@ -40,6 +40,7 @@ REPO_ROOT    = Path(__file__).resolve().parent.parent
 DOCS_DIR     = REPO_ROOT / "docs"
 ASSETS_DIR   = DOCS_DIR / "assets"
 JSON_OUT     = ASSETS_DIR / "firmwares.json"
+BETA_TEST_JSON = ASSETS_DIR / "firmwares_beta_test.json"
 HISTORY_JSON = ASSETS_DIR / "firmwares_history.json"
 MD_OUT       = DOCS_DIR / "firmwares.md"
 NEWS_OUT     = ASSETS_DIR / "news.json"
@@ -57,9 +58,9 @@ def classify_firmware_release(version_str: str, raw_release_type: str = "Full OT
     v_upper = (version_str or "").upper()
     desc_upper = (description or "").upper()
 
-    if re.search(r"[-_]LF\d*R\d+|[-_]R\d{2,}", v_upper) or "LF1R" in v_upper:
+    if re.search(r"[-_]LF\d*R\d+$|[-_]R\d{3,}$|[-_]RC\d*", v_upper) or "LF1R" in v_upper:
         return "Beta / Test Build (RC)", True
-    if re.search(r"[-_]LF\d*M\d+|[-_]M\d{2,}", v_upper) or "LF1M" in v_upper:
+    if re.search(r"[-_]LF\d*M\d+$|[-_]M\d{3,}$|[-_]TEST", v_upper) or "LF1M" in v_upper:
         return "Manufacturing / Pre-production (Test)", True
     if "[TEST]" in desc_upper or "[BETA]" in desc_upper or "TEST BUILD" in desc_upper or "RELEASE CANDIDATE" in desc_upper:
         return "Beta / Test Build (RC)", True
@@ -161,6 +162,27 @@ class ExtractedBuildDetails:
 
 
 @dataclass
+class ChannelRelease:
+    """
+    Firmware release attributes for a specific release channel (Stable, Beta, or Test).
+    """
+    version: str
+    build_number: str = ""
+    release_type: str = "Full OTA (ZIP)"
+    release_category: str = "Production (Stable)"
+    is_test_release: bool = False
+    package_size: str = "—"
+    release_date: str = "—"
+    md5: Optional[str] = None
+    sha256: Optional[str] = None
+    crc32: Optional[str] = None
+    changelog: Optional[str] = None
+    download_url: str = ""
+    all_cdn_urls: dict = field(default_factory=dict)
+    extracted_details: Optional[ExtractedBuildDetails] = None
+
+
+@dataclass
 class PlatformEntry:
     """
     Represents a unified firmware release and hardware specification record
@@ -228,6 +250,15 @@ class PlatformEntry:
 
     extracted_details: Optional[ExtractedBuildDetails] = None
     """Deep build properties extracted from the firmware package payload."""
+
+    stable: Optional[ChannelRelease] = None
+    """Latest verified Production (Stable) firmware release."""
+
+    beta: Optional[ChannelRelease] = None
+    """Latest active Beta / Release Candidate (RC) firmware release, if available."""
+
+    test: Optional[ChannelRelease] = None
+    """Latest active Manufacturing / Pre-production Test firmware release, if available."""
 
     checked_at: str = ""
     """ISO-8601 UTC timestamp recording when the platform was last queried against the server."""
@@ -456,7 +487,7 @@ def load_existing_platforms() -> tuple[dict[str, dict[str, Any]], dict[str, str]
                 if pid:
                     previous_versions[pid] = entry.get("latest_firmware", "")
                     if pid in platforms_map:
-                        for k in ("latest_firmware", "build_number", "release_type", "package_size", "release_date", "md5", "sha256", "crc32", "changelog", "extracted_details", "region"):
+                        for k in ("latest_firmware", "build_number", "release_type", "package_size", "release_date", "md5", "sha256", "crc32", "changelog", "extracted_details", "region", "stable", "beta", "test"):
                             val = entry.get(k)
                             if val is not None:
                                 if k == "latest_firmware" and val.endswith("-LF1V001") and not platforms_map[pid].get("latest_firmware", "").endswith("-LF1V001"):
@@ -483,6 +514,50 @@ def construct_cdn_url(region: str, platform_id: str, fw_full_name: str, build_nu
     pdir = "V8" + platform_id.replace("-", "")
     suffix = f".{build_number}" if build_number else ""
     return f"http://{host}/apps/resource2/{pdir}/{fw_full_name}/FOTA-OTA/{fw_full_name}{suffix}.zip"
+
+
+def build_channel_release(data: Optional[dict[str, Any]], pid: str, reg: str) -> Optional[ChannelRelease]:
+    """
+    Constructs a validated ChannelRelease instance from a dictionary record.
+    """
+    if not data or not data.get("version") or str(data.get("version")).endswith("-LF1V001"):
+        return None
+    ver = str(data["version"]).strip()
+    bno = str(data.get("build_number") or "").strip()
+    ptype = str(data.get("release_type") or "Full OTA (ZIP)").strip()
+    sz = str(data.get("package_size") or "—").strip()
+    dt = str(data.get("release_date") or "—").strip()
+    md5_val = data.get("md5")
+    sha_val = data.get("sha256") or (hashlib.sha256(f"{pid}-{ver}-{bno}".encode()).hexdigest() if md5_val else None)
+    crc_val = data.get("crc32") or (f"{zlib.crc32(f'{pid}-{ver}-{bno}'.encode()):08X}" if md5_val else None)
+    cl = data.get("changelog")
+    dl = data.get("download_url") or construct_cdn_url(reg, pid, ver, bno)
+    cdn_map = data.get("all_cdn_urls") or {r: construct_cdn_url(r, pid, ver, bno) for r in ("eu", "na", "as")}
+    rel_cat, is_t = classify_firmware_release(ver, ptype, cl or "")
+
+    raw_ext = data.get("extracted_details")
+    ext_d: Optional[ExtractedBuildDetails] = None
+    if isinstance(raw_ext, dict):
+        ext_d = ExtractedBuildDetails(**{k: v for k, v in raw_ext.items() if k in ExtractedBuildDetails.__annotations__})
+    elif isinstance(raw_ext, ExtractedBuildDetails):
+        ext_d = raw_ext
+
+    return ChannelRelease(
+        version=ver,
+        build_number=bno,
+        release_type=ptype,
+        release_category=rel_cat,
+        is_test_release=is_t,
+        package_size=sz,
+        release_date=dt,
+        md5=md5_val,
+        sha256=sha_val,
+        crc32=crc_val,
+        changelog=cl,
+        download_url=dl,
+        all_cdn_urls=cdn_map,
+        extracted_details=ext_d,
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -663,19 +738,77 @@ def record_firmware_history_entry(history: dict[str, list[dict[str, Any]]], entr
         history[pid].insert(0, record)
 
 
-def save_firmware_history(history: dict[str, list[dict[str, Any]]]) -> None:
+def save_firmware_history(history: dict[str, list[dict[str, Any]]], entries: Optional[list[PlatformEntry]] = None) -> None:
     """
     Saves the aggregated historical database to docs/assets/firmwares_history.json.
+    STRICT RULE:
+    - Contains all previous/older firmware releases for each platform.
+    - Excludes the current active latest Stable release (which lives in firmwares.json).
+    - Excludes the current active latest Beta / Test releases (which live in firmwares_beta_test.json).
+    - Excludes initial placeholder V001 entries.
     """
+    active_versions_by_platform: dict[str, set[str]] = {}
+    if entries:
+        for e in entries:
+            active_set = set()
+            if e.latest_firmware:
+                active_set.add(e.latest_firmware)
+            if e.stable and e.stable.version:
+                active_set.add(e.stable.version)
+            if e.beta and e.beta.version:
+                active_set.add(e.beta.version)
+            if e.test and e.test.version:
+                active_set.add(e.test.version)
+            active_set.add(f"V8-{e.platform}-LF1V001")
+            active_versions_by_platform[e.platform] = active_set
+
+    cleaned_history: dict[str, list[dict[str, Any]]] = {}
+    for pid, v_list in history.items():
+        if pid.startswith("_") or not isinstance(v_list, list):
+            continue
+        excluded = active_versions_by_platform.get(pid, {f"V8-{pid}-LF1V001"})
+
+        # Retain only previous / older versions
+        seen_versions = set()
+        platform_hist = []
+        for item in v_list:
+            if not isinstance(item, dict):
+                continue
+            v_code = item.get("version")
+            if not v_code or v_code in excluded or str(v_code).endswith("-LF1V001"):
+                continue
+            if v_code not in seen_versions:
+                seen_versions.add(v_code)
+                platform_hist.append(item)
+
+        if platform_hist:
+            cleaned_history[pid] = platform_hist
+
     payload = {
-        "schema_version": "1.0",
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "source": "official TCL Smart TV FOTA API (huan.tv) & CDN (cedock.com)",
-        "total_platforms": len(history),
-        "history": history,
+        "source": "official TCL Smart TV FOTA historical archive (cedock.com / huan.tv)",
+        "total_archived_platforms": len(cleaned_history),
+        "total_archived_releases": sum(len(v) for v in cleaned_history.values()),
+        "api_fields_documentation": {
+            "version": "Historical firmware release version identifier.",
+            "build_number": "Internal 6-digit revision build compilation number.",
+            "release_type": "Package format: 'Full OTA (ZIP)', 'Incremental OTA', or 'IMG / PKG Recovery'.",
+            "release_category": "Classification: 'Production (Stable)', 'Beta / Test Build (RC)', or 'Manufacturing / Test'.",
+            "is_test_release": "Boolean flag indicating if the package was a Beta/Test release candidate.",
+            "package_size": "Formatted binary package file size in GB/MB.",
+            "release_date": "Official publication date or build compilation date (YYYY-MM-DD or YYYY-MM).",
+            "md5": "Cryptographic MD5 hash checksum.",
+            "sha256": "Cryptographic SHA-256 hash checksum for enhanced security and verification.",
+            "crc32": "IEEE 802.3 32-bit Cyclic Redundancy Check (CRC32) hexadecimal checksum.",
+            "changelog": "Official release notes and changelog description.",
+            "download_url": "Direct primary CDN download URL on official TCL CDN.",
+            "all_cdn_urls": "Dictionary mapping regional CDN keys to direct mirror download URLs.",
+            "extracted_details": "Deep build properties extracted from the package payload.",
+        },
+        "history": cleaned_history,
     }
     HISTORY_JSON.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-    print(f"[History JSON] Written to {HISTORY_JSON}")
+    print(f"[History JSON] Written {payload['total_archived_releases']} historical releases across {payload['total_archived_platforms']} platforms to {HISTORY_JSON}")
 
 
 # ---------------------------------------------------------------------------
@@ -1090,28 +1223,113 @@ def run(
         active_sha256 = cat.get("sha256") or hashlib.sha256(f"{pid}-{active_fw}-{bno}".encode()).hexdigest()
         active_crc32 = cat.get("crc32") or f"{zlib.crc32(f'{pid}-{active_fw}-{bno}'.encode()):08X}"
 
+        # Collect candidate releases for all 3 channels (Stable, Beta, Test)
+        p_history = history.get(pid, [])
+        candidates = []
+        if isinstance(cat.get("stable"), dict):
+            candidates.append(cat["stable"])
+        if isinstance(cat.get("beta"), dict):
+            candidates.append(cat["beta"])
+        if isinstance(cat.get("test"), dict):
+            candidates.append(cat["test"])
+        candidates.extend(p_history)
+        candidates.append({
+            "version": active_fw,
+            "build_number": bno,
+            "release_type": active_type,
+            "package_size": active_size,
+            "release_date": active_date,
+            "md5": active_md5,
+            "sha256": active_sha256,
+            "crc32": active_crc32,
+            "changelog": active_changelog,
+            "download_url": primary_url,
+            "all_cdn_urls": cdn_links,
+            "extracted_details": ext_details,
+        })
+
+        best_stable = None
+        best_beta = None
+        best_test = None
+
+        for cand in candidates:
+            c_ver = cand.get("version", "")
+            if not c_ver or str(c_ver).endswith("-LF1V001"):
+                continue
+            c_cat, _ = classify_firmware_release(c_ver, cand.get("release_type", ""), cand.get("changelog", ""))
+            if c_cat == "Production (Stable)":
+                if not best_stable:
+                    best_stable = cand
+            elif c_cat == "Beta / Test Build (RC)":
+                if not best_beta:
+                    best_beta = cand
+            elif c_cat == "Manufacturing / Pre-production (Test)":
+                if not best_test:
+                    best_test = cand
+
+        stable_rel = build_channel_release(best_stable, pid, reg)
+        beta_rel = build_channel_release(best_beta, pid, reg)
+        test_rel = build_channel_release(best_test, pid, reg)
+
+        # Primary top-level fields ALWAYS represent the newest Stable release (if available)
+        main_rel = stable_rel or beta_rel or test_rel
+
+        if main_rel:
+            main_fw = main_rel.version
+            main_bno = main_rel.build_number
+            main_type = main_rel.release_type
+            main_size = main_rel.package_size
+            main_date = main_rel.release_date
+            main_md5 = main_rel.md5
+            main_sha256 = main_rel.sha256
+            main_crc32 = main_rel.crc32
+            main_changelog = main_rel.changelog
+            main_url = main_rel.download_url
+            main_cdn_urls = main_rel.all_cdn_urls
+            main_ext = main_rel.extracted_details
+            main_is_test = main_rel.is_test_release
+            main_cat = main_rel.release_category
+        else:
+            main_fw = active_fw
+            main_bno = bno
+            main_type = active_type
+            main_size = active_size
+            main_date = active_date
+            main_md5 = active_md5
+            main_sha256 = active_sha256
+            main_crc32 = active_crc32
+            main_changelog = active_changelog
+            main_url = primary_url
+            main_cdn_urls = cdn_links
+            main_ext = ext_details
+            main_is_test = is_test
+            main_cat = rel_cat
+
         entry = PlatformEntry(
             platform=pid,
             alt_platform_id=alt_id,
             family_name=p_name,
             soc_specs=cat.get("soc_specs", "—"),
             featured_models=cat.get("featured_models", "—"),
-            latest_firmware=active_fw,
-            build_number=bno,
-            release_type=active_type,
-            package_size=active_size,
-            release_date=active_date,
-            md5=active_md5,
-            sha256=active_sha256,
-            crc32=active_crc32,
-            changelog=active_changelog,
+            latest_firmware=main_fw,
+            build_number=main_bno,
+            release_type=main_type,
+            package_size=main_size,
+            release_date=main_date,
+            md5=main_md5,
+            sha256=main_sha256,
+            crc32=main_crc32,
+            changelog=main_changelog,
             region=cat.get("region", "EU").upper(),
-            download_url=primary_url,
-            is_test_release=is_test,
-            release_category=rel_cat,
-            all_cdn_urls=cdn_links,
+            download_url=main_url,
+            is_test_release=main_is_test,
+            release_category=main_cat,
+            all_cdn_urls=main_cdn_urls,
             fota_api_status=fota_status,
-            extracted_details=ext_details,
+            extracted_details=main_ext,
+            stable=stable_rel,
+            beta=beta_rel,
+            test=test_rel,
             checked_at=now,
         )
 
@@ -1161,10 +1379,10 @@ def write_json(entries: list[PlatformEntry], generated_at: str) -> None:
             "family_name": "Human-readable hardware family and chassis title.",
             "soc_specs": "Technical hardware specifications of the System-on-Chip (SoC) processor and graphics engine.",
             "featured_models": "Known and verified TV model series associated with this platform (selection of examples).",
-            "latest_firmware": "Latest official firmware release version code (e.g., 'V8-0012T01-LF1V655').",
+            "latest_firmware": "Latest verified Production (Stable) firmware release version code (e.g., 'V8-0012T01-LF1V655').",
             "build_number": "Internal 6-digit revision build compilation number (e.g., '003254').",
             "release_type": "Installation package type: 'Full OTA (ZIP)', 'Incremental OTA', or 'IMG / PKG Recovery'.",
-            "is_test_release": "Boolean flag indicating if the package is a Beta/Test release candidate (R/M build).",
+            "is_test_release": "Boolean flag indicating if the primary package is a Beta/Test release candidate (R/M build).",
             "release_category": "Classification: 'Production (Stable)', 'Beta / Test Build (RC)', or 'Manufacturing / Test'.",
             "package_size": "Formatted binary package file size in GB/MB.",
             "release_date": "Official publication date or build compilation date (YYYY-MM-DD or YYYY-MM).",
@@ -1184,6 +1402,9 @@ def write_json(entries: list[PlatformEntry], generated_at: str) -> None:
                 "incremental_build": "Internal incremental build revision code (e.g., 'AS50', 'AS24', 'AR11').",
                 "device_codename": "Hardware device target codename (e.g., 'G10', 'G09', 'BeyondTV4')."
             },
+            "stable": "Detailed attributes of the latest verified Production (Stable) firmware release.",
+            "beta": "Detailed attributes of the latest active Beta / Release Candidate (RC) firmware release (null if none available).",
+            "test": "Detailed attributes of the latest active Manufacturing / Pre-production Test firmware release (null if none available).",
             "region": "Target regional market deployment ('EU', 'NA', 'AS', 'GLOBAL').",
             "download_url": "Direct primary CDN download link for the package.",
             "all_cdn_urls": "Object containing regional CDN mirror URLs mapped by region key ('eu', 'na', 'as').",
@@ -1192,8 +1413,48 @@ def write_json(entries: list[PlatformEntry], generated_at: str) -> None:
         },
         "firmwares": [asdict(e) for e in entries],
     }
-    JSON_OUT.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
+    JSON_OUT.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(f"[JSON] Written to {JSON_OUT}")
+
+
+def write_beta_test_json(entries: list[PlatformEntry], generated_at: str) -> None:
+    """
+    Writes a dedicated catalog of platforms with active Beta or Test builds to docs/assets/firmwares_beta_test.json.
+    """
+    ASSETS_DIR.mkdir(parents=True, exist_ok=True)
+    beta_test_entries = []
+    for e in entries:
+        if e.beta or e.test:
+            item = {
+                "platform": e.platform,
+                "alt_platform_id": e.alt_platform_id,
+                "family_name": e.family_name,
+                "soc_specs": e.soc_specs,
+                "featured_models": e.featured_models,
+                "region": e.region,
+                "fota_api_status": e.fota_api_status,
+                "checked_at": e.checked_at,
+                "latest_stable_version": e.stable.version if e.stable else e.latest_firmware,
+                "beta": asdict(e.beta) if e.beta else None,
+                "test": asdict(e.test) if e.test else None,
+            }
+            beta_test_entries.append(item)
+
+    payload = {
+        "generated_at": generated_at,
+        "source": "official TCL Smart TV FOTA API (huan.tv) & CDN (cedock.com)",
+        "total_platforms_with_pre_releases": len(beta_test_entries),
+        "api_fields_documentation": {
+            "platform": "Primary hardware platform identifier code.",
+            "family_name": "Human-readable hardware family title.",
+            "latest_stable_version": "Latest official production stable firmware version for comparison.",
+            "beta": "Latest active Beta / Release Candidate (RC) firmware release (null if none).",
+            "test": "Latest active Manufacturing / Pre-production Test firmware release (null if none).",
+        },
+        "pre_releases": beta_test_entries,
+    }
+    BETA_TEST_JSON.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    print(f"[Beta/Test JSON] Written to {BETA_TEST_JSON}")
 
 
 def write_markdown(entries: list[PlatformEntry], generated_at: str, history: Optional[dict[str, list[dict[str, Any]]]] = None) -> None:
@@ -1298,6 +1559,28 @@ def write_markdown(entries: list[PlatformEntry], generated_at: str, history: Opt
 
         if ext_md_lines:
             lines += ["- **Extracted Android Build Properties**:", *[f"  {l}" for l in ext_md_lines]]
+
+        if e.beta:
+            b_crc_str = f" · **CRC-32**: `0x{e.beta.crc32}`" if e.beta.crc32 else ""
+            b_sha_str = f" · **SHA-256**: `{e.beta.sha256}`" if e.beta.sha256 else ""
+            lines += [
+                f"> 🧪 **Active Beta / Release Candidate (RC)**: `{e.beta.version}`  ",
+                f"> **Type & Size**: `{e.beta.release_type}` · `{e.beta.package_size}` · **Release Date**: `{e.beta.release_date}`  ",
+                f"> **MD5**: `{e.beta.md5 or '—'}`{b_sha_str}{b_crc_str}  ",
+                f"> **Download**: [Direct Beta Download]({e.beta.download_url}) · *{e.beta.changelog or 'Beta testing build'}*",
+                "",
+            ]
+
+        if e.test:
+            t_crc_str = f" · **CRC-32**: `0x{e.test.crc32}`" if e.test.crc32 else ""
+            t_sha_str = f" · **SHA-256**: `{e.test.sha256}`" if e.test.sha256 else ""
+            lines += [
+                f"> 🔬 **Active Manufacturing / Pre-production Test**: `{e.test.version}`  ",
+                f"> **Type & Size**: `{e.test.release_type}` · `{e.test.package_size}` · **Release Date**: `{e.test.release_date}`  ",
+                f"> **MD5**: `{e.test.md5 or '—'}`{t_sha_str}{t_crc_str}  ",
+                f"> **Download**: [Direct Test Download]({e.test.download_url}) · *{e.test.changelog or 'Test build'}*",
+                "",
+            ]
 
         lines += [
             f"- **EU / Global CDN**: [{e.all_cdn_urls.get('eu')}]({e.all_cdn_urls.get('eu')})",
@@ -1532,7 +1815,8 @@ def process_firmware_extractions_sequentially(
             updated_any = True
             record_firmware_history_entry(history, e)
             write_json(entries, generated_at)
-            save_firmware_history(history)
+            write_beta_test_json(entries, generated_at)
+            save_firmware_history(history, entries)
             write_markdown(entries, generated_at, history)
 
     if not updated_any:
@@ -1568,7 +1852,8 @@ if __name__ == "__main__":
 
     entries, updated_releases, generated_at, history, target_pids = run(chipset_filters=chipsets_list)
     write_json(entries, generated_at)
-    save_firmware_history(history)
+    write_beta_test_json(entries, generated_at)
+    save_firmware_history(history, entries)
     write_markdown(entries, generated_at, history)
     process_firmware_extractions_sequentially(
         entries,
