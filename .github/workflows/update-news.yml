@@ -29,7 +29,7 @@ jobs:
         run: |
           apk add --no-cache python3 py3-pip py3-requests py3-beautifulsoup4 jq git
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Fetch Live Data (if needed)
         id: news-data
