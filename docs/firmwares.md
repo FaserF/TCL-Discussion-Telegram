@@ -10,7 +10,7 @@ Welcome to the official **TCL Smart TV Firmware Hub**. This catalog tracks, aggr
 > 💡 **Automated Verification & Integrity Guarantee**  
 > All firmware binaries listed below are verified through server-side MD5 signatures, SHA-256 cryptographic hashes, and IEEE 802.3 32-bit CRC32 checksums. Deep technical build properties are extracted via non-destructive byte-range inspection.
 
-*Last database update: `2026-09-13T09:15:02.966584+00:00` UTC*
+*Last database update: `2026-09-14T09:40:14.776946+00:00` UTC*
 
 ---
 
