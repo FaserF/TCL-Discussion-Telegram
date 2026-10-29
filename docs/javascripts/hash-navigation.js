@@ -38,6 +38,7 @@ function handleHashNavigation() {
 window.addEventListener('hashchange', handleHashNavigation);
 document.addEventListener('DOMContentLoaded', handleHashNavigation);
 // Also listen for MkDocs Material instant loading
+/* global subscribe */
 if (typeof subscribe === 'function') {
     subscribe(handleHashNavigation);
 }

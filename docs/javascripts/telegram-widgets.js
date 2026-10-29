@@ -41,6 +41,7 @@ function loadTelegramWidgets() {
 document.addEventListener('DOMContentLoaded', loadTelegramWidgets);
 
 // MkDocs Material Instant Loading Support
+/* global location$ */
 if (typeof location$ !== 'undefined') {
     location$.subscribe(function () {
         // Run immediately and then again slightly later to handle DOM transitions

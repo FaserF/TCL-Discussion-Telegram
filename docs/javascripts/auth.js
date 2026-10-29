@@ -49,7 +49,9 @@ const AdminAuth = {
                 try {
                     const response = await fetch(path);
                     if (response.ok) return await response.json();
-                } catch (e) { }
+                } catch { 
+                    // Ignore missing files to check next path
+                }
             }
 
             console.error("Could not find admins.json in any location.");

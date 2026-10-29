@@ -72,7 +72,7 @@ function parseFaqs() {
             currentFaq = { q: questionMatch[1], a: [] };
         } else if (currentFaq) {
             if (line.startsWith('    ') || line.trim() === '') {
-                currentFaq.a.push(line.replace(/^    /, ''));
+                currentFaq.a.push(line.replace(/^ {4}/, ''));
             } else {
                 faqs.push({
                     q: currentFaq.q,
@@ -133,8 +133,8 @@ function generateSearchData(chipsets, faqs) {
         
         // Clean markdown links and formatting cleanly
         const cleanContent = faq.a
-            .replace(/\[([^\]]+)\]\([^\)]+\)/g, '$1') // Extract link text
-            .replace(/[\*\`]/g, '')                   // Remove formatting
+            .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1') // Extract link text
+            .replace(/[*`]/g, '')                   // Remove formatting
             .replace(/\s+/g, ' ')                     // Normalize spacing
             .trim();
             
