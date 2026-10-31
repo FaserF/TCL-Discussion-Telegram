@@ -1,0 +1,46 @@
+{
+  "generated_at": "2026-10-27T09:44:50.667665+00:00",
+  "source": "official TCL Smart TV FOTA historical archive (cedock.com / huan.tv)",
+  "total_archived_platforms": 1,
+  "total_archived_releases": 1,
+  "api_fields_documentation": {
+    "version": "Historical firmware release version identifier.",
+    "build_number": "Internal 6-digit revision build compilation number.",
+    "release_type": "Package format: 'Full OTA (ZIP)', 'Incremental OTA', or 'IMG / PKG Recovery'.",
+    "release_category": "Classification: 'Production (Stable)', 'Beta / Test Build (RC)', or 'Manufacturing / Test'.",
+    "is_test_release": "Boolean flag indicating if the package was a Beta/Test release candidate.",
+    "package_size": "Formatted binary package file size in GB/MB.",
+    "release_date": "Official publication date or build compilation date (YYYY-MM-DD or YYYY-MM).",
+    "md5": "Cryptographic MD5 hash checksum.",
+    "sha256": "Cryptographic SHA-256 hash checksum for enhanced security and verification.",
+    "crc32": "IEEE 802.3 32-bit Cyclic Redundancy Check (CRC32) hexadecimal checksum.",
+    "changelog": "Official release notes and changelog description.",
+    "download_url": "Direct primary CDN download URL on official TCL CDN.",
+    "all_cdn_urls": "Dictionary mapping regional CDN keys to direct mirror download URLs.",
+    "extracted_details": "Deep build properties extracted from the package payload."
+  },
+  "history": {
+    "0008T01": [
+      {
+        "version": "V8-0008T01-LF1V630",
+        "build_number": "622010",
+        "release_type": "Full OTA (ZIP)",
+        "release_category": "Production (Stable)",
+        "is_test_release": false,
+        "package_size": "1.92 GB",
+        "release_date": "2026-06-15",
+        "md5": "e5e1193de1755386a48c167ad58dd5d6",
+        "sha256": "e549ec838e22af30c92a57a3e25829ec2ee37125ec81cedf32a727876454f964",
+        "crc32": "859BEE7F",
+        "changelog": null,
+        "download_url": "http://eu-update.cedock.com/apps/resource2/V80008T01/V8-0008T01-LF1V630/FOTA-OTA/V8-0008T01-LF1V630.zip",
+        "all_cdn_urls": {
+          "eu": "http://eu-update.cedock.com/apps/resource2/V80008T01/V8-0008T01-LF1V630/FOTA-OTA/V8-0008T01-LF1V630.zip",
+          "na": "http://na-update.cedock.com/apps/resource2/V80008T01/V8-0008T01-LF1V630/FOTA-OTA/V8-0008T01-LF1V630.zip",
+          "as": "http://as-update.cedock.com/apps/resource2/V80008T01/V8-0008T01-LF1V630/FOTA-OTA/V8-0008T01-LF1V630.zip"
+        },
+        "extracted_details": null
+      }
+    ]
+  }
+}

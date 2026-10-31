@@ -1,0 +1,1650 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="The official firmware documentation and technical guide for the TCL Discussion Telegram Community.">
+      
+      
+        <meta name="author" content="TCL Discussion Community">
+      
+      
+        <link rel="canonical" href="https://FaserF.github.io/TCL-Discussion-Telegram/chipsets/">
+      
+      
+        <link rel="prev" href="../guides/">
+      
+      
+        <link rel="next" href="../rooting/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>Platforms & Chipsets - TCL Discussion - Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Plus+Jakarta+Sans:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Plus Jakarta Sans";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="rose" data-md-color-accent="rose">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#platforms-chipsets" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="TCL Discussion - Documentation" class="md-header__button md-logo" aria-label="TCL Discussion - Documentation" data-md-component="logo">
+      
+  <img src="../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            TCL Discussion - Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Platforms & Chipsets
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="rose" data-md-color-accent="rose"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="rose" data-md-color-accent="rose"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/FaserF/TCL-Discussion-Telegram" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    FaserF/TCL-Discussion-Telegram
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../firmwares/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Technical Guides
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../community/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Community & Safety
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../links/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  External Links
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="TCL Discussion - Documentation" class="md-nav__button md-logo" aria-label="TCL Discussion - Documentation" data-md-component="logo">
+      
+  <img src="../assets/logo.png" alt="logo">
+
+    </a>
+    TCL Discussion - Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/FaserF/TCL-Discussion-Telegram" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    FaserF/TCL-Discussion-Telegram
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Technical Guides
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Technical Guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../firmwares/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Firmware Status & Tracker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TCL Firmware Installation Guides
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Platforms & Chipsets
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Platforms & Chipsets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#platform-mapping-2026-sync" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Platform Mapping (2026 Sync)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Platform Mapping (2026 Sync)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#modern-legacy-platforms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modern &amp; Legacy Platforms
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#regional-platform-mapping-na-vs-global-eu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Regional Platform Mapping (NA vs. Global / EU)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#decoding-firmware-names" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Decoding Firmware Names
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Decoding Firmware Names">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-v8-0012t01-lf1v655003254-or-v8-t653t01-lf1v655" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example: V8-0012T01-LF1V655.003254 (or V8-T653T01-LF1V655)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#platform-vs-project-id-vs-panel-id" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Platform vs. Project ID vs. Panel ID
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rooting & Custom ROMs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reset-shop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reset All & Shop Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rt51-gtv-switch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Android to Google TV (RT51)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contribution-ota/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OTA Extraction Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Frequently Asked Questions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Community & Safety
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Community & Safety
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../community/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Community & Volunteer Info
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../safety/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Community Safety
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../distribution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Content Rights & Credits
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../administration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Administration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contributing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contribution & Help
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../links/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    External Links
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#platform-mapping-2026-sync" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Platform Mapping (2026 Sync)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Platform Mapping (2026 Sync)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#modern-legacy-platforms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modern &amp; Legacy Platforms
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#regional-platform-mapping-na-vs-global-eu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Regional Platform Mapping (NA vs. Global / EU)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#decoding-firmware-names" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Decoding Firmware Names
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Decoding Firmware Names">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-v8-0012t01-lf1v655003254-or-v8-t653t01-lf1v655" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example: V8-0012T01-LF1V655.003254 (or V8-T653T01-LF1V655)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#platform-vs-project-id-vs-panel-id" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Platform vs. Project ID vs. Panel ID
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href=".." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../firmwares/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Technical Guides
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/FaserF/TCL-Discussion-Telegram/edit/main/docs/chipsets.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="platforms-chipsets">Platforms &amp; Chipsets</h1>
+<p>Identifying your TV's hardware <strong>Platform</strong> (SoC) is the most critical step before downloading any firmware. Installing a file for the wrong platform will fail at best and brick your TV at worst.</p>
+<h2 id="platform-mapping-2026-sync"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 2v6H2V2zM2 22v-6h2v6zm3-10c0 1.11-.89 2-2 2a2 2 0 1 1 2-2m19-6v12c0 1.11-.89 2-2 2H10a2 2 0 0 1-2-2v-4l-2-2 2-2V6a2 2 0 0 1 2-2h12c1.11 0 2 .89 2 2"/></svg></span> Platform Mapping (2026 Sync)</h2>
+<p>TCL platforms are grouped by System-on-Chip (SoC) hardware families and year of release. Always verify your specific <strong>Platform</strong> from the TV menu before downloading.</p>
+<div class="admonition warning">
+<p class="admonition-title">Platform &amp; Project ID Verification</p>
+<p>Installing firmware that is older than your TV's factory version, or installing firmware that does not include your model's <strong>Project ID</strong> in its whitelist, can result in a <strong>black screen</strong> or bootloop. Always use verified firmware compatible with your platform and region.</p>
+</div>
+<h3 id="modern-legacy-platforms">Modern &amp; Legacy Platforms</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Platform Family</th>
+<th style="text-align: left;">Specific IDs / TV Menu ID</th>
+<th style="text-align: left;">Featured Models</th>
+<th style="text-align: left;">Hardware / SoC Specs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Pentonic 800</strong></td>
+<td style="text-align: left;"><strong>0015T01</strong> (<code>T655T01</code>, <code>0015T02</code>)</td>
+<td style="text-align: left;">X11L, C8L, RM9L, QM8L (2026)</td>
+<td style="text-align: left;">MediaTek MT9655 (MT55), Flagship 4K Mini-LED</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Pentonic 700 (Global/EU)</strong></td>
+<td style="text-align: left;"><strong>0012T01</strong> (<code>T653T01</code>)</td>
+<td style="text-align: left;">X955, X955 Max (115"), C955, C855, C805, C765, C755, C745X2, C845X2, C7L, C6L, RM7L, X11K, C9K, C8K, C7K, C6K, P8K, T8C, 98C655, 85C655Pro, 98P745, 98P755</td>
+<td style="text-align: left;">MediaTek MT9653 / MT9618 (MT53), 4K 144Hz VRR</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Pentonic 700 (NA/LA)</strong></td>
+<td style="text-align: left;"><strong>0012T02</strong> (<code>T653T02</code>)</td>
+<td style="text-align: left;">QM891G, QM851G, QM751G, Q651G, Q750G, S551G, RM7L, QM7L, Q77L, X11K, QM8K, QM7K, Q77K, QM6K, QM67K</td>
+<td style="text-align: left;">MediaTek Pentonic 700 (G08 / N. America &amp; LATAM)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Pentonic 700 (Flagship)</strong></td>
+<td style="text-align: left;"><strong>0012T03</strong> (<code>T653T03</code>)</td>
+<td style="text-align: left;">QM9K Series</td>
+<td style="text-align: left;">MediaTek Pentonic 700 (G16)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Pentonic 600</strong></td>
+<td style="text-align: left;"><strong>0014T01</strong> (<code>T658T01</code>)</td>
+<td style="text-align: left;">C655 (Selected AP/LA Releases)</td>
+<td style="text-align: left;">MediaTek MT9658 (Pentonic 600)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>G15 Platform</strong></td>
+<td style="text-align: left;"><strong>0016T01</strong></td>
+<td style="text-align: left;">P8L, P8LS, U75/A/85A, A400/M/U/PRO (AP &amp; LA), P8K, C6K (AP)</td>
+<td style="text-align: left;">4K Google TV (G15 Platform)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Next-Gen G17</strong></td>
+<td style="text-align: left;"><strong>0017T01</strong></td>
+<td style="text-align: left;">Upcoming 2026/2027 Lineup</td>
+<td style="text-align: left;">4K Flagship Google TV (G17 Platform)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Next-Gen G18</strong></td>
+<td style="text-align: left;"><strong>0018T01</strong></td>
+<td style="text-align: left;">Upcoming Future Lineup</td>
+<td style="text-align: left;">4K Flagship Google TV (G18 Platform)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>T800 (Amlogic G09)</strong></td>
+<td style="text-align: left;"><strong>0013T02</strong> (<code>T800T02</code>, <code>0013T01</code>, <code>0013T03</code>)</td>
+<td style="text-align: left;">C655, C655 Pro, P755, T7B, P7K, C6KS, 55P755</td>
+<td style="text-align: left;">Amlogic AMLT963D4 (G09, 5-Core A55 @ 1.5GHz / 1.9GHz DVFS, Mali-G57 MC1, 2GB DDR4-3200)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>T615 / MT9615 (Global/EU)</strong></td>
+<td style="text-align: left;"><strong>T615T01</strong></td>
+<td style="text-align: left;">C845, C835, C735, C825, C728, C645 (Late), P745</td>
+<td style="text-align: left;">MediaTek MT9615 (4K 120/144Hz)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>T615 / MT9615 (NA)</strong></td>
+<td style="text-align: left;"><strong>T615T02</strong></td>
+<td style="text-align: left;">Q7 (2023 NA Series)</td>
+<td style="text-align: left;">MediaTek MT9615 (4K 120/144Hz NA)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>T615 / MT9615 (R646)</strong></td>
+<td style="text-align: left;"><strong>T615T03</strong></td>
+<td style="text-align: left;">R646 (2021 Flagship Mini-LED)</td>
+<td style="text-align: left;">MediaTek MT9615 (4K 120/144Hz Mini-LED)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>R75P / RT75 (Global/EU)</strong></td>
+<td style="text-align: left;"><strong>0008T01</strong> (<code>R75PT01</code>, <code>0008T02</code>)</td>
+<td style="text-align: left;">P8LS, P7L, V6D, T6D, U65A, P6K, P7K, V6C, T6C, C6KS, C6CS, U65/75, MQLED70K, P755, C655, C655 Pro, T7B, V6B, QLED780/810, QM51L, QM5K, Q51K, Q63K, S551G, Q651G</td>
+<td style="text-align: left;">Realtek RT75 (G10 Platform, Entry-Mid 4K GTV)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>T221 / MT21 (Google TV)</strong></td>
+<td style="text-align: left;"><strong>0003T05</strong> (<code>T221T01</code>)</td>
+<td style="text-align: left;">S350G, S55H, 32S5400, S5400A (Google TV)</td>
+<td style="text-align: left;">MediaTek MT21 (2K / FHD Google TV)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>T221 / MT21 (Android TV)</strong></td>
+<td style="text-align: left;"><strong>0003T06</strong> (<code>T221T02</code>)</td>
+<td style="text-align: left;">S5200 (Late), 32S5400 (Android TV)</td>
+<td style="text-align: left;">MediaTek MT21 (2K / FHD Android TV)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>R51M (Google TV)</strong></td>
+<td style="text-align: left;"><strong>R51MT05</strong></td>
+<td style="text-align: left;">C645, C635, P745 (Google TV)</td>
+<td style="text-align: left;">Realtek RTD2851 / R51M (4K Google TV)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>R851 (Google TV)</strong></td>
+<td style="text-align: left;"><strong>R851T02</strong></td>
+<td style="text-align: left;">C728, C825, C735 (Early Google TV)</td>
+<td style="text-align: left;">Realtek RTD2851 / R851 (4K Google TV)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>R51M (Android TV)</strong></td>
+<td style="text-align: left;"><strong>R51MT02</strong> (<code>R51MT06</code>, <code>R51MT10</code>)</td>
+<td style="text-align: left;">C715, C815, P715 (Android TV)</td>
+<td style="text-align: left;">Realtek RTD2851 / R51M (4K Android TV)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>R851 (Android TV)</strong></td>
+<td style="text-align: left;"><strong>R851T10</strong></td>
+<td style="text-align: left;">C715, C815 (Android TV)</td>
+<td style="text-align: left;">Realtek RTD2851 / R851 (4K Android TV)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>RT51 / AT51</strong></td>
+<td style="text-align: left;"><strong>R51AT01</strong></td>
+<td style="text-align: left;">P725, C725, P615, P635</td>
+<td style="text-align: left;">Realtek RT51 (Legacy Android TV)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>R41K</strong></td>
+<td style="text-align: left;"><strong>R41KT01</strong></td>
+<td style="text-align: left;">S6500 Series, 32S60AI, ES560</td>
+<td style="text-align: left;">Realtek RTD2841K Entry Legacy (Android TV 9/11)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>MS6886 (MS88)</strong></td>
+<td style="text-align: left;"><strong>MS6886T02</strong> (<code>MS6886T01</code>, <code>MS6886</code>)</td>
+<td style="text-align: left;">EC780, X815, C815 (Early), EP680</td>
+<td style="text-align: left;">MStar MSD6886 (4K Android TV 9/11)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>MS6586 (MS86)</strong></td>
+<td style="text-align: left;"><strong>MS6586T02</strong> (<code>MS6586T01</code>, <code>MS6586</code>)</td>
+<td style="text-align: left;">C2, P2, P6, C4, C6, DP660, EP640, EP660</td>
+<td style="text-align: left;">MStar MSD6586 (4K Android TV 7/8/9)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>MS6488 (MS84)</strong></td>
+<td style="text-align: left;"><strong>MS6488T01</strong> (<code>MS6488</code>, <code>MS84</code>)</td>
+<td style="text-align: left;">C1, P1 Series</td>
+<td style="text-align: left;">MStar MSD6488 (4K Legacy Android TV 7/8)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>MS48ES (MS48)</strong></td>
+<td style="text-align: left;"><strong>MS48EST01</strong> (<code>MS48ES</code>, <code>MS48</code>)</td>
+<td style="text-align: left;">S6000, S6800, F40, F50</td>
+<td style="text-align: left;">MStar MS48 (2K FHD Legacy Android TV 7/8)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Novatek NT67</strong></td>
+<td style="text-align: left;"><strong>NT67T01</strong> (<code>NT67</code>)</td>
+<td style="text-align: left;">Thomson / TCL Regional Android TV Series</td>
+<td style="text-align: left;">Novatek NT72671 / NT72673 (Android TV)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="regional-platform-mapping-na-vs-global-eu"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.9 17.39c-.26-.8-1.01-1.39-1.9-1.39h-1v-3a1 1 0 0 0-1-1H8v-2h2a1 1 0 0 0 1-1V7h2a2 2 0 0 0 2-2v-.41a7.984 7.984 0 0 1 2.9 12.8M11 19.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.22.21-1.79L9 15v1a2 2 0 0 0 2 2m1-16A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2"/></svg></span> Regional Platform Mapping (NA vs. Global / EU)</h2>
+<p>TCL uses different marketing names across North America, Europe, Latin America, and Asia-Pacific. The internal platforms and firmware families, however, are shared:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">North America (NA)</th>
+<th style="text-align: left;">Global / EU / AP Equivalent</th>
+<th style="text-align: left;">Platform ID</th>
+<th style="text-align: left;">Chassis / SoC</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>QM8L (2026)</strong></td>
+<td style="text-align: left;"><strong>C8L / X11L</strong></td>
+<td style="text-align: left;"><strong>T655T01 (<code>0015T01</code>)</strong></td>
+<td style="text-align: left;">Pentonic 800 (MT55)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>QM7L / QM6L (2026)</strong></td>
+<td style="text-align: left;"><strong>C7L / C6L / RM7L</strong></td>
+<td style="text-align: left;"><strong>T653T01 / T02 (<code>0012T01 / T02</code>)</strong></td>
+<td style="text-align: left;">Pentonic 700 (MT53 / G08)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>QM8 (2024) / QM851G / QM891G</strong></td>
+<td style="text-align: left;"><strong>X955 / X955 Max / C955</strong></td>
+<td style="text-align: left;"><strong>T653T01 / T02 (<code>0012T01 / T02</code>)</strong></td>
+<td style="text-align: left;">Pentonic 700 (MT9653 / MT9618)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>QM7 (2024) / QM751G</strong></td>
+<td style="text-align: left;"><strong>C855 / C805 / C755</strong></td>
+<td style="text-align: left;"><strong>T653T01 / T02 (<code>0012T01 / T02</code>)</strong></td>
+<td style="text-align: left;">Pentonic 700 (MT9653)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Q7 (2023) / Q750G</strong></td>
+<td style="text-align: left;"><strong>C745 / C755</strong></td>
+<td style="text-align: left;"><strong>MT9615 / T653</strong></td>
+<td style="text-align: left;">MT9615 / Pentonic 700</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Q651G / S551G</strong></td>
+<td style="text-align: left;"><strong>C655 / P755</strong></td>
+<td style="text-align: left;"><strong>R75PT01 (<code>0008T01</code>) / T800T02 (<code>0013T02</code>)</strong></td>
+<td style="text-align: left;">RT75 (G10) / Amlogic (G09)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>R646 (2021)</strong></td>
+<td style="text-align: left;"><strong>C825</strong></td>
+<td style="text-align: left;"><strong>T615T03</strong></td>
+<td style="text-align: left;">MT9615</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>S546 (2021)</strong></td>
+<td style="text-align: left;"><strong>C725</strong></td>
+<td style="text-align: left;"><strong>R51AT01</strong></td>
+<td style="text-align: left;">RT51</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition important">
+<p class="admonition-title">Verify Platform &amp; Region Restrictions</p>
+<p>Firmware is compiled for specific platform architectures and regional Project ID tables. Chinese market (CN) firmware and Global/EU firmware cannot be cross-installed (doing so results in a black screen or recovery loop due to missing Project IDs).</p>
+</div>
+<hr />
+<h2 id="decoding-firmware-names"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7h5v10h-5v2a1 1 0 0 0 1 1h2v2h-2.5c-.55 0-1.5-.45-1.5-1 0 .55-.95 1-1.5 1H12v-2h2a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1h-2V2h2.5c.55 0 1.5.45 1.5 1 0-.55.95-1 1.5-1H20v2h-2a1 1 0 0 0-1 1zM2 7h11v2H4v6h9v2H2zm18 8V9h-3v6zM8.5 12A1.5 1.5 0 0 0 7 10.5 1.5 1.5 0 0 0 5.5 12 1.5 1.5 0 0 0 7 13.5 1.5 1.5 0 0 0 8.5 12m4.5-1.11c-.61-.56-1.56-.51-2.12.11-.56.6-.51 1.55.12 2.11.55.52 1.43.52 2 0z"/></svg></span> Decoding Firmware Names</h2>
+<p>Firmware files follow a standardized naming syntax:</p>
+<h3 id="example-v8-0012t01-lf1v655003254-or-v8-t653t01-lf1v655">Example: <code>V8-0012T01-LF1V655.003254</code> (or <code>V8-T653T01-LF1V655</code>)</h3>
+<ol>
+<li><strong><code>V8</code></strong>: Standard prefix identifier for TCL Smart TV software.</li>
+<li><strong><code>0012T01</code> / <code>T653T01</code></strong>: The <strong>Platform</strong>. Must match your TV's SoC platform.</li>
+<li><strong><code>LF1</code></strong>: Region / Language configuration package (e.g., <code>LF1</code>, <code>LF2</code>, <code>LA</code>, <code>AU</code>).</li>
+<li><strong>Release Type &amp; Version (<code>V655</code>)</strong>:<ul>
+<li><strong><code>V</code></strong>: Release / Production version (Stable public OTA/IMG).</li>
+<li><strong><code>R</code></strong>: Test / Release candidate build.</li>
+<li><strong><code>M</code></strong>: Early manufacturing / pre-production test build.</li>
+</ul>
+</li>
+<li><strong><code>.003254</code></strong>: Internal revision build number (higher indicates newer compilation).</li>
+</ol>
+<hr />
+<h2 id="platform-vs-project-id-vs-panel-id"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 7v2H9v6h1v2H6v-2h1V9H6V7zm6 0a2 2 0 0 1 2 2v6c0 1.11-.89 2-2 2h-4V7m4 2h-2v6h2z"/></svg></span> Platform vs. Project ID vs. Panel ID</h2>
+<p>Understanding the hierarchy of identifiers prevents flashing mistakes:</p>
+<ol>
+<li><strong>Platform (SoC):</strong> The processor and system motherboard family (e.g. <code>T653T01</code>, <code>0012T01</code>, <code>T800T02</code>). Firmware must match this exactly.</li>
+<li><strong>Project ID (Panel ID / Configuration ID):</strong> A 1-to-6 digit number stored in non-volatile memory (NVM). It configures the panel timing, backlight zones, color matrix, tuner frequencies (DVB-T2/S2/ATSC), and regional update channels.</li>
+<li><strong>Firmware Version:</strong> The software build version (e.g. <code>V560</code>, <code>V643</code>, <code>V655</code>).</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Searching via Firmware Bot</p>
+<p>You can query the <strong><a href="https://t.me/FirmwareTCLbot">@FirmwareTCLbot</a></strong> using your <strong>Platform String</strong> (e.g. <code>T653T01</code>, <code>0012T01</code>, <code>T800T02</code>, <code>R75PT01</code>) to view the latest verified OTA and IMG/PKG downloads.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../guides/" class="md-footer__link md-footer__link--prev" aria-label="Previous: TCL Firmware Installation Guides">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                TCL Firmware Installation Guides
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../rooting/" class="md-footer__link md-footer__link--next" aria-label="Next: Rooting &amp; Custom ROMs">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Rooting & Custom ROMs
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://t.me/tclupdates" target="_blank" rel="noopener" title="Updates Channel" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M256 8a248 248 0 1 0 0 496 248 248 0 1 0 0-496m115 168.7c-3.7 39.2-19.9 134.4-28.1 178.3-3.5 18.6-10.3 24.8-16.9 25.4-14.4 1.3-25.3-9.5-39.3-18.7-21.8-14.3-34.2-23.2-55.3-37.2-24.5-16.1-8.6-25 5.3-39.5 3.7-3.8 67.1-61.5 68.3-66.7.2-.7.3-3.1-1.2-4.4s-3.6-.8-5.1-.5c-2.2.5-37.1 23.5-104.6 69.1-9.9 6.8-18.9 10.1-26.9 9.9-8.9-.2-25.9-5-38.6-9.1-15.5-5-27.9-7.7-26.8-16.3.6-4.5 6.7-9 18.4-13.7 72.3-31.5 120.5-52.3 144.6-62.3 68.9-28.6 83.2-33.6 92.5-33.8 2.1 0 6.6.5 9.6 2.9 2 1.7 3.2 4.1 3.5 6.7.5 3.2.6 6.5.4 9.8z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://t.me/tclupdates_discussion" target="_blank" rel="noopener" title="Community Group" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M256 8a248 248 0 1 0 0 496 248 248 0 1 0 0-496m115 168.7c-3.7 39.2-19.9 134.4-28.1 178.3-3.5 18.6-10.3 24.8-16.9 25.4-14.4 1.3-25.3-9.5-39.3-18.7-21.8-14.3-34.2-23.2-55.3-37.2-24.5-16.1-8.6-25 5.3-39.5 3.7-3.8 67.1-61.5 68.3-66.7.2-.7.3-3.1-1.2-4.4s-3.6-.8-5.1-.5c-2.2.5-37.1 23.5-104.6 69.1-9.9 6.8-18.9 10.1-26.9 9.9-8.9-.2-25.9-5-38.6-9.1-15.5-5-27.9-7.7-26.8-16.3.6-4.5 6.7-9 18.4-13.7 72.3-31.5 120.5-52.3 144.6-62.3 68.9-28.6 83.2-33.6 92.5-33.8 2.1 0 6.6.5 9.6 2.9 2 1.7 3.2 4.1 3.5 6.7.5 3.2.6 6.5.4 9.8z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://github.com/FaserF/TCL-Discussion-Telegram" target="_blank" rel="noopener" title="GitHub Repository" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.path", "navigation.indexes", "navigation.top", "navigation.tracking", "navigation.instant", "navigation.instant.progress", "navigation.footer", "search.suggest", "search.highlight", "search.share", "toc.follow", "content.action.edit", "content.code.copy", "content.tooltips", "content.tabs.link"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+        <script src="../javascripts/telegram-widgets.js"></script>
+      
+        <script src="../javascripts/banner.js"></script>
+      
+        <script src="../javascripts/hash-navigation.js"></script>
+      
+        <script src="../javascripts/auth.js"></script>
+      
+    
+  </body>
+</html>

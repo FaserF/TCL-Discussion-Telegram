@@ -1,0 +1,2807 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Official, comprehensive firmware tracker and package repository for all global TCL Android TV and Google TV platforms.">
+      
+      
+        <meta name="author" content="TCL Discussion Community">
+      
+      
+        <link rel="canonical" href="https://FaserF.github.io/TCL-Discussion-Telegram/firmwares/">
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../guides/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>TCL Smart TV Firmware Hub - TCL Discussion - Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Plus+Jakarta+Sans:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Plus Jakarta Sans";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="rose" data-md-color-accent="rose">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tcl-smart-tv-firmware-hub" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="TCL Discussion - Documentation" class="md-header__button md-logo" aria-label="TCL Discussion - Documentation" data-md-component="logo">
+      
+  <img src="../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            TCL Discussion - Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              TCL Smart TV Firmware Hub
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="rose" data-md-color-accent="rose"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="rose" data-md-color-accent="rose"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/FaserF/TCL-Discussion-Telegram" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    FaserF/TCL-Discussion-Telegram
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Technical Guides
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../community/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Community & Safety
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../links/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  External Links
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="TCL Discussion - Documentation" class="md-nav__button md-logo" aria-label="TCL Discussion - Documentation" data-md-component="logo">
+      
+  <img src="../assets/logo.png" alt="logo">
+
+    </a>
+    TCL Discussion - Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/FaserF/TCL-Discussion-Telegram" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    FaserF/TCL-Discussion-Telegram
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Technical Guides
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Technical Guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Firmware Status & Tracker
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Firmware Status & Tracker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quick-platform-index" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📑 Quick Platform Index
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#detailed-platform-specifications-package-downloads" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠️ Detailed Platform Specifications &amp; Package Downloads
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠️ Detailed Platform Specifications &amp; Package Downloads">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#t221-mt21-google-tv-0003t05-v8-0003t05-lf1v242" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        T221 / MT21 (Google TV) (0003T05) (V8-0003T05-LF1V242)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#t221-mt21-android-tv-0003t06-v8-0003t06-lf1v085" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        T221 / MT21 (Android TV) (0003T06) (V8-0003T06-LF1V085)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#r75p-rt75-globaleu-0008t01-v8-0008t01-lf1v636" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R75P / RT75 (Global/EU) (0008T01) (V8-0008T01-LF1V636)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pentonic-700-globaleu-0012t01-v8-0012t01-lf1v655" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pentonic 700 (Global/EU) (0012T01) (V8-0012T01-LF1V655)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pentonic-700-nala-0012t02-v8-0012t02-lf1v620" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pentonic 700 (NA/LA) (0012T02) (V8-0012T02-LF1V620)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pentonic-700-flagship-0012t03-v8-0012t03-lf1v110" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pentonic 700 (Flagship) (0012T03) (V8-0012T03-LF1V110)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#t800-amlogic-g09-0013t02-v8-0013t02-lf1v163" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        T800 (Amlogic G09) (0013T02) (V8-0013T02-LF1V163)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pentonic-600-0014t01-v8-0014t01-lf1v001" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pentonic 600 (0014T01) (V8-0014T01-LF1V001)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pentonic-800-0015t01-v8-0015t01-lf1v025" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pentonic 800 (0015T01) (V8-0015T01-LF1V025)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#g15-platform-0016t01-v8-0016t01-lf1v042" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        G15 Platform (0016T01) (V8-0016T01-LF1V042)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#next-gen-g17-0017t01-v8-0017t01-lf1v001" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next-Gen G17 (0017T01) (V8-0017T01-LF1V001)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#next-gen-g18-0018t01-v8-0018t01-lf1v001" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next-Gen G18 (0018T01) (V8-0018T01-LF1V001)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ms48es-ms48-ms48est01-v8-ms48est01-lf1v001" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MS48ES (MS48) (MS48EST01) (V8-MS48EST01-LF1V001)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ms6488-ms84-ms6488t01-v8-ms6488t01-lf1v001" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MS6488 (MS84) (MS6488T01) (V8-MS6488T01-LF1V001)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ms6586-ms86-ms6586t02-v8-ms6586t02-lf1v001" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MS6586 (MS86) (MS6586T02) (V8-MS6586T02-LF1V001)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ms6886-ms88-ms6886t02-v8-ms6886t02-lf1v001" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MS6886 (MS88) (MS6886T02) (V8-MS6886T02-LF1V001)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#novatek-nt67-nt67t01-v8-nt67t01-lf1v001" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Novatek NT67 (NT67T01) (V8-NT67T01-LF1V001)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#r41k-r41kt01-v8-r41kt01-lf1v343" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R41K (R41KT01) (V8-R41KT01-LF1V343)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rt51-at51-r51at01-v8-r51at01-lf1v315" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RT51 / AT51 (R51AT01) (V8-R51AT01-LF1V315)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#r51m-android-tv-r51mt02-v8-r51mt02-lf1v267" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R51M (Android TV) (R51MT02) (V8-R51MT02-LF1V267)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#r51m-google-tv-r51mt05-v8-r51mt05-lf1v652" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R51M (Google TV) (R51MT05) (V8-R51MT05-LF1V652)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#r851-google-tv-r851t02-v8-r851t02-lf1v653" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R851 (Google TV) (R851T02) (V8-R851T02-LF1V653)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#r851-android-tv-r851t10-v8-r851t10-lf1v109" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R851 (Android TV) (R851T10) (V8-R851T10-LF1V109)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#t615-mt9615-globaleu-t615t01-v8-t615t01-lf1v082" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        T615 / MT9615 (Global/EU) (T615T01) (V8-T615T01-LF1V082)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#t615-mt9615-na-t615t02-v8-t615t02-lf1v073" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        T615 / MT9615 (NA) (T615T02) (V8-T615T02-LF1V073)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#t615-mt9615-r646-t615t03-v8-t615t03-lf1v082" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        T615 / MT9615 (R646) (T615T03) (V8-T615T03-LF1V082)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TCL Firmware Installation Guides
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chipsets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Platforms & Chipsets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rooting & Custom ROMs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reset-shop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reset All & Shop Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rt51-gtv-switch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Android to Google TV (RT51)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contribution-ota/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OTA Extraction Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Frequently Asked Questions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Community & Safety
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Community & Safety
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../community/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Community & Volunteer Info
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../safety/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Community Safety
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../distribution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Content Rights & Credits
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../administration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Administration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contributing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contribution & Help
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../links/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    External Links
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quick-platform-index" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📑 Quick Platform Index
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#detailed-platform-specifications-package-downloads" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠️ Detailed Platform Specifications &amp; Package Downloads
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠️ Detailed Platform Specifications &amp; Package Downloads">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#t221-mt21-google-tv-0003t05-v8-0003t05-lf1v242" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        T221 / MT21 (Google TV) (0003T05) (V8-0003T05-LF1V242)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#t221-mt21-android-tv-0003t06-v8-0003t06-lf1v085" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        T221 / MT21 (Android TV) (0003T06) (V8-0003T06-LF1V085)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#r75p-rt75-globaleu-0008t01-v8-0008t01-lf1v636" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R75P / RT75 (Global/EU) (0008T01) (V8-0008T01-LF1V636)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pentonic-700-globaleu-0012t01-v8-0012t01-lf1v655" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pentonic 700 (Global/EU) (0012T01) (V8-0012T01-LF1V655)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pentonic-700-nala-0012t02-v8-0012t02-lf1v620" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pentonic 700 (NA/LA) (0012T02) (V8-0012T02-LF1V620)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pentonic-700-flagship-0012t03-v8-0012t03-lf1v110" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pentonic 700 (Flagship) (0012T03) (V8-0012T03-LF1V110)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#t800-amlogic-g09-0013t02-v8-0013t02-lf1v163" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        T800 (Amlogic G09) (0013T02) (V8-0013T02-LF1V163)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pentonic-600-0014t01-v8-0014t01-lf1v001" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pentonic 600 (0014T01) (V8-0014T01-LF1V001)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pentonic-800-0015t01-v8-0015t01-lf1v025" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pentonic 800 (0015T01) (V8-0015T01-LF1V025)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#g15-platform-0016t01-v8-0016t01-lf1v042" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        G15 Platform (0016T01) (V8-0016T01-LF1V042)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#next-gen-g17-0017t01-v8-0017t01-lf1v001" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next-Gen G17 (0017T01) (V8-0017T01-LF1V001)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#next-gen-g18-0018t01-v8-0018t01-lf1v001" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next-Gen G18 (0018T01) (V8-0018T01-LF1V001)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ms48es-ms48-ms48est01-v8-ms48est01-lf1v001" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MS48ES (MS48) (MS48EST01) (V8-MS48EST01-LF1V001)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ms6488-ms84-ms6488t01-v8-ms6488t01-lf1v001" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MS6488 (MS84) (MS6488T01) (V8-MS6488T01-LF1V001)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ms6586-ms86-ms6586t02-v8-ms6586t02-lf1v001" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MS6586 (MS86) (MS6586T02) (V8-MS6586T02-LF1V001)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ms6886-ms88-ms6886t02-v8-ms6886t02-lf1v001" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MS6886 (MS88) (MS6886T02) (V8-MS6886T02-LF1V001)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#novatek-nt67-nt67t01-v8-nt67t01-lf1v001" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Novatek NT67 (NT67T01) (V8-NT67T01-LF1V001)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#r41k-r41kt01-v8-r41kt01-lf1v343" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R41K (R41KT01) (V8-R41KT01-LF1V343)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rt51-at51-r51at01-v8-r51at01-lf1v315" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RT51 / AT51 (R51AT01) (V8-R51AT01-LF1V315)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#r51m-android-tv-r51mt02-v8-r51mt02-lf1v267" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R51M (Android TV) (R51MT02) (V8-R51MT02-LF1V267)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#r51m-google-tv-r51mt05-v8-r51mt05-lf1v652" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R51M (Google TV) (R51MT05) (V8-R51MT05-LF1V652)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#r851-google-tv-r851t02-v8-r851t02-lf1v653" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R851 (Google TV) (R851T02) (V8-R851T02-LF1V653)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#r851-android-tv-r851t10-v8-r851t10-lf1v109" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R851 (Android TV) (R851T10) (V8-R851T10-LF1V109)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#t615-mt9615-globaleu-t615t01-v8-t615t01-lf1v082" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        T615 / MT9615 (Global/EU) (T615T01) (V8-T615T01-LF1V082)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#t615-mt9615-na-t615t02-v8-t615t02-lf1v073" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        T615 / MT9615 (NA) (T615T02) (V8-T615T02-LF1V073)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#t615-mt9615-r646-t615t03-v8-t615t03-lf1v082" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        T615 / MT9615 (R646) (T615T03) (V8-T615T03-LF1V082)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href=".." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="./" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Technical Guides
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/FaserF/TCL-Discussion-Telegram/edit/main/docs/firmwares.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="tcl-smart-tv-firmware-hub">📡 TCL Smart TV Firmware Hub</h1>
+<p>Welcome to the official <strong>TCL Smart TV Firmware Hub</strong>. This catalog tracks, aggregates, and validates official firmware releases across all known TCL hardware platforms globally. Data is synchronized directly with official TCL FOTA upgrade servers (<code>huan.tv</code>) and high-speed Content Delivery Networks (<code>cedock.com</code>).</p>
+<blockquote>
+<p>💡 <strong>Automated Verification &amp; Integrity Guarantee</strong><br />
+All firmware binaries listed below are verified through server-side MD5 signatures, SHA-256 cryptographic hashes, and IEEE 802.3 32-bit CRC32 checksums. Deep technical build properties are extracted via non-destructive byte-range inspection.</p>
+</blockquote>
+<p><em>Last database update: <code>2026-10-27T09:39:59.784818+00:00</code> UTC</em></p>
+<hr />
+<h2 id="quick-platform-index">📑 Quick Platform Index</h2>
+<table>
+<thead>
+<tr>
+<th>Platform ID</th>
+<th>Family / Chassis</th>
+<th>Latest Firmware</th>
+<th style="text-align: center;">OS Flavor</th>
+<th style="text-align: center;">Release Date</th>
+<th>Checksums (MD5 · SHA256 · CRC32)</th>
+<th style="text-align: center;">Direct Download</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#platform-0003t05"><code>0003T05</code></a></td>
+<td><strong>T221 / MT21 (Google TV) (0003T05)</strong></td>
+<td><code>V8-0003T05-LF1V242</code></td>
+<td style="text-align: center;"><code>—</code></td>
+<td style="text-align: center;"><code>2026-06-15</code></td>
+<td><code>e61c1f51...</code> · <code>db01e98b...</code> · <code>0x3712D508</code></td>
+<td style="text-align: center;"><a href="http://eu-update.cedock.com/apps/resource2/V80003T05/V8-0003T05-LF1V242/FOTA-OTA/V8-0003T05-LF1V242.zip"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7Z"/></svg></span> OTA (ZIP)</a></td>
+</tr>
+<tr>
+<td><a href="#platform-0003t06"><code>0003T06</code></a></td>
+<td><strong>T221 / MT21 (Android TV) (0003T06)</strong></td>
+<td><code>V8-0003T06-LF1V085</code></td>
+<td style="text-align: center;"><code>—</code></td>
+<td style="text-align: center;"><code>2026-06-15</code></td>
+<td><code>4c06228d...</code> · <code>d3a6a1e0...</code> · <code>0x9063AAC6</code></td>
+<td style="text-align: center;"><a href="http://eu-update.cedock.com/apps/resource2/V80003T06/V8-0003T06-LF1V085/FOTA-OTA/V8-0003T06-LF1V085.zip"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7Z"/></svg></span> OTA (ZIP)</a></td>
+</tr>
+<tr>
+<td><a href="#platform-0008t01"><code>0008T01</code></a></td>
+<td><strong>R75P / RT75 (Global/EU) (0008T01)</strong></td>
+<td><code>V8-0008T01-LF1V636</code></td>
+<td style="text-align: center;"><code>Android 12</code></td>
+<td style="text-align: center;"><code>2026-08-07</code></td>
+<td><code>a5712354...</code> · <code>8e21687d...</code> · <code>0xCF291DE2</code></td>
+<td style="text-align: center;"><a href="http://eu-update.cedock.com/apps/resource2/V80008T01/V8-0008T01-LF1V636/FOTA-OTA/V8-0008T01-LF1V636.622816.zip"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7Z"/></svg></span> OTA (ZIP)</a></td>
+</tr>
+<tr>
+<td><a href="#platform-0012t01"><code>0012T01</code></a></td>
+<td><strong>Pentonic 700 (Global/EU) (0012T01)</strong></td>
+<td><code>V8-0012T01-LF1V655</code></td>
+<td style="text-align: center;"><code>Android 12</code></td>
+<td style="text-align: center;"><code>2026-01</code></td>
+<td><code>e0573619...</code> · <code>00357ef7...</code> · <code>0xF241FE0D</code></td>
+<td style="text-align: center;"><a href="http://eu-update.cedock.com/apps/resource2/V80012T01/V8-0012T01-LF1V655/FOTA-OTA/V8-0012T01-LF1V655.628400.zip"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7Z"/></svg></span> OTA (ZIP)</a></td>
+</tr>
+<tr>
+<td><a href="#platform-0012t02"><code>0012T02</code></a></td>
+<td><strong>Pentonic 700 (NA/LA) (0012T02)</strong></td>
+<td><code>V8-0012T02-LF1V620</code></td>
+<td style="text-align: center;"><code>Android 12</code></td>
+<td style="text-align: center;"><code>2025-11</code></td>
+<td><code>aaf24d60...</code> · <code>3a332afe...</code> · <code>0x08739BC3</code></td>
+<td style="text-align: center;"><a href="http://na-update.cedock.com/apps/resource2/V80012T02/V8-0012T02-LF1V620/FOTA-OTA/V8-0012T02-LF1V620.439617.zip"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7Z"/></svg></span> OTA (ZIP)</a></td>
+</tr>
+<tr>
+<td><a href="#platform-0012t03"><code>0012T03</code></a></td>
+<td><strong>Pentonic 700 (Flagship) (0012T03)</strong></td>
+<td><code>V8-0012T03-LF1V110</code></td>
+<td style="text-align: center;"><code>Android 12</code></td>
+<td style="text-align: center;"><code>2025-10</code></td>
+<td><code>c5d75c11...</code> · <code>68715a05...</code> · <code>0xD9A29CE7</code></td>
+<td style="text-align: center;"><a href="http://eu-update.cedock.com/apps/resource2/V80012T03/V8-0012T03-LF1V110/FOTA-OTA/V8-0012T03-LF1V110.877669.zip"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7Z"/></svg></span> OTA (ZIP)</a></td>
+</tr>
+<tr>
+<td><a href="#platform-0013t02"><code>0013T02</code></a></td>
+<td><strong>T800 (Amlogic G09) (0013T02)</strong></td>
+<td><code>V8-0013T02-LF1V163</code></td>
+<td style="text-align: center;"><code>Android 12</code></td>
+<td style="text-align: center;"><code>2025-08</code></td>
+<td><code>e868ca24...</code> · <code>9f1fa9fe...</code> · <code>0xDE45B257</code></td>
+<td style="text-align: center;"><a href="http://eu-update.cedock.com/apps/resource2/V80013T02/V8-0013T02-LF1V163/FOTA-OTA/V8-0013T02-LF1V163.941121.zip"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7Z"/></svg></span> OTA (ZIP)</a></td>
+</tr>
+<tr>
+<td><a href="#platform-0014t01"><code>0014T01</code></a></td>
+<td><strong>Pentonic 600 (0014T01)</strong></td>
+<td><code>V8-0014T01-LF1V001</code></td>
+<td style="text-align: center;"><code>Android 12</code></td>
+<td style="text-align: center;"><code>2026-04-15</code></td>
+<td><code>6ab8bcb0...</code> · <code>29089377...</code> · <code>0xBE1D6323</code></td>
+<td style="text-align: center;"><a href="http://eu-update.cedock.com/apps/resource2/V80014T01/V8-0014T01-LF1V001/FOTA-OTA/V8-0014T01-LF1V001.341571.zip"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7Z"/></svg></span> OTA (ZIP)</a></td>
+</tr>
+<tr>
+<td><a href="#platform-0015t01"><code>0015T01</code></a></td>
+<td><strong>Pentonic 800 (0015T01)</strong></td>
+<td><code>V8-0015T01-LF1V025</code></td>
+<td style="text-align: center;"><code>Android 14</code></td>
+<td style="text-align: center;"><code>2026-02</code></td>
+<td><code>89b01dae...</code> · <code>95edd608...</code> · <code>0xE46C147A</code></td>
+<td style="text-align: center;"><a href="http://eu-update.cedock.com/apps/resource2/V80015T01/V8-0015T01-LF1V025/FOTA-OTA/V8-0015T01-LF1V025.156484.zip"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7Z"/></svg></span> OTA (ZIP)</a></td>
+</tr>
+<tr>
+<td><a href="#platform-0016t01"><code>0016T01</code></a></td>
+<td><strong>G15 Platform (0016T01)</strong></td>
+<td><code>V8-0016T01-LF1V042</code></td>
+<td style="text-align: center;"><code>Android 12</code></td>
+<td style="text-align: center;"><code>2026-03</code></td>
+<td><code>f7c9b771...</code> · <code>c2d41ccd...</code> · <code>0xE56EA4C9</code></td>
+<td style="text-align: center;"><a href="http://eu-update.cedock.com/apps/resource2/V80016T01/V8-0016T01-LF1V042/FOTA-OTA/V8-0016T01-LF1V042.779776.zip"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7Z"/></svg></span> OTA (ZIP)</a></td>
+</tr>
+<tr>
+<td><a href="#platform-0017t01"><code>0017T01</code></a></td>
+<td><strong>Next-Gen G17 (0017T01)</strong></td>
+<td><code>V8-0017T01-LF1V001</code></td>
+<td style="text-align: center;"><code>Android 11</code></td>
+<td style="text-align: center;"><code>2026-08-01</code></td>
+<td><code>88fc0377...</code> · <code>4d6cf740...</code> · <code>0x63E27B9A</code></td>
+<td style="text-align: center;"><a href="http://eu-update.cedock.com/apps/resource2/V80017T01/V8-0017T01-LF1V001/FOTA-OTA/V8-0017T01-LF1V001.397994.zip"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7Z"/></svg></span> OTA (ZIP)</a></td>
+</tr>
+<tr>
+<td><a href="#platform-0018t01"><code>0018T01</code></a></td>
+<td><strong>Next-Gen G18 (0018T01)</strong></td>
+<td><code>V8-0018T01-LF1V001</code></td>
+<td style="text-align: center;"><code>—</code></td>
+<td style="text-align: center;"><code>—</code></td>
+<td>— · <code>0a19bf5d...</code> · <code>0x5150E507</code></td>
+<td style="text-align: center;"><a href="http://eu-update.cedock.com/apps/resource2/V80018T01/V8-0018T01-LF1V001/FOTA-OTA/V8-0018T01-LF1V001.zip"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7Z"/></svg></span> OTA (ZIP)</a></td>
+</tr>
+<tr>
+<td><a href="#platform-ms48est01"><code>MS48EST01</code></a></td>
+<td><strong>MS48ES (MS48) (MS48EST01)</strong></td>
+<td><code>V8-MS48EST01-LF1V001</code></td>
+<td style="text-align: center;"><code>Android 11</code></td>
+<td style="text-align: center;"><code>2023-05-14</code></td>
+<td><code>e7e97e82...</code> · <code>d1481303...</code> · <code>0x0DFE8680</code></td>
+<td style="text-align: center;"><a href="http://eu-update.cedock.com/apps/resource2/V8MS48EST01/V8-MS48EST01-LF1V001/FOTA-OTA/V8-MS48EST01-LF1V001.320761.zip"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7Z"/></svg></span> OTA (ZIP)</a></td>
+</tr>
+<tr>
+<td><a href="#platform-ms6488t01"><code>MS6488T01</code></a></td>
+<td><strong>MS6488 (MS84) (MS6488T01)</strong></td>
+<td><code>V8-MS6488T01-LF1V001</code></td>
+<td style="text-align: center;"><code>Android 11</code></td>
+<td style="text-align: center;"><code>2023-05-14</code></td>
+<td><code>56a42bdb...</code> · <code>3b5e0c56...</code> · <code>0x82E66CAE</code></td>
+<td style="text-align: center;"><a href="http://eu-update.cedock.com/apps/resource2/V8MS6488T01/V8-MS6488T01-LF1V001/FOTA-OTA/V8-MS6488T01-LF1V001.609016.zip"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7Z"/></svg></span> OTA (ZIP)</a></td>
+</tr>
+<tr>
+<td><a href="#platform-ms6586t02"><code>MS6586T02</code></a></td>
+<td><strong>MS6586 (MS86) (MS6586T02)</strong></td>
+<td><code>V8-MS6586T02-LF1V001</code></td>
+<td style="text-align: center;"><code>Android 11</code></td>
+<td style="text-align: center;"><code>2023-05-14</code></td>
+<td><code>8bd785fb...</code> · <code>c14e9c9a...</code> · <code>0xD603A75F</code></td>
+<td style="text-align: center;"><a href="http://eu-update.cedock.com/apps/resource2/V8MS6586T02/V8-MS6586T02-LF1V001/FOTA-OTA/V8-MS6586T02-LF1V001.639602.zip"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7Z"/></svg></span> OTA (ZIP)</a></td>
+</tr>
+<tr>
+<td><a href="#platform-ms6886t02"><code>MS6886T02</code></a></td>
+<td><strong>MS6886 (MS88) (MS6886T02)</strong></td>
+<td><code>V8-MS6886T02-LF1V001</code></td>
+<td style="text-align: center;"><code>Android 11</code></td>
+<td style="text-align: center;"><code>2023-05-14</code></td>
+<td><code>e46c49fe...</code> · <code>17b86d45...</code> · <code>0xD5F2134A</code></td>
+<td style="text-align: center;"><a href="http://eu-update.cedock.com/apps/resource2/V8MS6886T02/V8-MS6886T02-LF1V001/FOTA-OTA/V8-MS6886T02-LF1V001.496968.zip"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7Z"/></svg></span> OTA (ZIP)</a></td>
+</tr>
+<tr>
+<td><a href="#platform-nt67t01"><code>NT67T01</code></a></td>
+<td><strong>Novatek NT67 (NT67T01)</strong></td>
+<td><code>V8-NT67T01-LF1V001</code></td>
+<td style="text-align: center;"><code>Android 11</code></td>
+<td style="text-align: center;"><code>2026-03-20</code></td>
+<td><code>173d73e5...</code> · <code>5610eb43...</code> · <code>0x034E01ED</code></td>
+<td style="text-align: center;"><a href="http://eu-update.cedock.com/apps/resource2/V8NT67T01/V8-NT67T01-LF1V001/FOTA-OTA/V8-NT67T01-LF1V001.962089.zip"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7Z"/></svg></span> OTA (ZIP)</a></td>
+</tr>
+<tr>
+<td><a href="#platform-r41kt01"><code>R41KT01</code></a></td>
+<td><strong>R41K (R41KT01)</strong></td>
+<td><code>V8-R41KT01-LF1V343</code></td>
+<td style="text-align: center;"><code>Android 11</code></td>
+<td style="text-align: center;"><code>2022-11</code></td>
+<td><code>3f2c5fd7...</code> · <code>adfb1eb4...</code> · <code>0x343B8CE0</code></td>
+<td style="text-align: center;"><a href="http://eu-update.cedock.com/apps/resource2/V8R41KT01/V8-R41KT01-LF1V343/FOTA-OTA/V8-R41KT01-LF1V343.945042.zip"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7Z"/></svg></span> OTA (ZIP)</a></td>
+</tr>
+<tr>
+<td><a href="#platform-r51at01"><code>R51AT01</code></a></td>
+<td><strong>RT51 / AT51 (R51AT01)</strong></td>
+<td><code>V8-R51AT01-LF1V315</code></td>
+<td style="text-align: center;"><code>Android 11</code></td>
+<td style="text-align: center;"><code>2023-06</code></td>
+<td><code>5fec0967...</code> · <code>cf720324...</code> · <code>0xFFAF3604</code></td>
+<td style="text-align: center;"><a href="http://eu-update.cedock.com/apps/resource2/V8R51AT01/V8-R51AT01-LF1V315/FOTA-OTA/V8-R51AT01-LF1V315.185337.zip"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7Z"/></svg></span> OTA (ZIP)</a></td>
+</tr>
+<tr>
+<td><a href="#platform-r51mt02"><code>R51MT02</code></a></td>
+<td><strong>R51M (Android TV) (R51MT02)</strong></td>
+<td><code>V8-R51MT02-LF1V267</code></td>
+<td style="text-align: center;"><code>Android 11</code></td>
+<td style="text-align: center;"><code>2024-05</code></td>
+<td><code>1e8aa588...</code> · <code>14441159...</code> · <code>0xC325D708</code></td>
+<td style="text-align: center;"><a href="http://eu-update.cedock.com/apps/resource2/V8R51MT02/V8-R51MT02-LF1V267/FOTA-OTA/V8-R51MT02-LF1V267.162390.zip"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7Z"/></svg></span> OTA (ZIP)</a></td>
+</tr>
+<tr>
+<td><a href="#platform-r51mt05"><code>R51MT05</code></a></td>
+<td><strong>R51M (Google TV) (R51MT05)</strong></td>
+<td><code>V8-R51MT05-LF1V652</code></td>
+<td style="text-align: center;"><code>Android 11</code></td>
+<td style="text-align: center;"><code>2024-04</code></td>
+<td><code>dc8cba08...</code> · <code>7a2542a0...</code> · <code>0x83A1D1B6</code></td>
+<td style="text-align: center;"><a href="http://eu-update.cedock.com/apps/resource2/V8R51MT05/V8-R51MT05-LF1V652/FOTA-OTA/V8-R51MT05-LF1V652.102029.zip"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7Z"/></svg></span> OTA (ZIP)</a></td>
+</tr>
+<tr>
+<td><a href="#platform-r851t02"><code>R851T02</code></a></td>
+<td><strong>R851 (Google TV) (R851T02)</strong></td>
+<td><code>V8-R851T02-LF1V653</code></td>
+<td style="text-align: center;"><code>—</code></td>
+<td style="text-align: center;"><code>2026-06-15</code></td>
+<td><code>eb435133...</code> · <code>9159d7b4...</code> · <code>0x842C574A</code></td>
+<td style="text-align: center;"><a href="http://eu-update.cedock.com/apps/resource2/V8R851T02/V8-R851T02-LF1V653/FOTA-OTA/V8-R851T02-LF1V653.zip"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7Z"/></svg></span> OTA (ZIP)</a></td>
+</tr>
+<tr>
+<td><a href="#platform-r851t10"><code>R851T10</code></a></td>
+<td><strong>R851 (Android TV) (R851T10)</strong></td>
+<td><code>V8-R851T10-LF1V109</code></td>
+<td style="text-align: center;"><code>—</code></td>
+<td style="text-align: center;"><code>2026-06-15</code></td>
+<td><code>22ba8521...</code> · <code>9ba6ff18...</code> · <code>0x88E1EA3E</code></td>
+<td style="text-align: center;"><a href="http://eu-update.cedock.com/apps/resource2/V8R851T10/V8-R851T10-LF1V109/FOTA-OTA/V8-R851T10-LF1V109.zip"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7Z"/></svg></span> OTA (ZIP)</a></td>
+</tr>
+<tr>
+<td><a href="#platform-t615t01"><code>T615T01</code></a></td>
+<td><strong>T615 / MT9615 (Global/EU) (T615T01)</strong></td>
+<td><code>V8-T615T01-LF1V082</code></td>
+<td style="text-align: center;"><code>Android 11</code></td>
+<td style="text-align: center;"><code>2024-05</code></td>
+<td><code>59ca23d8...</code> · <code>2341b055...</code> · <code>0xD08CFF8E</code></td>
+<td style="text-align: center;"><a href="http://eu-update.cedock.com/apps/resource2/V8T615T01/V8-T615T01-LF1V082/FOTA-OTA/V8-T615T01-LF1V082.176126.zip"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7Z"/></svg></span> OTA (ZIP)</a></td>
+</tr>
+<tr>
+<td><a href="#platform-t615t02"><code>T615T02</code></a></td>
+<td><strong>T615 / MT9615 (NA) (T615T02)</strong></td>
+<td><code>V8-T615T02-LF1V073</code></td>
+<td style="text-align: center;"><code>Android 11</code></td>
+<td style="text-align: center;"><code>2024-04</code></td>
+<td><code>f07a2972...</code> · <code>f3c352d1...</code> · <code>0x4185B600</code></td>
+<td style="text-align: center;"><a href="http://eu-update.cedock.com/apps/resource2/V8T615T02/V8-T615T02-LF1V073/FOTA-OTA/V8-T615T02-LF1V073.518224.zip"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7Z"/></svg></span> OTA (ZIP)</a></td>
+</tr>
+<tr>
+<td><a href="#platform-t615t03"><code>T615T03</code></a></td>
+<td><strong>T615 / MT9615 (R646) (T615T03)</strong></td>
+<td><code>V8-T615T03-LF1V082</code></td>
+<td style="text-align: center;"><code>Android 11</code></td>
+<td style="text-align: center;"><code>2024-05</code></td>
+<td><code>b2f53f98...</code> · <code>3f6c33a6...</code> · <code>0xA81C95B2</code></td>
+<td style="text-align: center;"><a href="http://eu-update.cedock.com/apps/resource2/V8T615T03/V8-T615T03-LF1V082/FOTA-OTA/V8-T615T03-LF1V082.502331.zip"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7Z"/></svg></span> OTA (ZIP)</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="detailed-platform-specifications-package-downloads">🛠️ Detailed Platform Specifications &amp; Package Downloads</h2>
+<p><a id="platform-0003t05"></a></p>
+<h4 id="t221-mt21-google-tv-0003t05-v8-0003t05-lf1v242">T221 / MT21 (Google TV) (0003T05) (<code>V8-0003T05-LF1V242</code>)</h4>
+<ul>
+<li><strong>Platform Identifier</strong>: <code>0003T05</code> (Alternative ID: <code>T221T01</code>)</li>
+<li><strong>Hardware Architecture &amp; SoC</strong>: MediaTek MT21 (2K / FHD Google TV)</li>
+<li><strong>Compatible TV Models (Selection)</strong>: <em>S350G, S55H, 32S5400, S5400A (Google TV)</em></li>
+<li><strong>Package Type</strong>: <code>Full OTA (ZIP)</code> · <strong>Size</strong>: <code>1.92 GB</code> · <strong>Release Date</strong>: <code>2026-06-15</code> · <strong>Region</strong>: <code>EU</code></li>
+<li><strong>FOTA Verification Status</strong>: <code>Checked (Static Mirror)</code></li>
+<li><strong>MD5 Checksum</strong>: <code>e61c1f5174aeb91dd31ebcad01a04a30</code></li>
+<li><strong>SHA-256 Checksum</strong>: <code>db01e98b5619836442cc40ba0b0f4a57a715e343f4642976477b4fde4ae4be1b</code></li>
+<li><strong>CRC-32 Checksum</strong>: <code>0x3712D508</code></li>
+<li><strong>Firmware Packages &amp; Downloads</strong>:</li>
+<li>📦 <strong>OTA Package (ZIP)</strong> (for TV menu update): <a href="http://eu-update.cedock.com/apps/resource2/V80003T05/V8-0003T05-LF1V242/FOTA-OTA/V8-0003T05-LF1V242.zip">V8-0003T05-LF1V242.zip</a> (<code>1.92 GB</code>)</li>
+<li>🛠️ <strong>Recovery Image (PKG/IMG)</strong>: <em>No separate factory recovery image on official servers (install via OTA ZIP).</em></li>
+<li><strong>Official Changelog / Server Notes</strong>: —</li>
+<li><strong>EU / Global CDN</strong>: <a href="http://eu-update.cedock.com/apps/resource2/V80003T05/V8-0003T05-LF1V242/FOTA-OTA/V8-0003T05-LF1V242.zip">http://eu-update.cedock.com/apps/resource2/V80003T05/V8-0003T05-LF1V242/FOTA-OTA/V8-0003T05-LF1V242.zip</a></li>
+<li><strong>North America (NA) CDN</strong>: <a href="http://na-update.cedock.com/apps/resource2/V80003T05/V8-0003T05-LF1V242/FOTA-OTA/V8-0003T05-LF1V242.zip">http://na-update.cedock.com/apps/resource2/V80003T05/V8-0003T05-LF1V242/FOTA-OTA/V8-0003T05-LF1V242.zip</a></li>
+<li><strong>Asia-Pacific (AS) CDN</strong>: <a href="http://as-update.cedock.com/apps/resource2/V80003T05/V8-0003T05-LF1V242/FOTA-OTA/V8-0003T05-LF1V242.zip">http://as-update.cedock.com/apps/resource2/V80003T05/V8-0003T05-LF1V242/FOTA-OTA/V8-0003T05-LF1V242.zip</a></li>
+</ul>
+<p><a id="platform-0003t06"></a></p>
+<h4 id="t221-mt21-android-tv-0003t06-v8-0003t06-lf1v085">T221 / MT21 (Android TV) (0003T06) (<code>V8-0003T06-LF1V085</code>)</h4>
+<ul>
+<li><strong>Platform Identifier</strong>: <code>0003T06</code> (Alternative ID: <code>T221T02</code>)</li>
+<li><strong>Hardware Architecture &amp; SoC</strong>: MediaTek MT21 (2K / FHD Android TV)</li>
+<li><strong>Compatible TV Models (Selection)</strong>: <em>S5200 (Late), 32S5400 (Android TV)</em></li>
+<li><strong>Package Type</strong>: <code>Full OTA (ZIP)</code> · <strong>Size</strong>: <code>1.92 GB</code> · <strong>Release Date</strong>: <code>2026-06-15</code> · <strong>Region</strong>: <code>EU</code></li>
+<li><strong>FOTA Verification Status</strong>: <code>Checked (Static Mirror)</code></li>
+<li><strong>MD5 Checksum</strong>: <code>4c06228d046707bcb00a1e43b74dd182</code></li>
+<li><strong>SHA-256 Checksum</strong>: <code>d3a6a1e06f427eba087bd5d58e0f679aacaa4c1f4b29f98ac32d8fa6cc4b5e17</code></li>
+<li><strong>CRC-32 Checksum</strong>: <code>0x9063AAC6</code></li>
+<li><strong>Firmware Packages &amp; Downloads</strong>:</li>
+<li>📦 <strong>OTA Package (ZIP)</strong> (for TV menu update): <a href="http://eu-update.cedock.com/apps/resource2/V80003T06/V8-0003T06-LF1V085/FOTA-OTA/V8-0003T06-LF1V085.zip">V8-0003T06-LF1V085.zip</a> (<code>1.92 GB</code>)</li>
+<li>🛠️ <strong>Recovery Image (PKG/IMG)</strong>: <em>No separate factory recovery image on official servers (install via OTA ZIP).</em></li>
+<li><strong>Official Changelog / Server Notes</strong>: —</li>
+<li><strong>EU / Global CDN</strong>: <a href="http://eu-update.cedock.com/apps/resource2/V80003T06/V8-0003T06-LF1V085/FOTA-OTA/V8-0003T06-LF1V085.zip">http://eu-update.cedock.com/apps/resource2/V80003T06/V8-0003T06-LF1V085/FOTA-OTA/V8-0003T06-LF1V085.zip</a></li>
+<li><strong>North America (NA) CDN</strong>: <a href="http://na-update.cedock.com/apps/resource2/V80003T06/V8-0003T06-LF1V085/FOTA-OTA/V8-0003T06-LF1V085.zip">http://na-update.cedock.com/apps/resource2/V80003T06/V8-0003T06-LF1V085/FOTA-OTA/V8-0003T06-LF1V085.zip</a></li>
+<li><strong>Asia-Pacific (AS) CDN</strong>: <a href="http://as-update.cedock.com/apps/resource2/V80003T06/V8-0003T06-LF1V085/FOTA-OTA/V8-0003T06-LF1V085.zip">http://as-update.cedock.com/apps/resource2/V80003T06/V8-0003T06-LF1V085/FOTA-OTA/V8-0003T06-LF1V085.zip</a></li>
+</ul>
+<p><a id="platform-0008t01"></a></p>
+<h4 id="r75p-rt75-globaleu-0008t01-v8-0008t01-lf1v636">R75P / RT75 (Global/EU) (0008T01) (<code>V8-0008T01-LF1V636</code>)</h4>
+<ul>
+<li><strong>Platform Identifier</strong>: <code>0008T01</code> (Alternative ID: <code>R75PT01</code>)</li>
+<li><strong>Hardware Architecture &amp; SoC</strong>: Realtek RT75 (G10 Platform, Entry-Mid 4K GTV)</li>
+<li><strong>Compatible TV Models (Selection)</strong>: <em>P8LS, P7L, V6D, T6D, U65A, P6K, P7K, V6C, T6C, C6KS, C6CS, U65/75, MQLED70K, P755, C655, C655 Pro, T7B, V6B, QLED780/810, QM51L, QM5K, Q51K, Q63K, S551G, Q651G</em></li>
+<li><strong>Package Type</strong>: <code>Full OTA (ZIP)</code> · <strong>Size</strong>: <code>1.92 GB</code> · <strong>Release Date</strong>: <code>2026-08-07</code> · <strong>Region</strong>: <code>EU</code></li>
+<li><strong>FOTA Verification Status</strong>: <code>Checked (Static Mirror)</code></li>
+<li><strong>MD5 Checksum</strong>: <code>a5712354fc8723dd5c11afb2608f6091</code></li>
+<li><strong>SHA-256 Checksum</strong>: <code>8e21687d12671a678a12f3322498d3bcc1771c31fec9bf604ccf81f4f8a01121</code></li>
+<li><strong>CRC-32 Checksum</strong>: <code>0xCF291DE2</code></li>
+<li><strong>Firmware Packages &amp; Downloads</strong>:</li>
+<li>📦 <strong>OTA Package (ZIP)</strong> (for TV menu update): <a href="http://eu-update.cedock.com/apps/resource2/V80008T01/V8-0008T01-LF1V636/FOTA-OTA/V8-0008T01-LF1V636.622816.zip">V8-0008T01-LF1V636.zip</a> (<code>1.92 GB</code>)</li>
+<li>🛠️ <strong>Recovery Image (PKG/IMG)</strong>: <em>No separate factory recovery image on official servers (install via OTA ZIP).</em></li>
+<li><strong>Official Changelog / Server Notes</strong>: Android 14 Google TV (GTV U) release: Security patch 2026-06-05, G10_4K_US_NF AS50 release.</li>
+<li><strong>Extracted Android Build Properties</strong>:</li>
+<li><strong>Android OS Version</strong>: <code>Android 12</code> (Google TV (GTV))</li>
+<li><strong>GMS Package</strong>: <code>Android_12_GTV</code></li>
+<li><strong>Security Patch Level</strong>: <code>2026-08-05</code></li>
+<li><strong>Build Date</strong>: <code>Aug 07, 2026</code></li>
+<li><strong>Build Fingerprint</strong>: <code>TCL/0008T01/0008T01:12/V8-0008T01-LF1V001/user/release-keys</code></li>
+<li><strong>SDK API Level</strong>: <code>31</code></li>
+<li><strong>Incremental Revision</strong>: <code>LF1V001</code></li>
+<li><strong>Target Device Codename</strong>: <code>tcl_0008t01</code></li>
+<li><strong>EU / Global CDN</strong>: <a href="http://eu-update.cedock.com/apps/resource2/V80008T01/V8-0008T01-LF1V636/FOTA-OTA/V8-0008T01-LF1V636.622816.zip">http://eu-update.cedock.com/apps/resource2/V80008T01/V8-0008T01-LF1V636/FOTA-OTA/V8-0008T01-LF1V636.622816.zip</a></li>
+<li><strong>North America (NA) CDN</strong>: <a href="http://na-update.cedock.com/apps/resource2/V80008T01/V8-0008T01-LF1V636/FOTA-OTA/V8-0008T01-LF1V636.622816.zip">http://na-update.cedock.com/apps/resource2/V80008T01/V8-0008T01-LF1V636/FOTA-OTA/V8-0008T01-LF1V636.622816.zip</a></li>
+<li><strong>Asia-Pacific (AS) CDN</strong>: <a href="http://as-update.cedock.com/apps/resource2/V80008T01/V8-0008T01-LF1V636/FOTA-OTA/V8-0008T01-LF1V636.622816.zip">http://as-update.cedock.com/apps/resource2/V80008T01/V8-0008T01-LF1V636/FOTA-OTA/V8-0008T01-LF1V636.622816.zip</a></li>
+</ul>
+<details>
+<summary><b>📦 Previous Firmware Versions Archive (1 build)</b></summary>
+
+| Version | Release Date | Package Type & Size | Category | Changelog / Notes | Download Link |
+|---|:---:|---|:---:|---|:---:|
+| `V8-0008T01-LF1V630` | `2026-06-15` | `Full OTA (ZIP)` · `1.92 GB` | **Production (Stable)** | *—* | [<span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7Z"/></svg></span> Download](http://eu-update.cedock.com/apps/resource2/V80008T01/V8-0008T01-LF1V630/FOTA-OTA/V8-0008T01-LF1V630.zip) |
+
+</details>
+
+<p><a id="platform-0012t01"></a></p>
+<h4 id="pentonic-700-globaleu-0012t01-v8-0012t01-lf1v655">Pentonic 700 (Global/EU) (0012T01) (<code>V8-0012T01-LF1V655</code>)</h4>
+<ul>
+<li><strong>Platform Identifier</strong>: <code>0012T01</code> (Alternative ID: <code>T653T01</code>)</li>
+<li><strong>Hardware Architecture &amp; SoC</strong>: MediaTek MT9653 / MT9618 (MT53), 4K 144Hz VRR</li>
+<li><strong>Compatible TV Models (Selection)</strong>: <em>X955, X955 Max (115"), C955, C855, C805, C765, C755, C745X2, C845X2, C7L, C6L, RM7L, X11K, C9K, C8K, C7K, C6K, P8K, T8C, 98C655, 85C655Pro, 98P745, 98P755</em></li>
+<li><strong>Package Type</strong>: <code>Full OTA (ZIP)</code> · <strong>Size</strong>: <code>2.35 GB</code> · <strong>Release Date</strong>: <code>2026-01</code> · <strong>Region</strong>: <code>EU</code></li>
+<li><strong>FOTA Verification Status</strong>: <code>Checked (Static Mirror)</code></li>
+<li><strong>MD5 Checksum</strong>: <code>e0573619c0bb0f93afe2be6aeefb472a</code></li>
+<li><strong>SHA-256 Checksum</strong>: <code>00357ef7ec8897e71310013d22e713a03c9994578b357c7f065ee03328352403</code></li>
+<li><strong>CRC-32 Checksum</strong>: <code>0xF241FE0D</code></li>
+<li><strong>Firmware Packages &amp; Downloads</strong>:</li>
+<li>📦 <strong>OTA Package (ZIP)</strong> (for TV menu update): <a href="http://eu-update.cedock.com/apps/resource2/V80012T01/V8-0012T01-LF1V655/FOTA-OTA/V8-0012T01-LF1V655.628400.zip">V8-0012T01-LF1V655.zip</a> (<code>2.35 GB</code>)</li>
+<li>🛠️ <strong>Recovery Image (PKG/IMG)</strong>: <em>No separate factory recovery image on official servers (install via OTA ZIP).</em></li>
+<li><strong>Official Changelog / Server Notes</strong>: Android 12/14 Google TV: Dolby Vision IQ enhancements, Game Master 2.0 stability, 144Hz VRR optimizations.</li>
+<li><strong>Extracted Android Build Properties</strong>:</li>
+<li><strong>Android OS Version</strong>: <code>Android 12</code> (Google TV (GTV))</li>
+<li><strong>GMS Package</strong>: <code>Android_12_GTV</code></li>
+<li><strong>Security Patch Level</strong>: <code>2026-01-05</code></li>
+<li><strong>Build Date</strong>: <code>Aug 07, 2026</code></li>
+<li><strong>Build Fingerprint</strong>: <code>TCL/0012T01/0012T01:12/V8-0012T01-LF1V001/user/release-keys</code></li>
+<li><strong>SDK API Level</strong>: <code>31</code></li>
+<li><strong>Incremental Revision</strong>: <code>LF1V001</code></li>
+<li><strong>Target Device Codename</strong>: <code>tcl_0012t01</code></li>
+<li><strong>EU / Global CDN</strong>: <a href="http://eu-update.cedock.com/apps/resource2/V80012T01/V8-0012T01-LF1V655/FOTA-OTA/V8-0012T01-LF1V655.628400.zip">http://eu-update.cedock.com/apps/resource2/V80012T01/V8-0012T01-LF1V655/FOTA-OTA/V8-0012T01-LF1V655.628400.zip</a></li>
+<li><strong>North America (NA) CDN</strong>: <a href="http://na-update.cedock.com/apps/resource2/V80012T01/V8-0012T01-LF1V655/FOTA-OTA/V8-0012T01-LF1V655.628400.zip">http://na-update.cedock.com/apps/resource2/V80012T01/V8-0012T01-LF1V655/FOTA-OTA/V8-0012T01-LF1V655.628400.zip</a></li>
+<li><strong>Asia-Pacific (AS) CDN</strong>: <a href="http://as-update.cedock.com/apps/resource2/V80012T01/V8-0012T01-LF1V655/FOTA-OTA/V8-0012T01-LF1V655.628400.zip">http://as-update.cedock.com/apps/resource2/V80012T01/V8-0012T01-LF1V655/FOTA-OTA/V8-0012T01-LF1V655.628400.zip</a></li>
+</ul>
+<p><a id="platform-0012t02"></a></p>
+<h4 id="pentonic-700-nala-0012t02-v8-0012t02-lf1v620">Pentonic 700 (NA/LA) (0012T02) (<code>V8-0012T02-LF1V620</code>)</h4>
+<ul>
+<li><strong>Platform Identifier</strong>: <code>0012T02</code> (Alternative ID: <code>T653T02</code>)</li>
+<li><strong>Hardware Architecture &amp; SoC</strong>: MediaTek Pentonic 700 (G08 / N. America &amp; LATAM)</li>
+<li><strong>Compatible TV Models (Selection)</strong>: <em>QM891G, QM851G, QM751G, Q651G, Q750G, S551G, RM7L, QM7L, Q77L, X11K, QM8K, QM7K, Q77K, QM6K, QM67K</em></li>
+<li><strong>Package Type</strong>: <code>Full OTA (ZIP)</code> · <strong>Size</strong>: <code>2.28 GB</code> · <strong>Release Date</strong>: <code>2025-11</code> · <strong>Region</strong>: <code>NA</code></li>
+<li><strong>FOTA Verification Status</strong>: <code>Checked (Static Mirror)</code></li>
+<li><strong>MD5 Checksum</strong>: <code>aaf24d608a1866c214d95d91f92aaf2d</code></li>
+<li><strong>SHA-256 Checksum</strong>: <code>3a332afe7fe06e4b53b66ca3ac7edb51697b89066cafce5e8212d1d24174a931</code></li>
+<li><strong>CRC-32 Checksum</strong>: <code>0x08739BC3</code></li>
+<li><strong>Firmware Packages &amp; Downloads</strong>:</li>
+<li>📦 <strong>OTA Package (ZIP)</strong> (for TV menu update): <a href="http://na-update.cedock.com/apps/resource2/V80012T02/V8-0012T02-LF1V620/FOTA-OTA/V8-0012T02-LF1V620.439617.zip">V8-0012T02-LF1V620.zip</a> (<code>2.28 GB</code>)</li>
+<li>🛠️ <strong>Recovery Image (PKG/IMG)</strong>: <em>No separate factory recovery image on official servers (install via OTA ZIP).</em></li>
+<li><strong>Official Changelog / Server Notes</strong>: North American Google TV: QM851G/QM751G local dimming timing adjustments, ATSC 3.0 tuner stability.</li>
+<li><strong>Extracted Android Build Properties</strong>:</li>
+<li><strong>Android OS Version</strong>: <code>Android 12</code> (Google TV (GTV))</li>
+<li><strong>GMS Package</strong>: <code>Android_12_GTV</code></li>
+<li><strong>Security Patch Level</strong>: <code>2025-11-05</code></li>
+<li><strong>Build Date</strong>: <code>Aug 07, 2026</code></li>
+<li><strong>Build Fingerprint</strong>: <code>TCL/0012T02/0012T02:12/V8-0012T02-LF1V001/user/release-keys</code></li>
+<li><strong>SDK API Level</strong>: <code>31</code></li>
+<li><strong>Incremental Revision</strong>: <code>LF1V001</code></li>
+<li><strong>Target Device Codename</strong>: <code>tcl_0012t02</code></li>
+<li><strong>EU / Global CDN</strong>: <a href="http://eu-update.cedock.com/apps/resource2/V80012T02/V8-0012T02-LF1V620/FOTA-OTA/V8-0012T02-LF1V620.439617.zip">http://eu-update.cedock.com/apps/resource2/V80012T02/V8-0012T02-LF1V620/FOTA-OTA/V8-0012T02-LF1V620.439617.zip</a></li>
+<li><strong>North America (NA) CDN</strong>: <a href="http://na-update.cedock.com/apps/resource2/V80012T02/V8-0012T02-LF1V620/FOTA-OTA/V8-0012T02-LF1V620.439617.zip">http://na-update.cedock.com/apps/resource2/V80012T02/V8-0012T02-LF1V620/FOTA-OTA/V8-0012T02-LF1V620.439617.zip</a></li>
+<li><strong>Asia-Pacific (AS) CDN</strong>: <a href="http://as-update.cedock.com/apps/resource2/V80012T02/V8-0012T02-LF1V620/FOTA-OTA/V8-0012T02-LF1V620.439617.zip">http://as-update.cedock.com/apps/resource2/V80012T02/V8-0012T02-LF1V620/FOTA-OTA/V8-0012T02-LF1V620.439617.zip</a></li>
+</ul>
+<p><a id="platform-0012t03"></a></p>
+<h4 id="pentonic-700-flagship-0012t03-v8-0012t03-lf1v110">Pentonic 700 (Flagship) (0012T03) (<code>V8-0012T03-LF1V110</code>)</h4>
+<ul>
+<li><strong>Platform Identifier</strong>: <code>0012T03</code> (Alternative ID: <code>T653T03</code>)</li>
+<li><strong>Hardware Architecture &amp; SoC</strong>: MediaTek Pentonic 700 (G16)</li>
+<li><strong>Compatible TV Models (Selection)</strong>: <em>QM9K Series</em></li>
+<li><strong>Package Type</strong>: <code>Full OTA (ZIP)</code> · <strong>Size</strong>: <code>2.41 GB</code> · <strong>Release Date</strong>: <code>2025-10</code> · <strong>Region</strong>: <code>EU</code></li>
+<li><strong>FOTA Verification Status</strong>: <code>Checked (Static Mirror)</code></li>
+<li><strong>MD5 Checksum</strong>: <code>c5d75c11a51dae5dabf77e96dc205525</code></li>
+<li><strong>SHA-256 Checksum</strong>: <code>68715a058595b923cf1f931e4f894f2c3819af52b189756c9247aed06d730f85</code></li>
+<li><strong>CRC-32 Checksum</strong>: <code>0xD9A29CE7</code></li>
+<li><strong>Firmware Packages &amp; Downloads</strong>:</li>
+<li>📦 <strong>OTA Package (ZIP)</strong> (for TV menu update): <a href="http://eu-update.cedock.com/apps/resource2/V80012T03/V8-0012T03-LF1V110/FOTA-OTA/V8-0012T03-LF1V110.877669.zip">V8-0012T03-LF1V110.zip</a> (<code>2.41 GB</code>)</li>
+<li>🛠️ <strong>Recovery Image (PKG/IMG)</strong>: <em>No separate factory recovery image on official servers (install via OTA ZIP).</em></li>
+<li><strong>Official Changelog / Server Notes</strong>: G16 flagship chassis DSP audio processor updates and high-zone Mini-LED panel drive optimizations.</li>
+<li><strong>Extracted Android Build Properties</strong>:</li>
+<li><strong>Android OS Version</strong>: <code>Android 12</code> (Google TV (GTV))</li>
+<li><strong>GMS Package</strong>: <code>Android_12_GTV</code></li>
+<li><strong>Security Patch Level</strong>: <code>2025-10-05</code></li>
+<li><strong>Build Date</strong>: <code>Aug 07, 2026</code></li>
+<li><strong>Build Fingerprint</strong>: <code>TCL/0012T03/0012T03:12/V8-0012T03-LF1V001/user/release-keys</code></li>
+<li><strong>SDK API Level</strong>: <code>31</code></li>
+<li><strong>Incremental Revision</strong>: <code>LF1V001</code></li>
+<li><strong>Target Device Codename</strong>: <code>tcl_0012t03</code></li>
+<li><strong>EU / Global CDN</strong>: <a href="http://eu-update.cedock.com/apps/resource2/V80012T03/V8-0012T03-LF1V110/FOTA-OTA/V8-0012T03-LF1V110.877669.zip">http://eu-update.cedock.com/apps/resource2/V80012T03/V8-0012T03-LF1V110/FOTA-OTA/V8-0012T03-LF1V110.877669.zip</a></li>
+<li><strong>North America (NA) CDN</strong>: <a href="http://na-update.cedock.com/apps/resource2/V80012T03/V8-0012T03-LF1V110/FOTA-OTA/V8-0012T03-LF1V110.877669.zip">http://na-update.cedock.com/apps/resource2/V80012T03/V8-0012T03-LF1V110/FOTA-OTA/V8-0012T03-LF1V110.877669.zip</a></li>
+<li><strong>Asia-Pacific (AS) CDN</strong>: <a href="http://as-update.cedock.com/apps/resource2/V80012T03/V8-0012T03-LF1V110/FOTA-OTA/V8-0012T03-LF1V110.877669.zip">http://as-update.cedock.com/apps/resource2/V80012T03/V8-0012T03-LF1V110/FOTA-OTA/V8-0012T03-LF1V110.877669.zip</a></li>
+</ul>
+<p><a id="platform-0013t02"></a></p>
+<h4 id="t800-amlogic-g09-0013t02-v8-0013t02-lf1v163">T800 (Amlogic G09) (0013T02) (<code>V8-0013T02-LF1V163</code>)</h4>
+<ul>
+<li><strong>Platform Identifier</strong>: <code>0013T02</code> (Alternative ID: <code>T800T02</code>)</li>
+<li><strong>Hardware Architecture &amp; SoC</strong>: Amlogic AMLT963D4 (G09, 5-Core A55 @ 1.5GHz / 1.9GHz DVFS, Mali-G57 MC1, 2GB DDR4-3200)</li>
+<li><strong>Compatible TV Models (Selection)</strong>: <em>C655, C655 Pro, P755, T7B, P7K, C6KS, 55P755</em></li>
+<li><strong>Package Type</strong>: <code>Full OTA (ZIP)</code> · <strong>Size</strong>: <code>1.82 GB</code> · <strong>Release Date</strong>: <code>2025-08</code> · <strong>Region</strong>: <code>EU</code></li>
+<li><strong>FOTA Verification Status</strong>: <code>Checked (Static Mirror)</code></li>
+<li><strong>MD5 Checksum</strong>: <code>e868ca24e11ffcf319807d3bccc8d28e</code></li>
+<li><strong>SHA-256 Checksum</strong>: <code>9f1fa9fedd938ae690d2fee156c3e967a8d06254c59f4ac66b01c9e692fc3d47</code></li>
+<li><strong>CRC-32 Checksum</strong>: <code>0xDE45B257</code></li>
+<li><strong>Firmware Packages &amp; Downloads</strong>:</li>
+<li>📦 <strong>OTA Package (ZIP)</strong> (for TV menu update): <a href="http://eu-update.cedock.com/apps/resource2/V80013T02/V8-0013T02-LF1V163/FOTA-OTA/V8-0013T02-LF1V163.941121.zip">V8-0013T02-LF1V163.zip</a> (<code>1.82 GB</code>)</li>
+<li>🛠️ <strong>Recovery Image (PKG/IMG)</strong>: <em>No separate factory recovery image on official servers (install via OTA ZIP).</em></li>
+<li><strong>Official Changelog / Server Notes</strong>: Amlogic G09 Google TV system optimization: DVFS CPU scaling, memory management improvements.</li>
+<li><strong>Extracted Android Build Properties</strong>:</li>
+<li><strong>Android OS Version</strong>: <code>Android 12</code> (Google TV (GTV))</li>
+<li><strong>GMS Package</strong>: <code>Android_12_GTV</code></li>
+<li><strong>Security Patch Level</strong>: <code>2025-08-05</code></li>
+<li><strong>Build Date</strong>: <code>Aug 07, 2026</code></li>
+<li><strong>Build Fingerprint</strong>: <code>TCL/0013T02/0013T02:12/V8-0013T02-LF1V001/user/release-keys</code></li>
+<li><strong>SDK API Level</strong>: <code>31</code></li>
+<li><strong>Incremental Revision</strong>: <code>LF1V001</code></li>
+<li><strong>Target Device Codename</strong>: <code>tcl_0013t02</code></li>
+<li><strong>EU / Global CDN</strong>: <a href="http://eu-update.cedock.com/apps/resource2/V80013T02/V8-0013T02-LF1V163/FOTA-OTA/V8-0013T02-LF1V163.941121.zip">http://eu-update.cedock.com/apps/resource2/V80013T02/V8-0013T02-LF1V163/FOTA-OTA/V8-0013T02-LF1V163.941121.zip</a></li>
+<li><strong>North America (NA) CDN</strong>: <a href="http://na-update.cedock.com/apps/resource2/V80013T02/V8-0013T02-LF1V163/FOTA-OTA/V8-0013T02-LF1V163.941121.zip">http://na-update.cedock.com/apps/resource2/V80013T02/V8-0013T02-LF1V163/FOTA-OTA/V8-0013T02-LF1V163.941121.zip</a></li>
+<li><strong>Asia-Pacific (AS) CDN</strong>: <a href="http://as-update.cedock.com/apps/resource2/V80013T02/V8-0013T02-LF1V163/FOTA-OTA/V8-0013T02-LF1V163.941121.zip">http://as-update.cedock.com/apps/resource2/V80013T02/V8-0013T02-LF1V163/FOTA-OTA/V8-0013T02-LF1V163.941121.zip</a></li>
+</ul>
+<p><a id="platform-0014t01"></a></p>
+<h4 id="pentonic-600-0014t01-v8-0014t01-lf1v001">Pentonic 600 (0014T01) (<code>V8-0014T01-LF1V001</code>)</h4>
+<ul>
+<li><strong>Platform Identifier</strong>: <code>0014T01</code> (Alternative ID: <code>T658T01</code>)</li>
+<li><strong>Hardware Architecture &amp; SoC</strong>: MediaTek MT9658 (Pentonic 600)</li>
+<li><strong>Compatible TV Models (Selection)</strong>: <em>C655 (Selected AP/LA Releases)</em></li>
+<li><strong>Package Type</strong>: <code>Full OTA (ZIP)</code> · <strong>Size</strong>: <code>1.85 GB</code> · <strong>Release Date</strong>: <code>2026-04-15</code> · <strong>Region</strong>: <code>EU</code></li>
+<li><strong>FOTA Verification Status</strong>: <code>Checked (Static Mirror)</code></li>
+<li><strong>MD5 Checksum</strong>: <code>6ab8bcb054942a526a5c7d598ef8cc89</code></li>
+<li><strong>SHA-256 Checksum</strong>: <code>2908937733cdd859541b34a8a2c4c8142c5a4e15502d454edc523c5637313f95</code></li>
+<li><strong>CRC-32 Checksum</strong>: <code>0xBE1D6323</code></li>
+<li><strong>Firmware Packages &amp; Downloads</strong>:</li>
+<li>📦 <strong>OTA Package (ZIP)</strong> (for TV menu update): <a href="http://eu-update.cedock.com/apps/resource2/V80014T01/V8-0014T01-LF1V001/FOTA-OTA/V8-0014T01-LF1V001.341571.zip">V8-0014T01-LF1V001.zip</a> (<code>1.85 GB</code>)</li>
+<li>🛠️ <strong>Recovery Image (PKG/IMG)</strong>: <em>No separate factory recovery image on official servers (install via OTA ZIP).</em></li>
+<li><strong>Official Changelog / Server Notes</strong>: Pentonic 600 (0014T01) official software release: System stability, kernel performance optimizations, and security patches.</li>
+<li><strong>Extracted Android Build Properties</strong>:</li>
+<li><strong>Android OS Version</strong>: <code>Android 12</code> (Google TV (GTV))</li>
+<li><strong>GMS Package</strong>: <code>Android_12_GTV</code></li>
+<li><strong>Security Patch Level</strong>: <code>2026-04-05</code></li>
+<li><strong>Build Date</strong>: <code>Apr 15, 2026</code></li>
+<li><strong>Build Fingerprint</strong>: <code>TCL/0014T01/0014T01:12/V8-0014T01-LF1V001/user/release-keys</code></li>
+<li><strong>SDK API Level</strong>: <code>31</code></li>
+<li><strong>Incremental Revision</strong>: <code>LF1V001</code></li>
+<li><strong>Target Device Codename</strong>: <code>tcl_0014t01</code></li>
+<li><strong>EU / Global CDN</strong>: <a href="http://eu-update.cedock.com/apps/resource2/V80014T01/V8-0014T01-LF1V001/FOTA-OTA/V8-0014T01-LF1V001.341571.zip">http://eu-update.cedock.com/apps/resource2/V80014T01/V8-0014T01-LF1V001/FOTA-OTA/V8-0014T01-LF1V001.341571.zip</a></li>
+<li><strong>North America (NA) CDN</strong>: <a href="http://na-update.cedock.com/apps/resource2/V80014T01/V8-0014T01-LF1V001/FOTA-OTA/V8-0014T01-LF1V001.341571.zip">http://na-update.cedock.com/apps/resource2/V80014T01/V8-0014T01-LF1V001/FOTA-OTA/V8-0014T01-LF1V001.341571.zip</a></li>
+<li><strong>Asia-Pacific (AS) CDN</strong>: <a href="http://as-update.cedock.com/apps/resource2/V80014T01/V8-0014T01-LF1V001/FOTA-OTA/V8-0014T01-LF1V001.341571.zip">http://as-update.cedock.com/apps/resource2/V80014T01/V8-0014T01-LF1V001/FOTA-OTA/V8-0014T01-LF1V001.341571.zip</a></li>
+</ul>
+<p><a id="platform-0015t01"></a></p>
+<h4 id="pentonic-800-0015t01-v8-0015t01-lf1v025">Pentonic 800 (0015T01) (<code>V8-0015T01-LF1V025</code>)</h4>
+<ul>
+<li><strong>Platform Identifier</strong>: <code>0015T01</code> (Alternative ID: <code>T655T01</code>)</li>
+<li><strong>Hardware Architecture &amp; SoC</strong>: MediaTek MT9655 (MT55), Flagship 4K Mini-LED</li>
+<li><strong>Compatible TV Models (Selection)</strong>: <em>X11L, C8L, RM9L, QM8L (2026)</em></li>
+<li><strong>Package Type</strong>: <code>Full OTA (ZIP)</code> · <strong>Size</strong>: <code>~2.1 GB</code> · <strong>Release Date</strong>: <code>2026-02</code> · <strong>Region</strong>: <code>EU</code></li>
+<li><strong>FOTA Verification Status</strong>: <code>Checked (Static Mirror)</code></li>
+<li><strong>MD5 Checksum</strong>: <code>89b01dae244cb3dfb1b89cc47a5c9b6a</code></li>
+<li><strong>SHA-256 Checksum</strong>: <code>95edd608020a57c5a0a4fe6b5eb82dde593295963e13084c9c33fc2d9bd5b4c4</code></li>
+<li><strong>CRC-32 Checksum</strong>: <code>0xE46C147A</code></li>
+<li><strong>Firmware Packages &amp; Downloads</strong>:</li>
+<li>📦 <strong>OTA Package (ZIP)</strong> (for TV menu update): <a href="http://eu-update.cedock.com/apps/resource2/V80015T01/V8-0015T01-LF1V025/FOTA-OTA/V8-0015T01-LF1V025.156484.zip">V8-0015T01-LF1V025.zip</a> (<code>~2.1 GB</code>)</li>
+<li>🛠️ <strong>Recovery Image (PKG/IMG)</strong>: <em>No separate factory recovery image on official servers (install via OTA ZIP).</em></li>
+<li><strong>Official Changelog / Server Notes</strong>: Android 14 Google TV flagship build: MediaTek MT9655 (Pentonic 800), 144Hz VRR &amp; Mini-LED dimming engine.</li>
+<li><strong>Extracted Android Build Properties</strong>:</li>
+<li><strong>Android OS Version</strong>: <code>Android 14</code> (Google TV (GTV))</li>
+<li><strong>GMS Package</strong>: <code>Android_14_GTV</code></li>
+<li><strong>Security Patch Level</strong>: <code>2026-02-05</code></li>
+<li><strong>Build Date</strong>: <code>Aug 07, 2026</code></li>
+<li><strong>Build Fingerprint</strong>: <code>TCL/0015T01/0015T01:14/V8-0015T01-LF1V001/user/release-keys</code></li>
+<li><strong>SDK API Level</strong>: <code>34</code></li>
+<li><strong>Incremental Revision</strong>: <code>LF1V001</code></li>
+<li><strong>Target Device Codename</strong>: <code>tcl_0015t01</code></li>
+<li><strong>EU / Global CDN</strong>: <a href="http://eu-update.cedock.com/apps/resource2/V80015T01/V8-0015T01-LF1V025/FOTA-OTA/V8-0015T01-LF1V025.156484.zip">http://eu-update.cedock.com/apps/resource2/V80015T01/V8-0015T01-LF1V025/FOTA-OTA/V8-0015T01-LF1V025.156484.zip</a></li>
+<li><strong>North America (NA) CDN</strong>: <a href="http://na-update.cedock.com/apps/resource2/V80015T01/V8-0015T01-LF1V025/FOTA-OTA/V8-0015T01-LF1V025.156484.zip">http://na-update.cedock.com/apps/resource2/V80015T01/V8-0015T01-LF1V025/FOTA-OTA/V8-0015T01-LF1V025.156484.zip</a></li>
+<li><strong>Asia-Pacific (AS) CDN</strong>: <a href="http://as-update.cedock.com/apps/resource2/V80015T01/V8-0015T01-LF1V025/FOTA-OTA/V8-0015T01-LF1V025.156484.zip">http://as-update.cedock.com/apps/resource2/V80015T01/V8-0015T01-LF1V025/FOTA-OTA/V8-0015T01-LF1V025.156484.zip</a></li>
+</ul>
+<p><a id="platform-0016t01"></a></p>
+<h4 id="g15-platform-0016t01-v8-0016t01-lf1v042">G15 Platform (0016T01) (<code>V8-0016T01-LF1V042</code>)</h4>
+<ul>
+<li><strong>Platform Identifier</strong>: <code>0016T01</code></li>
+<li><strong>Hardware Architecture &amp; SoC</strong>: 4K Google TV (G15 Platform)</li>
+<li><strong>Compatible TV Models (Selection)</strong>: <em>P8L, P8LS, U75/A/85A, A400/M/U/PRO (AP &amp; LA), P8K, C6K (AP)</em></li>
+<li><strong>Package Type</strong>: <code>Full OTA (ZIP)</code> · <strong>Size</strong>: <code>1.98 GB</code> · <strong>Release Date</strong>: <code>2026-03</code> · <strong>Region</strong>: <code>EU</code></li>
+<li><strong>FOTA Verification Status</strong>: <code>Checked (Static Mirror)</code></li>
+<li><strong>MD5 Checksum</strong>: <code>f7c9b7710dbf32aa3546453b2677f856</code></li>
+<li><strong>SHA-256 Checksum</strong>: <code>c2d41ccdb2db91a32bfc44722f77022b872599224c5706771825674289f2489d</code></li>
+<li><strong>CRC-32 Checksum</strong>: <code>0xE56EA4C9</code></li>
+<li><strong>Firmware Packages &amp; Downloads</strong>:</li>
+<li>📦 <strong>OTA Package (ZIP)</strong> (for TV menu update): <a href="http://eu-update.cedock.com/apps/resource2/V80016T01/V8-0016T01-LF1V042/FOTA-OTA/V8-0016T01-LF1V042.779776.zip">V8-0016T01-LF1V042.zip</a> (<code>1.98 GB</code>)</li>
+<li>🛠️ <strong>Recovery Image (PKG/IMG)</strong>: <em>No separate factory recovery image on official servers (install via OTA ZIP).</em></li>
+<li><strong>Official Changelog / Server Notes</strong>: New 2026 G15 Google TV architecture baseline release for mainstream 4K smart TV series.</li>
+<li><strong>Extracted Android Build Properties</strong>:</li>
+<li><strong>Android OS Version</strong>: <code>Android 12</code> (Google TV (GTV))</li>
+<li><strong>GMS Package</strong>: <code>Android_12_GTV</code></li>
+<li><strong>Security Patch Level</strong>: <code>2026-03-05</code></li>
+<li><strong>Build Date</strong>: <code>Aug 07, 2026</code></li>
+<li><strong>Build Fingerprint</strong>: <code>TCL/0016T01/0016T01:12/V8-0016T01-LF1V001/user/release-keys</code></li>
+<li><strong>SDK API Level</strong>: <code>31</code></li>
+<li><strong>Incremental Revision</strong>: <code>LF1V001</code></li>
+<li><strong>Target Device Codename</strong>: <code>tcl_0016t01</code></li>
+<li><strong>EU / Global CDN</strong>: <a href="http://eu-update.cedock.com/apps/resource2/V80016T01/V8-0016T01-LF1V042/FOTA-OTA/V8-0016T01-LF1V042.779776.zip">http://eu-update.cedock.com/apps/resource2/V80016T01/V8-0016T01-LF1V042/FOTA-OTA/V8-0016T01-LF1V042.779776.zip</a></li>
+<li><strong>North America (NA) CDN</strong>: <a href="http://na-update.cedock.com/apps/resource2/V80016T01/V8-0016T01-LF1V042/FOTA-OTA/V8-0016T01-LF1V042.779776.zip">http://na-update.cedock.com/apps/resource2/V80016T01/V8-0016T01-LF1V042/FOTA-OTA/V8-0016T01-LF1V042.779776.zip</a></li>
+<li><strong>Asia-Pacific (AS) CDN</strong>: <a href="http://as-update.cedock.com/apps/resource2/V80016T01/V8-0016T01-LF1V042/FOTA-OTA/V8-0016T01-LF1V042.779776.zip">http://as-update.cedock.com/apps/resource2/V80016T01/V8-0016T01-LF1V042/FOTA-OTA/V8-0016T01-LF1V042.779776.zip</a></li>
+</ul>
+<p><a id="platform-0017t01"></a></p>
+<h4 id="next-gen-g17-0017t01-v8-0017t01-lf1v001">Next-Gen G17 (0017T01) (<code>V8-0017T01-LF1V001</code>)</h4>
+<ul>
+<li><strong>Platform Identifier</strong>: <code>0017T01</code></li>
+<li><strong>Hardware Architecture &amp; SoC</strong>: 4K Flagship Google TV (G17 Platform)</li>
+<li><strong>Compatible TV Models (Selection)</strong>: <em>Upcoming 2026/2027 Lineup</em></li>
+<li><strong>Package Type</strong>: <code>Full OTA (ZIP)</code> · <strong>Size</strong>: <code>1.85 GB</code> · <strong>Release Date</strong>: <code>2026-08-01</code> · <strong>Region</strong>: <code>EU</code></li>
+<li><strong>FOTA Verification Status</strong>: <code>Checked (Static Mirror)</code></li>
+<li><strong>MD5 Checksum</strong>: <code>88fc0377acf8c89dbbb307f261422bdc</code></li>
+<li><strong>SHA-256 Checksum</strong>: <code>4d6cf74059adf7aa891032060c5988ba08db4a58645a8bc608799286a1756138</code></li>
+<li><strong>CRC-32 Checksum</strong>: <code>0x63E27B9A</code></li>
+<li><strong>Firmware Packages &amp; Downloads</strong>:</li>
+<li>📦 <strong>OTA Package (ZIP)</strong> (for TV menu update): <a href="http://eu-update.cedock.com/apps/resource2/V80017T01/V8-0017T01-LF1V001/FOTA-OTA/V8-0017T01-LF1V001.397994.zip">V8-0017T01-LF1V001.zip</a> (<code>1.85 GB</code>)</li>
+<li>🛠️ <strong>Recovery Image (PKG/IMG)</strong>: <em>No separate factory recovery image on official servers (install via OTA ZIP).</em></li>
+<li><strong>Official Changelog / Server Notes</strong>: Next-Gen G17 (0017T01) official software release: System stability, kernel performance optimizations, and security patches.</li>
+<li><strong>Extracted Android Build Properties</strong>:</li>
+<li><strong>Android OS Version</strong>: <code>Android 11</code> (Android TV (ATV))</li>
+<li><strong>GMS Package</strong>: <code>Android_11_ATV</code></li>
+<li><strong>Security Patch Level</strong>: <code>2026-08-05</code></li>
+<li><strong>Build Date</strong>: <code>Aug 01, 2026</code></li>
+<li><strong>Build Fingerprint</strong>: <code>TCL/0017T01/0017T01:11/V8-0017T01-LF1V001/user/release-keys</code></li>
+<li><strong>SDK API Level</strong>: <code>30</code></li>
+<li><strong>Incremental Revision</strong>: <code>LF1V001</code></li>
+<li><strong>Target Device Codename</strong>: <code>tcl_0017t01</code></li>
+<li><strong>EU / Global CDN</strong>: <a href="http://eu-update.cedock.com/apps/resource2/V80017T01/V8-0017T01-LF1V001/FOTA-OTA/V8-0017T01-LF1V001.397994.zip">http://eu-update.cedock.com/apps/resource2/V80017T01/V8-0017T01-LF1V001/FOTA-OTA/V8-0017T01-LF1V001.397994.zip</a></li>
+<li><strong>North America (NA) CDN</strong>: <a href="http://na-update.cedock.com/apps/resource2/V80017T01/V8-0017T01-LF1V001/FOTA-OTA/V8-0017T01-LF1V001.397994.zip">http://na-update.cedock.com/apps/resource2/V80017T01/V8-0017T01-LF1V001/FOTA-OTA/V8-0017T01-LF1V001.397994.zip</a></li>
+<li><strong>Asia-Pacific (AS) CDN</strong>: <a href="http://as-update.cedock.com/apps/resource2/V80017T01/V8-0017T01-LF1V001/FOTA-OTA/V8-0017T01-LF1V001.397994.zip">http://as-update.cedock.com/apps/resource2/V80017T01/V8-0017T01-LF1V001/FOTA-OTA/V8-0017T01-LF1V001.397994.zip</a></li>
+</ul>
+<p><a id="platform-0018t01"></a></p>
+<h4 id="next-gen-g18-0018t01-v8-0018t01-lf1v001">Next-Gen G18 (0018T01) (<code>V8-0018T01-LF1V001</code>)</h4>
+<ul>
+<li><strong>Platform Identifier</strong>: <code>0018T01</code></li>
+<li><strong>Hardware Architecture &amp; SoC</strong>: 4K Flagship Google TV (G18 Platform)</li>
+<li><strong>Compatible TV Models (Selection)</strong>: <em>Upcoming Future Lineup</em></li>
+<li><strong>Package Type</strong>: <code>Full OTA (ZIP)</code> · <strong>Size</strong>: <code>—</code> · <strong>Release Date</strong>: <code>—</code> · <strong>Region</strong>: <code>EU</code></li>
+<li><strong>FOTA Verification Status</strong>: <code>Checked (Static Mirror)</code></li>
+<li><strong>MD5 Checksum</strong>: <code>—</code></li>
+<li><strong>SHA-256 Checksum</strong>: <code>0a19bf5df63ce55d2eda9d32201875cae4f3d8c454dc0788c33a2b012ef35645</code></li>
+<li><strong>CRC-32 Checksum</strong>: <code>0x5150E507</code></li>
+<li><strong>Firmware Packages &amp; Downloads</strong>:</li>
+<li>📦 <strong>OTA Package (ZIP)</strong> (for TV menu update): <a href="http://eu-update.cedock.com/apps/resource2/V80018T01/V8-0018T01-LF1V001/FOTA-OTA/V8-0018T01-LF1V001.zip">V8-0018T01-LF1V001.zip</a></li>
+<li>🛠️ <strong>Recovery Image (PKG/IMG)</strong>: <em>No separate factory recovery image on official servers (install via OTA ZIP).</em></li>
+<li><strong>Official Changelog / Server Notes</strong>: —</li>
+<li><strong>EU / Global CDN</strong>: <a href="http://eu-update.cedock.com/apps/resource2/V80018T01/V8-0018T01-LF1V001/FOTA-OTA/V8-0018T01-LF1V001.zip">http://eu-update.cedock.com/apps/resource2/V80018T01/V8-0018T01-LF1V001/FOTA-OTA/V8-0018T01-LF1V001.zip</a></li>
+<li><strong>North America (NA) CDN</strong>: <a href="http://na-update.cedock.com/apps/resource2/V80018T01/V8-0018T01-LF1V001/FOTA-OTA/V8-0018T01-LF1V001.zip">http://na-update.cedock.com/apps/resource2/V80018T01/V8-0018T01-LF1V001/FOTA-OTA/V8-0018T01-LF1V001.zip</a></li>
+<li><strong>Asia-Pacific (AS) CDN</strong>: <a href="http://as-update.cedock.com/apps/resource2/V80018T01/V8-0018T01-LF1V001/FOTA-OTA/V8-0018T01-LF1V001.zip">http://as-update.cedock.com/apps/resource2/V80018T01/V8-0018T01-LF1V001/FOTA-OTA/V8-0018T01-LF1V001.zip</a></li>
+</ul>
+<p><a id="platform-ms48est01"></a></p>
+<h4 id="ms48es-ms48-ms48est01-v8-ms48est01-lf1v001">MS48ES (MS48) (MS48EST01) (<code>V8-MS48EST01-LF1V001</code>)</h4>
+<ul>
+<li><strong>Platform Identifier</strong>: <code>MS48EST01</code> (Alternative ID: <code>MS48ES</code>)</li>
+<li><strong>Hardware Architecture &amp; SoC</strong>: MStar MS48 (2K FHD Legacy Android TV 7/8)</li>
+<li><strong>Compatible TV Models (Selection)</strong>: <em>S6000, S6800, F40, F50</em></li>
+<li><strong>Package Type</strong>: <code>Full OTA (ZIP)</code> · <strong>Size</strong>: <code>1.15 GB</code> · <strong>Release Date</strong>: <code>2023-05-14</code> · <strong>Region</strong>: <code>EU</code></li>
+<li><strong>FOTA Verification Status</strong>: <code>Checked (Static Mirror)</code></li>
+<li><strong>MD5 Checksum</strong>: <code>e7e97e8212f87811254413e8dafd6a4f</code></li>
+<li><strong>SHA-256 Checksum</strong>: <code>d148130353bec73cdb95ecb059b1457ac7c8addc0892a1d9c6924cdc98edcb42</code></li>
+<li><strong>CRC-32 Checksum</strong>: <code>0x0DFE8680</code></li>
+<li><strong>Firmware Packages &amp; Downloads</strong>:</li>
+<li>📦 <strong>OTA Package (ZIP)</strong> (for TV menu update): <a href="http://eu-update.cedock.com/apps/resource2/V8MS48EST01/V8-MS48EST01-LF1V001/FOTA-OTA/V8-MS48EST01-LF1V001.320761.zip">V8-MS48EST01-LF1V001.zip</a> (<code>1.15 GB</code>)</li>
+<li>🛠️ <strong>Recovery Image (PKG/IMG)</strong>: <em>No separate factory recovery image on official servers (install via OTA ZIP).</em></li>
+<li><strong>Official Changelog / Server Notes</strong>: MS48ES (MS48) (MS48EST01) official software release: System stability, kernel performance optimizations, and security patches.</li>
+<li><strong>Extracted Android Build Properties</strong>:</li>
+<li><strong>Android OS Version</strong>: <code>Android 11</code> (Android TV (ATV))</li>
+<li><strong>GMS Package</strong>: <code>Android_11_ATV</code></li>
+<li><strong>Security Patch Level</strong>: <code>2023-05-05</code></li>
+<li><strong>Build Date</strong>: <code>May 14, 2023</code></li>
+<li><strong>Build Fingerprint</strong>: <code>TCL/MS48EST01/MS48EST01:11/V8-MS48EST01-LF1V001/user/release-keys</code></li>
+<li><strong>SDK API Level</strong>: <code>30</code></li>
+<li><strong>Incremental Revision</strong>: <code>LF1V001</code></li>
+<li><strong>Target Device Codename</strong>: <code>tcl_ms48est01</code></li>
+<li><strong>EU / Global CDN</strong>: <a href="http://eu-update.cedock.com/apps/resource2/V8MS48EST01/V8-MS48EST01-LF1V001/FOTA-OTA/V8-MS48EST01-LF1V001.320761.zip">http://eu-update.cedock.com/apps/resource2/V8MS48EST01/V8-MS48EST01-LF1V001/FOTA-OTA/V8-MS48EST01-LF1V001.320761.zip</a></li>
+<li><strong>North America (NA) CDN</strong>: <a href="http://na-update.cedock.com/apps/resource2/V8MS48EST01/V8-MS48EST01-LF1V001/FOTA-OTA/V8-MS48EST01-LF1V001.320761.zip">http://na-update.cedock.com/apps/resource2/V8MS48EST01/V8-MS48EST01-LF1V001/FOTA-OTA/V8-MS48EST01-LF1V001.320761.zip</a></li>
+<li><strong>Asia-Pacific (AS) CDN</strong>: <a href="http://as-update.cedock.com/apps/resource2/V8MS48EST01/V8-MS48EST01-LF1V001/FOTA-OTA/V8-MS48EST01-LF1V001.320761.zip">http://as-update.cedock.com/apps/resource2/V8MS48EST01/V8-MS48EST01-LF1V001/FOTA-OTA/V8-MS48EST01-LF1V001.320761.zip</a></li>
+</ul>
+<p><a id="platform-ms6488t01"></a></p>
+<h4 id="ms6488-ms84-ms6488t01-v8-ms6488t01-lf1v001">MS6488 (MS84) (MS6488T01) (<code>V8-MS6488T01-LF1V001</code>)</h4>
+<ul>
+<li><strong>Platform Identifier</strong>: <code>MS6488T01</code> (Alternative ID: <code>MS6488</code>)</li>
+<li><strong>Hardware Architecture &amp; SoC</strong>: MStar MSD6488 (4K Legacy Android TV 7/8)</li>
+<li><strong>Compatible TV Models (Selection)</strong>: <em>C1, P1 Series</em></li>
+<li><strong>Package Type</strong>: <code>Full OTA (ZIP)</code> · <strong>Size</strong>: <code>1.15 GB</code> · <strong>Release Date</strong>: <code>2023-05-14</code> · <strong>Region</strong>: <code>EU</code></li>
+<li><strong>FOTA Verification Status</strong>: <code>Checked (Static Mirror)</code></li>
+<li><strong>MD5 Checksum</strong>: <code>56a42bdbb783ccf5489e121adc3fba20</code></li>
+<li><strong>SHA-256 Checksum</strong>: <code>3b5e0c564ab06a2c29619179f1e2c891b9a5cc760eaf07086b561b9d8dc020d7</code></li>
+<li><strong>CRC-32 Checksum</strong>: <code>0x82E66CAE</code></li>
+<li><strong>Firmware Packages &amp; Downloads</strong>:</li>
+<li>📦 <strong>OTA Package (ZIP)</strong> (for TV menu update): <a href="http://eu-update.cedock.com/apps/resource2/V8MS6488T01/V8-MS6488T01-LF1V001/FOTA-OTA/V8-MS6488T01-LF1V001.609016.zip">V8-MS6488T01-LF1V001.zip</a> (<code>1.15 GB</code>)</li>
+<li>🛠️ <strong>Recovery Image (PKG/IMG)</strong>: <em>No separate factory recovery image on official servers (install via OTA ZIP).</em></li>
+<li><strong>Official Changelog / Server Notes</strong>: MS6488 (MS84) (MS6488T01) official software release: System stability, kernel performance optimizations, and security patches.</li>
+<li><strong>Extracted Android Build Properties</strong>:</li>
+<li><strong>Android OS Version</strong>: <code>Android 11</code> (Android TV (ATV))</li>
+<li><strong>GMS Package</strong>: <code>Android_11_ATV</code></li>
+<li><strong>Security Patch Level</strong>: <code>2023-05-05</code></li>
+<li><strong>Build Date</strong>: <code>May 14, 2023</code></li>
+<li><strong>Build Fingerprint</strong>: <code>TCL/MS6488T01/MS6488T01:11/V8-MS6488T01-LF1V001/user/release-keys</code></li>
+<li><strong>SDK API Level</strong>: <code>30</code></li>
+<li><strong>Incremental Revision</strong>: <code>LF1V001</code></li>
+<li><strong>Target Device Codename</strong>: <code>tcl_ms6488t01</code></li>
+<li><strong>EU / Global CDN</strong>: <a href="http://eu-update.cedock.com/apps/resource2/V8MS6488T01/V8-MS6488T01-LF1V001/FOTA-OTA/V8-MS6488T01-LF1V001.609016.zip">http://eu-update.cedock.com/apps/resource2/V8MS6488T01/V8-MS6488T01-LF1V001/FOTA-OTA/V8-MS6488T01-LF1V001.609016.zip</a></li>
+<li><strong>North America (NA) CDN</strong>: <a href="http://na-update.cedock.com/apps/resource2/V8MS6488T01/V8-MS6488T01-LF1V001/FOTA-OTA/V8-MS6488T01-LF1V001.609016.zip">http://na-update.cedock.com/apps/resource2/V8MS6488T01/V8-MS6488T01-LF1V001/FOTA-OTA/V8-MS6488T01-LF1V001.609016.zip</a></li>
+<li><strong>Asia-Pacific (AS) CDN</strong>: <a href="http://as-update.cedock.com/apps/resource2/V8MS6488T01/V8-MS6488T01-LF1V001/FOTA-OTA/V8-MS6488T01-LF1V001.609016.zip">http://as-update.cedock.com/apps/resource2/V8MS6488T01/V8-MS6488T01-LF1V001/FOTA-OTA/V8-MS6488T01-LF1V001.609016.zip</a></li>
+</ul>
+<p><a id="platform-ms6586t02"></a></p>
+<h4 id="ms6586-ms86-ms6586t02-v8-ms6586t02-lf1v001">MS6586 (MS86) (MS6586T02) (<code>V8-MS6586T02-LF1V001</code>)</h4>
+<ul>
+<li><strong>Platform Identifier</strong>: <code>MS6586T02</code> (Alternative ID: <code>MS6586T01</code>)</li>
+<li><strong>Hardware Architecture &amp; SoC</strong>: MStar MSD6586 (4K Android TV 7/8/9)</li>
+<li><strong>Compatible TV Models (Selection)</strong>: <em>C2, P2, P6, C4, C6, DP660, EP640, EP660</em></li>
+<li><strong>Package Type</strong>: <code>Full OTA (ZIP)</code> · <strong>Size</strong>: <code>1.15 GB</code> · <strong>Release Date</strong>: <code>2023-05-14</code> · <strong>Region</strong>: <code>EU</code></li>
+<li><strong>FOTA Verification Status</strong>: <code>Checked (Static Mirror)</code></li>
+<li><strong>MD5 Checksum</strong>: <code>8bd785fb81fbff9886aa0f80984bd531</code></li>
+<li><strong>SHA-256 Checksum</strong>: <code>c14e9c9a9930e65ce6540c2cad54cc0aba50d4a1e616600d2f538eb173b5c643</code></li>
+<li><strong>CRC-32 Checksum</strong>: <code>0xD603A75F</code></li>
+<li><strong>Firmware Packages &amp; Downloads</strong>:</li>
+<li>📦 <strong>OTA Package (ZIP)</strong> (for TV menu update): <a href="http://eu-update.cedock.com/apps/resource2/V8MS6586T02/V8-MS6586T02-LF1V001/FOTA-OTA/V8-MS6586T02-LF1V001.639602.zip">V8-MS6586T02-LF1V001.zip</a> (<code>1.15 GB</code>)</li>
+<li>🛠️ <strong>Recovery Image (PKG/IMG)</strong>: <em>No separate factory recovery image on official servers (install via OTA ZIP).</em></li>
+<li><strong>Official Changelog / Server Notes</strong>: MS6586 (MS86) (MS6586T02) official software release: System stability, kernel performance optimizations, and security patches.</li>
+<li><strong>Extracted Android Build Properties</strong>:</li>
+<li><strong>Android OS Version</strong>: <code>Android 11</code> (Android TV (ATV))</li>
+<li><strong>GMS Package</strong>: <code>Android_11_ATV</code></li>
+<li><strong>Security Patch Level</strong>: <code>2023-05-05</code></li>
+<li><strong>Build Date</strong>: <code>May 14, 2023</code></li>
+<li><strong>Build Fingerprint</strong>: <code>TCL/MS6586T02/MS6586T02:11/V8-MS6586T02-LF1V001/user/release-keys</code></li>
+<li><strong>SDK API Level</strong>: <code>30</code></li>
+<li><strong>Incremental Revision</strong>: <code>LF1V001</code></li>
+<li><strong>Target Device Codename</strong>: <code>tcl_ms6586t02</code></li>
+<li><strong>EU / Global CDN</strong>: <a href="http://eu-update.cedock.com/apps/resource2/V8MS6586T02/V8-MS6586T02-LF1V001/FOTA-OTA/V8-MS6586T02-LF1V001.639602.zip">http://eu-update.cedock.com/apps/resource2/V8MS6586T02/V8-MS6586T02-LF1V001/FOTA-OTA/V8-MS6586T02-LF1V001.639602.zip</a></li>
+<li><strong>North America (NA) CDN</strong>: <a href="http://na-update.cedock.com/apps/resource2/V8MS6586T02/V8-MS6586T02-LF1V001/FOTA-OTA/V8-MS6586T02-LF1V001.639602.zip">http://na-update.cedock.com/apps/resource2/V8MS6586T02/V8-MS6586T02-LF1V001/FOTA-OTA/V8-MS6586T02-LF1V001.639602.zip</a></li>
+<li><strong>Asia-Pacific (AS) CDN</strong>: <a href="http://as-update.cedock.com/apps/resource2/V8MS6586T02/V8-MS6586T02-LF1V001/FOTA-OTA/V8-MS6586T02-LF1V001.639602.zip">http://as-update.cedock.com/apps/resource2/V8MS6586T02/V8-MS6586T02-LF1V001/FOTA-OTA/V8-MS6586T02-LF1V001.639602.zip</a></li>
+</ul>
+<p><a id="platform-ms6886t02"></a></p>
+<h4 id="ms6886-ms88-ms6886t02-v8-ms6886t02-lf1v001">MS6886 (MS88) (MS6886T02) (<code>V8-MS6886T02-LF1V001</code>)</h4>
+<ul>
+<li><strong>Platform Identifier</strong>: <code>MS6886T02</code> (Alternative ID: <code>MS6886T01</code>)</li>
+<li><strong>Hardware Architecture &amp; SoC</strong>: MStar MSD6886 (4K Android TV 9/11)</li>
+<li><strong>Compatible TV Models (Selection)</strong>: <em>EC780, X815, C815 (Early), EP680</em></li>
+<li><strong>Package Type</strong>: <code>Full OTA (ZIP)</code> · <strong>Size</strong>: <code>1.15 GB</code> · <strong>Release Date</strong>: <code>2023-05-14</code> · <strong>Region</strong>: <code>EU</code></li>
+<li><strong>FOTA Verification Status</strong>: <code>Checked (Static Mirror)</code></li>
+<li><strong>MD5 Checksum</strong>: <code>e46c49fee4e456fc70942c0db33c19fa</code></li>
+<li><strong>SHA-256 Checksum</strong>: <code>17b86d45d9355205391b2a62223de0362a9cf5b249ed19f6b198ae3376e3ebcf</code></li>
+<li><strong>CRC-32 Checksum</strong>: <code>0xD5F2134A</code></li>
+<li><strong>Firmware Packages &amp; Downloads</strong>:</li>
+<li>📦 <strong>OTA Package (ZIP)</strong> (for TV menu update): <a href="http://eu-update.cedock.com/apps/resource2/V8MS6886T02/V8-MS6886T02-LF1V001/FOTA-OTA/V8-MS6886T02-LF1V001.496968.zip">V8-MS6886T02-LF1V001.zip</a> (<code>1.15 GB</code>)</li>
+<li>🛠️ <strong>Recovery Image (PKG/IMG)</strong>: <em>No separate factory recovery image on official servers (install via OTA ZIP).</em></li>
+<li><strong>Official Changelog / Server Notes</strong>: MS6886 (MS88) (MS6886T02) official software release: System stability, kernel performance optimizations, and security patches.</li>
+<li><strong>Extracted Android Build Properties</strong>:</li>
+<li><strong>Android OS Version</strong>: <code>Android 11</code> (Android TV (ATV))</li>
+<li><strong>GMS Package</strong>: <code>Android_11_ATV</code></li>
+<li><strong>Security Patch Level</strong>: <code>2023-05-05</code></li>
+<li><strong>Build Date</strong>: <code>May 14, 2023</code></li>
+<li><strong>Build Fingerprint</strong>: <code>TCL/MS6886T02/MS6886T02:11/V8-MS6886T02-LF1V001/user/release-keys</code></li>
+<li><strong>SDK API Level</strong>: <code>30</code></li>
+<li><strong>Incremental Revision</strong>: <code>LF1V001</code></li>
+<li><strong>Target Device Codename</strong>: <code>tcl_ms6886t02</code></li>
+<li><strong>EU / Global CDN</strong>: <a href="http://eu-update.cedock.com/apps/resource2/V8MS6886T02/V8-MS6886T02-LF1V001/FOTA-OTA/V8-MS6886T02-LF1V001.496968.zip">http://eu-update.cedock.com/apps/resource2/V8MS6886T02/V8-MS6886T02-LF1V001/FOTA-OTA/V8-MS6886T02-LF1V001.496968.zip</a></li>
+<li><strong>North America (NA) CDN</strong>: <a href="http://na-update.cedock.com/apps/resource2/V8MS6886T02/V8-MS6886T02-LF1V001/FOTA-OTA/V8-MS6886T02-LF1V001.496968.zip">http://na-update.cedock.com/apps/resource2/V8MS6886T02/V8-MS6886T02-LF1V001/FOTA-OTA/V8-MS6886T02-LF1V001.496968.zip</a></li>
+<li><strong>Asia-Pacific (AS) CDN</strong>: <a href="http://as-update.cedock.com/apps/resource2/V8MS6886T02/V8-MS6886T02-LF1V001/FOTA-OTA/V8-MS6886T02-LF1V001.496968.zip">http://as-update.cedock.com/apps/resource2/V8MS6886T02/V8-MS6886T02-LF1V001/FOTA-OTA/V8-MS6886T02-LF1V001.496968.zip</a></li>
+</ul>
+<p><a id="platform-nt67t01"></a></p>
+<h4 id="novatek-nt67-nt67t01-v8-nt67t01-lf1v001">Novatek NT67 (NT67T01) (<code>V8-NT67T01-LF1V001</code>)</h4>
+<ul>
+<li><strong>Platform Identifier</strong>: <code>NT67T01</code> (Alternative ID: <code>NT67</code>)</li>
+<li><strong>Hardware Architecture &amp; SoC</strong>: Novatek NT72671 / NT72673 (Android TV)</li>
+<li><strong>Compatible TV Models (Selection)</strong>: <em>Thomson / TCL Regional Android TV Series</em></li>
+<li><strong>Package Type</strong>: <code>Full OTA (ZIP)</code> · <strong>Size</strong>: <code>1.15 GB</code> · <strong>Release Date</strong>: <code>2026-03-20</code> · <strong>Region</strong>: <code>EU</code></li>
+<li><strong>FOTA Verification Status</strong>: <code>Checked (Static Mirror)</code></li>
+<li><strong>MD5 Checksum</strong>: <code>173d73e515446f83f180cb7508f9be59</code></li>
+<li><strong>SHA-256 Checksum</strong>: <code>5610eb4318cb82f8eca1f0960b526ef2362655086f70207b8f4b371ac85209b2</code></li>
+<li><strong>CRC-32 Checksum</strong>: <code>0x034E01ED</code></li>
+<li><strong>Firmware Packages &amp; Downloads</strong>:</li>
+<li>📦 <strong>OTA Package (ZIP)</strong> (for TV menu update): <a href="http://eu-update.cedock.com/apps/resource2/V8NT67T01/V8-NT67T01-LF1V001/FOTA-OTA/V8-NT67T01-LF1V001.962089.zip">V8-NT67T01-LF1V001.zip</a> (<code>1.15 GB</code>)</li>
+<li>🛠️ <strong>Recovery Image (PKG/IMG)</strong>: <em>No separate factory recovery image on official servers (install via OTA ZIP).</em></li>
+<li><strong>Official Changelog / Server Notes</strong>: Novatek NT67 (NT67T01) official software release: System stability, kernel performance optimizations, and security patches.</li>
+<li><strong>Extracted Android Build Properties</strong>:</li>
+<li><strong>Android OS Version</strong>: <code>Android 11</code> (Android TV (ATV))</li>
+<li><strong>GMS Package</strong>: <code>Android_11_ATV</code></li>
+<li><strong>Security Patch Level</strong>: <code>2026-03-05</code></li>
+<li><strong>Build Date</strong>: <code>Mar 20, 2026</code></li>
+<li><strong>Build Fingerprint</strong>: <code>TCL/NT67T01/NT67T01:11/V8-NT67T01-LF1V001/user/release-keys</code></li>
+<li><strong>SDK API Level</strong>: <code>30</code></li>
+<li><strong>Incremental Revision</strong>: <code>LF1V001</code></li>
+<li><strong>Target Device Codename</strong>: <code>tcl_nt67t01</code></li>
+<li><strong>EU / Global CDN</strong>: <a href="http://eu-update.cedock.com/apps/resource2/V8NT67T01/V8-NT67T01-LF1V001/FOTA-OTA/V8-NT67T01-LF1V001.962089.zip">http://eu-update.cedock.com/apps/resource2/V8NT67T01/V8-NT67T01-LF1V001/FOTA-OTA/V8-NT67T01-LF1V001.962089.zip</a></li>
+<li><strong>North America (NA) CDN</strong>: <a href="http://na-update.cedock.com/apps/resource2/V8NT67T01/V8-NT67T01-LF1V001/FOTA-OTA/V8-NT67T01-LF1V001.962089.zip">http://na-update.cedock.com/apps/resource2/V8NT67T01/V8-NT67T01-LF1V001/FOTA-OTA/V8-NT67T01-LF1V001.962089.zip</a></li>
+<li><strong>Asia-Pacific (AS) CDN</strong>: <a href="http://as-update.cedock.com/apps/resource2/V8NT67T01/V8-NT67T01-LF1V001/FOTA-OTA/V8-NT67T01-LF1V001.962089.zip">http://as-update.cedock.com/apps/resource2/V8NT67T01/V8-NT67T01-LF1V001/FOTA-OTA/V8-NT67T01-LF1V001.962089.zip</a></li>
+</ul>
+<p><a id="platform-r41kt01"></a></p>
+<h4 id="r41k-r41kt01-v8-r41kt01-lf1v343">R41K (R41KT01) (<code>V8-R41KT01-LF1V343</code>)</h4>
+<ul>
+<li><strong>Platform Identifier</strong>: <code>R41KT01</code></li>
+<li><strong>Hardware Architecture &amp; SoC</strong>: Realtek RTD2841K Entry Legacy (Android TV 9/11)</li>
+<li><strong>Compatible TV Models (Selection)</strong>: <em>S6500 Series, 32S60AI, ES560</em></li>
+<li><strong>Package Type</strong>: <code>Full OTA (ZIP)</code> · <strong>Size</strong>: <code>1.25 GB</code> · <strong>Release Date</strong>: <code>2022-11</code> · <strong>Region</strong>: <code>EU</code></li>
+<li><strong>FOTA Verification Status</strong>: <code>Checked (Static Mirror)</code></li>
+<li><strong>MD5 Checksum</strong>: <code>3f2c5fd78262d2e8a98c85fe99502526</code></li>
+<li><strong>SHA-256 Checksum</strong>: <code>adfb1eb42d880a4fdeb4b998dd7695d64bf79bfbc6f3fe24fc4c7b3a8fe96e77</code></li>
+<li><strong>CRC-32 Checksum</strong>: <code>0x343B8CE0</code></li>
+<li><strong>Firmware Packages &amp; Downloads</strong>:</li>
+<li>📦 <strong>OTA Package (ZIP)</strong> (for TV menu update): <a href="http://eu-update.cedock.com/apps/resource2/V8R41KT01/V8-R41KT01-LF1V343/FOTA-OTA/V8-R41KT01-LF1V343.945042.zip">V8-R41KT01-LF1V343.zip</a> (<code>1.25 GB</code>)</li>
+<li>🛠️ <strong>Recovery Image (PKG/IMG)</strong>: <em>No separate factory recovery image on official servers (install via OTA ZIP).</em></li>
+<li><strong>Official Changelog / Server Notes</strong>: Final legacy Android TV 9/11 stability maintenance package for Realtek R41K platforms.</li>
+<li><strong>Extracted Android Build Properties</strong>:</li>
+<li><strong>Android OS Version</strong>: <code>Android 11</code> (Android TV (ATV))</li>
+<li><strong>GMS Package</strong>: <code>Android_11_ATV</code></li>
+<li><strong>Security Patch Level</strong>: <code>2022-11-05</code></li>
+<li><strong>Build Date</strong>: <code>Aug 07, 2026</code></li>
+<li><strong>Build Fingerprint</strong>: <code>TCL/R41KT01/R41KT01:11/V8-R41KT01-LF1V001/user/release-keys</code></li>
+<li><strong>SDK API Level</strong>: <code>30</code></li>
+<li><strong>Incremental Revision</strong>: <code>LF1V001</code></li>
+<li><strong>Target Device Codename</strong>: <code>tcl_r41kt01</code></li>
+<li><strong>EU / Global CDN</strong>: <a href="http://eu-update.cedock.com/apps/resource2/V8R41KT01/V8-R41KT01-LF1V343/FOTA-OTA/V8-R41KT01-LF1V343.945042.zip">http://eu-update.cedock.com/apps/resource2/V8R41KT01/V8-R41KT01-LF1V343/FOTA-OTA/V8-R41KT01-LF1V343.945042.zip</a></li>
+<li><strong>North America (NA) CDN</strong>: <a href="http://na-update.cedock.com/apps/resource2/V8R41KT01/V8-R41KT01-LF1V343/FOTA-OTA/V8-R41KT01-LF1V343.945042.zip">http://na-update.cedock.com/apps/resource2/V8R41KT01/V8-R41KT01-LF1V343/FOTA-OTA/V8-R41KT01-LF1V343.945042.zip</a></li>
+<li><strong>Asia-Pacific (AS) CDN</strong>: <a href="http://as-update.cedock.com/apps/resource2/V8R41KT01/V8-R41KT01-LF1V343/FOTA-OTA/V8-R41KT01-LF1V343.945042.zip">http://as-update.cedock.com/apps/resource2/V8R41KT01/V8-R41KT01-LF1V343/FOTA-OTA/V8-R41KT01-LF1V343.945042.zip</a></li>
+</ul>
+<p><a id="platform-r51at01"></a></p>
+<h4 id="rt51-at51-r51at01-v8-r51at01-lf1v315">RT51 / AT51 (R51AT01) (<code>V8-R51AT01-LF1V315</code>)</h4>
+<ul>
+<li><strong>Platform Identifier</strong>: <code>R51AT01</code></li>
+<li><strong>Hardware Architecture &amp; SoC</strong>: Realtek RT51 (Legacy Android TV)</li>
+<li><strong>Compatible TV Models (Selection)</strong>: <em>P725, C725, P615, P635</em></li>
+<li><strong>Package Type</strong>: <code>Full OTA (ZIP)</code> · <strong>Size</strong>: <code>1.62 GB</code> · <strong>Release Date</strong>: <code>2023-06</code> · <strong>Region</strong>: <code>EU</code></li>
+<li><strong>FOTA Verification Status</strong>: <code>Checked (Static Mirror)</code></li>
+<li><strong>MD5 Checksum</strong>: <code>5fec09674cebaa1505c005f31a5baf5d</code></li>
+<li><strong>SHA-256 Checksum</strong>: <code>cf7203240967abf1b0697c018528c6936e347121149eeacc4aef7f9e3f2fca89</code></li>
+<li><strong>CRC-32 Checksum</strong>: <code>0xFFAF3604</code></li>
+<li><strong>Firmware Packages &amp; Downloads</strong>:</li>
+<li>📦 <strong>OTA Package (ZIP)</strong> (for TV menu update): <a href="http://eu-update.cedock.com/apps/resource2/V8R51AT01/V8-R51AT01-LF1V315/FOTA-OTA/V8-R51AT01-LF1V315.185337.zip">V8-R51AT01-LF1V315.zip</a> (<code>1.62 GB</code>)</li>
+<li>🛠️ <strong>Recovery Image (PKG/IMG)</strong>: <em>No separate factory recovery image on official servers (install via OTA ZIP).</em></li>
+<li><strong>Official Changelog / Server Notes</strong>: Legacy Realtek RT51 Android TV 11 maintenance build, Bluetooth remote reliability fix.</li>
+<li><strong>Extracted Android Build Properties</strong>:</li>
+<li><strong>Android OS Version</strong>: <code>Android 11</code> (Android TV (ATV))</li>
+<li><strong>GMS Package</strong>: <code>Android_11_ATV</code></li>
+<li><strong>Security Patch Level</strong>: <code>2023-06-05</code></li>
+<li><strong>Build Date</strong>: <code>Aug 07, 2026</code></li>
+<li><strong>Build Fingerprint</strong>: <code>TCL/R51AT01/R51AT01:11/V8-R51AT01-LF1V001/user/release-keys</code></li>
+<li><strong>SDK API Level</strong>: <code>30</code></li>
+<li><strong>Incremental Revision</strong>: <code>LF1V001</code></li>
+<li><strong>Target Device Codename</strong>: <code>tcl_r51at01</code></li>
+<li><strong>EU / Global CDN</strong>: <a href="http://eu-update.cedock.com/apps/resource2/V8R51AT01/V8-R51AT01-LF1V315/FOTA-OTA/V8-R51AT01-LF1V315.185337.zip">http://eu-update.cedock.com/apps/resource2/V8R51AT01/V8-R51AT01-LF1V315/FOTA-OTA/V8-R51AT01-LF1V315.185337.zip</a></li>
+<li><strong>North America (NA) CDN</strong>: <a href="http://na-update.cedock.com/apps/resource2/V8R51AT01/V8-R51AT01-LF1V315/FOTA-OTA/V8-R51AT01-LF1V315.185337.zip">http://na-update.cedock.com/apps/resource2/V8R51AT01/V8-R51AT01-LF1V315/FOTA-OTA/V8-R51AT01-LF1V315.185337.zip</a></li>
+<li><strong>Asia-Pacific (AS) CDN</strong>: <a href="http://as-update.cedock.com/apps/resource2/V8R51AT01/V8-R51AT01-LF1V315/FOTA-OTA/V8-R51AT01-LF1V315.185337.zip">http://as-update.cedock.com/apps/resource2/V8R51AT01/V8-R51AT01-LF1V315/FOTA-OTA/V8-R51AT01-LF1V315.185337.zip</a></li>
+</ul>
+<p><a id="platform-r51mt02"></a></p>
+<h4 id="r51m-android-tv-r51mt02-v8-r51mt02-lf1v267">R51M (Android TV) (R51MT02) (<code>V8-R51MT02-LF1V267</code>)</h4>
+<ul>
+<li><strong>Platform Identifier</strong>: <code>R51MT02</code> (Alternative ID: <code>R51MT06</code>)</li>
+<li><strong>Hardware Architecture &amp; SoC</strong>: Realtek RTD2851 / R51M (4K Android TV)</li>
+<li><strong>Compatible TV Models (Selection)</strong>: <em>C715, C815, P715 (Android TV)</em></li>
+<li><strong>Package Type</strong>: <code>Full OTA (ZIP)</code> · <strong>Size</strong>: <code>1.75 GB</code> · <strong>Release Date</strong>: <code>2024-05</code> · <strong>Region</strong>: <code>EU</code></li>
+<li><strong>FOTA Verification Status</strong>: <code>Checked (Static Mirror)</code></li>
+<li><strong>MD5 Checksum</strong>: <code>1e8aa5882d0495402d8e112fdeff9672</code></li>
+<li><strong>SHA-256 Checksum</strong>: <code>1444115910deffcbd869ea92936b0e176489ef727cfcc8d1397957cfb217bd2c</code></li>
+<li><strong>CRC-32 Checksum</strong>: <code>0xC325D708</code></li>
+<li><strong>Firmware Packages &amp; Downloads</strong>:</li>
+<li>📦 <strong>OTA Package (ZIP)</strong> (for TV menu update): <a href="http://eu-update.cedock.com/apps/resource2/V8R51MT02/V8-R51MT02-LF1V267/FOTA-OTA/V8-R51MT02-LF1V267.162390.zip">V8-R51MT02-LF1V267.zip</a> (<code>1.75 GB</code>)</li>
+<li>🛠️ <strong>Recovery Image (PKG/IMG)</strong>: <em>No separate factory recovery image on official servers (install via OTA ZIP).</em></li>
+<li><strong>Official Changelog / Server Notes</strong>: RTD2851M revision v2 memory optimization, Miracast and Chromecast stability improvements.</li>
+<li><strong>Extracted Android Build Properties</strong>:</li>
+<li><strong>Android OS Version</strong>: <code>Android 11</code> (Android TV (ATV))</li>
+<li><strong>GMS Package</strong>: <code>Android_11_ATV</code></li>
+<li><strong>Security Patch Level</strong>: <code>2024-05-05</code></li>
+<li><strong>Build Date</strong>: <code>Aug 07, 2026</code></li>
+<li><strong>Build Fingerprint</strong>: <code>TCL/R51MT02/R51MT02:11/V8-R51MT02-LF1V001/user/release-keys</code></li>
+<li><strong>SDK API Level</strong>: <code>30</code></li>
+<li><strong>Incremental Revision</strong>: <code>LF1V001</code></li>
+<li><strong>Target Device Codename</strong>: <code>tcl_r51mt02</code></li>
+<li><strong>EU / Global CDN</strong>: <a href="http://eu-update.cedock.com/apps/resource2/V8R51MT02/V8-R51MT02-LF1V267/FOTA-OTA/V8-R51MT02-LF1V267.162390.zip">http://eu-update.cedock.com/apps/resource2/V8R51MT02/V8-R51MT02-LF1V267/FOTA-OTA/V8-R51MT02-LF1V267.162390.zip</a></li>
+<li><strong>North America (NA) CDN</strong>: <a href="http://na-update.cedock.com/apps/resource2/V8R51MT02/V8-R51MT02-LF1V267/FOTA-OTA/V8-R51MT02-LF1V267.162390.zip">http://na-update.cedock.com/apps/resource2/V8R51MT02/V8-R51MT02-LF1V267/FOTA-OTA/V8-R51MT02-LF1V267.162390.zip</a></li>
+<li><strong>Asia-Pacific (AS) CDN</strong>: <a href="http://as-update.cedock.com/apps/resource2/V8R51MT02/V8-R51MT02-LF1V267/FOTA-OTA/V8-R51MT02-LF1V267.162390.zip">http://as-update.cedock.com/apps/resource2/V8R51MT02/V8-R51MT02-LF1V267/FOTA-OTA/V8-R51MT02-LF1V267.162390.zip</a></li>
+</ul>
+<p><a id="platform-r51mt05"></a></p>
+<h4 id="r51m-google-tv-r51mt05-v8-r51mt05-lf1v652">R51M (Google TV) (R51MT05) (<code>V8-R51MT05-LF1V652</code>)</h4>
+<ul>
+<li><strong>Platform Identifier</strong>: <code>R51MT05</code></li>
+<li><strong>Hardware Architecture &amp; SoC</strong>: Realtek RTD2851 / R51M (4K Google TV)</li>
+<li><strong>Compatible TV Models (Selection)</strong>: <em>C645, C635, P745 (Google TV)</em></li>
+<li><strong>Package Type</strong>: <code>Full OTA (ZIP)</code> · <strong>Size</strong>: <code>1.74 GB</code> · <strong>Release Date</strong>: <code>2024-04</code> · <strong>Region</strong>: <code>EU</code></li>
+<li><strong>FOTA Verification Status</strong>: <code>Checked (Static Mirror)</code></li>
+<li><strong>MD5 Checksum</strong>: <code>dc8cba08ffac17ebcf6b4458d902d394</code></li>
+<li><strong>SHA-256 Checksum</strong>: <code>7a2542a0204ddb1827af80631bb4ec281afca2b8e4d4c49771365b5cab3fcfc2</code></li>
+<li><strong>CRC-32 Checksum</strong>: <code>0x83A1D1B6</code></li>
+<li><strong>Firmware Packages &amp; Downloads</strong>:</li>
+<li>📦 <strong>OTA Package (ZIP)</strong> (for TV menu update): <a href="http://eu-update.cedock.com/apps/resource2/V8R51MT05/V8-R51MT05-LF1V652/FOTA-OTA/V8-R51MT05-LF1V652.102029.zip">V8-R51MT05-LF1V652.zip</a> (<code>1.74 GB</code>)</li>
+<li>🛠️ <strong>Recovery Image (PKG/IMG)</strong>: <em>No separate factory recovery image on official servers (install via OTA ZIP).</em></li>
+<li><strong>Official Changelog / Server Notes</strong>: RTD2851M NA channel scan memory optimization, closed caption rendering fix, security patch update.</li>
+<li><strong>Extracted Android Build Properties</strong>:</li>
+<li><strong>Android OS Version</strong>: <code>Android 11</code> (Android TV (ATV))</li>
+<li><strong>GMS Package</strong>: <code>Android_11_ATV</code></li>
+<li><strong>Security Patch Level</strong>: <code>2024-04-05</code></li>
+<li><strong>Build Date</strong>: <code>Aug 07, 2026</code></li>
+<li><strong>Build Fingerprint</strong>: <code>TCL/R51MT05/R51MT05:11/V8-R51MT05-LF1V001/user/release-keys</code></li>
+<li><strong>SDK API Level</strong>: <code>30</code></li>
+<li><strong>Incremental Revision</strong>: <code>LF1V001</code></li>
+<li><strong>Target Device Codename</strong>: <code>tcl_r51mt05</code></li>
+<li><strong>EU / Global CDN</strong>: <a href="http://eu-update.cedock.com/apps/resource2/V8R51MT05/V8-R51MT05-LF1V652/FOTA-OTA/V8-R51MT05-LF1V652.102029.zip">http://eu-update.cedock.com/apps/resource2/V8R51MT05/V8-R51MT05-LF1V652/FOTA-OTA/V8-R51MT05-LF1V652.102029.zip</a></li>
+<li><strong>North America (NA) CDN</strong>: <a href="http://na-update.cedock.com/apps/resource2/V8R51MT05/V8-R51MT05-LF1V652/FOTA-OTA/V8-R51MT05-LF1V652.102029.zip">http://na-update.cedock.com/apps/resource2/V8R51MT05/V8-R51MT05-LF1V652/FOTA-OTA/V8-R51MT05-LF1V652.102029.zip</a></li>
+<li><strong>Asia-Pacific (AS) CDN</strong>: <a href="http://as-update.cedock.com/apps/resource2/V8R51MT05/V8-R51MT05-LF1V652/FOTA-OTA/V8-R51MT05-LF1V652.102029.zip">http://as-update.cedock.com/apps/resource2/V8R51MT05/V8-R51MT05-LF1V652/FOTA-OTA/V8-R51MT05-LF1V652.102029.zip</a></li>
+</ul>
+<p><a id="platform-r851t02"></a></p>
+<h4 id="r851-google-tv-r851t02-v8-r851t02-lf1v653">R851 (Google TV) (R851T02) (<code>V8-R851T02-LF1V653</code>)</h4>
+<ul>
+<li><strong>Platform Identifier</strong>: <code>R851T02</code></li>
+<li><strong>Hardware Architecture &amp; SoC</strong>: Realtek RTD2851 / R851 (4K Google TV)</li>
+<li><strong>Compatible TV Models (Selection)</strong>: <em>C728, C825, C735 (Early Google TV)</em></li>
+<li><strong>Package Type</strong>: <code>Full OTA (ZIP)</code> · <strong>Size</strong>: <code>1.92 GB</code> · <strong>Release Date</strong>: <code>2026-06-15</code> · <strong>Region</strong>: <code>EU</code></li>
+<li><strong>FOTA Verification Status</strong>: <code>Checked (Static Mirror)</code></li>
+<li><strong>MD5 Checksum</strong>: <code>eb4351335662e4b5bf083f9d42297f31</code></li>
+<li><strong>SHA-256 Checksum</strong>: <code>9159d7b47f5b9e4aa67ae3da023c99ce12df8fa5d877075ff3771ee6f73958d9</code></li>
+<li><strong>CRC-32 Checksum</strong>: <code>0x842C574A</code></li>
+<li><strong>Firmware Packages &amp; Downloads</strong>:</li>
+<li>📦 <strong>OTA Package (ZIP)</strong> (for TV menu update): <a href="http://eu-update.cedock.com/apps/resource2/V8R851T02/V8-R851T02-LF1V653/FOTA-OTA/V8-R851T02-LF1V653.zip">V8-R851T02-LF1V653.zip</a> (<code>1.92 GB</code>)</li>
+<li>🛠️ <strong>Recovery Image (PKG/IMG)</strong>: <em>No separate factory recovery image on official servers (install via OTA ZIP).</em></li>
+<li><strong>Official Changelog / Server Notes</strong>: —</li>
+<li><strong>EU / Global CDN</strong>: <a href="http://eu-update.cedock.com/apps/resource2/V8R851T02/V8-R851T02-LF1V653/FOTA-OTA/V8-R851T02-LF1V653.zip">http://eu-update.cedock.com/apps/resource2/V8R851T02/V8-R851T02-LF1V653/FOTA-OTA/V8-R851T02-LF1V653.zip</a></li>
+<li><strong>North America (NA) CDN</strong>: <a href="http://na-update.cedock.com/apps/resource2/V8R851T02/V8-R851T02-LF1V653/FOTA-OTA/V8-R851T02-LF1V653.zip">http://na-update.cedock.com/apps/resource2/V8R851T02/V8-R851T02-LF1V653/FOTA-OTA/V8-R851T02-LF1V653.zip</a></li>
+<li><strong>Asia-Pacific (AS) CDN</strong>: <a href="http://as-update.cedock.com/apps/resource2/V8R851T02/V8-R851T02-LF1V653/FOTA-OTA/V8-R851T02-LF1V653.zip">http://as-update.cedock.com/apps/resource2/V8R851T02/V8-R851T02-LF1V653/FOTA-OTA/V8-R851T02-LF1V653.zip</a></li>
+</ul>
+<p><a id="platform-r851t10"></a></p>
+<h4 id="r851-android-tv-r851t10-v8-r851t10-lf1v109">R851 (Android TV) (R851T10) (<code>V8-R851T10-LF1V109</code>)</h4>
+<ul>
+<li><strong>Platform Identifier</strong>: <code>R851T10</code></li>
+<li><strong>Hardware Architecture &amp; SoC</strong>: Realtek RTD2851 / R851 (4K Android TV)</li>
+<li><strong>Compatible TV Models (Selection)</strong>: <em>C715, C815 (Android TV)</em></li>
+<li><strong>Package Type</strong>: <code>Full OTA (ZIP)</code> · <strong>Size</strong>: <code>1.92 GB</code> · <strong>Release Date</strong>: <code>2026-06-15</code> · <strong>Region</strong>: <code>EU</code></li>
+<li><strong>FOTA Verification Status</strong>: <code>Checked (Static Mirror)</code></li>
+<li><strong>MD5 Checksum</strong>: <code>22ba85216b1be2a3eb3724df535cc8ad</code></li>
+<li><strong>SHA-256 Checksum</strong>: <code>9ba6ff181ca31af6d5411499408edaa1dd36a68800908532ce289f42cfb2dfbd</code></li>
+<li><strong>CRC-32 Checksum</strong>: <code>0x88E1EA3E</code></li>
+<li><strong>Firmware Packages &amp; Downloads</strong>:</li>
+<li>📦 <strong>OTA Package (ZIP)</strong> (for TV menu update): <a href="http://eu-update.cedock.com/apps/resource2/V8R851T10/V8-R851T10-LF1V109/FOTA-OTA/V8-R851T10-LF1V109.zip">V8-R851T10-LF1V109.zip</a> (<code>1.92 GB</code>)</li>
+<li>🛠️ <strong>Recovery Image (PKG/IMG)</strong>: <em>No separate factory recovery image on official servers (install via OTA ZIP).</em></li>
+<li><strong>Official Changelog / Server Notes</strong>: —</li>
+<li><strong>EU / Global CDN</strong>: <a href="http://eu-update.cedock.com/apps/resource2/V8R851T10/V8-R851T10-LF1V109/FOTA-OTA/V8-R851T10-LF1V109.zip">http://eu-update.cedock.com/apps/resource2/V8R851T10/V8-R851T10-LF1V109/FOTA-OTA/V8-R851T10-LF1V109.zip</a></li>
+<li><strong>North America (NA) CDN</strong>: <a href="http://na-update.cedock.com/apps/resource2/V8R851T10/V8-R851T10-LF1V109/FOTA-OTA/V8-R851T10-LF1V109.zip">http://na-update.cedock.com/apps/resource2/V8R851T10/V8-R851T10-LF1V109/FOTA-OTA/V8-R851T10-LF1V109.zip</a></li>
+<li><strong>Asia-Pacific (AS) CDN</strong>: <a href="http://as-update.cedock.com/apps/resource2/V8R851T10/V8-R851T10-LF1V109/FOTA-OTA/V8-R851T10-LF1V109.zip">http://as-update.cedock.com/apps/resource2/V8R851T10/V8-R851T10-LF1V109/FOTA-OTA/V8-R851T10-LF1V109.zip</a></li>
+</ul>
+<p><a id="platform-t615t01"></a></p>
+<h4 id="t615-mt9615-globaleu-t615t01-v8-t615t01-lf1v082">T615 / MT9615 (Global/EU) (T615T01) (<code>V8-T615T01-LF1V082</code>)</h4>
+<ul>
+<li><strong>Platform Identifier</strong>: <code>T615T01</code></li>
+<li><strong>Hardware Architecture &amp; SoC</strong>: MediaTek MT9615 (4K 120/144Hz)</li>
+<li><strong>Compatible TV Models (Selection)</strong>: <em>C845, C835, C735, C825, C728, C645 (Late), P745</em></li>
+<li><strong>Package Type</strong>: <code>Full OTA (ZIP)</code> · <strong>Size</strong>: <code>1.92 GB</code> · <strong>Release Date</strong>: <code>2024-05</code> · <strong>Region</strong>: <code>EU</code></li>
+<li><strong>FOTA Verification Status</strong>: <code>Checked (Static Mirror)</code></li>
+<li><strong>MD5 Checksum</strong>: <code>59ca23d8dd5e07be6d73d58dd3a5f170</code></li>
+<li><strong>SHA-256 Checksum</strong>: <code>2341b055b94308e7e332e80eda520763e891e6e231140c8f78c3e1e5ae241568</code></li>
+<li><strong>CRC-32 Checksum</strong>: <code>0xD08CFF8E</code></li>
+<li><strong>Firmware Packages &amp; Downloads</strong>:</li>
+<li>📦 <strong>OTA Package (ZIP)</strong> (for TV menu update): <a href="http://eu-update.cedock.com/apps/resource2/V8T615T01/V8-T615T01-LF1V082/FOTA-OTA/V8-T615T01-LF1V082.176126.zip">V8-T615T01-LF1V082.zip</a> (<code>1.92 GB</code>)</li>
+<li>🛠️ <strong>Recovery Image (PKG/IMG)</strong>: <em>No separate factory recovery image on official servers (install via OTA ZIP).</em></li>
+<li><strong>Official Changelog / Server Notes</strong>: Pre-Pentonic 144Hz Game Master stability, black screen recovery patches, CEC soundbar handshake fixes.</li>
+<li><strong>Extracted Android Build Properties</strong>:</li>
+<li><strong>Android OS Version</strong>: <code>Android 11</code> (Google TV (GTV))</li>
+<li><strong>GMS Package</strong>: <code>Android_11_GTV</code></li>
+<li><strong>Security Patch Level</strong>: <code>2024-05-05</code></li>
+<li><strong>Build Date</strong>: <code>Aug 07, 2026</code></li>
+<li><strong>Build Fingerprint</strong>: <code>TCL/T615T01/T615T01:11/V8-T615T01-LF1V001/user/release-keys</code></li>
+<li><strong>SDK API Level</strong>: <code>30</code></li>
+<li><strong>Incremental Revision</strong>: <code>LF1V001</code></li>
+<li><strong>Target Device Codename</strong>: <code>tcl_t615t01</code></li>
+<li><strong>EU / Global CDN</strong>: <a href="http://eu-update.cedock.com/apps/resource2/V8T615T01/V8-T615T01-LF1V082/FOTA-OTA/V8-T615T01-LF1V082.176126.zip">http://eu-update.cedock.com/apps/resource2/V8T615T01/V8-T615T01-LF1V082/FOTA-OTA/V8-T615T01-LF1V082.176126.zip</a></li>
+<li><strong>North America (NA) CDN</strong>: <a href="http://na-update.cedock.com/apps/resource2/V8T615T01/V8-T615T01-LF1V082/FOTA-OTA/V8-T615T01-LF1V082.176126.zip">http://na-update.cedock.com/apps/resource2/V8T615T01/V8-T615T01-LF1V082/FOTA-OTA/V8-T615T01-LF1V082.176126.zip</a></li>
+<li><strong>Asia-Pacific (AS) CDN</strong>: <a href="http://as-update.cedock.com/apps/resource2/V8T615T01/V8-T615T01-LF1V082/FOTA-OTA/V8-T615T01-LF1V082.176126.zip">http://as-update.cedock.com/apps/resource2/V8T615T01/V8-T615T01-LF1V082/FOTA-OTA/V8-T615T01-LF1V082.176126.zip</a></li>
+</ul>
+<p><a id="platform-t615t02"></a></p>
+<h4 id="t615-mt9615-na-t615t02-v8-t615t02-lf1v073">T615 / MT9615 (NA) (T615T02) (<code>V8-T615T02-LF1V073</code>)</h4>
+<ul>
+<li><strong>Platform Identifier</strong>: <code>T615T02</code></li>
+<li><strong>Hardware Architecture &amp; SoC</strong>: MediaTek MT9615 (4K 120/144Hz NA)</li>
+<li><strong>Compatible TV Models (Selection)</strong>: <em>Q7 (2023 NA Series)</em></li>
+<li><strong>Package Type</strong>: <code>Full OTA (ZIP)</code> · <strong>Size</strong>: <code>1.89 GB</code> · <strong>Release Date</strong>: <code>2024-04</code> · <strong>Region</strong>: <code>EU</code></li>
+<li><strong>FOTA Verification Status</strong>: <code>Checked (Static Mirror)</code></li>
+<li><strong>MD5 Checksum</strong>: <code>f07a2972dca47c392ce4f51b65a89179</code></li>
+<li><strong>SHA-256 Checksum</strong>: <code>f3c352d122d8bc55ed826239479dc3dfcc9523597cd11c370bba2c94b280e61c</code></li>
+<li><strong>CRC-32 Checksum</strong>: <code>0x4185B600</code></li>
+<li><strong>Firmware Packages &amp; Downloads</strong>:</li>
+<li>📦 <strong>OTA Package (ZIP)</strong> (for TV menu update): <a href="http://eu-update.cedock.com/apps/resource2/V8T615T02/V8-T615T02-LF1V073/FOTA-OTA/V8-T615T02-LF1V073.518224.zip">V8-T615T02-LF1V073.zip</a> (<code>1.89 GB</code>)</li>
+<li>🛠️ <strong>Recovery Image (PKG/IMG)</strong>: <em>No separate factory recovery image on official servers (install via OTA ZIP).</em></li>
+<li><strong>Official Changelog / Server Notes</strong>: North American Google TV Q7/R646 local dimming zone sync and HDR color gamut adjustments.</li>
+<li><strong>Extracted Android Build Properties</strong>:</li>
+<li><strong>Android OS Version</strong>: <code>Android 11</code> (Google TV (GTV))</li>
+<li><strong>GMS Package</strong>: <code>Android_11_GTV</code></li>
+<li><strong>Security Patch Level</strong>: <code>2024-04-05</code></li>
+<li><strong>Build Date</strong>: <code>Aug 07, 2026</code></li>
+<li><strong>Build Fingerprint</strong>: <code>TCL/T615T02/T615T02:11/V8-T615T02-LF1V001/user/release-keys</code></li>
+<li><strong>SDK API Level</strong>: <code>30</code></li>
+<li><strong>Incremental Revision</strong>: <code>LF1V001</code></li>
+<li><strong>Target Device Codename</strong>: <code>tcl_t615t02</code></li>
+<li><strong>EU / Global CDN</strong>: <a href="http://eu-update.cedock.com/apps/resource2/V8T615T02/V8-T615T02-LF1V073/FOTA-OTA/V8-T615T02-LF1V073.518224.zip">http://eu-update.cedock.com/apps/resource2/V8T615T02/V8-T615T02-LF1V073/FOTA-OTA/V8-T615T02-LF1V073.518224.zip</a></li>
+<li><strong>North America (NA) CDN</strong>: <a href="http://na-update.cedock.com/apps/resource2/V8T615T02/V8-T615T02-LF1V073/FOTA-OTA/V8-T615T02-LF1V073.518224.zip">http://na-update.cedock.com/apps/resource2/V8T615T02/V8-T615T02-LF1V073/FOTA-OTA/V8-T615T02-LF1V073.518224.zip</a></li>
+<li><strong>Asia-Pacific (AS) CDN</strong>: <a href="http://as-update.cedock.com/apps/resource2/V8T615T02/V8-T615T02-LF1V073/FOTA-OTA/V8-T615T02-LF1V073.518224.zip">http://as-update.cedock.com/apps/resource2/V8T615T02/V8-T615T02-LF1V073/FOTA-OTA/V8-T615T02-LF1V073.518224.zip</a></li>
+</ul>
+<p><a id="platform-t615t03"></a></p>
+<h4 id="t615-mt9615-r646-t615t03-v8-t615t03-lf1v082">T615 / MT9615 (R646) (T615T03) (<code>V8-T615T03-LF1V082</code>)</h4>
+<ul>
+<li><strong>Platform Identifier</strong>: <code>T615T03</code></li>
+<li><strong>Hardware Architecture &amp; SoC</strong>: MediaTek MT9615 (4K 120/144Hz Mini-LED)</li>
+<li><strong>Compatible TV Models (Selection)</strong>: <em>R646 (2021 Flagship Mini-LED)</em></li>
+<li><strong>Package Type</strong>: <code>Full OTA (ZIP)</code> · <strong>Size</strong>: <code>1.92 GB</code> · <strong>Release Date</strong>: <code>2024-05</code> · <strong>Region</strong>: <code>EU</code></li>
+<li><strong>FOTA Verification Status</strong>: <code>Checked (Static Mirror)</code></li>
+<li><strong>MD5 Checksum</strong>: <code>b2f53f98570fd79525ad6517db646dbb</code></li>
+<li><strong>SHA-256 Checksum</strong>: <code>3f6c33a6c281b8da1d3669d75dfdc2d82177152fdf6947d74877a3787d5c8169</code></li>
+<li><strong>CRC-32 Checksum</strong>: <code>0xA81C95B2</code></li>
+<li><strong>Firmware Packages &amp; Downloads</strong>:</li>
+<li>📦 <strong>OTA Package (ZIP)</strong> (for TV menu update): <a href="http://eu-update.cedock.com/apps/resource2/V8T615T03/V8-T615T03-LF1V082/FOTA-OTA/V8-T615T03-LF1V082.502331.zip">V8-T615T03-LF1V082.zip</a> (<code>1.92 GB</code>)</li>
+<li>🛠️ <strong>Recovery Image (PKG/IMG)</strong>: <em>No separate factory recovery image on official servers (install via OTA ZIP).</em></li>
+<li><strong>Official Changelog / Server Notes</strong>: Pre-Pentonic 144Hz Game Master stability, black screen recovery patches, CEC soundbar handshake fixes.</li>
+<li><strong>Extracted Android Build Properties</strong>:</li>
+<li><strong>Android OS Version</strong>: <code>Android 11</code> (Google TV (GTV))</li>
+<li><strong>GMS Package</strong>: <code>Android_11_GTV</code></li>
+<li><strong>Security Patch Level</strong>: <code>2024-05-05</code></li>
+<li><strong>Build Date</strong>: <code>Aug 07, 2026</code></li>
+<li><strong>Build Fingerprint</strong>: <code>TCL/T615T03/T615T03:11/V8-T615T03-LF1V001/user/release-keys</code></li>
+<li><strong>SDK API Level</strong>: <code>30</code></li>
+<li><strong>Incremental Revision</strong>: <code>LF1V001</code></li>
+<li><strong>Target Device Codename</strong>: <code>tcl_t615t03</code></li>
+<li><strong>EU / Global CDN</strong>: <a href="http://eu-update.cedock.com/apps/resource2/V8T615T03/V8-T615T03-LF1V082/FOTA-OTA/V8-T615T03-LF1V082.502331.zip">http://eu-update.cedock.com/apps/resource2/V8T615T03/V8-T615T03-LF1V082/FOTA-OTA/V8-T615T03-LF1V082.502331.zip</a></li>
+<li><strong>North America (NA) CDN</strong>: <a href="http://na-update.cedock.com/apps/resource2/V8T615T03/V8-T615T03-LF1V082/FOTA-OTA/V8-T615T03-LF1V082.502331.zip">http://na-update.cedock.com/apps/resource2/V8T615T03/V8-T615T03-LF1V082/FOTA-OTA/V8-T615T03-LF1V082.502331.zip</a></li>
+<li><strong>Asia-Pacific (AS) CDN</strong>: <a href="http://as-update.cedock.com/apps/resource2/V8T615T03/V8-T615T03-LF1V082/FOTA-OTA/V8-T615T03-LF1V082.502331.zip">http://as-update.cedock.com/apps/resource2/V8T615T03/V8-T615T03-LF1V082/FOTA-OTA/V8-T615T03-LF1V082.502331.zip</a></li>
+</ul>
+<hr />
+<p><em>Generated automatically by <a href="https://github.com/FaserF/TCL-Discussion-Telegram/blob/main/scripts/fetch_firmwares.py"><code>scripts/fetch_firmwares.py</code></a></em></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href=".." class="md-footer__link md-footer__link--prev" aria-label="Previous: Home">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Home
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../guides/" class="md-footer__link md-footer__link--next" aria-label="Next: TCL Firmware Installation Guides">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                TCL Firmware Installation Guides
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://t.me/tclupdates" target="_blank" rel="noopener" title="Updates Channel" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M256 8a248 248 0 1 0 0 496 248 248 0 1 0 0-496m115 168.7c-3.7 39.2-19.9 134.4-28.1 178.3-3.5 18.6-10.3 24.8-16.9 25.4-14.4 1.3-25.3-9.5-39.3-18.7-21.8-14.3-34.2-23.2-55.3-37.2-24.5-16.1-8.6-25 5.3-39.5 3.7-3.8 67.1-61.5 68.3-66.7.2-.7.3-3.1-1.2-4.4s-3.6-.8-5.1-.5c-2.2.5-37.1 23.5-104.6 69.1-9.9 6.8-18.9 10.1-26.9 9.9-8.9-.2-25.9-5-38.6-9.1-15.5-5-27.9-7.7-26.8-16.3.6-4.5 6.7-9 18.4-13.7 72.3-31.5 120.5-52.3 144.6-62.3 68.9-28.6 83.2-33.6 92.5-33.8 2.1 0 6.6.5 9.6 2.9 2 1.7 3.2 4.1 3.5 6.7.5 3.2.6 6.5.4 9.8z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://t.me/tclupdates_discussion" target="_blank" rel="noopener" title="Community Group" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M256 8a248 248 0 1 0 0 496 248 248 0 1 0 0-496m115 168.7c-3.7 39.2-19.9 134.4-28.1 178.3-3.5 18.6-10.3 24.8-16.9 25.4-14.4 1.3-25.3-9.5-39.3-18.7-21.8-14.3-34.2-23.2-55.3-37.2-24.5-16.1-8.6-25 5.3-39.5 3.7-3.8 67.1-61.5 68.3-66.7.2-.7.3-3.1-1.2-4.4s-3.6-.8-5.1-.5c-2.2.5-37.1 23.5-104.6 69.1-9.9 6.8-18.9 10.1-26.9 9.9-8.9-.2-25.9-5-38.6-9.1-15.5-5-27.9-7.7-26.8-16.3.6-4.5 6.7-9 18.4-13.7 72.3-31.5 120.5-52.3 144.6-62.3 68.9-28.6 83.2-33.6 92.5-33.8 2.1 0 6.6.5 9.6 2.9 2 1.7 3.2 4.1 3.5 6.7.5 3.2.6 6.5.4 9.8z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://github.com/FaserF/TCL-Discussion-Telegram" target="_blank" rel="noopener" title="GitHub Repository" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.path", "navigation.indexes", "navigation.top", "navigation.tracking", "navigation.instant", "navigation.instant.progress", "navigation.footer", "search.suggest", "search.highlight", "search.share", "toc.follow", "content.action.edit", "content.code.copy", "content.tooltips", "content.tabs.link"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+        <script src="../javascripts/telegram-widgets.js"></script>
+      
+        <script src="../javascripts/banner.js"></script>
+      
+        <script src="../javascripts/hash-navigation.js"></script>
+      
+        <script src="../javascripts/auth.js"></script>
+      
+    
+  </body>
+</html>
