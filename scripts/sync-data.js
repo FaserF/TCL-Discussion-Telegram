@@ -72,7 +72,7 @@ function parseFaqs() {
             currentFaq = { q: questionMatch[1], a: [] };
         } else if (currentFaq) {
             if (line.startsWith('    ') || line.trim() === '') {
-                currentFaq.a.push(line.replace(/^    /, ''));
+                currentFaq.a.push(line.replace(/^ {4}/, ''));
             } else {
                 faqs.push({
                     q: currentFaq.q,
