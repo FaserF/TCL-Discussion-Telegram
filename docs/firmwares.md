@@ -112,7 +112,7 @@ Welcome to the official **TCL Smart TV Firmware Hub**. This catalog tracks, aggr
 - **North America (NA) CDN**: [http://na-update.cedock.com/apps/resource2/V80008T01/V8-0008T01-LF1V636/FOTA-OTA/V8-0008T01-LF1V636.622816.zip](http://na-update.cedock.com/apps/resource2/V80008T01/V8-0008T01-LF1V636/FOTA-OTA/V8-0008T01-LF1V636.622816.zip)
 - **Asia-Pacific (AS) CDN**: [http://as-update.cedock.com/apps/resource2/V80008T01/V8-0008T01-LF1V636/FOTA-OTA/V8-0008T01-LF1V636.622816.zip](http://as-update.cedock.com/apps/resource2/V80008T01/V8-0008T01-LF1V636/FOTA-OTA/V8-0008T01-LF1V636.622816.zip)
 
-<details>
+<details markdown="1">
 <summary><b>📦 Previous Firmware Versions Archive (1 build)</b></summary>
 
 | Version | Release Date | Package Type & Size | Category | Changelog / Notes | Download Link |
