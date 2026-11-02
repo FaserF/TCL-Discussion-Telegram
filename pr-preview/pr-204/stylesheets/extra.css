@@ -1,0 +1,347 @@
+/*
+  TCL Discussion Documentation - Design 2.0 (Squidfunk Standard)
+*/
+
+:root {
+  /* --- Brand Identity --- */
+  --md-primary-fg-color: #f43f5e;
+  --md-primary-fg-color--light: #fb7185;
+  --md-primary-fg-color--dark: #e11d48;
+  --md-accent-fg-color: #f43f5e;
+
+  /* --- Spacing & Radius --- */
+  --radius-xl: 20px;
+  --radius-lg: 12px;
+  --transition-smooth: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --- Theme Variables --- */
+
+[data-md-color-scheme="default"] {
+  --md-default-bg-color: #f1f5f9;
+  /* Soft Slate-grey foundation */
+  --md-default-fg-color: #1e293b;
+  --md-default-fg-color--light: #64748b;
+  --md-default-fg-color--lighter: #94a3b8;
+
+  /* Search & Header Fixes - Eye-Safe Contrast */
+  --md-header-fg-color: #1e293b;
+  --md-header-bg-color: rgba(241, 245, 249, 0.98);
+  --md-search-bg-color: rgba(30, 41, 59, 0.06);
+  --md-search-fg-color: #1e293b;
+  --md-search-result-bg-color: #ffffff;
+  --md-search-result-fg-color: #1e293b;
+
+  --glass-bg: rgba(241, 245, 249, 0.85);
+  --glass-border: rgba(30, 41, 59, 0.1);
+  --mesh-color: transparent;
+
+  --shadow-premium:
+    0 1px 3px rgba(15, 23, 42, 0.04),
+    0 8px 16px -4px rgba(15, 23, 42, 0.04);
+
+  /* --- Light Mode Fixes --- */
+  --banner-bg: #f8fafc;
+  --banner-text: #0f172a;
+}
+
+[data-md-color-scheme="slate"] {
+  --md-default-bg-color: #020617;
+  --md-default-fg-color: #f1f5f9;
+  --md-default-fg-color--light: #94a3b8;
+  --md-default-fg-color--lighter: #475569;
+  --md-default-fg-color--dark: #0f172a;
+
+  --glass-bg: rgba(15, 23, 42, 0.5);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --mesh-color: transparent;
+
+  --shadow-premium:
+    0 0 0 1px rgba(255, 255, 255, 0.05),
+    0 20px 25px -5px rgba(0, 0, 0, 0.4),
+    0 8px 10px -6px rgba(0, 0, 0, 0.4);
+
+  --banner-bg: #0f172a;
+  --banner-text: #f8fafc;
+}
+
+/* --- Background Engine 4.0 (Hyper-Premium) --- */
+
+body {
+  background-color: var(--md-default-bg-color);
+  background-image:
+    radial-gradient(circle at 15% 15%, rgba(244, 63, 94, 0.18) 0%, transparent 45%),
+    radial-gradient(circle at 85% 85%, rgba(56, 189, 248, 0.18) 0%, transparent 45%),
+    radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.12) 0%, transparent 70%);
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+/* Subtle Noise Overlay for Texture */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0.02;
+  pointer-events: none;
+  z-index: -1;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3%3Ffilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* --- Header & Navigation --- */
+
+.md-header {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(20px) saturate(160%);
+  border-bottom: 1px solid var(--glass-border) !important;
+  transition: var(--transition-smooth);
+}
+
+/* Light Mode Header Clarity Audit - Force Specificity */
+/* Standardize Header Clarity & Consistency */
+/* Fix for Navigation Tab Overflow on Desktop */
+.md-tabs__list {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  overflow-x: auto !important;
+  scroll-behavior: smooth !important;
+  scrollbar-width: none !important;
+  /* Hide scrollbar for clean UI */
+}
+
+.md-tabs__list::-webkit-scrollbar {
+  display: none !important;
+  /* Hide scrollbar for Chrome/Safari */
+}
+
+.md-tabs__item {
+  flex-shrink: 0 !important;
+}
+
+[data-md-color-scheme="default"] .md-header__title,
+[data-md-color-scheme="default"] .md-header__source,
+[data-md-color-scheme="default"] .md-tabs__link,
+[data-md-color-scheme="default"] .md-search__icon,
+[data-md-color-scheme="default"] .md-search__share,
+[data-md-color-scheme="default"] .md-header__button {
+  color: #1e293b !important;
+  fill: #1e293b !important;
+}
+
+[data-md-color-scheme="default"] .md-search__input {
+  color: #1e293b !important;
+}
+
+[data-md-color-scheme="default"] .md-search__input::placeholder {
+  color: rgba(30, 41, 59, 0.5) !important;
+}
+
+[data-md-color-scheme="default"] .md-tabs__link--active {
+  color: var(--md-primary-fg-color) !important;
+  opacity: 1 !important;
+}
+
+[data-md-color-scheme="default"] .md-logo svg {
+  fill: #1e293b !important;
+}
+
+/* --- Premium Banner UI --- */
+
+.custom-banner {
+  background: var(--banner-bg);
+  color: var(--banner-text);
+  padding: 10px 20px;
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1000;
+}
+
+.custom-banner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+  animation: bannerShine 3s infinite;
+}
+
+.custom-banner a {
+  color: inherit;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.custom-banner .close-btn {
+  background: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  padding: 5px;
+  opacity: 0.6;
+  transition: 0.2s;
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.custom-banner .close-btn:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+@keyframes bannerShine {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(100%);
+  }
+}
+
+/* --- Hero & Content Rhythm --- */
+
+.hero-title {
+  margin-top: 5rem !important;
+  font-size: clamp(2.2rem, 8vw, 4.5rem) !important;
+  font-weight: 900 !important;
+  letter-spacing: -0.05em !important;
+  text-align: center;
+  color: var(--md-default-fg-color);
+}
+
+.hero-subtitle {
+  text-align: center;
+  max-width: 680px;
+  margin: 1rem auto 3rem !important;
+  font-size: 1.15rem;
+  color: var(--md-default-fg-color--light);
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+.hero-action-group {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 4rem;
+}
+
+/* --- Feature Cards 2.0 --- */
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+}
+
+.feature-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  padding: 2.2rem;
+  backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-premium);
+  transition: var(--transition-smooth);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--md-primary-fg-color--light);
+}
+
+.feature-card h3 {
+  margin-top: 0 !important;
+  font-weight: 800 !important;
+  font-size: 1.3rem !important;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--md-default-fg-color);
+}
+
+.feature-card h3 svg {
+  fill: var(--md-primary-fg-color);
+}
+
+/* --- Sidebar & Navigation Clarity Fix --- */
+.md-nav__title,
+.md-nav__link,
+.md-sidebar__title {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.md-nav__item {
+  background: transparent !important;
+}
+
+/* --- Material Overrides --- */
+
+.md-button--primary {
+  background: var(--md-primary-fg-color) !important;
+  border: none !important;
+  padding: 12px 32px !important;
+  border-radius: 10px !important;
+  font-weight: 700 !important;
+  color: #fff !important;
+  box-shadow: 0 4px 14px 0 rgba(244, 63, 94, 0.3) !important;
+  transition: var(--transition-smooth) !important;
+}
+
+.md-button--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(244, 63, 94, 0.4) !important;
+}
+
+.md-button--secondary {
+  border-radius: 10px !important;
+  border: 1px solid var(--glass-border) !important;
+  padding: 12px 32px !important;
+  color: var(--md-default-fg-color) !important;
+  transition: var(--transition-smooth) !important;
+}
+
+.md-button--secondary:hover {
+  background: var(--glass-border) !important;
+  color: var(--md-primary-fg-color) !important;
+}
+
+.md-typeset h2 {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  font-size: 1.6rem;
+  margin-top: 3rem;
+}
+
+.md-typeset .admonition {
+  border-radius: 14px;
+  border-left-width: 5px;
+  box-shadow: var(--shadow-sm);
+}
+
+/* --- Mobile Adjustments --- */
+@media screen and (max-width: 40rem) {
+  .hero-title {
+    font-size: 2.5rem !important;
+  }
+
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+}
