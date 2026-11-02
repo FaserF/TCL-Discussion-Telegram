@@ -1,3 +1,4 @@
+/* global subscribe */
 /**
  * Hash Navigation Helper
  * Automatically opens <details> blocks (admonitions) when they or their
