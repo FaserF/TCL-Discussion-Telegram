@@ -10,7 +10,7 @@ Welcome to the official **TCL Smart TV Firmware Hub**. This catalog tracks, aggr
 > 💡 **Automated Verification & Integrity Guarantee**  
 > All firmware binaries listed below are verified through server-side MD5 signatures, SHA-256 cryptographic hashes, and IEEE 802.3 32-bit CRC32 checksums. Deep technical build properties are extracted via non-destructive byte-range inspection.
 
-*Last database update: `2026-11-02T12:04:43.500678+00:00` UTC*
+*Last database update: `2026-10-30T10:44:21.342460+00:00` UTC*
 
 ---
 
@@ -112,7 +112,7 @@ Welcome to the official **TCL Smart TV Firmware Hub**. This catalog tracks, aggr
 - **North America (NA) CDN**: [http://na-update.cedock.com/apps/resource2/V80008T01/V8-0008T01-LF1V636/FOTA-OTA/V8-0008T01-LF1V636.622816.zip](http://na-update.cedock.com/apps/resource2/V80008T01/V8-0008T01-LF1V636/FOTA-OTA/V8-0008T01-LF1V636.622816.zip)
 - **Asia-Pacific (AS) CDN**: [http://as-update.cedock.com/apps/resource2/V80008T01/V8-0008T01-LF1V636/FOTA-OTA/V8-0008T01-LF1V636.622816.zip](http://as-update.cedock.com/apps/resource2/V80008T01/V8-0008T01-LF1V636/FOTA-OTA/V8-0008T01-LF1V636.622816.zip)
 
-<details markdown="1">
+<details>
 <summary><b>📦 Previous Firmware Versions Archive (1 build)</b></summary>
 
 | Version | Release Date | Package Type & Size | Category | Changelog / Notes | Download Link |

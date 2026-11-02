@@ -133,8 +133,8 @@ function generateSearchData(chipsets, faqs) {
         
         // Clean markdown links and formatting cleanly
         const cleanContent = faq.a
-            .replace(/\[([^\]]+)\]\([^\)]+\)/g, '$1') // Extract link text
-            .replace(/[\*\`]/g, '')                   // Remove formatting
+            .replace(/\[([^\]]+)\]([^)]+)/g, '$1') // Extract link text
+            .replace(/[*`]/g, '')                   // Remove formatting
             .replace(/\s+/g, ' ')                     // Normalize spacing
             .trim();
             

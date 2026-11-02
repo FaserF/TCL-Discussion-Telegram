@@ -349,7 +349,7 @@ def write_markdown(entries: list[PlatformEntry], generated_at: str, history: Opt
         prev_versions = [h for h in p_history if h.get("version") not in active_versions]
         if prev_versions:
             lines += [
-                f"<details markdown=\"1\">",
+                f"<details>",
                 f"<summary><b>📦 Previous Firmware Versions Archive ({len(prev_versions)} build{'s' if len(prev_versions) > 1 else ''})</b></summary>",
                 "",
                 "| Version | Release Date | Package Type & Size | Category | Changelog / Notes | Download Link |",

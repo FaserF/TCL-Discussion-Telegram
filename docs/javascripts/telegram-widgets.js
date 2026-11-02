@@ -1,3 +1,4 @@
+/* global location$ */
 // Telegram Widget Loader for MkDocs
 function loadTelegramWidgets() {
     const containers = document.querySelectorAll('.telegram-widget');
