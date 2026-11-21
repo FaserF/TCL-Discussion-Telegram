@@ -5,7 +5,10 @@ on:
     tags:
       - "v*"
 
+permissions:
+  contents: write
+
 jobs:
   release:
-    uses: FaserF/repo-template/.github/workflows/reusable-release.yml@main
+    uses: FaserF/repo-template/.github/workflows/reusable-release.yml@v1
     secrets: inherit
