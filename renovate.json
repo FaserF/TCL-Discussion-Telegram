@@ -19,7 +19,9 @@
             "automergeStrategy": "squash"
         }
     ],
-    "dependencyDashboard": true,
+    "dependencyDashboard": {
+        "enabled": true
+    },
     "rebaseWhen": "conflicted",
     "internalChecksFilter": "strict",
     "prCreation": "not-pending",
