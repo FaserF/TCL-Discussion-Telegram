@@ -5,13 +5,12 @@ Official TCL FOTA Upgrade Server API Client and HMAC sign generation.
 from __future__ import annotations
 
 import hashlib
-import json
 import re
 import urllib.request
 import xml.etree.ElementTree as ET
 import zlib
-from datetime import datetime, timezone
-from typing import Any, Optional
+from datetime import UTC, datetime
+from typing import Any
 
 from .config import CDN_HOSTS, TV_APP_IDS, TV_APP_KEYS, TV_FOTA_HOSTS, TV_FOTA_PATH
 from .models import ChannelRelease, ExtractedBuildDetails, classify_firmware_release
@@ -26,12 +25,14 @@ def tv_fota_sign(app_key: str, device_id: str, timestamp_str: str) -> str:
     return hashlib.md5(raw.encode("utf-8")).hexdigest()
 
 
-def _single_fota_query(region: str, model_id: str, ver: str, timeout: float = 1.5) -> Optional[dict[str, Any]]:
+def _single_fota_query(
+    region: str, model_id: str, ver: str, timeout: float = 1.5
+) -> dict[str, Any] | None:
     host = TV_FOTA_HOSTS.get(region, TV_FOTA_HOSTS["eu"])
     app_key = TV_APP_KEYS.get(region, TV_APP_KEYS["eu"])
     app_id = TV_APP_IDS.get(region, TV_APP_IDS["eu"])
 
-    now_utc = datetime.now(timezone.utc)
+    now_utc = datetime.now(UTC)
     ts_str = now_utc.strftime("%Y%m%d%H%M%S")
     device_id = f"TCL-{region.upper()}-TRACKER-001"
 
@@ -39,17 +40,17 @@ def _single_fota_query(region: str, model_id: str, ver: str, timeout: float = 1.
 
     xml_body = (
         '<?xml version="1.0" encoding="UTF-8"?>\n'
-        '<request>\n'
-        '  <action>incrUpgrade</action>\n'
-        f'  <appid>{app_id}</appid>\n'
-        f'  <deviceid>{device_id}</deviceid>\n'
-        f'  <time>{ts_str}</time>\n'
-        f'  <sign>{sign}</sign>\n'
-        f'  <version>{ver}</version>\n'
-        '  <language>en</language>\n'
-        f'  <region>{region}</region>\n'
-        f'  <model>{model_id}</model>\n'
-        '</request>'
+        "<request>\n"
+        "  <action>incrUpgrade</action>\n"
+        f"  <appid>{app_id}</appid>\n"
+        f"  <deviceid>{device_id}</deviceid>\n"
+        f"  <time>{ts_str}</time>\n"
+        f"  <sign>{sign}</sign>\n"
+        f"  <version>{ver}</version>\n"
+        "  <language>en</language>\n"
+        f"  <region>{region}</region>\n"
+        f"  <model>{model_id}</model>\n"
+        "</request>"
     )
 
     url = f"http://{host}{TV_FOTA_PATH}"
@@ -60,14 +61,18 @@ def _single_fota_query(region: str, model_id: str, ver: str, timeout: float = 1.
         "Connection": "close",
     }
 
-    req = urllib.request.Request(url, data=xml_body.encode("utf-8"), headers=headers, method="POST")
+    req = urllib.request.Request(
+        url, data=xml_body.encode("utf-8"), headers=headers, method="POST"
+    )
 
     try:
         with urllib.request.urlopen(req, timeout=timeout) as resp:
             data = resp.read()
             root = ET.fromstring(data)
 
-            error_code = root.findtext(".//errorcode") or root.findtext(".//status") or "0"
+            error_code = (
+                root.findtext(".//errorcode") or root.findtext(".//status") or "0"
+            )
             if error_code not in ("0", "200", "SUCCESS", ""):
                 return None
 
@@ -76,10 +81,19 @@ def _single_fota_query(region: str, model_id: str, ver: str, timeout: float = 1.
                 return None
 
             file_url = root.findtext(".//file_url") or root.findtext(".//url") or ""
-            package_size = root.findtext(".//file_size") or root.findtext(".//size") or ""
+            package_size = (
+                root.findtext(".//file_size") or root.findtext(".//size") or ""
+            )
             md5_val = root.findtext(".//md5") or root.findtext(".//file_md5") or None
-            rel_date = root.findtext(".//release_date") or root.findtext(".//date") or "—"
-            changelog = root.findtext(".//description") or root.findtext(".//note") or root.findtext(".//changelog") or None
+            rel_date = (
+                root.findtext(".//release_date") or root.findtext(".//date") or "—"
+            )
+            changelog = (
+                root.findtext(".//description")
+                or root.findtext(".//note")
+                or root.findtext(".//changelog")
+                or None
+            )
             build_num = root.findtext(".//build_number") or ""
 
             if not build_num and file_url:
@@ -108,7 +122,9 @@ def _single_fota_query(region: str, model_id: str, ver: str, timeout: float = 1.
         return None
 
 
-def check_tv_fota(platform_id: str, current_ver: str, region: str = "eu", alt_platform_id: str = "") -> Optional[dict[str, Any]]:
+def check_tv_fota(
+    platform_id: str, current_ver: str, region: str = "eu", alt_platform_id: str = ""
+) -> dict[str, Any] | None:
     """
     Checks the TCL TV FOTA upgrade servers across all regions for a specific platform.
     """
@@ -138,7 +154,9 @@ def check_tv_fota(platform_id: str, current_ver: str, region: str = "eu", alt_pl
     return None
 
 
-def check_tv_fota_test_server(platform_id: str, current_ver: str, alt_platform_id: str = "") -> Optional[dict[str, Any]]:
+def check_tv_fota_test_server(
+    platform_id: str, current_ver: str, alt_platform_id: str = ""
+) -> dict[str, Any] | None:
     """
     Explicitly queries the internal TCL test server (testfilter-upgrade.huan.tv with upmp-test)
     to discover active Beta (R-series) or Pre-production (M-series) release candidates.
@@ -156,7 +174,9 @@ def check_tv_fota_test_server(platform_id: str, current_ver: str, alt_platform_i
     return None
 
 
-def construct_cdn_url(region: str, platform_id: str, fw_full_name: str, build_number: str = "") -> str:
+def construct_cdn_url(
+    region: str, platform_id: str, fw_full_name: str, build_number: str = ""
+) -> str:
     """
     Constructs the canonical TCL CDN URL for a given firmware release.
     """
@@ -166,7 +186,9 @@ def construct_cdn_url(region: str, platform_id: str, fw_full_name: str, build_nu
     return f"http://{host}/apps/resource2/{pdir}/{fw_full_name}/FOTA-OTA/{fw_full_name}{suffix}.zip"
 
 
-def construct_recovery_cdn_urls(region: str, platform_id: str, fw_full_name: str, build_number: str = "") -> list[str]:
+def construct_recovery_cdn_urls(
+    region: str, platform_id: str, fw_full_name: str, build_number: str = ""
+) -> list[str]:
     """
     Generates candidate URLs for factory recovery flash packages (.pkg, .img, _PKG.zip).
     """
@@ -188,11 +210,17 @@ def construct_recovery_cdn_urls(region: str, platform_id: str, fw_full_name: str
     ]
 
 
-def build_channel_release(data: Optional[dict[str, Any]], pid: str, reg: str) -> Optional[ChannelRelease]:
+def build_channel_release(
+    data: dict[str, Any] | None, pid: str, reg: str
+) -> ChannelRelease | None:
     """
     Constructs a validated ChannelRelease instance from a dictionary record.
     """
-    if not data or not data.get("version") or str(data.get("version")).endswith("-LF1V001"):
+    if (
+        not data
+        or not data.get("version")
+        or str(data.get("version")).endswith("-LF1V001")
+    ):
         return None
     ver = str(data["version"]).strip()
     bno = str(data.get("build_number") or "").strip()
@@ -200,21 +228,33 @@ def build_channel_release(data: Optional[dict[str, Any]], pid: str, reg: str) ->
     sz = str(data.get("package_size") or "—").strip()
     dt = str(data.get("release_date") or "—").strip()
     md5_val = data.get("md5")
-    sha_val = data.get("sha256") or (hashlib.sha256(f"{pid}-{ver}-{bno}".encode()).hexdigest() if md5_val else None)
-    crc_val = data.get("crc32") or (f"{zlib.crc32(f'{pid}-{ver}-{bno}'.encode()):08X}" if md5_val else None)
+    sha_val = data.get("sha256") or (
+        hashlib.sha256(f"{pid}-{ver}-{bno}".encode()).hexdigest() if md5_val else None
+    )
+    crc_val = data.get("crc32") or (
+        f"{zlib.crc32(f'{pid}-{ver}-{bno}'.encode()):08X}" if md5_val else None
+    )
     cl = data.get("changelog")
     dl = data.get("download_url") or construct_cdn_url(reg, pid, ver, bno)
     pkg_url = data.get("recovery_pkg_url")
     pkg_sz = data.get("recovery_pkg_size")
     pkg_md5 = data.get("recovery_pkg_md5")
     pkg_sha = data.get("recovery_pkg_sha256")
-    cdn_map = data.get("all_cdn_urls") or {r: construct_cdn_url(r, pid, ver, bno) for r in ("eu", "na", "as")}
+    cdn_map = data.get("all_cdn_urls") or {
+        r: construct_cdn_url(r, pid, ver, bno) for r in ("eu", "na", "as")
+    }
     rel_cat, is_t = classify_firmware_release(ver, ptype, cl or "")
 
     raw_ext = data.get("extracted_details")
-    ext_d: Optional[ExtractedBuildDetails] = None
+    ext_d: ExtractedBuildDetails | None = None
     if isinstance(raw_ext, dict):
-        ext_d = ExtractedBuildDetails(**{k: v for k, v in raw_ext.items() if k in ExtractedBuildDetails.__annotations__})
+        ext_d = ExtractedBuildDetails(
+            **{
+                k: v
+                for k, v in raw_ext.items()
+                if k in ExtractedBuildDetails.__annotations__
+            }
+        )
     elif isinstance(raw_ext, ExtractedBuildDetails):
         ext_d = raw_ext
 

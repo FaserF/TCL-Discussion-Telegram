@@ -33,9 +33,7 @@ def format_telegram_message(entry: PlatformEntry) -> str:
 
     if entry.is_test_release:
         tag_badge = "🧪 <b>TEST / BETA BUILD (RC)</b> ⚠️"
-        warning_banner = (
-            "⚠️ <b>Caution:</b> <i>This is a Pre-Release / Test build. Experimental features may contain bugs.</i>\n\n"
-        )
+        warning_banner = "⚠️ <b>Caution:</b> <i>This is a Pre-Release / Test build. Experimental features may contain bugs.</i>\n\n"
     else:
         tag_badge = "🚀 <b>NEW OFFICIAL FIRMWARE RELEASE</b>"
         warning_banner = ""
@@ -44,9 +42,13 @@ def format_telegram_message(entry: PlatformEntry) -> str:
     if entry.md5:
         checksum_lines += f"🔑 <b>MD5:</b> <code>{html.escape(entry.md5)}</code>\n"
     if entry.sha256:
-        checksum_lines += f"🔒 <b>SHA-256:</b> <code>{html.escape(entry.sha256)}</code>\n"
+        checksum_lines += (
+            f"🔒 <b>SHA-256:</b> <code>{html.escape(entry.sha256)}</code>\n"
+        )
     if entry.crc32:
-        checksum_lines += f"🛡️ <b>CRC-32:</b> <code>0x{html.escape(entry.crc32)}</code>\n"
+        checksum_lines += (
+            f"🛡️ <b>CRC-32:</b> <code>0x{html.escape(entry.crc32)}</code>\n"
+        )
 
     ext_lines = ""
     if entry.extracted_details:
@@ -70,10 +72,10 @@ def format_telegram_message(entry: PlatformEntry) -> str:
         f"🎯 <b>Known Compatible Models:</b> <i>{safe_models}</i>\n\n"
         f"📝 <b>Official Notes:</b>\n<i>{safe_changelog}</i>\n\n"
         f"⬇️ <b>Official Downloads:</b>\n"
-        f"• <a href=\"{entry.all_cdn_urls.get('eu', entry.download_url)}\">🇪🇺 EU / Global CDN Mirror</a>\n"
-        f"• <a href=\"{entry.all_cdn_urls.get('na', entry.download_url)}\">🇺🇸 North America CDN Mirror</a>\n"
-        f"• <a href=\"{entry.all_cdn_urls.get('as', entry.download_url)}\">🌏 Asia-Pacific CDN Mirror</a>\n\n"
-        f"📖 <a href=\"{DOCS_BASE_URL}#platform-{safe_platform.lower()}\">View full platform specifications on documentation</a>\n"
+        f'• <a href="{entry.all_cdn_urls.get("eu", entry.download_url)}">🇪🇺 EU / Global CDN Mirror</a>\n'
+        f'• <a href="{entry.all_cdn_urls.get("na", entry.download_url)}">🇺🇸 North America CDN Mirror</a>\n'
+        f'• <a href="{entry.all_cdn_urls.get("as", entry.download_url)}">🌏 Asia-Pacific CDN Mirror</a>\n\n'
+        f'📖 <a href="{DOCS_BASE_URL}#platform-{safe_platform.lower()}">View full platform specifications on documentation</a>\n'
         f"💬 <b>Discussion & Community:</b> @tclupdates"
     )
     return msg
@@ -110,7 +112,9 @@ def send_telegram_update(entry: PlatformEntry) -> bool:
         return False
 
 
-def check_and_report_ci_api_failure(failed_count: int, total_count: int, last_error_msg: str) -> None:
+def check_and_report_ci_api_failure(
+    failed_count: int, total_count: int, last_error_msg: str
+) -> None:
     """
     When running in GitHub Actions CI, detects if the FOTA upgrade API is failing
     (e.g., due to rotated HMAC keys, blocked endpoints, or auth changes).
@@ -125,7 +129,9 @@ def check_and_report_ci_api_failure(failed_count: int, total_count: int, last_er
     repo = os.environ.get("GITHUB_REPOSITORY")
     token = os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN")
     if not repo or not token:
-        print("[CI Alert] GITHUB_REPOSITORY or GITHUB_TOKEN not available. Skipping issue creation.")
+        print(
+            "[CI Alert] GITHUB_REPOSITORY or GITHUB_TOKEN not available. Skipping issue creation."
+        )
         return
 
     issue_title = "[FOTA API Alert] TCL Upgrade API Authentication Failure (Secret / HMAC Key Rotation Required)"
@@ -142,7 +148,9 @@ def check_and_report_ci_api_failure(failed_count: int, total_count: int, last_er
             existing_issues = json.loads(resp.read().decode("utf-8"))
             for issue in existing_issues:
                 if issue.get("title") == issue_title:
-                    print("[CI Alert] Open alert issue already exists. Skipping duplicate issue creation.")
+                    print(
+                        "[CI Alert] Open alert issue already exists. Skipping duplicate issue creation."
+                    )
                     return
 
         issue_body = (

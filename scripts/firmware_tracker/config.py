@@ -4,7 +4,6 @@ Configuration, filesystem paths, and server endpoints for the TCL Firmware Track
 
 from __future__ import annotations
 
-import os
 from pathlib import Path
 
 # ---------------------------------------------------------------------------

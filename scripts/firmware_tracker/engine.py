@@ -7,11 +7,16 @@ from __future__ import annotations
 import hashlib
 import re
 import zlib
-from datetime import datetime, timezone
-from typing import Any, Optional
+from datetime import UTC, datetime
+from typing import Any
 
 from .alerts import check_and_report_ci_api_failure, send_telegram_update
-from .fota_client import build_channel_release, check_tv_fota, check_tv_fota_test_server, construct_cdn_url
+from .fota_client import (
+    build_channel_release,
+    check_tv_fota,
+    check_tv_fota_test_server,
+    construct_cdn_url,
+)
 from .models import ExtractedBuildDetails, PlatformEntry, classify_firmware_release
 from .parser import (
     load_existing_platforms,
@@ -21,17 +26,25 @@ from .parser import (
 )
 
 
-def run(chipset_filters: Optional[list[str]] = None) -> tuple[list[PlatformEntry], list[PlatformEntry], str, dict[str, list[dict[str, Any]]], Optional[set[str]]]:
+def run(
+    chipset_filters: list[str] | None = None,
+) -> tuple[
+    list[PlatformEntry],
+    list[PlatformEntry],
+    str,
+    dict[str, list[dict[str, Any]]],
+    set[str] | None,
+]:
     """
     Main firmware discovery and aggregation engine.
     Queries the official TCL FOTA upgrade server for each platform.
     """
-    now = datetime.now(timezone.utc).isoformat()
+    now = datetime.now(UTC).isoformat()
     platforms_map = parse_chipsets_markdown()
     cached_platforms = load_existing_platforms()
     history = load_firmware_history()
 
-    target_platform_ids: Optional[set[str]] = None
+    target_platform_ids: set[str] | None = None
     if chipset_filters:
         target_platform_ids = set()
         for f in chipset_filters:
@@ -48,13 +61,19 @@ def run(chipset_filters: Optional[list[str]] = None) -> tuple[list[PlatformEntry
             if not matched:
                 target_platform_ids.add(f.strip())
 
-        print(f"[Chipset Filter] Active targets ({len(target_platform_ids)}): {', '.join(sorted(target_platform_ids))}")
+        print(
+            f"[Chipset Filter] Active targets ({len(target_platform_ids)}): {', '.join(sorted(target_platform_ids))}"
+        )
 
     print(f"\n[TCL TV Firmware Tracker] Starting run at {now}")
     if target_platform_ids:
-        print(f"[TCL TV Firmware Tracker] Querying {len(target_platform_ids)} targeted platform(s) (Remaining {len(platforms_map) - len(target_platform_ids)} loaded from cache)")
+        print(
+            f"[TCL TV Firmware Tracker] Querying {len(target_platform_ids)} targeted platform(s) (Remaining {len(platforms_map) - len(target_platform_ids)} loaded from cache)"
+        )
     else:
-        print(f"[TCL TV Firmware Tracker] Tracking all {len(platforms_map)} platform families")
+        print(
+            f"[TCL TV Firmware Tracker] Tracking all {len(platforms_map)} platform families"
+        )
 
     entries: list[PlatformEntry] = []
     updated_releases: list[PlatformEntry] = []
@@ -72,16 +91,34 @@ def run(chipset_filters: Optional[list[str]] = None) -> tuple[list[PlatformEntry
 
         if not is_targeted:
             raw_ext = cat.get("extracted_details") if cat else None
-            ext_d: Optional[ExtractedBuildDetails] = None
+            ext_d: ExtractedBuildDetails | None = None
             if isinstance(raw_ext, dict):
-                ext_d = ExtractedBuildDetails(**{k: v for k, v in raw_ext.items() if k in ExtractedBuildDetails.__annotations__})
+                ext_d = ExtractedBuildDetails(
+                    **{
+                        k: v
+                        for k, v in raw_ext.items()
+                        if k in ExtractedBuildDetails.__annotations__
+                    }
+                )
             elif isinstance(raw_ext, ExtractedBuildDetails):
                 ext_d = raw_ext
 
-            fw_code = cat.get("latest_firmware", f"V8-{pid}-LF1V001") if cat else f"V8-{pid}-LF1V001"
+            fw_code = (
+                cat.get("latest_firmware", f"V8-{pid}-LF1V001")
+                if cat
+                else f"V8-{pid}-LF1V001"
+            )
             bno = cat.get("build_number", "") if cat else ""
-            reg = (cat.get("region") or pdata.get("region", "EU")).upper() if cat else "EU"
-            rel_cat, is_test = classify_firmware_release(fw_code, cat.get("release_type", "Full OTA (ZIP)") if cat else "Full OTA (ZIP)", cat.get("changelog", "") if cat else "")
+            reg = (
+                (cat.get("region") or pdata.get("region", "EU")).upper()
+                if cat
+                else "EU"
+            )
+            rel_cat, is_test = classify_firmware_release(
+                fw_code,
+                cat.get("release_type", "Full OTA (ZIP)") if cat else "Full OTA (ZIP)",
+                cat.get("changelog", "") if cat else "",
+            )
 
             st_rel = build_channel_release(cat.get("stable"), pid, reg) if cat else None
             bt_rel = build_channel_release(cat.get("beta"), pid, reg) if cat else None
@@ -95,7 +132,9 @@ def run(chipset_filters: Optional[list[str]] = None) -> tuple[list[PlatformEntry
                 featured_models=pdata.get("featured_models", "—"),
                 latest_firmware=fw_code,
                 build_number=bno,
-                release_type=cat.get("release_type", "Full OTA (ZIP)") if cat else "Full OTA (ZIP)",
+                release_type=cat.get("release_type", "Full OTA (ZIP)")
+                if cat
+                else "Full OTA (ZIP)",
                 package_size=cat.get("package_size", "—") if cat else "—",
                 release_date=cat.get("release_date", "—") if cat else "—",
                 md5=cat.get("md5") if cat else None,
@@ -103,14 +142,29 @@ def run(chipset_filters: Optional[list[str]] = None) -> tuple[list[PlatformEntry
                 crc32=cat.get("crc32") if cat else None,
                 changelog=cat.get("changelog") if cat else None,
                 region=reg,
-                download_url=(cat.get("download_url") or construct_cdn_url(reg, pid, fw_code, bno)) if cat else construct_cdn_url(reg, pid, fw_code, bno),
+                download_url=(
+                    cat.get("download_url") or construct_cdn_url(reg, pid, fw_code, bno)
+                )
+                if cat
+                else construct_cdn_url(reg, pid, fw_code, bno),
                 recovery_pkg_url=cat.get("recovery_pkg_url") if cat else None,
                 recovery_pkg_size=cat.get("recovery_pkg_size") if cat else None,
                 recovery_pkg_md5=cat.get("recovery_pkg_md5") if cat else None,
                 recovery_pkg_sha256=cat.get("recovery_pkg_sha256") if cat else None,
                 is_test_release=is_test,
                 release_category=rel_cat,
-                all_cdn_urls=(cat.get("all_cdn_urls") or {r: construct_cdn_url(r, pid, fw_code, bno) for r in ("eu", "na", "as")}) if cat else {r: construct_cdn_url(r, pid, fw_code, bno) for r in ("eu", "na", "as")},
+                all_cdn_urls=(
+                    cat.get("all_cdn_urls")
+                    or {
+                        r: construct_cdn_url(r, pid, fw_code, bno)
+                        for r in ("eu", "na", "as")
+                    }
+                )
+                if cat
+                else {
+                    r: construct_cdn_url(r, pid, fw_code, bno)
+                    for r in ("eu", "na", "as")
+                },
                 fota_api_status="Cached (Unchanged)" if cat else "Unchecked",
                 extracted_details=ext_d,
                 stable=st_rel,
@@ -139,7 +193,9 @@ def run(chipset_filters: Optional[list[str]] = None) -> tuple[list[PlatformEntry
             active_md5 = resp["md5"]
             active_changelog = resp["changelog"]
             active_type = "Full OTA (ZIP)"
-            primary_url = resp["file_url"] or construct_cdn_url(reg, pid, active_fw, bno)
+            primary_url = resp["file_url"] or construct_cdn_url(
+                reg, pid, active_fw, bno
+            )
             fota_status = "Checked (Live API - Up to date)"
         else:
             fota_failed_count += 1
@@ -151,25 +207,39 @@ def run(chipset_filters: Optional[list[str]] = None) -> tuple[list[PlatformEntry
             active_md5 = cat.get("md5")
             active_changelog = cat.get("changelog")
             active_type = cat.get("release_type", "Full OTA (ZIP)")
-            primary_url = cat.get("download_url") or construct_cdn_url(reg, pid, active_fw, bno)
+            primary_url = cat.get("download_url") or construct_cdn_url(
+                reg, pid, active_fw, bno
+            )
             fota_status = "Checked (Static Mirror)"
 
         active_sha256 = cat.get("sha256")
         if not active_sha256 and active_md5:
-            active_sha256 = hashlib.sha256(f"{pid}-{active_fw}-{bno}".encode("utf-8")).hexdigest()
+            active_sha256 = hashlib.sha256(
+                f"{pid}-{active_fw}-{bno}".encode()
+            ).hexdigest()
 
         active_crc32 = cat.get("crc32")
         if not active_crc32 and active_md5:
-            crc_int = zlib.crc32(f"{pid}-{active_fw}-{bno}".encode("utf-8"))
+            crc_int = zlib.crc32(f"{pid}-{active_fw}-{bno}".encode())
             active_crc32 = f"{crc_int:08X}"
 
-        cdn_links = {r: construct_cdn_url(r, pid, active_fw, bno) for r in ("eu", "na", "as")}
-        rel_cat, is_test = classify_firmware_release(active_fw, active_type, active_changelog or "")
+        cdn_links = {
+            r: construct_cdn_url(r, pid, active_fw, bno) for r in ("eu", "na", "as")
+        }
+        rel_cat, is_test = classify_firmware_release(
+            active_fw, active_type, active_changelog or ""
+        )
 
         raw_ext = cat.get("extracted_details")
-        ext_details: Optional[ExtractedBuildDetails] = None
+        ext_details: ExtractedBuildDetails | None = None
         if isinstance(raw_ext, dict):
-            ext_details = ExtractedBuildDetails(**{k: v for k, v in raw_ext.items() if k in ExtractedBuildDetails.__annotations__})
+            ext_details = ExtractedBuildDetails(
+                **{
+                    k: v
+                    for k, v in raw_ext.items()
+                    if k in ExtractedBuildDetails.__annotations__
+                }
+            )
         elif isinstance(raw_ext, ExtractedBuildDetails):
             ext_details = raw_ext
 
@@ -185,49 +255,70 @@ def run(chipset_filters: Optional[list[str]] = None) -> tuple[list[PlatformEntry
 
         # Query internal TCL test server (upmp-test) for pre-release candidates (R/M builds)
         test_resp = check_tv_fota_test_server(pid, current_ver, alt_platform_id=alt_id)
-        if test_resp and test_resp.get("version") and not str(test_resp["version"]).endswith("-LF1V001"):
+        if (
+            test_resp
+            and test_resp.get("version")
+            and not str(test_resp["version"]).endswith("-LF1V001")
+        ):
             t_fw = str(test_resp["version"]).strip()
             t_bno = str(test_resp.get("build_number") or "").strip()
-            t_url = test_resp.get("file_url") or construct_cdn_url(reg, pid, t_fw, t_bno)
-            candidates.append({
-                "version": t_fw,
-                "build_number": t_bno,
-                "release_type": "Full OTA (ZIP)",
-                "package_size": str(test_resp.get("package_size") or "—").strip(),
-                "release_date": str(test_resp.get("release_date") or "—").strip(),
-                "md5": test_resp.get("md5"),
-                "sha256": hashlib.sha256(f"{pid}-{t_fw}-{t_bno}".encode()).hexdigest() if test_resp.get("md5") else None,
-                "crc32": f"{zlib.crc32(f'{pid}-{t_fw}-{t_bno}'.encode()):08X}" if test_resp.get("md5") else None,
-                "changelog": test_resp.get("changelog"),
-                "download_url": t_url,
-                "all_cdn_urls": {r: construct_cdn_url(r, pid, t_fw, t_bno) for r in ("eu", "na", "as")},
-            })
+            t_url = test_resp.get("file_url") or construct_cdn_url(
+                reg, pid, t_fw, t_bno
+            )
+            candidates.append(
+                {
+                    "version": t_fw,
+                    "build_number": t_bno,
+                    "release_type": "Full OTA (ZIP)",
+                    "package_size": str(test_resp.get("package_size") or "—").strip(),
+                    "release_date": str(test_resp.get("release_date") or "—").strip(),
+                    "md5": test_resp.get("md5"),
+                    "sha256": hashlib.sha256(
+                        f"{pid}-{t_fw}-{t_bno}".encode()
+                    ).hexdigest()
+                    if test_resp.get("md5")
+                    else None,
+                    "crc32": f"{zlib.crc32(f'{pid}-{t_fw}-{t_bno}'.encode()):08X}"
+                    if test_resp.get("md5")
+                    else None,
+                    "changelog": test_resp.get("changelog"),
+                    "download_url": t_url,
+                    "all_cdn_urls": {
+                        r: construct_cdn_url(r, pid, t_fw, t_bno)
+                        for r in ("eu", "na", "as")
+                    },
+                }
+            )
 
-        candidates.append({
-            "version": active_fw,
-            "build_number": bno,
-            "release_type": active_type,
-            "package_size": active_size,
-            "release_date": active_date,
-            "md5": active_md5,
-            "sha256": active_sha256,
-            "crc32": active_crc32,
-            "changelog": active_changelog,
-            "download_url": primary_url,
-            "recovery_pkg_url": cat.get("recovery_pkg_url"),
-            "recovery_pkg_size": cat.get("recovery_pkg_size"),
-            "recovery_pkg_md5": cat.get("recovery_pkg_md5"),
-            "recovery_pkg_sha256": cat.get("recovery_pkg_sha256"),
-            "all_cdn_urls": cdn_links,
-            "extracted_details": ext_details,
-        })
+        candidates.append(
+            {
+                "version": active_fw,
+                "build_number": bno,
+                "release_type": active_type,
+                "package_size": active_size,
+                "release_date": active_date,
+                "md5": active_md5,
+                "sha256": active_sha256,
+                "crc32": active_crc32,
+                "changelog": active_changelog,
+                "download_url": primary_url,
+                "recovery_pkg_url": cat.get("recovery_pkg_url"),
+                "recovery_pkg_size": cat.get("recovery_pkg_size"),
+                "recovery_pkg_md5": cat.get("recovery_pkg_md5"),
+                "recovery_pkg_sha256": cat.get("recovery_pkg_sha256"),
+                "all_cdn_urls": cdn_links,
+                "extracted_details": ext_details,
+            }
+        )
 
         def parse_version_rank(v_str: str) -> int:
             m = re.search(r"[A-Za-z](\d{2,4})$", v_str or "")
             return int(m.group(1)) if m else 0
 
         # Sort candidates descending by build version so highest version is preferred
-        candidates.sort(key=lambda c: parse_version_rank(c.get("version", "")), reverse=True)
+        candidates.sort(
+            key=lambda c: parse_version_rank(c.get("version", "")), reverse=True
+        )
 
         best_stable = None
         best_beta = None
@@ -237,7 +328,9 @@ def run(chipset_filters: Optional[list[str]] = None) -> tuple[list[PlatformEntry
             c_ver = cand.get("version", "")
             if not c_ver or str(c_ver).endswith("-LF1V001"):
                 continue
-            c_cat, _ = classify_firmware_release(c_ver, cand.get("release_type", ""), cand.get("changelog", ""))
+            c_cat, _ = classify_firmware_release(
+                c_ver, cand.get("release_type", ""), cand.get("changelog", "")
+            )
             if c_cat == "Production (Stable)":
                 if not best_stable:
                     best_stable = cand
@@ -334,14 +427,20 @@ def run(chipset_filters: Optional[list[str]] = None) -> tuple[list[PlatformEntry
             and not entry.latest_firmware.endswith("-LF1V001")
             and not old_fw.endswith("-LF1V001")
         ):
-            print(f"\n[NEW RELEASE DETECTED] {pid}: {old_fw} -> {entry.latest_firmware}")
+            print(
+                f"\n[NEW RELEASE DETECTED] {pid}: {old_fw} -> {entry.latest_firmware}"
+            )
             updated_releases.append(entry)
             record_firmware_history_entry(history, entry)
             send_telegram_update(entry)
 
-    print(f"\n[TCL TV Firmware Tracker] Successfully processed {len(entries)} platforms.")
+    print(
+        f"\n[TCL TV Firmware Tracker] Successfully processed {len(entries)} platforms."
+    )
 
     if fota_total_queried > 0:
-        check_and_report_ci_api_failure(fota_failed_count, fota_total_queried, last_fota_error)
+        check_and_report_ci_api_failure(
+            fota_failed_count, fota_total_queried, last_fota_error
+        )
 
     return entries, updated_releases, now, history, target_platform_ids

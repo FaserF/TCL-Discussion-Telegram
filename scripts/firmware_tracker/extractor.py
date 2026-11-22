@@ -9,8 +9,8 @@ import struct
 import urllib.request
 import zipfile
 import zlib
-from datetime import datetime, timezone
-from typing import Any, Optional
+from datetime import UTC, datetime
+from typing import Any
 
 from .fota_client import construct_recovery_cdn_urls
 from .models import ExtractedBuildDetails, PlatformEntry
@@ -47,14 +47,20 @@ def parse_ota_metadata_text(raw_text: str) -> ExtractedBuildDetails:
                 next_slash = sub.find("/")
                 if next_slash != -1:
                     candidate = sub[:next_slash].strip()
-                    if candidate.isdigit() or (len(candidate) <= 3 and candidate[0].isdigit()):
+                    if candidate.isdigit() or (
+                        len(candidate) <= 3 and candidate[0].isdigit()
+                    ):
                         android_ver = candidate
         except Exception:
             pass
 
     if android_ver == "—":
-        for k in ("ro.build.version.release", "ro.product.build.version.release", "android_version"):
-            if k in props and props[k]:
+        for k in (
+            "ro.build.version.release",
+            "ro.product.build.version.release",
+            "android_version",
+        ):
+            if props.get(k):
                 android_ver = props[k]
                 break
 
@@ -80,7 +86,7 @@ def parse_ota_metadata_text(raw_text: str) -> ExtractedBuildDetails:
         or "—"
     )
 
-    ts_val: Optional[int] = None
+    ts_val: int | None = None
     ts_formatted = "—"
     raw_ts = (
         props.get("post-timestamp")
@@ -90,18 +96,15 @@ def parse_ota_metadata_text(raw_text: str) -> ExtractedBuildDetails:
     if raw_ts and raw_ts.isdigit():
         try:
             ts_val = int(raw_ts)
-            dt = datetime.fromtimestamp(ts_val, tz=timezone.utc)
+            dt = datetime.fromtimestamp(ts_val, tz=UTC)
             ts_formatted = dt.strftime("%b %d, %Y")
             if sec_patch == "—":
                 sec_patch = dt.strftime("%Y-%m-05")
         except Exception:
             pass
 
-    sdk_val: Optional[int] = None
-    raw_sdk = (
-        props.get("post-sdk-level")
-        or props.get("ro.build.version.sdk")
-    )
+    sdk_val: int | None = None
+    raw_sdk = props.get("post-sdk-level") or props.get("ro.build.version.sdk")
     if raw_sdk and raw_sdk.isdigit():
         sdk_val = int(raw_sdk)
     elif android_ver == "14":
@@ -113,7 +116,11 @@ def parse_ota_metadata_text(raw_text: str) -> ExtractedBuildDetails:
     elif android_ver == "9":
         sdk_val = 28
 
-    incr = props.get("post-build-incremental") or props.get("ro.build.version.incremental") or "—"
+    incr = (
+        props.get("post-build-incremental")
+        or props.get("ro.build.version.incremental")
+        or "—"
+    )
     dev = props.get("device") or props.get("ro.product.device") or "—"
 
     return ExtractedBuildDetails(
@@ -149,24 +156,30 @@ def parse_zip_central_directory(tail_bytes: bytes) -> dict[str, tuple[int, int, 
 
         method = struct.unpack("<H", tail_bytes[cd_entry + 10 : cd_entry + 12])[0]
         c_size, u_size = struct.unpack("<II", tail_bytes[cd_entry + 20 : cd_entry + 28])
-        fn_len, extra_len, comm_len = struct.unpack("<HHH", tail_bytes[cd_entry + 28 : cd_entry + 34])
+        fn_len, extra_len, comm_len = struct.unpack(
+            "<HHH", tail_bytes[cd_entry + 28 : cd_entry + 34]
+        )
         offset = struct.unpack("<I", tail_bytes[cd_entry + 42 : cd_entry + 46])[0]
 
-        fname = tail_bytes[cd_entry + 46 : cd_entry + 46 + fn_len].decode("utf-8", errors="ignore")
+        fname = tail_bytes[cd_entry + 46 : cd_entry + 46 + fn_len].decode(
+            "utf-8", errors="ignore"
+        )
         files[fname] = (method, c_size, u_size, offset)
         idx = cd_entry + 46 + fn_len + extra_len + comm_len
 
     return files
 
 
-def extract_metadata_from_zip_bytes(zip_bytes: bytes) -> Optional[ExtractedBuildDetails]:
+def extract_metadata_from_zip_bytes(zip_bytes: bytes) -> ExtractedBuildDetails | None:
     """
     Inspects in-memory zip bytes for META-INF/com/android/metadata.
     """
     try:
         with zipfile.ZipFile(io.BytesIO(zip_bytes)) as zf:
             for item in zf.namelist():
-                if item.endswith("META-INF/com/android/metadata") or item.endswith("metadata"):
+                if item.endswith("META-INF/com/android/metadata") or item.endswith(
+                    "metadata"
+                ):
                     with zf.open(item) as f:
                         txt = f.read().decode("utf-8", errors="ignore")
                         return parse_ota_metadata_text(txt)
@@ -183,6 +196,7 @@ def _is_host_dead(url: str) -> bool:
         return True
     try:
         from urllib.parse import urlparse
+
         host = urlparse(url).netloc
         return host in _DEAD_HOSTS
     except Exception:
@@ -192,6 +206,7 @@ def _is_host_dead(url: str) -> bool:
 def _mark_host_dead(url: str) -> None:
     try:
         from urllib.parse import urlparse
+
         host = urlparse(url).netloc
         if host:
             _DEAD_HOSTS.add(host)
@@ -199,7 +214,9 @@ def _mark_host_dead(url: str) -> None:
         pass
 
 
-def fetch_remote_zip_metadata_range(url: str, timeout: float = 1.5) -> Optional[ExtractedBuildDetails]:
+def fetch_remote_zip_metadata_range(
+    url: str, timeout: float = 1.5
+) -> ExtractedBuildDetails | None:
     """
     Downloads ONLY the ZIP Central Directory and metadata file using HTTP Range headers (~64KB to 1MB total)
     instead of transferring the full 2 GB archive.
@@ -214,22 +231,31 @@ def fetch_remote_zip_metadata_range(url: str, timeout: float = 1.5) -> Optional[
     }
 
     # 1. Fetch the last 1MB of the ZIP to inspect the Central Directory
-    req_tail = urllib.request.Request(url, headers={**headers, "Range": "bytes=-1048576"})
-    tail_data: Optional[bytes] = None
+    req_tail = urllib.request.Request(
+        url, headers={**headers, "Range": "bytes=-1048576"}
+    )
+    tail_data: bytes | None = None
     try:
         with urllib.request.urlopen(req_tail, timeout=timeout) as resp:
             tail_data = resp.read()
     except Exception as exc:
         # If host timed out or connection refused, mark host dead
         err_msg = str(exc).lower()
-        if "timed out" in err_msg or "refused" in err_msg or "unreachable" in err_msg or "getaddrinfo failed" in err_msg:
+        if (
+            "timed out" in err_msg
+            or "refused" in err_msg
+            or "unreachable" in err_msg
+            or "getaddrinfo failed" in err_msg
+        ):
             _mark_host_dead(url)
 
     if not tail_data:
         if _is_host_dead(url):
             return None
         try:
-            req_head = urllib.request.Request(url, headers={**headers, "Range": "bytes=0-1048576"})
+            req_head = urllib.request.Request(
+                url, headers={**headers, "Range": "bytes=0-1048576"}
+            )
             with urllib.request.urlopen(req_head, timeout=timeout) as resp:
                 head_data = resp.read()
                 return extract_metadata_from_zip_bytes(head_data)
@@ -239,7 +265,11 @@ def fetch_remote_zip_metadata_range(url: str, timeout: float = 1.5) -> Optional[
     files = parse_zip_central_directory(tail_data)
     target_name = None
     for fn in files:
-        if fn.endswith("META-INF/com/android/metadata") or fn.endswith("metadata") or fn.endswith("build.prop"):
+        if (
+            fn.endswith("META-INF/com/android/metadata")
+            or fn.endswith("metadata")
+            or fn.endswith("build.prop")
+        ):
             target_name = fn
             break
 
@@ -248,7 +278,9 @@ def fetch_remote_zip_metadata_range(url: str, timeout: float = 1.5) -> Optional[
 
     method, c_size, u_size, offset = files[target_name]
 
-    req_range = urllib.request.Request(url, headers={**headers, "Range": f"bytes={offset}-{offset + c_size + 256}"})
+    req_range = urllib.request.Request(
+        url, headers={**headers, "Range": f"bytes={offset}-{offset + c_size + 256}"}
+    )
     try:
         with urllib.request.urlopen(req_range, timeout=timeout) as resp:
             raw_chunk = resp.read()
@@ -258,7 +290,9 @@ def fetch_remote_zip_metadata_range(url: str, timeout: float = 1.5) -> Optional[
                 comp_data = raw_chunk[payload_start : payload_start + c_size]
 
                 if method == 8:
-                    decomp_txt = zlib.decompress(comp_data, -zlib.MAX_WBITS).decode("utf-8", errors="ignore")
+                    decomp_txt = zlib.decompress(comp_data, -zlib.MAX_WBITS).decode(
+                        "utf-8", errors="ignore"
+                    )
                 else:
                     decomp_txt = comp_data.decode("utf-8", errors="ignore")
 
@@ -269,7 +303,9 @@ def fetch_remote_zip_metadata_range(url: str, timeout: float = 1.5) -> Optional[
     return None
 
 
-def probe_remote_recovery_package(urls: list[str], timeout: float = 1.5) -> Optional[tuple[str, str]]:
+def probe_remote_recovery_package(
+    urls: list[str], timeout: float = 1.5
+) -> tuple[str, str] | None:
     """
     Quickly probes candidate CDN URLs using HTTP HEAD to discover if an official IMG/PKG recovery image exists.
     Returns (live_url, formatted_size) if found.
@@ -297,13 +333,20 @@ def probe_remote_recovery_package(urls: list[str], timeout: float = 1.5) -> Opti
                     return (u, size_str)
         except Exception as exc:
             err_msg = str(exc).lower()
-            if "timed out" in err_msg or "refused" in err_msg or "unreachable" in err_msg or "getaddrinfo failed" in err_msg:
+            if (
+                "timed out" in err_msg
+                or "refused" in err_msg
+                or "unreachable" in err_msg
+                or "getaddrinfo failed" in err_msg
+            ):
                 _mark_host_dead(u)
             continue
     return None
 
 
-def get_all_candidate_mirrors(platform: str, fw_name: str, build_number: str, default_url: str) -> list[str]:
+def get_all_candidate_mirrors(
+    platform: str, fw_name: str, build_number: str, default_url: str
+) -> list[str]:
     """
     Generates all regional CDN mirror endpoints and alternate paths for a given firmware release.
     """
@@ -317,16 +360,22 @@ def get_all_candidate_mirrors(platform: str, fw_name: str, build_number: str, de
     if default_url and default_url.startswith("http"):
         mirrors.append(default_url)
 
-    mirrors.extend([
-        f"http://eu-update.cedock.com/apps/resource2/{pdir}/{fw_name}/FOTA-OTA/{fw_name}{bno_suffix}.zip",
-        f"http://na-update.cedock.com/apps/resource2/{pdir}/{fw_name}/FOTA-OTA/{fw_name}{bno_suffix}.zip",
-        f"http://as-update.cedock.com/apps/resource2/{pdir}/{fw_name}/FOTA-OTA/{fw_name}{bno_suffix}.zip",
-        f"http://as.update.cedock.com/apps/resource2/{pdir}/{fw_name}/FOTA-OTA/{fw_name}{bno_suffix}.zip",
-        f"http://update.cedock.com/apps/resource2/{pdir}/{fw_name}/FOTA-OTA/{fw_name}{bno_suffix}.zip",
-        f"http://celesw.tcl.com/CSEU%20TV/Software/{fw_name}.zip",
-    ])
+    mirrors.extend(
+        [
+            f"http://eu-update.cedock.com/apps/resource2/{pdir}/{fw_name}/FOTA-OTA/{fw_name}{bno_suffix}.zip",
+            f"http://na-update.cedock.com/apps/resource2/{pdir}/{fw_name}/FOTA-OTA/{fw_name}{bno_suffix}.zip",
+            f"http://as-update.cedock.com/apps/resource2/{pdir}/{fw_name}/FOTA-OTA/{fw_name}{bno_suffix}.zip",
+            f"http://as.update.cedock.com/apps/resource2/{pdir}/{fw_name}/FOTA-OTA/{fw_name}{bno_suffix}.zip",
+            f"http://update.cedock.com/apps/resource2/{pdir}/{fw_name}/FOTA-OTA/{fw_name}{bno_suffix}.zip",
+            f"http://celesw.tcl.com/CSEU%20TV/Software/{fw_name}.zip",
+        ]
+    )
     seen = set()
-    return [m for m in mirrors if m and not _is_host_dead(m) and not (m in seen or seen.add(m))]
+    return [
+        m
+        for m in mirrors
+        if m and not _is_host_dead(m) and not (m in seen or seen.add(m))
+    ]
 
 
 def process_firmware_extractions_sequentially(
@@ -335,9 +384,9 @@ def process_firmware_extractions_sequentially(
     generated_at: str,
     history: dict[str, list[dict[str, Any]]],
     max_missing_per_run: int = 10,
-    target_pids: Optional[set[str]] = None,
+    target_pids: set[str] | None = None,
     force_extract: bool = False,
-    writers_module: Optional[Any] = None,
+    writers_module: Any | None = None,
 ) -> None:
     """
     Sequentially processes firmware packages to extract deep build properties using HTTP Range requests.
@@ -353,17 +402,31 @@ def process_firmware_extractions_sequentially(
         if force_extract:
             pending_entries = [e for e in entries if e.platform in target_pids]
         else:
-            pending_entries = [e for e in entries if e.platform in target_pids and (e.extracted_details is None or e.platform in updated_platform_ids)]
+            pending_entries = [
+                e
+                for e in entries
+                if e.platform in target_pids
+                and (e.extracted_details is None or e.platform in updated_platform_ids)
+            ]
     else:
         new_update_entries = [e for e in entries if e.platform in updated_platform_ids]
-        missing_entries = [e for e in entries if (e.extracted_details is None or force_extract) and e.platform not in updated_platform_ids]
+        missing_entries = [
+            e
+            for e in entries
+            if (e.extracted_details is None or force_extract)
+            and e.platform not in updated_platform_ids
+        ]
         pending_entries = new_update_entries + missing_entries[:max_missing_per_run]
 
     if not pending_entries:
-        print("[Firmware Extraction] All targeted releases have verified metadata. Skipping range checks.")
+        print(
+            "[Firmware Extraction] All targeted releases have verified metadata. Skipping range checks."
+        )
         return
 
-    print(f"\n[Firmware Extraction] Processing {len(pending_entries)} platform(s) for metadata extraction...")
+    print(
+        f"\n[Firmware Extraction] Processing {len(pending_entries)} platform(s) for metadata extraction..."
+    )
 
     consecutive_mirror_failures = 0
     updated_any = False
@@ -371,36 +434,52 @@ def process_firmware_extractions_sequentially(
         if e.platform in updated_platform_ids or force_extract:
             e.extracted_details = None
 
-        print(f"  [{idx+1}/{len(pending_entries)}] Checking firmware metadata for {e.platform} ({e.latest_firmware}) via Range requests...", end=" ", flush=True)
+        print(
+            f"  [{idx + 1}/{len(pending_entries)}] Checking firmware metadata for {e.platform} ({e.latest_firmware}) via Range requests...",
+            end=" ",
+            flush=True,
+        )
 
         if consecutive_mirror_failures >= 3:
-            print("CDN Range check skipped (remote hosts unreachable or 404 - circuit breaker activated).")
+            print(
+                "CDN Range check skipped (remote hosts unreachable or 404 - circuit breaker activated)."
+            )
             continue
 
-        extracted: Optional[ExtractedBuildDetails] = None
+        extracted: ExtractedBuildDetails | None = None
 
-        candidate_mirrors = get_all_candidate_mirrors(e.platform, e.latest_firmware, e.build_number, e.download_url)
+        candidate_mirrors = get_all_candidate_mirrors(
+            e.platform, e.latest_firmware, e.build_number, e.download_url
+        )
         if not candidate_mirrors:
-            print("CDN Range check skipped (no candidate URLs / remote hosts unreachable).")
+            print(
+                "CDN Range check skipped (no candidate URLs / remote hosts unreachable)."
+            )
             consecutive_mirror_failures += 1
             continue
 
         for mirror_url in candidate_mirrors:
             extracted = fetch_remote_zip_metadata_range(mirror_url, timeout=1.5)
             if extracted:
-                print(f"Extracted via Range ({mirror_url[:40]}...): Android {extracted.android_version} ({extracted.os_flavor})")
+                print(
+                    f"Extracted via Range ({mirror_url[:40]}...): Android {extracted.android_version} ({extracted.os_flavor})"
+                )
                 consecutive_mirror_failures = 0
                 break
 
         # Probe for Recovery IMG / PKG package in parallel
         if not e.recovery_pkg_url and consecutive_mirror_failures < 3:
-            rec_candidates = construct_recovery_cdn_urls(e.region, e.platform, e.latest_firmware, e.build_number)
+            rec_candidates = construct_recovery_cdn_urls(
+                e.region, e.platform, e.latest_firmware, e.build_number
+            )
             rec_res = probe_remote_recovery_package(rec_candidates, timeout=1.0)
             if rec_res:
                 e.recovery_pkg_url, e.recovery_pkg_size = rec_res
                 if e.stable:
                     e.stable.recovery_pkg_url, e.stable.recovery_pkg_size = rec_res
-                print(f"[Recovery IMG/PKG Found]: {e.recovery_pkg_url} ({e.recovery_pkg_size})")
+                print(
+                    f"[Recovery IMG/PKG Found]: {e.recovery_pkg_url} ({e.recovery_pkg_size})"
+                )
 
         if not extracted:
             consecutive_mirror_failures += 1
