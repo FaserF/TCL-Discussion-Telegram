@@ -29,8 +29,18 @@ from .extractor import (
     parse_zip_central_directory,
     process_firmware_extractions_sequentially,
 )
-from .fota_client import build_channel_release, check_tv_fota, construct_cdn_url, tv_fota_sign
-from .models import ChannelRelease, ExtractedBuildDetails, PlatformEntry, classify_firmware_release
+from .fota_client import (
+    build_channel_release,
+    check_tv_fota,
+    construct_cdn_url,
+    tv_fota_sign,
+)
+from .models import (
+    ChannelRelease,
+    ExtractedBuildDetails,
+    PlatformEntry,
+    classify_firmware_release,
+)
 from .parser import (
     load_existing_platforms,
     load_firmware_history,
@@ -46,30 +56,30 @@ from .writers import (
 )
 
 __all__ = [
-    "run",
-    "PlatformEntry",
     "ChannelRelease",
     "ExtractedBuildDetails",
-    "classify_firmware_release",
-    "check_tv_fota",
-    "construct_cdn_url",
+    "PlatformEntry",
     "build_channel_release",
-    "tv_fota_sign",
-    "parse_chipsets_markdown",
-    "load_existing_platforms",
-    "load_firmware_history",
-    "record_firmware_history_entry",
-    "parse_ota_metadata_text",
-    "parse_zip_central_directory",
+    "check_and_report_ci_api_failure",
+    "check_tv_fota",
+    "classify_firmware_release",
+    "construct_cdn_url",
     "extract_metadata_from_zip_bytes",
     "fetch_remote_zip_metadata_range",
     "get_all_candidate_mirrors",
+    "load_existing_platforms",
+    "load_firmware_history",
+    "parse_chipsets_markdown",
+    "parse_ota_metadata_text",
+    "parse_zip_central_directory",
     "process_firmware_extractions_sequentially",
-    "send_telegram_update",
-    "check_and_report_ci_api_failure",
-    "write_json",
-    "write_beta_test_json",
+    "record_firmware_history_entry",
+    "run",
     "save_firmware_history",
-    "write_markdown",
+    "send_telegram_update",
+    "tv_fota_sign",
     "update_news_json",
+    "write_beta_test_json",
+    "write_json",
+    "write_markdown",
 ]

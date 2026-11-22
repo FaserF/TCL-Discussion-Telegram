@@ -6,9 +6,8 @@ from __future__ import annotations
 
 import json
 from dataclasses import asdict
-from datetime import datetime, timezone
-from pathlib import Path
-from typing import Any, Optional
+from datetime import UTC, datetime
+from typing import Any
 
 from .config import ASSETS_DIR, BETA_TEST_JSON, HISTORY_JSON, JSON_OUT, MD_OUT, NEWS_OUT
 from .models import PlatformEntry
@@ -50,7 +49,7 @@ def write_json(entries: list[PlatformEntry], generated_at: str) -> None:
                 "fingerprint": "Official Android build fingerprint signature.",
                 "sdk_level": "Android API SDK level integer (e.g., 34 for Android 14, 31 for Android 12).",
                 "incremental_build": "Internal incremental build revision code (e.g., 'AS50', 'AS24', 'AR11').",
-                "device_codename": "Hardware device target codename (e.g., 'G10', 'G09', 'BeyondTV4')."
+                "device_codename": "Hardware device target codename (e.g., 'G10', 'G09', 'BeyondTV4').",
             },
             "stable": "Detailed attributes of the latest verified Production (Stable) firmware release.",
             "beta": "Detailed attributes of the latest active Beta / Release Candidate (RC) firmware release (null if none available).",
@@ -63,11 +62,13 @@ def write_json(entries: list[PlatformEntry], generated_at: str) -> None:
             "recovery_pkg_sha256": "Cryptographic SHA-256 hash checksum for the recovery package.",
             "all_cdn_urls": "Object containing regional CDN mirror URLs mapped by region key ('eu', 'na', 'as').",
             "fota_api_status": "Validation and connection status against the official live TCL FOTA upgrade server.",
-            "checked_at": "ISO-8601 UTC timestamp recording when the platform was last queried against the server."
+            "checked_at": "ISO-8601 UTC timestamp recording when the platform was last queried against the server.",
         },
         "firmwares": [asdict(e) for e in entries],
     }
-    JSON_OUT.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    JSON_OUT.write_text(
+        json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
+    )
     print(f"[JSON] Written to {JSON_OUT}")
 
 
@@ -88,7 +89,9 @@ def write_beta_test_json(entries: list[PlatformEntry], generated_at: str) -> Non
                 "region": e.region,
                 "fota_api_status": e.fota_api_status,
                 "checked_at": e.checked_at,
-                "latest_stable_version": e.stable.version if e.stable else e.latest_firmware,
+                "latest_stable_version": e.stable.version
+                if e.stable
+                else e.latest_firmware,
                 "beta": asdict(e.beta) if e.beta else None,
                 "test": asdict(e.test) if e.test else None,
             }
@@ -107,11 +110,15 @@ def write_beta_test_json(entries: list[PlatformEntry], generated_at: str) -> Non
         },
         "pre_releases": beta_test_entries,
     }
-    BETA_TEST_JSON.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    BETA_TEST_JSON.write_text(
+        json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
+    )
     print(f"[Beta/Test JSON] Written to {BETA_TEST_JSON}")
 
 
-def save_firmware_history(history: dict[str, list[dict[str, Any]]], entries: Optional[list[PlatformEntry]] = None) -> None:
+def save_firmware_history(
+    history: dict[str, list[dict[str, Any]]], entries: list[PlatformEntry] | None = None
+) -> None:
     """
     Saves the aggregated historical database to docs/assets/firmwares_history.json.
     STRICT RULE:
@@ -157,7 +164,7 @@ def save_firmware_history(history: dict[str, list[dict[str, Any]]], entries: Opt
             cleaned_history[pid] = platform_hist
 
     payload = {
-        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "generated_at": datetime.now(UTC).isoformat(),
         "source": "official TCL Smart TV FOTA historical archive (cedock.com / huan.tv)",
         "total_archived_platforms": len(cleaned_history),
         "total_archived_releases": sum(len(v) for v in cleaned_history.values()),
@@ -179,11 +186,19 @@ def save_firmware_history(history: dict[str, list[dict[str, Any]]], entries: Opt
         },
         "history": cleaned_history,
     }
-    HISTORY_JSON.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-    print(f"[History JSON] Written {payload['total_archived_releases']} historical releases across {payload['total_archived_platforms']} platforms to {HISTORY_JSON}")
+    HISTORY_JSON.write_text(
+        json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
+    )
+    print(
+        f"[History JSON] Written {payload['total_archived_releases']} historical releases across {payload['total_archived_platforms']} platforms to {HISTORY_JSON}"
+    )
 
 
-def write_markdown(entries: list[PlatformEntry], generated_at: str, history: Optional[dict[str, list[dict[str, Any]]]] = None) -> None:
+def write_markdown(
+    entries: list[PlatformEntry],
+    generated_at: str,
+    history: dict[str, list[dict[str, Any]]] | None = None,
+) -> None:
     """
     Renders docs/firmwares.md overview table, platform cards, and collapsible previous versions archive.
     """
@@ -217,7 +232,9 @@ def write_markdown(entries: list[PlatformEntry], generated_at: str, history: Opt
         if e.download_url:
             dl_links.append(f"[:material-download: OTA (ZIP)]({e.download_url})")
         if e.recovery_pkg_url:
-            dl_links.append(f"[:material-hammer-wrench: Recovery (PKG)]({e.recovery_pkg_url})")
+            dl_links.append(
+                f"[:material-hammer-wrench: Recovery (PKG)]({e.recovery_pkg_url})"
+            )
         dl_link = "<br>".join(dl_links) if dl_links else "—"
 
         os_tag = "—"
@@ -250,7 +267,9 @@ def write_markdown(entries: list[PlatformEntry], generated_at: str, history: Opt
         if e.extracted_details:
             d = e.extracted_details
             if d.android_version != "—":
-                ext_md_lines.append(f"- **Android OS Version**: `Android {d.android_version}` ({d.os_flavor})")
+                ext_md_lines.append(
+                    f"- **Android OS Version**: `Android {d.android_version}` ({d.os_flavor})"
+                )
             if d.gms_version != "—":
                 ext_md_lines.append(f"- **GMS Package**: `{d.gms_version}`")
             if d.security_patch != "—":
@@ -262,9 +281,13 @@ def write_markdown(entries: list[PlatformEntry], generated_at: str, history: Opt
             if d.sdk_level:
                 ext_md_lines.append(f"- **SDK API Level**: `{d.sdk_level}`")
             if d.incremental_build != "—":
-                ext_md_lines.append(f"- **Incremental Revision**: `{d.incremental_build}`")
+                ext_md_lines.append(
+                    f"- **Incremental Revision**: `{d.incremental_build}`"
+                )
             if d.device_codename != "—":
-                ext_md_lines.append(f"- **Target Device Codename**: `{d.device_codename}`")
+                ext_md_lines.append(
+                    f"- **Target Device Codename**: `{d.device_codename}`"
+                )
 
         sha_field = f"- **SHA-256 Checksum**: `{e.sha256}`" if e.sha256 else ""
         crc_field = f"- **CRC-32 Checksum**: `0x{e.crc32}`" if e.crc32 else ""
@@ -278,7 +301,12 @@ def write_markdown(entries: list[PlatformEntry], generated_at: str, history: Opt
         lines += [
             f'<a id="platform-{e.platform.lower()}"></a>',
             f"#### {e.family_name} (`{e.latest_firmware}`)",
-            f"- **Platform Identifier**: `{e.platform}`" + (f" (Alternative ID: `{e.alt_platform_id}`)" if e.alt_platform_id != e.platform else ""),
+            f"- **Platform Identifier**: `{e.platform}`"
+            + (
+                f" (Alternative ID: `{e.alt_platform_id}`)"
+                if e.alt_platform_id != e.platform
+                else ""
+            ),
             f"- **Hardware Architecture & SoC**: {e.soc_specs}",
             f"- **Compatible TV Models (Selection)**: *{e.featured_models}*",
             f"- **Package Type**: `{e.release_type}` · **Size**: `{e.package_size}` · **Release Date**: `{e.release_date}` · **Region**: `{e.region}`",
@@ -291,8 +319,9 @@ def write_markdown(entries: list[PlatformEntry], generated_at: str, history: Opt
             lines.append(crc_field)
 
         lines += [
-            f"- **Firmware Packages & Downloads**:",
-            f"  - 📦 **OTA Package (ZIP)** (for TV menu update): [{e.latest_firmware}.zip]({e.download_url})" + (f" (`{e.package_size}`)" if e.package_size != "—" else ""),
+            "- **Firmware Packages & Downloads**:",
+            f"  - 📦 **OTA Package (ZIP)** (for TV menu update): [{e.latest_firmware}.zip]({e.download_url})"
+            + (f" (`{e.package_size}`)" if e.package_size != "—" else ""),
             rec_pkg_line,
             f"- **Official Changelog / Server Notes**: {e.changelog or '—'}",
         ]
@@ -304,7 +333,10 @@ def write_markdown(entries: list[PlatformEntry], generated_at: str, history: Opt
             ]
 
         if ext_md_lines:
-            lines += ["- **Extracted Android Build Properties**:", *[f"  {l}" for l in ext_md_lines]]
+            lines += [
+                "- **Extracted Android Build Properties**:",
+                *[f"  {l}" for l in ext_md_lines],
+            ]
 
         if e.beta:
             b_crc_str = f" · **CRC-32**: `0x{e.beta.crc32}`" if e.beta.crc32 else ""
@@ -346,10 +378,12 @@ def write_markdown(entries: list[PlatformEntry], generated_at: str, history: Opt
         if e.test:
             active_versions.add(e.test.version)
 
-        prev_versions = [h for h in p_history if h.get("version") not in active_versions]
+        prev_versions = [
+            h for h in p_history if h.get("version") not in active_versions
+        ]
         if prev_versions:
             lines += [
-                f"<details markdown=\"1\">",
+                '<details markdown="1">',
                 f"<summary><b>📦 Previous Firmware Versions Archive ({len(prev_versions)} build{'s' if len(prev_versions) > 1 else ''})</b></summary>",
                 "",
                 "| Version | Release Date | Package Type & Size | Category | Changelog / Notes | Download Link |",
@@ -360,13 +394,19 @@ def write_markdown(entries: list[PlatformEntry], generated_at: str, history: Opt
                 pv_date = pv.get("release_date", "—")
                 pv_type = pv.get("release_type", "Full OTA (ZIP)")
                 pv_sz = pv.get("package_size", "—")
-                pv_type_sz = f"`{pv_type}` · `{pv_sz}`" if pv_sz != "—" else f"`{pv_type}`"
+                pv_type_sz = (
+                    f"`{pv_type}` · `{pv_sz}`" if pv_sz != "—" else f"`{pv_type}`"
+                )
                 pv_cat = pv.get("release_category", "Production (Stable)")
-                pv_cat_tag = f"⚠️ *{pv_cat}*" if pv.get("is_test_release") else f"**{pv_cat}**"
+                pv_cat_tag = (
+                    f"⚠️ *{pv_cat}*" if pv.get("is_test_release") else f"**{pv_cat}**"
+                )
                 pv_cl = pv.get("changelog") or "—"
                 pv_dl = pv.get("download_url") or ""
                 pv_dl_md = f"[:material-download: Download]({pv_dl})" if pv_dl else "—"
-                lines.append(f"| `{pv_ver}` | `{pv_date}` | {pv_type_sz} | {pv_cat_tag} | *{pv_cl}* | {pv_dl_md} |")
+                lines.append(
+                    f"| `{pv_ver}` | `{pv_date}` | {pv_type_sz} | {pv_cat_tag} | *{pv_cl}* | {pv_dl_md} |"
+                )
             lines += [
                 "",
                 "</details>",
@@ -425,5 +465,11 @@ def update_news_json(updated_releases: list[PlatformEntry], generated_at: str) -
             items.insert(0, news_item)
 
     items = items[:50]
-    NEWS_OUT.write_text(json.dumps({"generated_at": generated_at, "news": items}, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    NEWS_OUT.write_text(
+        json.dumps(
+            {"generated_at": generated_at, "news": items}, indent=2, ensure_ascii=False
+        )
+        + "\n",
+        encoding="utf-8",
+    )
     print(f"[News] Updated {NEWS_OUT} with {len(updated_releases)} new release(s)")
