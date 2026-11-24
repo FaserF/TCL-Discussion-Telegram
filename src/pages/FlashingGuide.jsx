@@ -1,14 +1,26 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import {
-    Usb, HardDrive, Info, CheckCircle2,
+    Usb, Info,
     Cpu, AlertCircle, ChevronDown, ChevronUp,
-    Monitor, Smartphone, Terminal, ShieldCheck
+    Monitor, Smartphone, Terminal, ShieldCheck, Globe, Link2, Download
 } from 'lucide-react';
 import chipsets from '../data/chipsets.json';
+import { CN_KNOWN_MODELS, parseFirmwareUrl } from '../utils/firmwareUrl';
 
 const FlashingGuide = () => {
     const [activeChipset, setActiveChipset] = useState(null);
+    const [regionFilter, setRegionFilter] = useState('ALL');
+    const [manualUrl, setManualUrl] = useState('');
+
+    const filteredChipsets = chipsets.filter((c) => {
+        if (regionFilter === 'ALL') return true;
+        if (regionFilter === 'CN') return c.name.includes('(CN)') || c.name.includes('T653T11');
+        if (regionFilter === 'NA') return c.name.includes('(NA');
+        return !c.name.includes('(CN)') && !c.name.includes('(NA');
+    });
+
+    const parsedManual = manualUrl.trim() ? parseFirmwareUrl(manualUrl) : null;
 
     return (
         <div className="relative min-h-screen">
@@ -82,8 +94,29 @@ const FlashingGuide = () => {
                         </a>
                     </div>
 
+                    <div className="flex flex-wrap gap-2 mb-6 px-2">
+                        {['ALL', 'EU', 'NA', 'CN'].map((reg) => (
+                            <button
+                                key={reg}
+                                type="button"
+                                onClick={() => {
+                                    setRegionFilter(reg);
+                                    setActiveChipset(null);
+                                }}
+                                className={`px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider border transition-all ${regionFilter === reg
+                                    ? 'bg-tcl-red text-white border-tcl-red'
+                                    : 'border-white/10 text-gray-400 hover:text-white'
+                                    }`}
+                            >
+                                <span className="inline-flex items-center gap-1.5">
+                                    <Globe size={12} /> {reg === 'ALL' ? 'All Regions' : reg}
+                                </span>
+                            </button>
+                        ))}
+                    </div>
+
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-                        {chipsets.map((c, i) => (
+                        {filteredChipsets.map((c, i) => (
                             <motion.div
                                 key={i}
                                 whileHover={{ scale: 1.02 }}
@@ -117,6 +150,72 @@ const FlashingGuide = () => {
                                 </AnimatePresence>
                             </motion.div>
                         ))}
+                    </div>
+                </section>
+
+                {/* CN Region & Manual Official Firmware URL Inspector */}
+                <section className="mb-24 sm:mb-32">
+                    <div className="glass p-6 sm:p-8 rounded-3xl border border-white/10 space-y-6">
+                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                            <div>
+                                <h2 className="text-xl sm:text-2xl font-bold flex items-center gap-3">
+                                    <Link2 className="text-tcl-red" />
+                                    CN Region & Manual Firmware URL Validator
+                                </h2>
+                                <p className="text-sm text-gray-400 mt-1">
+                                    Verify official CN (<code>file-fota-tv.api.leiniao.com</code>) or Global (<code>cedock.com</code>) firmware URLs before downloading.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div className="flex flex-wrap gap-3">
+                            {CN_KNOWN_MODELS.map((item) => (
+                                <button
+                                    key={item.platform}
+                                    type="button"
+                                    onClick={() => setManualUrl(item.downloadUrl)}
+                                    className="text-left px-4 py-3 rounded-2xl bg-white/5 hover:bg-tcl-red/10 border border-white/10 hover:border-tcl-red/30 transition-all text-xs"
+                                >
+                                    <div className="font-bold text-white">{item.model}</div>
+                                    <div className="text-gray-400">Platform {item.platform} · Project ID {item.projectId} · {item.latestVersion}</div>
+                                </button>
+                            ))}
+                        </div>
+
+                        <input
+                            type="url"
+                            value={manualUrl}
+                            onChange={(e) => setManualUrl(e.target.value)}
+                            placeholder="Paste an official firmware URL (e.g. file-fota-tv.api.leiniao.com/2026/.../V8-T653T11-LF1V751.zip)"
+                            className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-sm text-white placeholder:text-gray-500 outline-none focus:border-tcl-red"
+                        />
+
+                        {manualUrl.trim() && (
+                            parsedManual ? (
+                                <div className="p-4 rounded-2xl bg-green-500/10 border border-green-500/20 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-sm">
+                                    <div className="space-y-1">
+                                        <div className="font-bold text-green-400">
+                                            Verified Official {parsedManual.region} Package · {parsedManual.version}
+                                        </div>
+                                        <div className="text-gray-300 text-xs">
+                                            Platform: <code>{parsedManual.platform}</code> · Type: {parsedManual.releaseType} · Date: {parsedManual.releaseDate}
+                                        </div>
+                                    </div>
+                                    <a
+                                        href={parsedManual.url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="px-4 py-2 rounded-xl bg-tcl-red text-white font-bold text-xs inline-flex items-center gap-2 shrink-0"
+                                    >
+                                        <Download size={14} /> Download Package
+                                    </a>
+                                </div>
+                            ) : (
+                                <div className="p-4 rounded-2xl bg-red-500/10 border border-red-500/20 text-xs text-red-300">
+                                    Invalid or untrusted firmware URL. Only official <code>*.api.leiniao.com</code>, <code>*.cedock.com</code>, and <code>celesw.tcl.com</code> URLs are accepted.
+                                </div>
+                            )
+                        )}
                     </div>
                 </section>
 

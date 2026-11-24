@@ -12,6 +12,7 @@ import zlib
 from datetime import UTC, datetime
 from typing import Any
 
+from .cn_client import is_cn_platform, query_huan_cn_fota, query_leiniao_tdp
 from .config import CDN_HOSTS, TV_APP_IDS, TV_APP_KEYS, TV_FOTA_HOSTS, TV_FOTA_PATH
 from .models import ChannelRelease, ExtractedBuildDetails, classify_firmware_release
 
@@ -123,12 +124,33 @@ def _single_fota_query(
 
 
 def check_tv_fota(
-    platform_id: str, current_ver: str, region: str = "eu", alt_platform_id: str = ""
+    platform_id: str,
+    current_ver: str,
+    region: str = "eu",
+    alt_platform_id: str = "",
+    project_id: str = "",
+    dev_model: str = "",
 ) -> dict[str, Any] | None:
     """
-    Checks the TCL TV FOTA upgrade servers across all regions for a specific platform.
+    Checks the TCL TV FOTA upgrade servers for a specific platform.
+    CN region platforms query CN-only endpoints (upmp-cn / Leiniao TDP) without
+    cross-falling back to Global/EU/NA servers, and Global/EU/NA queries never
+    cross-fall back to CN firmware.
     """
     reg_clean = region.lower()
+    if is_cn_platform(platform_id, reg_clean):
+        res = query_huan_cn_fota(
+            platform_id, current_ver, project_id=project_id, dev_model=dev_model
+        )
+        if res:
+            return res
+        res = _single_fota_query("cn", platform_id, current_ver)
+        if res:
+            return res
+        return query_leiniao_tdp(
+            platform_id, current_ver, project_id=project_id, dev_model=dev_model
+        )
+
     res = _single_fota_query(reg_clean, platform_id, current_ver)
     if res:
         return res
@@ -140,7 +162,7 @@ def check_tv_fota(
         if res:
             return res
 
-    for other_reg in ("eu", "na", "as", "cn"):
+    for other_reg in ("eu", "na", "as"):
         if other_reg == reg_clean:
             continue
         res = _single_fota_query(other_reg, platform_id, current_ver)
@@ -178,9 +200,13 @@ def construct_cdn_url(
     region: str, platform_id: str, fw_full_name: str, build_number: str = ""
 ) -> str:
     """
-    Constructs the canonical TCL CDN URL for a given firmware release.
+    Constructs the canonical TCL CDN URL for a given international firmware release.
+    CN firmware uses dynamic Leiniao FOTA paths and does not use cedock.com mirrors.
     """
-    host = CDN_HOSTS.get(region.lower(), f"{region.lower()}-update.cedock.com")
+    reg_l = region.lower()
+    if reg_l == "cn":
+        return ""
+    host = CDN_HOSTS.get(reg_l, f"{reg_l}-update.cedock.com")
     pdir = "V8" + platform_id.replace("-", "")
     suffix = f".{build_number}" if build_number else ""
     return f"http://{host}/apps/resource2/{pdir}/{fw_full_name}/FOTA-OTA/{fw_full_name}{suffix}.zip"
@@ -192,9 +218,11 @@ def construct_recovery_cdn_urls(
     """
     Generates candidate URLs for factory recovery flash packages (.pkg, .img, _PKG.zip).
     """
-    host = CDN_HOSTS.get(region.lower(), f"{region.lower()}-update.cedock.com")
+    reg_l = region.lower()
+    if reg_l == "cn":
+        return []
+    host = CDN_HOSTS.get(reg_l, f"{reg_l}-update.cedock.com")
     pdir = "V8" + platform_id.replace("-", "")
-    bno_suffix = f".{build_number}" if build_number else ""
     return [
         f"http://{host}/apps/resource2/{pdir}/{fw_full_name}/FOTA-IMG/{fw_full_name}.pkg",
         f"http://{host}/apps/resource2/{pdir}/{fw_full_name}/FOTA-IMG/Update.pkg",
@@ -240,9 +268,13 @@ def build_channel_release(
     pkg_sz = data.get("recovery_pkg_size")
     pkg_md5 = data.get("recovery_pkg_md5")
     pkg_sha = data.get("recovery_pkg_sha256")
-    cdn_map = data.get("all_cdn_urls") or {
-        r: construct_cdn_url(r, pid, ver, bno) for r in ("eu", "na", "as")
-    }
+    is_cn = reg.lower() == "cn" or (isinstance(dl, str) and "leiniao.com" in dl)
+    if data.get("all_cdn_urls"):
+        cdn_map = data["all_cdn_urls"]
+    elif is_cn:
+        cdn_map = {"cn": dl} if dl else {}
+    else:
+        cdn_map = {r: construct_cdn_url(r, pid, ver, bno) for r in ("eu", "na", "as")}
     rel_cat, is_t = classify_firmware_release(ver, ptype, cl or "")
 
     raw_ext = data.get("extracted_details")

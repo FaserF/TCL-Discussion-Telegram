@@ -10,7 +10,7 @@ from dataclasses import asdict
 from datetime import UTC, datetime
 from typing import Any
 
-from .config import CHIPSETS_MD, HISTORY_JSON, JSON_OUT
+from .config import CHIPSETS_MD, CN_KNOWN_PROJECTS, HISTORY_JSON, JSON_OUT
 from .models import PlatformEntry
 
 
@@ -71,17 +71,19 @@ def parse_chipsets_markdown() -> dict[str, dict[str, Any]]:
                     else p_id
                 )
 
-                reg = (
-                    "NA"
-                    if (
-                        "(NA" in fam_raw
-                        or "(NA" in id_raw
-                        or "NA" in p_id
-                        or p_id in ("0012T02", "T653T02", "T615T02")
-                    )
-                    else "EU"
-                )
+                if "(CN" in fam_raw or "(CN" in id_raw or p_id in CN_KNOWN_PROJECTS:
+                    reg = "CN"
+                elif (
+                    "(NA" in fam_raw
+                    or "(NA" in id_raw
+                    or "NA" in p_id
+                    or p_id in ("0012T02", "T653T02", "T615T02")
+                ):
+                    reg = "NA"
+                else:
+                    reg = "EU"
 
+                cn_meta = CN_KNOWN_PROJECTS.get(p_id, {})
                 platforms[p_id] = {
                     "platform": p_id,
                     "alt_platform_id": alt_id,
@@ -97,6 +99,8 @@ def parse_chipsets_markdown() -> dict[str, dict[str, Any]]:
                     "changelog": None,
                     "extracted_details": None,
                     "region": reg,
+                    "project_id": cn_meta.get("project_id", ""),
+                    "dev_model": cn_meta.get("dev_model", ""),
                 }
 
     print(
@@ -136,6 +140,7 @@ def load_existing_platforms() -> dict[str, dict[str, Any]]:
                         "recovery_pkg_sha256",
                         "extracted_details",
                         "region",
+                        "all_cdn_urls",
                         "stable",
                         "beta",
                         "test",

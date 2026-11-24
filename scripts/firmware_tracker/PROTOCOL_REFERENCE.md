@@ -32,6 +32,7 @@ http://{region}-update.cedock.com/apps/resource2/{PlatformDir}/{FirmwareName}/FO
 | `na-update.cedock.com` | North America / Latin America |
 | `as-update.cedock.com` | Asia-Pacific |
 | `as.update.cedock.com` | Asia-Pacific (legacy dot-notation) |
+| `file-fota-tv.api.leiniao.com` | China (CN) FOTA CDN (Leiniao / FFALCON) |
 
 ### 1.3 Live-Confirmed Examples
 
@@ -41,7 +42,18 @@ http://na-update.cedock.com/apps/resource2/V8R851T02/V8-R851T02-LF1V653/FOTA-OTA
 http://eu-update.cedock.com/apps/resource2/V8R41KT01/V8-R41KT01-LF1V343/FOTA-OTA/V8-R41KT01-LF1V343.008946.zip
 http://eu-update.cedock.com/apps/resource2/V8T615T01/V8-T615T01-LF1V082/FOTA-OTA/V8-T615T01-LF1V082.zip
 http://as-update.cedock.com/apps/resource2/V8R51MT02/V8-R51MT02-LF1V238/FOTA-OTA/V8-R51MT02-LF1V238.019519.zip
+https://file-fota-tv.api.leiniao.com/2026/10/12/full/ab/d61e1b75fb/V8-T653T11-LF1V751.zip
 ```
+
+### 1.3a China (CN) Leiniao FOTA & TDP v2 Endpoints
+
+Modern Chinese-region TCL / FFALCON TVs (e.g. `FF-CN-MT9653-R675C`, codename `tcl_mt5879_cn`, platform `T653T11`, `project_id=12061`) additionally query the Leiniao TDP device upgrade API alongside the legacy `filter-upgrade.huan.tv` (`upmp-cn`) cluster:
+
+* **TDP Upgrade Endpoint:** `https://tdp-o.api.leiniao.com/tdp-api/api/fms/v2/device/upgrade` (HTTPS POST, JSON payload with `project_id`, `platform`, `model`, `version`, `dnum`, authenticated via `TCL1-HMAC-SHA256`)
+* **CN FOTA CDN URL Pattern:**
+  ```
+  https://file-fota-tv.api.leiniao.com/{YYYY}/{MM}/{DD}/{full|inc}/{shard2}/{hash10}/{FirmwareName}.zip
+  ```
 
 ### 1.4 Why Blind URL Construction (Brute-Forcing) Fails
 

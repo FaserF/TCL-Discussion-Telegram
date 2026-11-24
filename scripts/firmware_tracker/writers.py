@@ -20,7 +20,7 @@ def write_json(entries: list[PlatformEntry], generated_at: str) -> None:
     ASSETS_DIR.mkdir(parents=True, exist_ok=True)
     payload = {
         "generated_at": generated_at,
-        "source": "official TCL Smart TV FOTA API (huan.tv) & CDN (cedock.com)",
+        "source": "official TCL Smart TV FOTA API (huan.tv / leiniao.com) & CDN (cedock.com / file-fota-tv.api.leiniao.com)",
         "total_platforms": len(entries),
         "api_fields_documentation": {
             "platform": "Primary hardware platform identifier code (e.g., '0012T01', '0008T01', 'T653T01') matching the TV SoC.",
@@ -54,13 +54,13 @@ def write_json(entries: list[PlatformEntry], generated_at: str) -> None:
             "stable": "Detailed attributes of the latest verified Production (Stable) firmware release.",
             "beta": "Detailed attributes of the latest active Beta / Release Candidate (RC) firmware release (null if none available).",
             "test": "Detailed attributes of the latest active Manufacturing / Pre-production Test firmware release (null if none available).",
-            "region": "Target regional market deployment ('EU', 'NA', 'AS', 'GLOBAL').",
+            "region": "Target regional market deployment ('EU', 'NA', 'AS', 'CN', 'GLOBAL').",
             "download_url": "Direct primary CDN download link for the package.",
             "recovery_pkg_url": "Direct CDN download link for factory recovery flash image (.pkg / .img / _PKG.zip), if available.",
             "recovery_pkg_size": "Formatted binary file size of the recovery package in GB/MB.",
             "recovery_pkg_md5": "Cryptographic MD5 hash checksum for the recovery package.",
             "recovery_pkg_sha256": "Cryptographic SHA-256 hash checksum for the recovery package.",
-            "all_cdn_urls": "Object containing regional CDN mirror URLs mapped by region key ('eu', 'na', 'as').",
+            "all_cdn_urls": "Object containing regional CDN mirror URLs mapped by region key ('eu', 'na', 'as', 'cn').",
             "fota_api_status": "Validation and connection status against the official live TCL FOTA upgrade server.",
             "checked_at": "ISO-8601 UTC timestamp recording when the platform was last queried against the server.",
         },
@@ -335,7 +335,7 @@ def write_markdown(
         if ext_md_lines:
             lines += [
                 "- **Extracted Android Build Properties**:",
-                *[f"  {l}" for l in ext_md_lines],
+                *[f"  {ext_line}" for ext_line in ext_md_lines],
             ]
 
         if e.beta:
@@ -362,12 +362,16 @@ def write_markdown(
                 "",
             ]
 
-        lines += [
-            f"- **EU / Global CDN**: [{e.all_cdn_urls.get('eu')}]({e.all_cdn_urls.get('eu')})",
-            f"- **North America (NA) CDN**: [{e.all_cdn_urls.get('na')}]({e.all_cdn_urls.get('na')})",
-            f"- **Asia-Pacific (AS) CDN**: [{e.all_cdn_urls.get('as')}]({e.all_cdn_urls.get('as')})",
-            "",
-        ]
+        for cdn_key, cdn_label in (
+            ("eu", "EU / Global CDN"),
+            ("na", "North America (NA) CDN"),
+            ("as", "Asia-Pacific (AS) CDN"),
+            ("cn", "China (CN) CDN (Leiniao)"),
+        ):
+            cdn_val = e.all_cdn_urls.get(cdn_key)
+            if cdn_val:
+                lines.append(f"- **{cdn_label}**: [{cdn_val}]({cdn_val})")
+        lines.append("")
 
         p_history = hist.get(e.platform, [])
         active_versions = {e.latest_firmware}

@@ -19,7 +19,8 @@ const IGNORE_URLS = [
     'http://filter-upgrade.huan.tv',
     'http://eu-filter-upgrade.huan.tv',
     'http://na-filter-upgrade.huan.tv',
-    'http://as-filter-upgrade.huan.tv'
+    'http://as-filter-upgrade.huan.tv',
+    'https://tdp-o.api.leiniao.com'
 ];
 
 const EXTENSIONS = ['.jsx', '.js', '.md', '.html'];
@@ -32,7 +33,7 @@ async function checkLink(url) {
     // Normalize url by trimming trailing punctuation
     url = url.replace(/[\x5d\\)]+$/, '');
 
-    if (IGNORE_URLS.some(ignore => url.startsWith(ignore)) || url.includes('cedock.com') || url.includes('huan.tv') || url.includes('{region}')) {
+    if (IGNORE_URLS.some(ignore => url.startsWith(ignore)) || url.includes('cedock.com') || url.includes('huan.tv') || url.includes('{region}') || url.includes('{YYYY}')) {
         return { url, status: 'ignored' };
     }
 

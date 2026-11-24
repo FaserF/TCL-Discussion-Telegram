@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-11-24T14:37:39.097450+00:00",
-  "source": "official TCL Smart TV FOTA API (huan.tv) & CDN (cedock.com)",
-  "total_platforms": 26,
+  "generated_at": "2026-11-24T23:19:50.521927+00:00",
+  "source": "official TCL Smart TV FOTA API (huan.tv / leiniao.com) & CDN (cedock.com / file-fota-tv.api.leiniao.com)",
+  "total_platforms": 27,
   "api_fields_documentation": {
     "platform": "Primary hardware platform identifier code (e.g., '0012T01', '0008T01', 'T653T01') matching the TV SoC.",
     "alt_platform_id": "Secondary or legacy alphanumeric platform identifier used interchangeably in OTA requests.",
@@ -34,13 +34,13 @@
     "stable": "Detailed attributes of the latest verified Production (Stable) firmware release.",
     "beta": "Detailed attributes of the latest active Beta / Release Candidate (RC) firmware release (null if none available).",
     "test": "Detailed attributes of the latest active Manufacturing / Pre-production Test firmware release (null if none available).",
-    "region": "Target regional market deployment ('EU', 'NA', 'AS', 'GLOBAL').",
+    "region": "Target regional market deployment ('EU', 'NA', 'AS', 'CN', 'GLOBAL').",
     "download_url": "Direct primary CDN download link for the package.",
     "recovery_pkg_url": "Direct CDN download link for factory recovery flash image (.pkg / .img / _PKG.zip), if available.",
     "recovery_pkg_size": "Formatted binary file size of the recovery package in GB/MB.",
     "recovery_pkg_md5": "Cryptographic MD5 hash checksum for the recovery package.",
     "recovery_pkg_sha256": "Cryptographic SHA-256 hash checksum for the recovery package.",
-    "all_cdn_urls": "Object containing regional CDN mirror URLs mapped by region key ('eu', 'na', 'as').",
+    "all_cdn_urls": "Object containing regional CDN mirror URLs mapped by region key ('eu', 'na', 'as', 'cn').",
     "fota_api_status": "Validation and connection status against the official live TCL FOTA upgrade server.",
     "checked_at": "ISO-8601 UTC timestamp recording when the platform was last queried against the server."
   },
@@ -73,7 +73,7 @@
         "na": "http://na-update.cedock.com/apps/resource2/V80003T05/V8-0003T05-LF1V242/FOTA-OTA/V8-0003T05-LF1V242.zip",
         "as": "http://as-update.cedock.com/apps/resource2/V80003T05/V8-0003T05-LF1V242/FOTA-OTA/V8-0003T05-LF1V242.zip"
       },
-      "fota_api_status": "Checked (Static Mirror)",
+      "fota_api_status": "Cached (Unchanged)",
       "extracted_details": null,
       "stable": {
         "version": "V8-0003T05-LF1V242",
@@ -101,7 +101,7 @@
       },
       "beta": null,
       "test": null,
-      "checked_at": "2026-11-24T14:37:39.097450+00:00"
+      "checked_at": "2026-11-24T23:19:50.521927+00:00"
     },
     {
       "platform": "0003T06",
@@ -131,7 +131,7 @@
         "na": "http://na-update.cedock.com/apps/resource2/V80003T06/V8-0003T06-LF1V085/FOTA-OTA/V8-0003T06-LF1V085.zip",
         "as": "http://as-update.cedock.com/apps/resource2/V80003T06/V8-0003T06-LF1V085/FOTA-OTA/V8-0003T06-LF1V085.zip"
       },
-      "fota_api_status": "Checked (Static Mirror)",
+      "fota_api_status": "Cached (Unchanged)",
       "extracted_details": null,
       "stable": {
         "version": "V8-0003T06-LF1V085",
@@ -159,7 +159,7 @@
       },
       "beta": null,
       "test": null,
-      "checked_at": "2026-11-24T14:37:39.097450+00:00"
+      "checked_at": "2026-11-24T23:19:50.521927+00:00"
     },
     {
       "platform": "0008T01",
@@ -189,7 +189,7 @@
         "na": "http://na-update.cedock.com/apps/resource2/V80008T01/V8-0008T01-LF1V636/FOTA-OTA/V8-0008T01-LF1V636.622816.zip",
         "as": "http://as-update.cedock.com/apps/resource2/V80008T01/V8-0008T01-LF1V636/FOTA-OTA/V8-0008T01-LF1V636.622816.zip"
       },
-      "fota_api_status": "Checked (Static Mirror)",
+      "fota_api_status": "Cached (Unchanged)",
       "extracted_details": {
         "android_version": "12",
         "os_flavor": "Google TV (GTV)",
@@ -239,7 +239,7 @@
       },
       "beta": null,
       "test": null,
-      "checked_at": "2026-11-24T14:37:39.097450+00:00"
+      "checked_at": "2026-11-24T23:19:50.521927+00:00"
     },
     {
       "platform": "0012T01",
@@ -269,7 +269,7 @@
         "na": "http://na-update.cedock.com/apps/resource2/V80012T01/V8-0012T01-LF1V655/FOTA-OTA/V8-0012T01-LF1V655.628400.zip",
         "as": "http://as-update.cedock.com/apps/resource2/V80012T01/V8-0012T01-LF1V655/FOTA-OTA/V8-0012T01-LF1V655.628400.zip"
       },
-      "fota_api_status": "Checked (Static Mirror)",
+      "fota_api_status": "Cached (Unchanged)",
       "extracted_details": {
         "android_version": "12",
         "os_flavor": "Google TV (GTV)",
@@ -319,7 +319,7 @@
       },
       "beta": null,
       "test": null,
-      "checked_at": "2026-11-24T14:37:39.097450+00:00"
+      "checked_at": "2026-11-24T23:19:50.521927+00:00"
     },
     {
       "platform": "0012T02",
@@ -349,7 +349,7 @@
         "na": "http://na-update.cedock.com/apps/resource2/V80012T02/V8-0012T02-LF1V620/FOTA-OTA/V8-0012T02-LF1V620.439617.zip",
         "as": "http://as-update.cedock.com/apps/resource2/V80012T02/V8-0012T02-LF1V620/FOTA-OTA/V8-0012T02-LF1V620.439617.zip"
       },
-      "fota_api_status": "Checked (Static Mirror)",
+      "fota_api_status": "Cached (Unchanged)",
       "extracted_details": {
         "android_version": "12",
         "os_flavor": "Google TV (GTV)",
@@ -399,7 +399,7 @@
       },
       "beta": null,
       "test": null,
-      "checked_at": "2026-11-24T14:37:39.097450+00:00"
+      "checked_at": "2026-11-24T23:19:50.521927+00:00"
     },
     {
       "platform": "0012T03",
@@ -429,7 +429,7 @@
         "na": "http://na-update.cedock.com/apps/resource2/V80012T03/V8-0012T03-LF1V110/FOTA-OTA/V8-0012T03-LF1V110.877669.zip",
         "as": "http://as-update.cedock.com/apps/resource2/V80012T03/V8-0012T03-LF1V110/FOTA-OTA/V8-0012T03-LF1V110.877669.zip"
       },
-      "fota_api_status": "Checked (Static Mirror)",
+      "fota_api_status": "Cached (Unchanged)",
       "extracted_details": {
         "android_version": "12",
         "os_flavor": "Google TV (GTV)",
@@ -479,7 +479,7 @@
       },
       "beta": null,
       "test": null,
-      "checked_at": "2026-11-24T14:37:39.097450+00:00"
+      "checked_at": "2026-11-24T23:19:50.521927+00:00"
     },
     {
       "platform": "0013T02",
@@ -509,7 +509,7 @@
         "na": "http://na-update.cedock.com/apps/resource2/V80013T02/V8-0013T02-LF1V163/FOTA-OTA/V8-0013T02-LF1V163.941121.zip",
         "as": "http://as-update.cedock.com/apps/resource2/V80013T02/V8-0013T02-LF1V163/FOTA-OTA/V8-0013T02-LF1V163.941121.zip"
       },
-      "fota_api_status": "Checked (Static Mirror)",
+      "fota_api_status": "Cached (Unchanged)",
       "extracted_details": {
         "android_version": "12",
         "os_flavor": "Google TV (GTV)",
@@ -559,7 +559,7 @@
       },
       "beta": null,
       "test": null,
-      "checked_at": "2026-11-24T14:37:39.097450+00:00"
+      "checked_at": "2026-11-24T23:19:50.521927+00:00"
     },
     {
       "platform": "0014T01",
@@ -589,7 +589,7 @@
         "na": "http://na-update.cedock.com/apps/resource2/V80014T01/V8-0014T01-LF1V001/FOTA-OTA/V8-0014T01-LF1V001.341571.zip",
         "as": "http://as-update.cedock.com/apps/resource2/V80014T01/V8-0014T01-LF1V001/FOTA-OTA/V8-0014T01-LF1V001.341571.zip"
       },
-      "fota_api_status": "Checked (Static Mirror)",
+      "fota_api_status": "Cached (Unchanged)",
       "extracted_details": {
         "android_version": "12",
         "os_flavor": "Google TV (GTV)",
@@ -605,7 +605,7 @@
       "stable": null,
       "beta": null,
       "test": null,
-      "checked_at": "2026-11-24T14:37:39.097450+00:00"
+      "checked_at": "2026-11-24T23:19:50.521927+00:00"
     },
     {
       "platform": "0015T01",
@@ -635,7 +635,7 @@
         "na": "http://na-update.cedock.com/apps/resource2/V80015T01/V8-0015T01-LF1V025/FOTA-OTA/V8-0015T01-LF1V025.156484.zip",
         "as": "http://as-update.cedock.com/apps/resource2/V80015T01/V8-0015T01-LF1V025/FOTA-OTA/V8-0015T01-LF1V025.156484.zip"
       },
-      "fota_api_status": "Checked (Static Mirror)",
+      "fota_api_status": "Cached (Unchanged)",
       "extracted_details": {
         "android_version": "14",
         "os_flavor": "Google TV (GTV)",
@@ -685,7 +685,7 @@
       },
       "beta": null,
       "test": null,
-      "checked_at": "2026-11-24T14:37:39.097450+00:00"
+      "checked_at": "2026-11-24T23:19:50.521927+00:00"
     },
     {
       "platform": "0016T01",
@@ -715,7 +715,7 @@
         "na": "http://na-update.cedock.com/apps/resource2/V80016T01/V8-0016T01-LF1V042/FOTA-OTA/V8-0016T01-LF1V042.779776.zip",
         "as": "http://as-update.cedock.com/apps/resource2/V80016T01/V8-0016T01-LF1V042/FOTA-OTA/V8-0016T01-LF1V042.779776.zip"
       },
-      "fota_api_status": "Checked (Static Mirror)",
+      "fota_api_status": "Cached (Unchanged)",
       "extracted_details": {
         "android_version": "12",
         "os_flavor": "Google TV (GTV)",
@@ -765,7 +765,7 @@
       },
       "beta": null,
       "test": null,
-      "checked_at": "2026-11-24T14:37:39.097450+00:00"
+      "checked_at": "2026-11-24T23:19:50.521927+00:00"
     },
     {
       "platform": "0017T01",
@@ -795,7 +795,7 @@
         "na": "http://na-update.cedock.com/apps/resource2/V80017T01/V8-0017T01-LF1V001/FOTA-OTA/V8-0017T01-LF1V001.397994.zip",
         "as": "http://as-update.cedock.com/apps/resource2/V80017T01/V8-0017T01-LF1V001/FOTA-OTA/V8-0017T01-LF1V001.397994.zip"
       },
-      "fota_api_status": "Checked (Static Mirror)",
+      "fota_api_status": "Cached (Unchanged)",
       "extracted_details": {
         "android_version": "11",
         "os_flavor": "Android TV (ATV)",
@@ -811,7 +811,7 @@
       "stable": null,
       "beta": null,
       "test": null,
-      "checked_at": "2026-11-24T14:37:39.097450+00:00"
+      "checked_at": "2026-11-24T23:19:50.521927+00:00"
     },
     {
       "platform": "0018T01",
@@ -841,12 +841,12 @@
         "na": "http://na-update.cedock.com/apps/resource2/V80018T01/V8-0018T01-LF1V001/FOTA-OTA/V8-0018T01-LF1V001.zip",
         "as": "http://as-update.cedock.com/apps/resource2/V80018T01/V8-0018T01-LF1V001/FOTA-OTA/V8-0018T01-LF1V001.zip"
       },
-      "fota_api_status": "Checked (Static Mirror)",
+      "fota_api_status": "Cached (Unchanged)",
       "extracted_details": null,
       "stable": null,
       "beta": null,
       "test": null,
-      "checked_at": "2026-11-24T14:37:39.097450+00:00"
+      "checked_at": "2026-11-24T23:19:50.521927+00:00"
     },
     {
       "platform": "MS48EST01",
@@ -876,7 +876,7 @@
         "na": "http://na-update.cedock.com/apps/resource2/V8MS48EST01/V8-MS48EST01-LF1V001/FOTA-OTA/V8-MS48EST01-LF1V001.320761.zip",
         "as": "http://as-update.cedock.com/apps/resource2/V8MS48EST01/V8-MS48EST01-LF1V001/FOTA-OTA/V8-MS48EST01-LF1V001.320761.zip"
       },
-      "fota_api_status": "Checked (Static Mirror)",
+      "fota_api_status": "Cached (Unchanged)",
       "extracted_details": {
         "android_version": "11",
         "os_flavor": "Android TV (ATV)",
@@ -892,7 +892,7 @@
       "stable": null,
       "beta": null,
       "test": null,
-      "checked_at": "2026-11-24T14:37:39.097450+00:00"
+      "checked_at": "2026-11-24T23:19:50.521927+00:00"
     },
     {
       "platform": "MS6488T01",
@@ -922,7 +922,7 @@
         "na": "http://na-update.cedock.com/apps/resource2/V8MS6488T01/V8-MS6488T01-LF1V001/FOTA-OTA/V8-MS6488T01-LF1V001.609016.zip",
         "as": "http://as-update.cedock.com/apps/resource2/V8MS6488T01/V8-MS6488T01-LF1V001/FOTA-OTA/V8-MS6488T01-LF1V001.609016.zip"
       },
-      "fota_api_status": "Checked (Static Mirror)",
+      "fota_api_status": "Cached (Unchanged)",
       "extracted_details": {
         "android_version": "11",
         "os_flavor": "Android TV (ATV)",
@@ -938,7 +938,7 @@
       "stable": null,
       "beta": null,
       "test": null,
-      "checked_at": "2026-11-24T14:37:39.097450+00:00"
+      "checked_at": "2026-11-24T23:19:50.521927+00:00"
     },
     {
       "platform": "MS6586T02",
@@ -968,7 +968,7 @@
         "na": "http://na-update.cedock.com/apps/resource2/V8MS6586T02/V8-MS6586T02-LF1V001/FOTA-OTA/V8-MS6586T02-LF1V001.639602.zip",
         "as": "http://as-update.cedock.com/apps/resource2/V8MS6586T02/V8-MS6586T02-LF1V001/FOTA-OTA/V8-MS6586T02-LF1V001.639602.zip"
       },
-      "fota_api_status": "Checked (Static Mirror)",
+      "fota_api_status": "Cached (Unchanged)",
       "extracted_details": {
         "android_version": "11",
         "os_flavor": "Android TV (ATV)",
@@ -984,7 +984,7 @@
       "stable": null,
       "beta": null,
       "test": null,
-      "checked_at": "2026-11-24T14:37:39.097450+00:00"
+      "checked_at": "2026-11-24T23:19:50.521927+00:00"
     },
     {
       "platform": "MS6886T02",
@@ -1014,7 +1014,7 @@
         "na": "http://na-update.cedock.com/apps/resource2/V8MS6886T02/V8-MS6886T02-LF1V001/FOTA-OTA/V8-MS6886T02-LF1V001.496968.zip",
         "as": "http://as-update.cedock.com/apps/resource2/V8MS6886T02/V8-MS6886T02-LF1V001/FOTA-OTA/V8-MS6886T02-LF1V001.496968.zip"
       },
-      "fota_api_status": "Checked (Static Mirror)",
+      "fota_api_status": "Cached (Unchanged)",
       "extracted_details": {
         "android_version": "11",
         "os_flavor": "Android TV (ATV)",
@@ -1030,7 +1030,7 @@
       "stable": null,
       "beta": null,
       "test": null,
-      "checked_at": "2026-11-24T14:37:39.097450+00:00"
+      "checked_at": "2026-11-24T23:19:50.521927+00:00"
     },
     {
       "platform": "NT67T01",
@@ -1060,7 +1060,7 @@
         "na": "http://na-update.cedock.com/apps/resource2/V8NT67T01/V8-NT67T01-LF1V001/FOTA-OTA/V8-NT67T01-LF1V001.962089.zip",
         "as": "http://as-update.cedock.com/apps/resource2/V8NT67T01/V8-NT67T01-LF1V001/FOTA-OTA/V8-NT67T01-LF1V001.962089.zip"
       },
-      "fota_api_status": "Checked (Static Mirror)",
+      "fota_api_status": "Cached (Unchanged)",
       "extracted_details": {
         "android_version": "11",
         "os_flavor": "Android TV (ATV)",
@@ -1076,7 +1076,7 @@
       "stable": null,
       "beta": null,
       "test": null,
-      "checked_at": "2026-11-24T14:37:39.097450+00:00"
+      "checked_at": "2026-11-24T23:19:50.521927+00:00"
     },
     {
       "platform": "R41KT01",
@@ -1106,7 +1106,7 @@
         "na": "http://na-update.cedock.com/apps/resource2/V8R41KT01/V8-R41KT01-LF1V343/FOTA-OTA/V8-R41KT01-LF1V343.945042.zip",
         "as": "http://as-update.cedock.com/apps/resource2/V8R41KT01/V8-R41KT01-LF1V343/FOTA-OTA/V8-R41KT01-LF1V343.945042.zip"
       },
-      "fota_api_status": "Checked (Static Mirror)",
+      "fota_api_status": "Cached (Unchanged)",
       "extracted_details": {
         "android_version": "11",
         "os_flavor": "Android TV (ATV)",
@@ -1156,7 +1156,7 @@
       },
       "beta": null,
       "test": null,
-      "checked_at": "2026-11-24T14:37:39.097450+00:00"
+      "checked_at": "2026-11-24T23:19:50.521927+00:00"
     },
     {
       "platform": "R51AT01",
@@ -1186,7 +1186,7 @@
         "na": "http://na-update.cedock.com/apps/resource2/V8R51AT01/V8-R51AT01-LF1V315/FOTA-OTA/V8-R51AT01-LF1V315.185337.zip",
         "as": "http://as-update.cedock.com/apps/resource2/V8R51AT01/V8-R51AT01-LF1V315/FOTA-OTA/V8-R51AT01-LF1V315.185337.zip"
       },
-      "fota_api_status": "Checked (Static Mirror)",
+      "fota_api_status": "Cached (Unchanged)",
       "extracted_details": {
         "android_version": "11",
         "os_flavor": "Android TV (ATV)",
@@ -1236,7 +1236,7 @@
       },
       "beta": null,
       "test": null,
-      "checked_at": "2026-11-24T14:37:39.097450+00:00"
+      "checked_at": "2026-11-24T23:19:50.521927+00:00"
     },
     {
       "platform": "R51MT02",
@@ -1266,7 +1266,7 @@
         "na": "http://na-update.cedock.com/apps/resource2/V8R51MT02/V8-R51MT02-LF1V267/FOTA-OTA/V8-R51MT02-LF1V267.162390.zip",
         "as": "http://as-update.cedock.com/apps/resource2/V8R51MT02/V8-R51MT02-LF1V267/FOTA-OTA/V8-R51MT02-LF1V267.162390.zip"
       },
-      "fota_api_status": "Checked (Static Mirror)",
+      "fota_api_status": "Cached (Unchanged)",
       "extracted_details": {
         "android_version": "11",
         "os_flavor": "Android TV (ATV)",
@@ -1316,7 +1316,7 @@
       },
       "beta": null,
       "test": null,
-      "checked_at": "2026-11-24T14:37:39.097450+00:00"
+      "checked_at": "2026-11-24T23:19:50.521927+00:00"
     },
     {
       "platform": "R51MT05",
@@ -1346,7 +1346,7 @@
         "na": "http://na-update.cedock.com/apps/resource2/V8R51MT05/V8-R51MT05-LF1V652/FOTA-OTA/V8-R51MT05-LF1V652.102029.zip",
         "as": "http://as-update.cedock.com/apps/resource2/V8R51MT05/V8-R51MT05-LF1V652/FOTA-OTA/V8-R51MT05-LF1V652.102029.zip"
       },
-      "fota_api_status": "Checked (Static Mirror)",
+      "fota_api_status": "Cached (Unchanged)",
       "extracted_details": {
         "android_version": "11",
         "os_flavor": "Android TV (ATV)",
@@ -1396,7 +1396,7 @@
       },
       "beta": null,
       "test": null,
-      "checked_at": "2026-11-24T14:37:39.097450+00:00"
+      "checked_at": "2026-11-24T23:19:50.521927+00:00"
     },
     {
       "platform": "R851T02",
@@ -1426,7 +1426,7 @@
         "na": "http://na-update.cedock.com/apps/resource2/V8R851T02/V8-R851T02-LF1V653/FOTA-OTA/V8-R851T02-LF1V653.zip",
         "as": "http://as-update.cedock.com/apps/resource2/V8R851T02/V8-R851T02-LF1V653/FOTA-OTA/V8-R851T02-LF1V653.zip"
       },
-      "fota_api_status": "Checked (Static Mirror)",
+      "fota_api_status": "Cached (Unchanged)",
       "extracted_details": null,
       "stable": {
         "version": "V8-R851T02-LF1V653",
@@ -1454,7 +1454,7 @@
       },
       "beta": null,
       "test": null,
-      "checked_at": "2026-11-24T14:37:39.097450+00:00"
+      "checked_at": "2026-11-24T23:19:50.521927+00:00"
     },
     {
       "platform": "R851T10",
@@ -1484,7 +1484,7 @@
         "na": "http://na-update.cedock.com/apps/resource2/V8R851T10/V8-R851T10-LF1V109/FOTA-OTA/V8-R851T10-LF1V109.zip",
         "as": "http://as-update.cedock.com/apps/resource2/V8R851T10/V8-R851T10-LF1V109/FOTA-OTA/V8-R851T10-LF1V109.zip"
       },
-      "fota_api_status": "Checked (Static Mirror)",
+      "fota_api_status": "Cached (Unchanged)",
       "extracted_details": null,
       "stable": {
         "version": "V8-R851T10-LF1V109",
@@ -1512,7 +1512,7 @@
       },
       "beta": null,
       "test": null,
-      "checked_at": "2026-11-24T14:37:39.097450+00:00"
+      "checked_at": "2026-11-24T23:19:50.521927+00:00"
     },
     {
       "platform": "T615T01",
@@ -1542,7 +1542,7 @@
         "na": "http://na-update.cedock.com/apps/resource2/V8T615T01/V8-T615T01-LF1V082/FOTA-OTA/V8-T615T01-LF1V082.176126.zip",
         "as": "http://as-update.cedock.com/apps/resource2/V8T615T01/V8-T615T01-LF1V082/FOTA-OTA/V8-T615T01-LF1V082.176126.zip"
       },
-      "fota_api_status": "Checked (Static Mirror)",
+      "fota_api_status": "Cached (Unchanged)",
       "extracted_details": {
         "android_version": "11",
         "os_flavor": "Google TV (GTV)",
@@ -1592,7 +1592,7 @@
       },
       "beta": null,
       "test": null,
-      "checked_at": "2026-11-24T14:37:39.097450+00:00"
+      "checked_at": "2026-11-24T23:19:50.521927+00:00"
     },
     {
       "platform": "T615T02",
@@ -1622,7 +1622,7 @@
         "na": "http://na-update.cedock.com/apps/resource2/V8T615T02/V8-T615T02-LF1V073/FOTA-OTA/V8-T615T02-LF1V073.518224.zip",
         "as": "http://as-update.cedock.com/apps/resource2/V8T615T02/V8-T615T02-LF1V073/FOTA-OTA/V8-T615T02-LF1V073.518224.zip"
       },
-      "fota_api_status": "Checked (Static Mirror)",
+      "fota_api_status": "Cached (Unchanged)",
       "extracted_details": {
         "android_version": "11",
         "os_flavor": "Google TV (GTV)",
@@ -1672,7 +1672,7 @@
       },
       "beta": null,
       "test": null,
-      "checked_at": "2026-11-24T14:37:39.097450+00:00"
+      "checked_at": "2026-11-24T23:19:50.521927+00:00"
     },
     {
       "platform": "T615T03",
@@ -1702,7 +1702,7 @@
         "na": "http://na-update.cedock.com/apps/resource2/V8T615T03/V8-T615T03-LF1V082/FOTA-OTA/V8-T615T03-LF1V082.502331.zip",
         "as": "http://as-update.cedock.com/apps/resource2/V8T615T03/V8-T615T03-LF1V082/FOTA-OTA/V8-T615T03-LF1V082.502331.zip"
       },
-      "fota_api_status": "Checked (Static Mirror)",
+      "fota_api_status": "Cached (Unchanged)",
       "extracted_details": {
         "android_version": "11",
         "os_flavor": "Google TV (GTV)",
@@ -1752,7 +1752,83 @@
       },
       "beta": null,
       "test": null,
-      "checked_at": "2026-11-24T14:37:39.097450+00:00"
+      "checked_at": "2026-11-24T23:19:50.521927+00:00"
+    },
+    {
+      "platform": "T653T11",
+      "alt_platform_id": "T653T11",
+      "family_name": "Pentonic 700 (CN) (T653T11)",
+      "soc_specs": "MediaTek MT9653 / MT5879 (Pentonic 700 China Market)",
+      "featured_models": "R675C, FF-CN-MT9653-R675C (`tclmt5879cn`, Project ID `12061`)",
+      "latest_firmware": "V8-T653T11-LF1V751",
+      "build_number": "",
+      "release_type": "Full OTA (ZIP)",
+      "package_size": "2.08 GB",
+      "release_date": "2026-10-12",
+      "md5": null,
+      "sha256": null,
+      "crc32": null,
+      "changelog": "China market (FFALCON / TCL) Android 11 OTA release for Project ID 12061.",
+      "region": "CN",
+      "download_url": "https://file-fota-tv.api.leiniao.com/2026/10/12/full/ab/d61e1b75fb/V8-T653T11-LF1V751.zip",
+      "recovery_pkg_url": null,
+      "recovery_pkg_size": null,
+      "recovery_pkg_md5": null,
+      "recovery_pkg_sha256": null,
+      "is_test_release": false,
+      "release_category": "Production (Stable)",
+      "all_cdn_urls": {
+        "cn": "https://file-fota-tv.api.leiniao.com/2026/10/12/full/ab/d61e1b75fb/V8-T653T11-LF1V751.zip"
+      },
+      "fota_api_status": "Checked (Static Mirror)",
+      "extracted_details": {
+        "android_version": "11",
+        "os_flavor": "Android TV (CN)",
+        "gms_version": "Android_11_CN",
+        "security_patch": "2022-09-05",
+        "build_date_utc": 1791550919,
+        "build_date_str": "Oct 09, 2026",
+        "fingerprint": "TCL/tcl_mt5879_cn_db/tcl_mt5879_cn:11/RQ3A.210705.001/2026100921:user/release-keys",
+        "sdk_level": 30,
+        "incremental_build": "2026100921",
+        "device_codename": "tcl_mt5879_cn"
+      },
+      "stable": {
+        "version": "V8-T653T11-LF1V751",
+        "build_number": "",
+        "release_type": "Full OTA (ZIP)",
+        "release_category": "Production (Stable)",
+        "is_test_release": false,
+        "package_size": "2.08 GB",
+        "release_date": "2026-10-12",
+        "md5": null,
+        "sha256": null,
+        "crc32": null,
+        "changelog": "China market (FFALCON / TCL) Android 11 OTA release for Project ID 12061.",
+        "download_url": "https://file-fota-tv.api.leiniao.com/2026/10/12/full/ab/d61e1b75fb/V8-T653T11-LF1V751.zip",
+        "recovery_pkg_url": null,
+        "recovery_pkg_size": null,
+        "recovery_pkg_md5": null,
+        "recovery_pkg_sha256": null,
+        "all_cdn_urls": {
+          "cn": "https://file-fota-tv.api.leiniao.com/2026/10/12/full/ab/d61e1b75fb/V8-T653T11-LF1V751.zip"
+        },
+        "extracted_details": {
+          "android_version": "11",
+          "os_flavor": "Android TV (CN)",
+          "gms_version": "Android_11_CN",
+          "security_patch": "2022-09-05",
+          "build_date_utc": 1791550919,
+          "build_date_str": "Oct 09, 2026",
+          "fingerprint": "TCL/tcl_mt5879_cn_db/tcl_mt5879_cn:11/RQ3A.210705.001/2026100921:user/release-keys",
+          "sdk_level": 30,
+          "incremental_build": "2026100921",
+          "device_codename": "tcl_mt5879_cn"
+        }
+      },
+      "beta": null,
+      "test": null,
+      "checked_at": "2026-11-24T23:19:50.521927+00:00"
     }
   ]
 }

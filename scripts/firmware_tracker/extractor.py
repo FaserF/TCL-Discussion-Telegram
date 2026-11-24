@@ -64,10 +64,21 @@ def parse_ota_metadata_text(raw_text: str) -> ExtractedBuildDetails:
                 android_ver = props[k]
                 break
 
+    dev = (
+        props.get("device")
+        or props.get("ro.product.device")
+        or props.get("pre-device")
+        or "—"
+    )
+    is_cn_build = "_cn" in fingerprint.lower() or "_cn" in dev.lower()
+
     os_flavor = "Google TV (GTV)"
     gms = "Android_12_GTV"
     if android_ver != "—":
-        if android_ver == "14":
+        if is_cn_build:
+            gms = f"Android_{android_ver}_CN"
+            os_flavor = "Android TV (CN)"
+        elif android_ver == "14":
             gms = "Android_14_GTV_U"
             os_flavor = "Google TV (GTV - Android 14 U)"
         elif android_ver == "12":
@@ -121,7 +132,6 @@ def parse_ota_metadata_text(raw_text: str) -> ExtractedBuildDetails:
         or props.get("ro.build.version.incremental")
         or "—"
     )
-    dev = props.get("device") or props.get("ro.product.device") or "—"
 
     return ExtractedBuildDetails(
         android_version=android_ver,
@@ -360,6 +370,9 @@ def get_all_candidate_mirrors(
     if default_url and default_url.startswith("http"):
         mirrors.append(default_url)
 
+    if default_url and "leiniao.com" in default_url:
+        return [m for m in mirrors if m and not _is_host_dead(m)]
+
     mirrors.extend(
         [
             f"http://eu-update.cedock.com/apps/resource2/{pdir}/{fw_name}/FOTA-OTA/{fw_name}{bno_suffix}.zip",
@@ -467,8 +480,12 @@ def process_firmware_extractions_sequentially(
                 consecutive_mirror_failures = 0
                 break
 
-        # Probe for Recovery IMG / PKG package in parallel
-        if not e.recovery_pkg_url and consecutive_mirror_failures < 3:
+        # Probe for Recovery IMG / PKG package in parallel (international cedock CDN only)
+        if (
+            not e.recovery_pkg_url
+            and consecutive_mirror_failures < 3
+            and e.region.upper() != "CN"
+        ):
             rec_candidates = construct_recovery_cdn_urls(
                 e.region, e.platform, e.latest_firmware, e.build_number
             )

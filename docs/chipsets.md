@@ -17,6 +17,7 @@ TCL platforms are grouped by System-on-Chip (SoC) hardware families and year of 
 | **Pentonic 700 (Global/EU)** | **0012T01** (`T653T01`) | X955, X955 Max (115"), C955, C855, C805, C765, C755, C745X2, C845X2, C7L, C6L, RM7L, X11K, C9K, C8K, C7K, C6K, P8K, T8C, 98C655, 85C655Pro, 98P745, 98P755 | MediaTek MT9653 / MT9618 (MT53), 4K 144Hz VRR |
 | **Pentonic 700 (NA/LA)** | **0012T02** (`T653T02`) | QM891G, QM851G, QM751G, Q651G, Q750G, S551G, RM7L, QM7L, Q77L, X11K, QM8K, QM7K, Q77K, QM6K, QM67K | MediaTek Pentonic 700 (G08 / N. America & LATAM) |
 | **Pentonic 700 (Flagship)** | **0012T03** (`T653T03`) | QM9K Series | MediaTek Pentonic 700 (G16) |
+| **Pentonic 700 (CN)** | **T653T11** | R675C, FF-CN-MT9653-R675C (`tcl_mt5879_cn`, Project ID `12061`) | MediaTek MT9653 / MT5879 (Pentonic 700 China Market) |
 | **Pentonic 600** | **0014T01** (`T658T01`) | C655 (Selected AP/LA Releases) | MediaTek MT9658 (Pentonic 600) |
 | **G15 Platform** | **0016T01** | P8L, P8LS, U75/A/85A, A400/M/U/PRO (AP & LA), P8K, C6K (AP) | 4K Google TV (G15 Platform) |
 | **Next-Gen G17** | **0017T01** | Upcoming 2026/2027 Lineup | 4K Flagship Google TV (G17 Platform) |

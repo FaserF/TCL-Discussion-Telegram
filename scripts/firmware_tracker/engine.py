@@ -11,6 +11,7 @@ from datetime import UTC, datetime
 from typing import Any
 
 from .alerts import check_and_report_ci_api_failure, send_telegram_update
+from .cn_client import is_cn_platform, resolve_cn_target
 from .fota_client import (
     build_channel_release,
     check_tv_fota,
@@ -28,6 +29,9 @@ from .parser import (
 
 def run(
     chipset_filters: list[str] | None = None,
+    region_filter: str | None = None,
+    project_id_override: str = "",
+    model_override: str = "",
 ) -> tuple[
     list[PlatformEntry],
     list[PlatformEntry],
@@ -45,21 +49,42 @@ def run(
     history = load_firmware_history()
 
     target_platform_ids: set[str] | None = None
-    if chipset_filters:
+    if chipset_filters or region_filter:
         target_platform_ids = set()
-        for f in chipset_filters:
+        for f in chipset_filters or []:
             f_norm = f.strip().upper()
             matched = False
+            cn_hit = resolve_cn_target(f)
+            if cn_hit and cn_hit.get("platform") in platforms_map:
+                target_platform_ids.add(cn_hit["platform"])
+                matched = True
             for pid, pdata in platforms_map.items():
                 if (
                     f_norm == pid.upper()
                     or f_norm == pdata.get("alt_platform_id", "").upper()
                     or f_norm in pdata.get("family_name", "").upper()
+                    or f_norm in pdata.get("featured_models", "").upper()
                 ):
                     target_platform_ids.add(pid)
                     matched = True
             if not matched:
                 target_platform_ids.add(f.strip())
+
+        if region_filter:
+            reg_upper = region_filter.strip().upper()
+            reg_pids = {
+                pid
+                for pid, pdata in platforms_map.items()
+                if (
+                    cached_platforms.get(pid, {}).get("region")
+                    or pdata.get("region", "EU")
+                ).upper()
+                == reg_upper
+            }
+            if chipset_filters:
+                target_platform_ids &= reg_pids
+            else:
+                target_platform_ids = reg_pids
 
         print(
             f"[Chipset Filter] Active targets ({len(target_platform_ids)}): {', '.join(sorted(target_platform_ids))}"
@@ -112,7 +137,7 @@ def run(
             reg = (
                 (cat.get("region") or pdata.get("region", "EU")).upper()
                 if cat
-                else "EU"
+                else pdata.get("region", "EU").upper()
             )
             rel_cat, is_test = classify_firmware_release(
                 fw_code,
@@ -123,6 +148,23 @@ def run(
             st_rel = build_channel_release(cat.get("stable"), pid, reg) if cat else None
             bt_rel = build_channel_release(cat.get("beta"), pid, reg) if cat else None
             tt_rel = build_channel_release(cat.get("test"), pid, reg) if cat else None
+            dl_cached = (
+                cat.get("download_url") or construct_cdn_url(reg, pid, fw_code, bno)
+                if cat
+                else construct_cdn_url(reg, pid, fw_code, bno)
+            )
+            is_cn_cached = reg == "CN" or is_cn_platform(pid, reg)
+            cached_cdn_urls = (
+                (cat.get("all_cdn_urls") if cat else None)
+                or (
+                    ({"cn": dl_cached} if dl_cached else {})
+                    if is_cn_cached
+                    else {
+                        r: construct_cdn_url(r, pid, fw_code, bno)
+                        for r in ("eu", "na", "as")
+                    }
+                )
+            )
 
             cached_entry = PlatformEntry(
                 platform=pid,
@@ -142,29 +184,14 @@ def run(
                 crc32=cat.get("crc32") if cat else None,
                 changelog=cat.get("changelog") if cat else None,
                 region=reg,
-                download_url=(
-                    cat.get("download_url") or construct_cdn_url(reg, pid, fw_code, bno)
-                )
-                if cat
-                else construct_cdn_url(reg, pid, fw_code, bno),
+                download_url=dl_cached,
                 recovery_pkg_url=cat.get("recovery_pkg_url") if cat else None,
                 recovery_pkg_size=cat.get("recovery_pkg_size") if cat else None,
                 recovery_pkg_md5=cat.get("recovery_pkg_md5") if cat else None,
                 recovery_pkg_sha256=cat.get("recovery_pkg_sha256") if cat else None,
                 is_test_release=is_test,
                 release_category=rel_cat,
-                all_cdn_urls=(
-                    cat.get("all_cdn_urls")
-                    or {
-                        r: construct_cdn_url(r, pid, fw_code, bno)
-                        for r in ("eu", "na", "as")
-                    }
-                )
-                if cat
-                else {
-                    r: construct_cdn_url(r, pid, fw_code, bno)
-                    for r in ("eu", "na", "as")
-                },
+                all_cdn_urls=cached_cdn_urls,
                 fota_api_status="Cached (Unchanged)" if cat else "Unchecked",
                 extracted_details=ext_d,
                 stable=st_rel,
@@ -178,10 +205,17 @@ def run(
         print(f"  Querying {pid} ({p_name}) ...", end=" ", flush=True)
 
         current_ver = f"V8-{pid}-LF1V001"
-        reg = cat.get("region", "EU").lower()
+        reg = (cat.get("region") or pdata.get("region", "EU")).lower()
 
         fota_total_queried += 1
-        resp = check_tv_fota(pid, current_ver, region=reg, alt_platform_id=alt_id)
+        resp = check_tv_fota(
+            pid,
+            current_ver,
+            region=reg,
+            alt_platform_id=alt_id,
+            project_id=project_id_override or pdata.get("project_id", ""),
+            dev_model=model_override or pdata.get("dev_model", ""),
+        )
         if resp and resp.get("region"):
             reg = resp["region"]
 
@@ -192,7 +226,7 @@ def run(
             active_date = resp["release_date"]
             active_md5 = resp["md5"]
             active_changelog = resp["changelog"]
-            active_type = "Full OTA (ZIP)"
+            active_type = resp.get("release_type") or "Full OTA (ZIP)"
             primary_url = resp["file_url"] or construct_cdn_url(
                 reg, pid, active_fw, bno
             )
@@ -223,9 +257,19 @@ def run(
             crc_int = zlib.crc32(f"{pid}-{active_fw}-{bno}".encode())
             active_crc32 = f"{crc_int:08X}"
 
-        cdn_links = {
-            r: construct_cdn_url(r, pid, active_fw, bno) for r in ("eu", "na", "as")
-        }
+        is_cn_target = (
+            reg == "cn"
+            or is_cn_platform(pid, reg)
+            or (isinstance(primary_url, str) and "leiniao.com" in primary_url)
+        )
+        if is_cn_target:
+            cdn_links = cat.get("all_cdn_urls") or (
+                {"cn": primary_url} if primary_url else {}
+            )
+        else:
+            cdn_links = {
+                r: construct_cdn_url(r, pid, active_fw, bno) for r in ("eu", "na", "as")
+            }
         rel_cat, is_test = classify_firmware_release(
             active_fw, active_type, active_changelog or ""
         )
@@ -253,8 +297,12 @@ def run(
             candidates.append(cat["test"])
         candidates.extend(p_history)
 
-        # Query internal TCL test server (upmp-test) for pre-release candidates (R/M builds)
-        test_resp = check_tv_fota_test_server(pid, current_ver, alt_platform_id=alt_id)
+        # Query internal TCL test server (upmp-test) for international pre-release candidates (R/M builds)
+        test_resp = (
+            None
+            if is_cn_target
+            else check_tv_fota_test_server(pid, current_ver, alt_platform_id=alt_id)
+        )
         if (
             test_resp
             and test_resp.get("version")

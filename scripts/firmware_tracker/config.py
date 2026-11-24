@@ -55,3 +55,33 @@ CDN_HOSTS = {
     "na": "na-update.cedock.com",
     "as": "as-update.cedock.com",
 }
+
+# ---------------------------------------------------------------------------
+# China (CN) Region FOTA / Leiniao TDP Constants & Known Hardware Profiles
+# ---------------------------------------------------------------------------
+CN_TDP_ENDPOINT = "https://tdp-o.api.leiniao.com/tdp-api/api/fms/v2/device/upgrade"
+CN_FOTA_CDN_HOST = "file-fota-tv.api.leiniao.com"
+
+OFFICIAL_CDN_DOMAIN_SUFFIXES = (
+    ".cedock.com",
+    ".api.leiniao.com",
+)
+OFFICIAL_CDN_EXACT_HOSTS = {
+    "update.cedock.com",
+    "celesw.tcl.com",
+    "file-fota-tv.api.leiniao.com",
+}
+
+CN_KNOWN_PROJECTS: dict[str, dict[str, str]] = {
+    "T653T11": {
+        "platform": "T653T11",
+        "app_id": "V8T653T11",
+        "dev_model": "FF-CN-MT9653-R675C",
+        "device_codename": "tcl_mt5879_cn",
+        "project_id": "12061",
+        "models": "R675C, FF-CN-MT9653-R675C",
+        "language": "zh",
+        "region": "CN",
+        "timezone": "Asia/Shanghai",
+    },
+}

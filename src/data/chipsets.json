@@ -20,6 +20,11 @@
         "type": "MediaTek Pentonic 700 (G16)"
     },
     {
+        "name": "Pentonic 700 (CN) (T653T11)",
+        "models": "R675C, FF-CN-MT9653-R675C (`tcl_mt5879_cn`, Project ID `12061`)",
+        "type": "MediaTek MT9653 / MT5879 (Pentonic 700 China Market)"
+    },
+    {
         "name": "Pentonic 600 (0014T01 (`T658T01`))",
         "models": "C655 (Selected AP/LA Releases)",
         "type": "MediaTek MT9658 (Pentonic 600)"

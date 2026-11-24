@@ -59,6 +59,19 @@ def format_telegram_message(entry: PlatformEntry) -> str:
             f"📅 <b>Build Date:</b> {html.escape(d.build_date_str)}\n"
         )
 
+    cdn_links = []
+    for key, label in (
+        ("eu", "🇪🇺 EU / Global CDN Mirror"),
+        ("na", "🇺🇸 North America CDN Mirror"),
+        ("as", "🌏 Asia-Pacific CDN Mirror"),
+        ("cn", "🇨🇳 China (CN) FOTA CDN"),
+    ):
+        if entry.all_cdn_urls.get(key):
+            cdn_links.append(f'• <a href="{entry.all_cdn_urls[key]}">{label}</a>')
+    if not cdn_links and entry.download_url:
+        cdn_links.append(f'• <a href="{entry.download_url}">⬇️ Official Download</a>')
+    downloads_block = "\n".join(cdn_links)
+
     msg = (
         f"{tag_badge}\n\n"
         f"{warning_banner}"
@@ -72,9 +85,7 @@ def format_telegram_message(entry: PlatformEntry) -> str:
         f"🎯 <b>Known Compatible Models:</b> <i>{safe_models}</i>\n\n"
         f"📝 <b>Official Notes:</b>\n<i>{safe_changelog}</i>\n\n"
         f"⬇️ <b>Official Downloads:</b>\n"
-        f'• <a href="{entry.all_cdn_urls.get("eu", entry.download_url)}">🇪🇺 EU / Global CDN Mirror</a>\n'
-        f'• <a href="{entry.all_cdn_urls.get("na", entry.download_url)}">🇺🇸 North America CDN Mirror</a>\n'
-        f'• <a href="{entry.all_cdn_urls.get("as", entry.download_url)}">🌏 Asia-Pacific CDN Mirror</a>\n\n'
+        f"{downloads_block}\n\n"
         f'📖 <a href="{DOCS_BASE_URL}#platform-{safe_platform.lower()}">View full platform specifications on documentation</a>\n'
         f"💬 <b>Discussion & Community:</b> @tclupdates"
     )

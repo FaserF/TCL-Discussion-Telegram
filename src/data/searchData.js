@@ -31,6 +31,13 @@ export const searchData = [
         "link": "/guides"
     },
     {
+        "id": "pentonic-700-cn-t653t11",
+        "title": "Pentonic 700 (CN) (T653T11)",
+        "category": "Chipset",
+        "content": "Featured Models: R675C, FF-CN-MT9653-R675C (`tcl_mt5879_cn`, Project ID `12061`). Notes: MediaTek MT9653 / MT5879 (Pentonic 700 China Market).",
+        "link": "/guides"
+    },
+    {
         "id": "pentonic-600-0014t01-t658t01",
         "title": "Pentonic 600 (0014T01 (`T658T01`))",
         "category": "Chipset",
