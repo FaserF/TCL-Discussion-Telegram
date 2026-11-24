@@ -1,34 +1,21 @@
-# Label configurations for PRs based on changed files
-# Updated for actions/labeler@v5 syntax
+# Pull Request Labeler configuration
+enhancement:
+  - head-branch: ['^feat/', '^feature/']
 
-frontend:
-  - changed-files:
-    - any-glob-to-any-file:
-      - 'src/**/*'
-      - 'index.html'
-      - 'vite.config.js'
+bug:
+  - head-branch: ['^fix/', '^bugfix/']
+
+dependencies:
+  - head-branch: ['^renovate/', '^deps/']
 
 documentation:
   - changed-files:
-    - any-glob-to-any-file:
-      - '**/*.md'
-      - 'public/**/*.svg'
+    - any-glob-to-any-file: ['**/*.md', 'docs/**']
 
-workflow:
+ci:
   - changed-files:
-    - any-glob-to-any-file:
-      - '.github/workflows/**/*'
+    - any-glob-to-any-file: ['.github/**', 'scripts/**']
 
-automation:
+tests:
   - changed-files:
-    - any-glob-to-any-file:
-      - '.github/labeler.yml'
-      - '.github/workflows/labeler.yml'
-      - '.github/workflows/issue-labeler.yml'
-
-css:
-  - changed-files:
-    - any-glob-to-any-file:
-      - 'src/**/*.css'
-      - 'tailwind.config.js'
-      - 'postcss.config.js'
+    - any-glob-to-any-file: ['tests/**', '**/*test*']
