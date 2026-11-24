@@ -20,7 +20,8 @@ const IGNORE_URLS = [
     'http://eu-filter-upgrade.huan.tv',
     'http://na-filter-upgrade.huan.tv',
     'http://as-filter-upgrade.huan.tv',
-    'https://tdp-o.api.leiniao.com'
+    'https://tdp-o.api.leiniao.com',
+    'https://file-fota-tv.api.leiniao.com'
 ];
 
 const EXTENSIONS = ['.jsx', '.js', '.md', '.html'];

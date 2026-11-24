@@ -44,7 +44,7 @@ jobs:
           if [ -z "${{ secrets.ADMIN_AUTH_DATA }}" ]; then
             echo "[]" > docs/assets/admins.json
           else
-            echo "${{ secrets.ADMIN_AUTH_DATA }}" | tr ',' '\n' | while read id; do
+            echo "${{ secrets.ADMIN_AUTH_DATA }}" | tr ',' '\n' | while read -r id; do
               # Trim whitespace and hash
               clean_id=$(echo "$id" | xargs)
               echo -n "$clean_id" | sha256sum | awk '{print $1}'
