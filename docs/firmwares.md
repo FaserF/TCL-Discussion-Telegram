@@ -10,7 +10,7 @@ Welcome to the official **TCL Smart TV Firmware Hub**. This catalog tracks, aggr
 > 💡 **Automated Verification & Integrity Guarantee**  
 > All firmware binaries listed below are verified through server-side MD5 signatures, SHA-256 cryptographic hashes, and IEEE 802.3 32-bit CRC32 checksums. Deep technical build properties are extracted via non-destructive byte-range inspection.
 
-*Last database update: `2026-11-24T23:19:50.521927+00:00` UTC*
+*Last database update: `2026-11-25T13:58:42.005148+00:00` UTC*
 
 ---
 
@@ -56,7 +56,7 @@ Welcome to the official **TCL Smart TV Firmware Hub**. This catalog tracks, aggr
 - **Hardware Architecture & SoC**: MediaTek MT21 (2K / FHD Google TV)
 - **Compatible TV Models (Selection)**: *S350G, S55H, 32S5400, S5400A (Google TV)*
 - **Package Type**: `Full OTA (ZIP)` · **Size**: `1.92 GB` · **Release Date**: `2026-06-15` · **Region**: `EU`
-- **FOTA Verification Status**: `Cached (Unchanged)`
+- **FOTA Verification Status**: `Checked (Static Mirror)`
 - **MD5 Checksum**: `e61c1f5174aeb91dd31ebcad01a04a30`
 - **SHA-256 Checksum**: `db01e98b5619836442cc40ba0b0f4a57a715e343f4642976477b4fde4ae4be1b`
 - **CRC-32 Checksum**: `0x3712D508`
@@ -74,7 +74,7 @@ Welcome to the official **TCL Smart TV Firmware Hub**. This catalog tracks, aggr
 - **Hardware Architecture & SoC**: MediaTek MT21 (2K / FHD Android TV)
 - **Compatible TV Models (Selection)**: *S5200 (Late), 32S5400 (Android TV)*
 - **Package Type**: `Full OTA (ZIP)` · **Size**: `1.92 GB` · **Release Date**: `2026-06-15` · **Region**: `EU`
-- **FOTA Verification Status**: `Cached (Unchanged)`
+- **FOTA Verification Status**: `Checked (Static Mirror)`
 - **MD5 Checksum**: `4c06228d046707bcb00a1e43b74dd182`
 - **SHA-256 Checksum**: `d3a6a1e06f427eba087bd5d58e0f679aacaa4c1f4b29f98ac32d8fa6cc4b5e17`
 - **CRC-32 Checksum**: `0x9063AAC6`
@@ -92,7 +92,7 @@ Welcome to the official **TCL Smart TV Firmware Hub**. This catalog tracks, aggr
 - **Hardware Architecture & SoC**: Realtek RT75 (G10 Platform, Entry-Mid 4K GTV)
 - **Compatible TV Models (Selection)**: *P8LS, P7L, V6D, T6D, U65A, P6K, P7K, V6C, T6C, C6KS, C6CS, U65/75, MQLED70K, P755, C655, C655 Pro, T7B, V6B, QLED780/810, QM51L, QM5K, Q51K, Q63K, S551G, Q651G*
 - **Package Type**: `Full OTA (ZIP)` · **Size**: `1.92 GB` · **Release Date**: `2026-08-07` · **Region**: `EU`
-- **FOTA Verification Status**: `Cached (Unchanged)`
+- **FOTA Verification Status**: `Checked (Static Mirror)`
 - **MD5 Checksum**: `a5712354fc8723dd5c11afb2608f6091`
 - **SHA-256 Checksum**: `8e21687d12671a678a12f3322498d3bcc1771c31fec9bf604ccf81f4f8a01121`
 - **CRC-32 Checksum**: `0xCF291DE2`
@@ -128,7 +128,7 @@ Welcome to the official **TCL Smart TV Firmware Hub**. This catalog tracks, aggr
 - **Hardware Architecture & SoC**: MediaTek MT9653 / MT9618 (MT53), 4K 144Hz VRR
 - **Compatible TV Models (Selection)**: *X955, X955 Max (115"), C955, C855, C805, C765, C755, C745X2, C845X2, C7L, C6L, RM7L, X11K, C9K, C8K, C7K, C6K, P8K, T8C, 98C655, 85C655Pro, 98P745, 98P755*
 - **Package Type**: `Full OTA (ZIP)` · **Size**: `2.35 GB` · **Release Date**: `2026-01` · **Region**: `EU`
-- **FOTA Verification Status**: `Cached (Unchanged)`
+- **FOTA Verification Status**: `Checked (Static Mirror)`
 - **MD5 Checksum**: `e0573619c0bb0f93afe2be6aeefb472a`
 - **SHA-256 Checksum**: `00357ef7ec8897e71310013d22e713a03c9994578b357c7f065ee03328352403`
 - **CRC-32 Checksum**: `0xF241FE0D`
@@ -155,7 +155,7 @@ Welcome to the official **TCL Smart TV Firmware Hub**. This catalog tracks, aggr
 - **Hardware Architecture & SoC**: MediaTek Pentonic 700 (G08 / N. America & LATAM)
 - **Compatible TV Models (Selection)**: *QM891G, QM851G, QM751G, Q651G, Q750G, S551G, RM7L, QM7L, Q77L, X11K, QM8K, QM7K, Q77K, QM6K, QM67K*
 - **Package Type**: `Full OTA (ZIP)` · **Size**: `2.28 GB` · **Release Date**: `2025-11` · **Region**: `NA`
-- **FOTA Verification Status**: `Cached (Unchanged)`
+- **FOTA Verification Status**: `Checked (Static Mirror)`
 - **MD5 Checksum**: `aaf24d608a1866c214d95d91f92aaf2d`
 - **SHA-256 Checksum**: `3a332afe7fe06e4b53b66ca3ac7edb51697b89066cafce5e8212d1d24174a931`
 - **CRC-32 Checksum**: `0x08739BC3`
@@ -182,7 +182,7 @@ Welcome to the official **TCL Smart TV Firmware Hub**. This catalog tracks, aggr
 - **Hardware Architecture & SoC**: MediaTek Pentonic 700 (G16)
 - **Compatible TV Models (Selection)**: *QM9K Series*
 - **Package Type**: `Full OTA (ZIP)` · **Size**: `2.41 GB` · **Release Date**: `2025-10` · **Region**: `EU`
-- **FOTA Verification Status**: `Cached (Unchanged)`
+- **FOTA Verification Status**: `Checked (Static Mirror)`
 - **MD5 Checksum**: `c5d75c11a51dae5dabf77e96dc205525`
 - **SHA-256 Checksum**: `68715a058595b923cf1f931e4f894f2c3819af52b189756c9247aed06d730f85`
 - **CRC-32 Checksum**: `0xD9A29CE7`
@@ -209,7 +209,7 @@ Welcome to the official **TCL Smart TV Firmware Hub**. This catalog tracks, aggr
 - **Hardware Architecture & SoC**: Amlogic AMLT963D4 (G09, 5-Core A55 @ 1.5GHz / 1.9GHz DVFS, Mali-G57 MC1, 2GB DDR4-3200)
 - **Compatible TV Models (Selection)**: *C655, C655 Pro, P755, T7B, P7K, C6KS, 55P755*
 - **Package Type**: `Full OTA (ZIP)` · **Size**: `1.82 GB` · **Release Date**: `2025-08` · **Region**: `EU`
-- **FOTA Verification Status**: `Cached (Unchanged)`
+- **FOTA Verification Status**: `Checked (Static Mirror)`
 - **MD5 Checksum**: `e868ca24e11ffcf319807d3bccc8d28e`
 - **SHA-256 Checksum**: `9f1fa9fedd938ae690d2fee156c3e967a8d06254c59f4ac66b01c9e692fc3d47`
 - **CRC-32 Checksum**: `0xDE45B257`
@@ -236,7 +236,7 @@ Welcome to the official **TCL Smart TV Firmware Hub**. This catalog tracks, aggr
 - **Hardware Architecture & SoC**: MediaTek MT9658 (Pentonic 600)
 - **Compatible TV Models (Selection)**: *C655 (Selected AP/LA Releases)*
 - **Package Type**: `Full OTA (ZIP)` · **Size**: `1.85 GB` · **Release Date**: `2026-04-15` · **Region**: `EU`
-- **FOTA Verification Status**: `Cached (Unchanged)`
+- **FOTA Verification Status**: `Checked (Static Mirror)`
 - **MD5 Checksum**: `6ab8bcb054942a526a5c7d598ef8cc89`
 - **SHA-256 Checksum**: `2908937733cdd859541b34a8a2c4c8142c5a4e15502d454edc523c5637313f95`
 - **CRC-32 Checksum**: `0xBE1D6323`
@@ -263,7 +263,7 @@ Welcome to the official **TCL Smart TV Firmware Hub**. This catalog tracks, aggr
 - **Hardware Architecture & SoC**: MediaTek MT9655 (MT55), Flagship 4K Mini-LED
 - **Compatible TV Models (Selection)**: *X11L, C8L, RM9L, QM8L (2026)*
 - **Package Type**: `Full OTA (ZIP)` · **Size**: `~2.1 GB` · **Release Date**: `2026-02` · **Region**: `EU`
-- **FOTA Verification Status**: `Cached (Unchanged)`
+- **FOTA Verification Status**: `Checked (Static Mirror)`
 - **MD5 Checksum**: `89b01dae244cb3dfb1b89cc47a5c9b6a`
 - **SHA-256 Checksum**: `95edd608020a57c5a0a4fe6b5eb82dde593295963e13084c9c33fc2d9bd5b4c4`
 - **CRC-32 Checksum**: `0xE46C147A`
@@ -290,7 +290,7 @@ Welcome to the official **TCL Smart TV Firmware Hub**. This catalog tracks, aggr
 - **Hardware Architecture & SoC**: 4K Google TV (G15 Platform)
 - **Compatible TV Models (Selection)**: *P8L, P8LS, U75/A/85A, A400/M/U/PRO (AP & LA), P8K, C6K (AP)*
 - **Package Type**: `Full OTA (ZIP)` · **Size**: `1.98 GB` · **Release Date**: `2026-03` · **Region**: `EU`
-- **FOTA Verification Status**: `Cached (Unchanged)`
+- **FOTA Verification Status**: `Checked (Static Mirror)`
 - **MD5 Checksum**: `f7c9b7710dbf32aa3546453b2677f856`
 - **SHA-256 Checksum**: `c2d41ccdb2db91a32bfc44722f77022b872599224c5706771825674289f2489d`
 - **CRC-32 Checksum**: `0xE56EA4C9`
@@ -317,7 +317,7 @@ Welcome to the official **TCL Smart TV Firmware Hub**. This catalog tracks, aggr
 - **Hardware Architecture & SoC**: 4K Flagship Google TV (G17 Platform)
 - **Compatible TV Models (Selection)**: *Upcoming 2026/2027 Lineup*
 - **Package Type**: `Full OTA (ZIP)` · **Size**: `1.85 GB` · **Release Date**: `2026-08-01` · **Region**: `EU`
-- **FOTA Verification Status**: `Cached (Unchanged)`
+- **FOTA Verification Status**: `Checked (Static Mirror)`
 - **MD5 Checksum**: `88fc0377acf8c89dbbb307f261422bdc`
 - **SHA-256 Checksum**: `4d6cf74059adf7aa891032060c5988ba08db4a58645a8bc608799286a1756138`
 - **CRC-32 Checksum**: `0x63E27B9A`
@@ -344,7 +344,7 @@ Welcome to the official **TCL Smart TV Firmware Hub**. This catalog tracks, aggr
 - **Hardware Architecture & SoC**: 4K Flagship Google TV (G18 Platform)
 - **Compatible TV Models (Selection)**: *Upcoming Future Lineup*
 - **Package Type**: `Full OTA (ZIP)` · **Size**: `—` · **Release Date**: `—` · **Region**: `EU`
-- **FOTA Verification Status**: `Cached (Unchanged)`
+- **FOTA Verification Status**: `Checked (Static Mirror)`
 - **MD5 Checksum**: `—`
 - **SHA-256 Checksum**: `0a19bf5df63ce55d2eda9d32201875cae4f3d8c454dc0788c33a2b012ef35645`
 - **CRC-32 Checksum**: `0x5150E507`
@@ -362,7 +362,7 @@ Welcome to the official **TCL Smart TV Firmware Hub**. This catalog tracks, aggr
 - **Hardware Architecture & SoC**: MStar MS48 (2K FHD Legacy Android TV 7/8)
 - **Compatible TV Models (Selection)**: *S6000, S6800, F40, F50*
 - **Package Type**: `Full OTA (ZIP)` · **Size**: `1.15 GB` · **Release Date**: `2023-05-14` · **Region**: `EU`
-- **FOTA Verification Status**: `Cached (Unchanged)`
+- **FOTA Verification Status**: `Checked (Static Mirror)`
 - **MD5 Checksum**: `e7e97e8212f87811254413e8dafd6a4f`
 - **SHA-256 Checksum**: `d148130353bec73cdb95ecb059b1457ac7c8addc0892a1d9c6924cdc98edcb42`
 - **CRC-32 Checksum**: `0x0DFE8680`
@@ -389,7 +389,7 @@ Welcome to the official **TCL Smart TV Firmware Hub**. This catalog tracks, aggr
 - **Hardware Architecture & SoC**: MStar MSD6488 (4K Legacy Android TV 7/8)
 - **Compatible TV Models (Selection)**: *C1, P1 Series*
 - **Package Type**: `Full OTA (ZIP)` · **Size**: `1.15 GB` · **Release Date**: `2023-05-14` · **Region**: `EU`
-- **FOTA Verification Status**: `Cached (Unchanged)`
+- **FOTA Verification Status**: `Checked (Static Mirror)`
 - **MD5 Checksum**: `56a42bdbb783ccf5489e121adc3fba20`
 - **SHA-256 Checksum**: `3b5e0c564ab06a2c29619179f1e2c891b9a5cc760eaf07086b561b9d8dc020d7`
 - **CRC-32 Checksum**: `0x82E66CAE`
@@ -416,7 +416,7 @@ Welcome to the official **TCL Smart TV Firmware Hub**. This catalog tracks, aggr
 - **Hardware Architecture & SoC**: MStar MSD6586 (4K Android TV 7/8/9)
 - **Compatible TV Models (Selection)**: *C2, P2, P6, C4, C6, DP660, EP640, EP660*
 - **Package Type**: `Full OTA (ZIP)` · **Size**: `1.15 GB` · **Release Date**: `2023-05-14` · **Region**: `EU`
-- **FOTA Verification Status**: `Cached (Unchanged)`
+- **FOTA Verification Status**: `Checked (Static Mirror)`
 - **MD5 Checksum**: `8bd785fb81fbff9886aa0f80984bd531`
 - **SHA-256 Checksum**: `c14e9c9a9930e65ce6540c2cad54cc0aba50d4a1e616600d2f538eb173b5c643`
 - **CRC-32 Checksum**: `0xD603A75F`
@@ -443,7 +443,7 @@ Welcome to the official **TCL Smart TV Firmware Hub**. This catalog tracks, aggr
 - **Hardware Architecture & SoC**: MStar MSD6886 (4K Android TV 9/11)
 - **Compatible TV Models (Selection)**: *EC780, X815, C815 (Early), EP680*
 - **Package Type**: `Full OTA (ZIP)` · **Size**: `1.15 GB` · **Release Date**: `2023-05-14` · **Region**: `EU`
-- **FOTA Verification Status**: `Cached (Unchanged)`
+- **FOTA Verification Status**: `Checked (Static Mirror)`
 - **MD5 Checksum**: `e46c49fee4e456fc70942c0db33c19fa`
 - **SHA-256 Checksum**: `17b86d45d9355205391b2a62223de0362a9cf5b249ed19f6b198ae3376e3ebcf`
 - **CRC-32 Checksum**: `0xD5F2134A`
@@ -470,7 +470,7 @@ Welcome to the official **TCL Smart TV Firmware Hub**. This catalog tracks, aggr
 - **Hardware Architecture & SoC**: Novatek NT72671 / NT72673 (Android TV)
 - **Compatible TV Models (Selection)**: *Thomson / TCL Regional Android TV Series*
 - **Package Type**: `Full OTA (ZIP)` · **Size**: `1.15 GB` · **Release Date**: `2026-03-20` · **Region**: `EU`
-- **FOTA Verification Status**: `Cached (Unchanged)`
+- **FOTA Verification Status**: `Checked (Static Mirror)`
 - **MD5 Checksum**: `173d73e515446f83f180cb7508f9be59`
 - **SHA-256 Checksum**: `5610eb4318cb82f8eca1f0960b526ef2362655086f70207b8f4b371ac85209b2`
 - **CRC-32 Checksum**: `0x034E01ED`
@@ -497,7 +497,7 @@ Welcome to the official **TCL Smart TV Firmware Hub**. This catalog tracks, aggr
 - **Hardware Architecture & SoC**: Realtek RTD2841K Entry Legacy (Android TV 9/11)
 - **Compatible TV Models (Selection)**: *S6500 Series, 32S60AI, ES560*
 - **Package Type**: `Full OTA (ZIP)` · **Size**: `1.25 GB` · **Release Date**: `2022-11` · **Region**: `EU`
-- **FOTA Verification Status**: `Cached (Unchanged)`
+- **FOTA Verification Status**: `Checked (Static Mirror)`
 - **MD5 Checksum**: `3f2c5fd78262d2e8a98c85fe99502526`
 - **SHA-256 Checksum**: `adfb1eb42d880a4fdeb4b998dd7695d64bf79bfbc6f3fe24fc4c7b3a8fe96e77`
 - **CRC-32 Checksum**: `0x343B8CE0`
@@ -524,7 +524,7 @@ Welcome to the official **TCL Smart TV Firmware Hub**. This catalog tracks, aggr
 - **Hardware Architecture & SoC**: Realtek RT51 (Legacy Android TV)
 - **Compatible TV Models (Selection)**: *P725, C725, P615, P635*
 - **Package Type**: `Full OTA (ZIP)` · **Size**: `1.62 GB` · **Release Date**: `2023-06` · **Region**: `EU`
-- **FOTA Verification Status**: `Cached (Unchanged)`
+- **FOTA Verification Status**: `Checked (Static Mirror)`
 - **MD5 Checksum**: `5fec09674cebaa1505c005f31a5baf5d`
 - **SHA-256 Checksum**: `cf7203240967abf1b0697c018528c6936e347121149eeacc4aef7f9e3f2fca89`
 - **CRC-32 Checksum**: `0xFFAF3604`
@@ -551,7 +551,7 @@ Welcome to the official **TCL Smart TV Firmware Hub**. This catalog tracks, aggr
 - **Hardware Architecture & SoC**: Realtek RTD2851 / R51M (4K Android TV)
 - **Compatible TV Models (Selection)**: *C715, C815, P715 (Android TV)*
 - **Package Type**: `Full OTA (ZIP)` · **Size**: `1.75 GB` · **Release Date**: `2024-05` · **Region**: `EU`
-- **FOTA Verification Status**: `Cached (Unchanged)`
+- **FOTA Verification Status**: `Checked (Static Mirror)`
 - **MD5 Checksum**: `1e8aa5882d0495402d8e112fdeff9672`
 - **SHA-256 Checksum**: `1444115910deffcbd869ea92936b0e176489ef727cfcc8d1397957cfb217bd2c`
 - **CRC-32 Checksum**: `0xC325D708`
@@ -578,7 +578,7 @@ Welcome to the official **TCL Smart TV Firmware Hub**. This catalog tracks, aggr
 - **Hardware Architecture & SoC**: Realtek RTD2851 / R51M (4K Google TV)
 - **Compatible TV Models (Selection)**: *C645, C635, P745 (Google TV)*
 - **Package Type**: `Full OTA (ZIP)` · **Size**: `1.74 GB` · **Release Date**: `2024-04` · **Region**: `EU`
-- **FOTA Verification Status**: `Cached (Unchanged)`
+- **FOTA Verification Status**: `Checked (Static Mirror)`
 - **MD5 Checksum**: `dc8cba08ffac17ebcf6b4458d902d394`
 - **SHA-256 Checksum**: `7a2542a0204ddb1827af80631bb4ec281afca2b8e4d4c49771365b5cab3fcfc2`
 - **CRC-32 Checksum**: `0x83A1D1B6`
@@ -605,7 +605,7 @@ Welcome to the official **TCL Smart TV Firmware Hub**. This catalog tracks, aggr
 - **Hardware Architecture & SoC**: Realtek RTD2851 / R851 (4K Google TV)
 - **Compatible TV Models (Selection)**: *C728, C825, C735 (Early Google TV)*
 - **Package Type**: `Full OTA (ZIP)` · **Size**: `1.92 GB` · **Release Date**: `2026-06-15` · **Region**: `EU`
-- **FOTA Verification Status**: `Cached (Unchanged)`
+- **FOTA Verification Status**: `Checked (Static Mirror)`
 - **MD5 Checksum**: `eb4351335662e4b5bf083f9d42297f31`
 - **SHA-256 Checksum**: `9159d7b47f5b9e4aa67ae3da023c99ce12df8fa5d877075ff3771ee6f73958d9`
 - **CRC-32 Checksum**: `0x842C574A`
@@ -623,7 +623,7 @@ Welcome to the official **TCL Smart TV Firmware Hub**. This catalog tracks, aggr
 - **Hardware Architecture & SoC**: Realtek RTD2851 / R851 (4K Android TV)
 - **Compatible TV Models (Selection)**: *C715, C815 (Android TV)*
 - **Package Type**: `Full OTA (ZIP)` · **Size**: `1.92 GB` · **Release Date**: `2026-06-15` · **Region**: `EU`
-- **FOTA Verification Status**: `Cached (Unchanged)`
+- **FOTA Verification Status**: `Checked (Static Mirror)`
 - **MD5 Checksum**: `22ba85216b1be2a3eb3724df535cc8ad`
 - **SHA-256 Checksum**: `9ba6ff181ca31af6d5411499408edaa1dd36a68800908532ce289f42cfb2dfbd`
 - **CRC-32 Checksum**: `0x88E1EA3E`
@@ -641,7 +641,7 @@ Welcome to the official **TCL Smart TV Firmware Hub**. This catalog tracks, aggr
 - **Hardware Architecture & SoC**: MediaTek MT9615 (4K 120/144Hz)
 - **Compatible TV Models (Selection)**: *C845, C835, C735, C825, C728, C645 (Late), P745*
 - **Package Type**: `Full OTA (ZIP)` · **Size**: `1.92 GB` · **Release Date**: `2024-05` · **Region**: `EU`
-- **FOTA Verification Status**: `Cached (Unchanged)`
+- **FOTA Verification Status**: `Checked (Static Mirror)`
 - **MD5 Checksum**: `59ca23d8dd5e07be6d73d58dd3a5f170`
 - **SHA-256 Checksum**: `2341b055b94308e7e332e80eda520763e891e6e231140c8f78c3e1e5ae241568`
 - **CRC-32 Checksum**: `0xD08CFF8E`
@@ -668,7 +668,7 @@ Welcome to the official **TCL Smart TV Firmware Hub**. This catalog tracks, aggr
 - **Hardware Architecture & SoC**: MediaTek MT9615 (4K 120/144Hz NA)
 - **Compatible TV Models (Selection)**: *Q7 (2023 NA Series)*
 - **Package Type**: `Full OTA (ZIP)` · **Size**: `1.89 GB` · **Release Date**: `2024-04` · **Region**: `EU`
-- **FOTA Verification Status**: `Cached (Unchanged)`
+- **FOTA Verification Status**: `Checked (Static Mirror)`
 - **MD5 Checksum**: `f07a2972dca47c392ce4f51b65a89179`
 - **SHA-256 Checksum**: `f3c352d122d8bc55ed826239479dc3dfcc9523597cd11c370bba2c94b280e61c`
 - **CRC-32 Checksum**: `0x4185B600`
@@ -695,7 +695,7 @@ Welcome to the official **TCL Smart TV Firmware Hub**. This catalog tracks, aggr
 - **Hardware Architecture & SoC**: MediaTek MT9615 (4K 120/144Hz Mini-LED)
 - **Compatible TV Models (Selection)**: *R646 (2021 Flagship Mini-LED)*
 - **Package Type**: `Full OTA (ZIP)` · **Size**: `1.92 GB` · **Release Date**: `2024-05` · **Region**: `EU`
-- **FOTA Verification Status**: `Cached (Unchanged)`
+- **FOTA Verification Status**: `Checked (Static Mirror)`
 - **MD5 Checksum**: `b2f53f98570fd79525ad6517db646dbb`
 - **SHA-256 Checksum**: `3f6c33a6c281b8da1d3669d75dfdc2d82177152fdf6947d74877a3787d5c8169`
 - **CRC-32 Checksum**: `0xA81C95B2`
